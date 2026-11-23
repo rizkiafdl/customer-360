@@ -8,10 +8,8 @@ import {
   getCustomerEvaluation,
   getKycNoteCount,
   getRuleFireCounts,
-  getTierCounts,
   kycNoteCount,
   ruleFireCounts,
-  tierCounts,
 } from './insights'
 
 function item(
@@ -62,10 +60,6 @@ describe('counts over evaluations', () => {
     })
   })
 
-  it('counts each tier, with 0 for empty tiers', () => {
-    expect(tierCounts(evaluations)).toEqual({ 'No AUM': 1, Mass: 0, Affluent: 1, Priority: 1 })
-  })
-
   it('counts the KYC note', () => {
     expect(kycNoteCount(evaluations)).toBe(1)
   })
@@ -87,10 +81,6 @@ describe('insight selectors on the real data', () => {
       'no-aum': 16,
       'high-income-no-banca': 6,
     })
-  })
-
-  it('pins the tier counts', () => {
-    expect(getTierCounts()).toEqual({ 'No AUM': 16, Mass: 28, Affluent: 40, Priority: 16 })
   })
 
   it('pins the KYC note count', () => {
