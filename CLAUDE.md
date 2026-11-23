@@ -65,7 +65,10 @@ src/
   pages/                     Route-level components (render only).
   routes.tsx                 Route table, shared by `main.tsx` and tests.
   test/setup.ts              Vitest setup (jest-dom matchers, RTL cleanup).
-docs/adr/                    Architecture Decision Records.
+docs/adr/                    Architecture Decision Records (project-wide decisions).
+docs/superpowers/specs/      Feature specs, written by the Superpowers brainstorming skill.
+docs/superpowers/plans/      Implementation plans, written by the Superpowers writing-plans skill.
+.claude/settings.json        Shared Claude Code config (enables the superpowers plugin).
 ```
 
 Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
@@ -89,11 +92,28 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
      how to classify the products that appear in both FUNDING and LOAN.
    - If a feature needs a threshold or a business definition that the data or
      the user has not given, stop and ask. Do not pick a "sensible default".
-4. **Project-wide decisions go in `docs/adr/NNNN-title.md`.**
-   - Use the next free 4-digit number and a kebab-case title.
-   - Sections: Status, Context, Decision, Consequences, Alternatives considered.
+4. **Every feature gets a spec. Only project-wide decisions get an ADR.**
+
+   | | Spec | ADR |
+   | --- | --- | --- |
+   | Scope | One feature | The whole project |
+   | Answers | What are we building? | Why did we choose this? |
+   | How often | Every feature | Rarely. Only when a decision affects the whole project and is hard to reverse. |
+   | Where | `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` | `docs/adr/NNNN-title.md` |
+   | Format | The Superpowers default. Do not customize it. | The short template below. |
+
+   - **Specs:** the Superpowers `brainstorming` skill writes and commits the
+     spec. The `writing-plans` skill then writes the plan to
+     `docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`. Use these skills
+     as they are. Do not add, remove, or rename spec sections.
+   - **ADRs:** use the next free 4-digit number and a kebab-case title.
+     Sections: Status, Context, Decision, Consequences, Alternatives considered.
+     This is Michael Nygard's ADR format plus an "Alternatives considered"
+     section.
    - Examples of project-wide decisions: data shape changes, new
      dependencies with wide reach, state management, deployment target.
+   - If a feature spec makes a project-wide decision, write an ADR for that
+     decision too, and link the ADR from the spec.
 5. **The raw workbook is read-only.** `data:build` only reads it. To change the
    data, change the converter, never the file.
 6. **Do not hand-edit `src/data/*.json`.** Change `scripts/excel/normalize.ts`,
