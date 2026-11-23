@@ -1,0 +1,502 @@
+[
+  {
+    "customer_id": 1041,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 1047,
+    "gender": "F",
+    "customer_income": ">1 Juta - 3 Juta"
+  },
+  {
+    "customer_id": 1104,
+    "gender": "M",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 1165,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 1223,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 1310,
+    "gender": "F",
+    "customer_income": ">100 Juta"
+  },
+  {
+    "customer_id": 1365,
+    "gender": "M",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 1396,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 1465,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 1547,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 1784,
+    "gender": "F",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 1795,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 188,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 1892,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 2022,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 2146,
+    "gender": "F",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 2168,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 2237,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 2271,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 2306,
+    "gender": "F",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 246,
+    "gender": "M",
+    "customer_income": ">5 Juta - 10 Juta"
+  },
+  {
+    "customer_id": 2464,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 2497,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 268,
+    "gender": "F",
+    "customer_income": ">5 Juta - 10 Juta"
+  },
+  {
+    "customer_id": 2759,
+    "gender": "M",
+    "customer_income": ">5 Juta - 10 Juta"
+  },
+  {
+    "customer_id": 280,
+    "gender": "F",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 2846,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 2960,
+    "gender": "F",
+    "customer_income": ">5 Juta - 10 Juta"
+  },
+  {
+    "customer_id": 3010,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 3025,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 305,
+    "gender": "M",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 3105,
+    "gender": "M",
+    "customer_income": ">10 Juta - 25 Juta"
+  },
+  {
+    "customer_id": 3161,
+    "gender": "M",
+    "customer_income": ">1 Juta - 3 Juta"
+  },
+  {
+    "customer_id": 3172,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 3183,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 326,
+    "gender": "M",
+    "customer_income": ">25 Juta - 50 Juta"
+  },
+  {
+    "customer_id": 3349,
+    "gender": "M",
+    "customer_income": ">25 Juta - 50 Juta"
+  },
+  {
+    "customer_id": 3569,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 359,
+    "gender": "M",
+    "customer_income": ">1 Juta - 3 Juta"
+  },
+  {
+    "customer_id": 3694,
+    "gender": "M",
+    "customer_income": ">100 Juta"
+  },
+  {
+    "customer_id": 377,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 3974,
+    "gender": "F",
+    "customer_income": ">10 Juta - 25 Juta"
+  },
+  {
+    "customer_id": 3985,
+    "gender": "M",
+    "customer_income": ">50 Juta - 100 Juta"
+  },
+  {
+    "customer_id": 4062,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 4206,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 4251,
+    "gender": "F",
+    "customer_income": ">50 Juta - 100 Juta"
+  },
+  {
+    "customer_id": 4266,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 4277,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 4288,
+    "gender": "M",
+    "customer_income": ">100 Juta"
+  },
+  {
+    "customer_id": 4426,
+    "gender": "F",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 4799,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 480,
+    "gender": "F",
+    "customer_income": ">1 Juta - 3 Juta"
+  },
+  {
+    "customer_id": 4857,
+    "gender": null,
+    "customer_income": ">50 Juta - 100 Juta"
+  },
+  {
+    "customer_id": 4900,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 4926,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 5027,
+    "gender": "F",
+    "customer_income": ">25 Juta - 50 Juta"
+  },
+  {
+    "customer_id": 5203,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 5225,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 5232,
+    "gender": "M",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 5312,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 5463,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 5725,
+    "gender": "M",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 5849,
+    "gender": "M",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 5952,
+    "gender": "M",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 600,
+    "gender": "F",
+    "customer_income": ">5 Juta - 10 Juta"
+  },
+  {
+    "customer_id": 6133,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 6217,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 6326,
+    "gender": "F",
+    "customer_income": ">100 Juta"
+  },
+  {
+    "customer_id": 6386,
+    "gender": "M",
+    "customer_income": ">25 Juta - 50 Juta"
+  },
+  {
+    "customer_id": 65,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 6513,
+    "gender": "M",
+    "customer_income": ">100 Juta"
+  },
+  {
+    "customer_id": 6604,
+    "gender": "M",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 6911,
+    "gender": "M",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 7023,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 7027,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 7050,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 7163,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 7170,
+    "gender": "F",
+    "customer_income": ">5 Juta - 10 Juta"
+  },
+  {
+    "customer_id": 7550,
+    "gender": "F",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 76,
+    "gender": "F",
+    "customer_income": ">100 Juta"
+  },
+  {
+    "customer_id": 7669,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 7732,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 7743,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 775,
+    "gender": "F",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 7772,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 779,
+    "gender": "M",
+    "customer_income": ">5 Juta - 10 Juta"
+  },
+  {
+    "customer_id": 786,
+    "gender": "M",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 7903,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 7969,
+    "gender": "F",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 8097,
+    "gender": "F",
+    "customer_income": ">25 Juta - 50 Juta"
+  },
+  {
+    "customer_id": 8304,
+    "gender": "F",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 837,
+    "gender": "F",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 844,
+    "gender": "M",
+    "customer_income": ">10 Juta - 25 Juta"
+  },
+  {
+    "customer_id": 8644,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 8779,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 8797,
+    "gender": "M",
+    "customer_income": ">10 Juta - 25 Juta"
+  },
+  {
+    "customer_id": 9216,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 9227,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  },
+  {
+    "customer_id": 9410,
+    "gender": "F",
+    "customer_income": "sd. 1 Juta"
+  },
+  {
+    "customer_id": 9716,
+    "gender": "M",
+    "customer_income": ">3 Juta - 5 Juta"
+  }
+]

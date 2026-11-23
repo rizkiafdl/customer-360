@@ -1,0 +1,9458 @@
+[
+  {
+    "customer_id": 1041,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 326232
+  },
+  {
+    "customer_id": 1041,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 62331446
+  },
+  {
+    "customer_id": 1041,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1041,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 908968026
+  },
+  {
+    "customer_id": 1041,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1041,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 1041,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1041,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 866725450
+  },
+  {
+    "customer_id": 1041,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1041,
+    "product": "LOAN SOFR",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1041,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 39149150
+  },
+  {
+    "customer_id": 1041,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 600000000
+  },
+  {
+    "customer_id": 1041,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 19727660
+  },
+  {
+    "customer_id": 1041,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 1041,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 139995
+  },
+  {
+    "customer_id": 1041,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 137202360
+  },
+  {
+    "customer_id": 1041,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 154707
+  },
+  {
+    "customer_id": 1041,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 3058839
+  },
+  {
+    "customer_id": 1047,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 892750000
+  },
+  {
+    "customer_id": 1047,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 62043598
+  },
+  {
+    "customer_id": 1047,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1047,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 721256632
+  },
+  {
+    "customer_id": 1047,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 218492990
+  },
+  {
+    "customer_id": 1047,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1047,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 1047,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1047,
+    "product": "INVBACKLN_MPH",
+    "product_category": "LOAN",
+    "amount": 529701280
+  },
+  {
+    "customer_id": 1047,
+    "product": "KPM",
+    "product_category": "LOAN",
+    "amount": 9243850
+  },
+  {
+    "customer_id": 1047,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 1789210252
+  },
+  {
+    "customer_id": 1047,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 761354540
+  },
+  {
+    "customer_id": 1047,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 396375000
+  },
+  {
+    "customer_id": 1047,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 19948146
+  },
+  {
+    "customer_id": 1047,
+    "product": "PERSONAL LOAN_DAILY",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1047,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 11372470
+  },
+  {
+    "customer_id": 1047,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1047,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 3951547
+  },
+  {
+    "customer_id": 1047,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 46113440
+  },
+  {
+    "customer_id": 1047,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 45447264
+  },
+  {
+    "customer_id": 1047,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 504000000
+  },
+  {
+    "customer_id": 1047,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 7994356
+  },
+  {
+    "customer_id": 1047,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 13629
+  },
+  {
+    "customer_id": 1104,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 20000000
+  },
+  {
+    "customer_id": 1104,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 35450770
+  },
+  {
+    "customer_id": 1104,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1104,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 1104,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 29113381
+  },
+  {
+    "customer_id": 1104,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1104,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 142695000
+  },
+  {
+    "customer_id": 1104,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 5013
+  },
+  {
+    "customer_id": 1104,
+    "product": "GIROSYARIAH",
+    "product_category": "FUNDING",
+    "amount": 195399
+  },
+  {
+    "customer_id": 1104,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 331532750
+  },
+  {
+    "customer_id": 1104,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 6061805184
+  },
+  {
+    "customer_id": 1104,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 1466200
+  },
+  {
+    "customer_id": 1104,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 1104,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1104,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 26036
+  },
+  {
+    "customer_id": 1104,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 105116
+  },
+  {
+    "customer_id": 1104,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 1451578
+  },
+  {
+    "customer_id": 1104,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 201600000
+  },
+  {
+    "customer_id": 1104,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 390429671
+  },
+  {
+    "customer_id": 1104,
+    "product": "TERM LOAN",
+    "product_category": "LOAN",
+    "amount": 5832000000
+  },
+  {
+    "customer_id": 1104,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 40000
+  },
+  {
+    "customer_id": 1165,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 208960972
+  },
+  {
+    "customer_id": 1165,
+    "product": "CPL TL",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1165,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1165,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1165,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 1165,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 1165,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 105000000
+  },
+  {
+    "customer_id": 1165,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 10400000
+  },
+  {
+    "customer_id": 1165,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1165,
+    "product": "INVESTMENT LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1165,
+    "product": "KPR-Syariah_EASY",
+    "product_category": "LOAN",
+    "amount": 1080216144
+  },
+  {
+    "customer_id": 1165,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2062508690
+  },
+  {
+    "customer_id": 1165,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 2373778368
+  },
+  {
+    "customer_id": 1165,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 2746420796
+  },
+  {
+    "customer_id": 1165,
+    "product": "MULTI CURRENCY SYA",
+    "product_category": "FUNDING",
+    "amount": 3167020
+  },
+  {
+    "customer_id": 1165,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 1165,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 4244179
+  },
+  {
+    "customer_id": 1165,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 100377791
+  },
+  {
+    "customer_id": 1165,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1165,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 4839989
+  },
+  {
+    "customer_id": 1165,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 18793194
+  },
+  {
+    "customer_id": 1165,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 3000000
+  },
+  {
+    "customer_id": 1165,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 97197615
+  },
+  {
+    "customer_id": 1165,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 50847612
+  },
+  {
+    "customer_id": 1165,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1223,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 1223,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 16586152
+  },
+  {
+    "customer_id": 1223,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1223,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 52141229
+  },
+  {
+    "customer_id": 1223,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 200000000
+  },
+  {
+    "customer_id": 1223,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 5317751
+  },
+  {
+    "customer_id": 1223,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 797739110
+  },
+  {
+    "customer_id": 1223,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1240063726
+  },
+  {
+    "customer_id": 1223,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 5972766449
+  },
+  {
+    "customer_id": 1223,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 3171
+  },
+  {
+    "customer_id": 1223,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 200000000
+  },
+  {
+    "customer_id": 1223,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 35265118
+  },
+  {
+    "customer_id": 1223,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 1223,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1223,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 41314305
+  },
+  {
+    "customer_id": 1223,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 2048050
+  },
+  {
+    "customer_id": 1223,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 47868774
+  },
+  {
+    "customer_id": 1223,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 5592339
+  },
+  {
+    "customer_id": 1223,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 227242
+  },
+  {
+    "customer_id": 1310,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 792750000
+  },
+  {
+    "customer_id": 1310,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1310,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1310,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 1310,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1310,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1310,
+    "product": "KPM",
+    "product_category": "LOAN",
+    "amount": 5306936
+  },
+  {
+    "customer_id": 1310,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 1400581552
+  },
+  {
+    "customer_id": 1310,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 1836921354
+  },
+  {
+    "customer_id": 1310,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 791784774
+  },
+  {
+    "customer_id": 1310,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 1310,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 2300000
+  },
+  {
+    "customer_id": 1310,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 136476
+  },
+  {
+    "customer_id": 1310,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1310,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1310,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1365,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 1365,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1365,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1365,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 1365,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 600000000
+  },
+  {
+    "customer_id": 1365,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 132296590
+  },
+  {
+    "customer_id": 1365,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1365,
+    "product": "INVBACKLN_MPH",
+    "product_category": "LOAN",
+    "amount": 750309970
+  },
+  {
+    "customer_id": 1365,
+    "product": "KPM",
+    "product_category": "LOAN",
+    "amount": 3607164
+  },
+  {
+    "customer_id": 1365,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 10592311642
+  },
+  {
+    "customer_id": 1365,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 350000000
+  },
+  {
+    "customer_id": 1365,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1365,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 107954
+  },
+  {
+    "customer_id": 1365,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 122915
+  },
+  {
+    "customer_id": 1365,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 900000
+  },
+  {
+    "customer_id": 1365,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 11851800
+  },
+  {
+    "customer_id": 1365,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1396,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 1396,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 4705682
+  },
+  {
+    "customer_id": 1396,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 150000000000
+  },
+  {
+    "customer_id": 1396,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1396,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1396,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 1396,
+    "product": "FIXED LOAN",
+    "product_category": "LOAN",
+    "amount": 14500000000
+  },
+  {
+    "customer_id": 1396,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1396,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 789838746
+  },
+  {
+    "customer_id": 1396,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 813744556
+  },
+  {
+    "customer_id": 1396,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1557728328
+  },
+  {
+    "customer_id": 1396,
+    "product": "KRK",
+    "product_category": "LOAN",
+    "amount": 37039610466
+  },
+  {
+    "customer_id": 1396,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 358550000
+  },
+  {
+    "customer_id": 1396,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 6711210
+  },
+  {
+    "customer_id": 1396,
+    "product": "PIF-FLOATING",
+    "product_category": "LOAN",
+    "amount": 19900000000
+  },
+  {
+    "customer_id": 1396,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 33150068
+  },
+  {
+    "customer_id": 1396,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1396,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 24000000
+  },
+  {
+    "customer_id": 1396,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1396,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 5085253
+  },
+  {
+    "customer_id": 1465,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 150000000
+  },
+  {
+    "customer_id": 1465,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 2
+  },
+  {
+    "customer_id": 1465,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1465,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 105984479
+  },
+  {
+    "customer_id": 1465,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 30000000000
+  },
+  {
+    "customer_id": 1465,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 51053100
+  },
+  {
+    "customer_id": 1465,
+    "product": "DEPOSITO12SYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1465,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": null
+  },
+  {
+    "customer_id": 1465,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 612202022
+  },
+  {
+    "customer_id": 1465,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 258550000
+  },
+  {
+    "customer_id": 1465,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 26546778
+  },
+  {
+    "customer_id": 1465,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1465,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 150335
+  },
+  {
+    "customer_id": 1465,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1465,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 6575024
+  },
+  {
+    "customer_id": 1547,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 1547,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 37605046
+  },
+  {
+    "customer_id": 1547,
+    "product": "DEPOSITO TREASURY",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1547,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1547,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 1547,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 5000000
+  },
+  {
+    "customer_id": 1547,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1547,
+    "product": "INVESTMENT LOAN",
+    "product_category": "LOAN",
+    "amount": 76753142126
+  },
+  {
+    "customer_id": 1547,
+    "product": "KPM",
+    "product_category": "LOAN",
+    "amount": 4272542
+  },
+  {
+    "customer_id": 1547,
+    "product": "KRDLBR1",
+    "product_category": "LOAN",
+    "amount": 78767640000
+  },
+  {
+    "customer_id": 1547,
+    "product": "KRDTLLBR3",
+    "product_category": "LOAN",
+    "amount": 2174960044
+  },
+  {
+    "customer_id": 1547,
+    "product": "LOAN SOFR",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1547,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 3743872871
+  },
+  {
+    "customer_id": 1547,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 408550000
+  },
+  {
+    "customer_id": 1547,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 844047
+  },
+  {
+    "customer_id": 1547,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 356279698
+  },
+  {
+    "customer_id": 1547,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1547,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 7000000
+  },
+  {
+    "customer_id": 1547,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 5412430
+  },
+  {
+    "customer_id": 1547,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 52900988
+  },
+  {
+    "customer_id": 1547,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1784,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 1784,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1784,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 33276183
+  },
+  {
+    "customer_id": 1784,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 171840000
+  },
+  {
+    "customer_id": 1784,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 19026000
+  },
+  {
+    "customer_id": 1784,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1784,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 571856488
+  },
+  {
+    "customer_id": 1784,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 8325660
+  },
+  {
+    "customer_id": 1784,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 2219700000
+  },
+  {
+    "customer_id": 1784,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 547220
+  },
+  {
+    "customer_id": 1784,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 393379423
+  },
+  {
+    "customer_id": 1784,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 16317601
+  },
+  {
+    "customer_id": 1784,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1784,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 3709909
+  },
+  {
+    "customer_id": 1784,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1795,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 250000
+  },
+  {
+    "customer_id": 1795,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 11096668
+  },
+  {
+    "customer_id": 1795,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 244188609
+  },
+  {
+    "customer_id": 1795,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1795,
+    "product": "KPM",
+    "product_category": "LOAN",
+    "amount": 9784588
+  },
+  {
+    "customer_id": 1795,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 564608874
+  },
+  {
+    "customer_id": 1795,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 541120494
+  },
+  {
+    "customer_id": 1795,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 22756682
+  },
+  {
+    "customer_id": 1795,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 250000000
+  },
+  {
+    "customer_id": 1795,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 7400000
+  },
+  {
+    "customer_id": 1795,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 100006
+  },
+  {
+    "customer_id": 1795,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 100857
+  },
+  {
+    "customer_id": 1795,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 26941012
+  },
+  {
+    "customer_id": 1795,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 20585028
+  },
+  {
+    "customer_id": 1795,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 6417101316
+  },
+  {
+    "customer_id": 1795,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 1754653
+  },
+  {
+    "customer_id": 1892,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 1892,
+    "product": "CPL TL",
+    "product_category": "LOAN",
+    "amount": 7776000000
+  },
+  {
+    "customer_id": 1892,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 177829230
+  },
+  {
+    "customer_id": 1892,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 503300000
+  },
+  {
+    "customer_id": 1892,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1892,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1892,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 39000000
+  },
+  {
+    "customer_id": 1892,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1892,
+    "product": "INVBACKLN_MPH",
+    "product_category": "LOAN",
+    "amount": 365310298
+  },
+  {
+    "customer_id": 1892,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 138732664
+  },
+  {
+    "customer_id": 1892,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 19373816322
+  },
+  {
+    "customer_id": 1892,
+    "product": "KRK",
+    "product_category": "LOAN",
+    "amount": 1944128968
+  },
+  {
+    "customer_id": 1892,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 1892,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 1892,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 134684103
+  },
+  {
+    "customer_id": 1892,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 2942226
+  },
+  {
+    "customer_id": 1892,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 101190
+  },
+  {
+    "customer_id": 1892,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 1892,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 503000000
+  },
+  {
+    "customer_id": 1892,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 200724197
+  },
+  {
+    "customer_id": 1892,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 485118
+  },
+  {
+    "customer_id": 2022,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 158550000
+  },
+  {
+    "customer_id": 2022,
+    "product": "CPL KND",
+    "product_category": "LOAN",
+    "amount": 18751272238
+  },
+  {
+    "customer_id": 2022,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2022,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 275000000
+  },
+  {
+    "customer_id": 2022,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 216737076
+  },
+  {
+    "customer_id": 2022,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 5000000
+  },
+  {
+    "customer_id": 2022,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2022,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2022,
+    "product": "GIRO KND",
+    "product_category": "FUNDING",
+    "amount": 2623358803
+  },
+  {
+    "customer_id": 2022,
+    "product": "KMG_KENDALI",
+    "product_category": "LOAN",
+    "amount": 181591138
+  },
+  {
+    "customer_id": 2022,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 1349218062
+  },
+  {
+    "customer_id": 2022,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 3033618998
+  },
+  {
+    "customer_id": 2022,
+    "product": "MULTI CURRENCY",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2022,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 2022,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 12348888
+  },
+  {
+    "customer_id": 2022,
+    "product": "PIF-FLOATING",
+    "product_category": "LOAN",
+    "amount": 160549065454
+  },
+  {
+    "customer_id": 2022,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 2022,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 208726823
+  },
+  {
+    "customer_id": 2022,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2022,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2022,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2022,
+    "product": "TERM LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2022,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 174989334
+  },
+  {
+    "customer_id": 2022,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 172417998
+  },
+  {
+    "customer_id": 2146,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 2146,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2146,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 25000000
+  },
+  {
+    "customer_id": 2146,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 200000000
+  },
+  {
+    "customer_id": 2146,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 25000000
+  },
+  {
+    "customer_id": 2146,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2146,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 997120106
+  },
+  {
+    "customer_id": 2146,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 98437627
+  },
+  {
+    "customer_id": 2146,
+    "product": "MULTI CURRENCY SYA",
+    "product_category": "FUNDING",
+    "amount": 50170000
+  },
+  {
+    "customer_id": 2146,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 2146,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 8496870
+  },
+  {
+    "customer_id": 2146,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 2146,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 192665
+  },
+  {
+    "customer_id": 2146,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 101818
+  },
+  {
+    "customer_id": 2146,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 24840120
+  },
+  {
+    "customer_id": 2146,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2146,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2168,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 600000000
+  },
+  {
+    "customer_id": 2168,
+    "product": "CPL KND",
+    "product_category": "LOAN",
+    "amount": 2294989180
+  },
+  {
+    "customer_id": 2168,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 24124600
+  },
+  {
+    "customer_id": 2168,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 185000000
+  },
+  {
+    "customer_id": 2168,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2168,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2168,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 28000000
+  },
+  {
+    "customer_id": 2168,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2168,
+    "product": "GIRO KND",
+    "product_category": "FUNDING",
+    "amount": 192234739
+  },
+  {
+    "customer_id": 2168,
+    "product": "GIROSYARIAH",
+    "product_category": "FUNDING",
+    "amount": 10018392
+  },
+  {
+    "customer_id": 2168,
+    "product": "KPR-Syariah_EASY",
+    "product_category": "LOAN",
+    "amount": 1194774444
+  },
+  {
+    "customer_id": 2168,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1155848030
+  },
+  {
+    "customer_id": 2168,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 2168,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 8479512
+  },
+  {
+    "customer_id": 2168,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 721419
+  },
+  {
+    "customer_id": 2168,
+    "product": "SLDJIBOR",
+    "product_category": "LOAN",
+    "amount": 11807246238
+  },
+  {
+    "customer_id": 2168,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 4813253
+  },
+  {
+    "customer_id": 2168,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 9200000
+  },
+  {
+    "customer_id": 2168,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 17949500
+  },
+  {
+    "customer_id": 2168,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 24419462
+  },
+  {
+    "customer_id": 2168,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 6051
+  },
+  {
+    "customer_id": 2237,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 158550000
+  },
+  {
+    "customer_id": 2237,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 986000
+  },
+  {
+    "customer_id": 2237,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2237,
+    "product": "DEPOSITO TREASURY NKK",
+    "product_category": "FUNDING",
+    "amount": 12937680000
+  },
+  {
+    "customer_id": 2237,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 2237,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 51622947
+  },
+  {
+    "customer_id": 2237,
+    "product": "DEPOSITO03SYA",
+    "product_category": "FUNDING",
+    "amount": 150000000
+  },
+  {
+    "customer_id": 2237,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2237,
+    "product": "DEPOSITO06SYA",
+    "product_category": "FUNDING",
+    "amount": 290000000
+  },
+  {
+    "customer_id": 2237,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 2237,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2237,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 802429476
+  },
+  {
+    "customer_id": 2237,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2237,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 2237,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 20287068
+  },
+  {
+    "customer_id": 2237,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 6948376
+  },
+  {
+    "customer_id": 2237,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 800000
+  },
+  {
+    "customer_id": 2237,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 631661902
+  },
+  {
+    "customer_id": 2237,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 310820
+  },
+  {
+    "customer_id": 2271,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 2271,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 56331208
+  },
+  {
+    "customer_id": 2271,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 205067740
+  },
+  {
+    "customer_id": 2271,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 2271,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2271,
+    "product": "GIROSYARIAH",
+    "product_category": "FUNDING",
+    "amount": 37426293
+  },
+  {
+    "customer_id": 2271,
+    "product": "KMG",
+    "product_category": "LOAN",
+    "amount": 778028598
+  },
+  {
+    "customer_id": 2271,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2271,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 547563600
+  },
+  {
+    "customer_id": 2271,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 658257002
+  },
+  {
+    "customer_id": 2271,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2271,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 2271,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 3391806
+  },
+  {
+    "customer_id": 2271,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 156885
+  },
+  {
+    "customer_id": 2271,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 110002
+  },
+  {
+    "customer_id": 2271,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 31016820
+  },
+  {
+    "customer_id": 2271,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 241901
+  },
+  {
+    "customer_id": 2271,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 10421597
+  },
+  {
+    "customer_id": 2271,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 257622186
+  },
+  {
+    "customer_id": 2271,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 8243420
+  },
+  {
+    "customer_id": 2306,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 75000
+  },
+  {
+    "customer_id": 2306,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2306,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 60000000
+  },
+  {
+    "customer_id": 2306,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2306,
+    "product": "GIRO KND",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2306,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 2306,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2306,
+    "product": "PIF-FLOATING",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2306,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 182587171
+  },
+  {
+    "customer_id": 2306,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 24197
+  },
+  {
+    "customer_id": 2306,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2306,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 294935667
+  },
+  {
+    "customer_id": 2306,
+    "product": "TERM LOAN EMB KND",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2306,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 78646099
+  },
+  {
+    "customer_id": 2464,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 2464,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 50000
+  },
+  {
+    "customer_id": 2464,
+    "product": "DEMAND LOAN SYA",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2464,
+    "product": "DEPOSITO TREASURY",
+    "product_category": "FUNDING",
+    "amount": 107833955
+  },
+  {
+    "customer_id": 2464,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2464,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 27000000
+  },
+  {
+    "customer_id": 2464,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 11389128
+  },
+  {
+    "customer_id": 2464,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 352733611
+  },
+  {
+    "customer_id": 2464,
+    "product": "GIROSYARIAH",
+    "product_category": "FUNDING",
+    "amount": 10771758
+  },
+  {
+    "customer_id": 2464,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 797237378
+  },
+  {
+    "customer_id": 2464,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 564422
+  },
+  {
+    "customer_id": 2464,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 8290000000
+  },
+  {
+    "customer_id": 2464,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 27244134
+  },
+  {
+    "customer_id": 2464,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 98808997
+  },
+  {
+    "customer_id": 2464,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 152677
+  },
+  {
+    "customer_id": 2464,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 1200000
+  },
+  {
+    "customer_id": 2464,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 703920000
+  },
+  {
+    "customer_id": 2464,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 15210092
+  },
+  {
+    "customer_id": 2464,
+    "product": "TFSYA",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2464,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 1005066
+  },
+  {
+    "customer_id": 2497,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 250000000
+  },
+  {
+    "customer_id": 2497,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 76277260
+  },
+  {
+    "customer_id": 2497,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2497,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 55411589
+  },
+  {
+    "customer_id": 2497,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 89595069
+  },
+  {
+    "customer_id": 2497,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 300000000
+  },
+  {
+    "customer_id": 2497,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2497,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 1812185020
+  },
+  {
+    "customer_id": 2497,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 1128605726
+  },
+  {
+    "customer_id": 2497,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1988338470
+  },
+  {
+    "customer_id": 2497,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 555000000
+  },
+  {
+    "customer_id": 2497,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 759178
+  },
+  {
+    "customer_id": 2497,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 6187554
+  },
+  {
+    "customer_id": 2497,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2497,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 106439
+  },
+  {
+    "customer_id": 2497,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 16564122
+  },
+  {
+    "customer_id": 2497,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 7883240
+  },
+  {
+    "customer_id": 2497,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 113908392
+  },
+  {
+    "customer_id": 2497,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 3419438
+  },
+  {
+    "customer_id": 2759,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 15000000
+  },
+  {
+    "customer_id": 2759,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 120115318
+  },
+  {
+    "customer_id": 2759,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2759,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 1000000000
+  },
+  {
+    "customer_id": 2759,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 2759,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 2759,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 23213147
+  },
+  {
+    "customer_id": 2759,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 7717414798
+  },
+  {
+    "customer_id": 2759,
+    "product": "GIROSYARIAH",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2759,
+    "product": "INVESTMENT LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2759,
+    "product": "KMG",
+    "product_category": "LOAN",
+    "amount": 178224048
+  },
+  {
+    "customer_id": 2759,
+    "product": "KRK",
+    "product_category": "LOAN",
+    "amount": 1844385539
+  },
+  {
+    "customer_id": 2759,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 3619255084
+  },
+  {
+    "customer_id": 2759,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 2759,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2759,
+    "product": "PIF-FLOATING",
+    "product_category": "LOAN",
+    "amount": 31719253292
+  },
+  {
+    "customer_id": 2759,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 2759,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2759,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 9334320
+  },
+  {
+    "customer_id": 2759,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 463334527
+  },
+  {
+    "customer_id": 2759,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 220752
+  },
+  {
+    "customer_id": 2846,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 1785500000
+  },
+  {
+    "customer_id": 2846,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2846,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2846,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2846,
+    "product": "DEPOSITO01SYA",
+    "product_category": "FUNDING",
+    "amount": 407000000
+  },
+  {
+    "customer_id": 2846,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 150000000
+  },
+  {
+    "customer_id": 2846,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 5000000
+  },
+  {
+    "customer_id": 2846,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 315000000
+  },
+  {
+    "customer_id": 2846,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 2846,
+    "product": "INVBACKLN_MPH",
+    "product_category": "LOAN",
+    "amount": 384664814
+  },
+  {
+    "customer_id": 2846,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 3399950293
+  },
+  {
+    "customer_id": 2846,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 43088043
+  },
+  {
+    "customer_id": 2846,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 180000000
+  },
+  {
+    "customer_id": 2846,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 11045356
+  },
+  {
+    "customer_id": 2846,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 213307817
+  },
+  {
+    "customer_id": 2846,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 101017
+  },
+  {
+    "customer_id": 2846,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 4000000
+  },
+  {
+    "customer_id": 2846,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 9795232
+  },
+  {
+    "customer_id": 2846,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2960,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 2101300000
+  },
+  {
+    "customer_id": 2960,
+    "product": "CPL TL",
+    "product_category": "LOAN",
+    "amount": 165262838
+  },
+  {
+    "customer_id": 2960,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 54923524
+  },
+  {
+    "customer_id": 2960,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2960,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 42481663
+  },
+  {
+    "customer_id": 2960,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2960,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 56000000
+  },
+  {
+    "customer_id": 2960,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 1000000
+  },
+  {
+    "customer_id": 2960,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2960,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 3821889754
+  },
+  {
+    "customer_id": 2960,
+    "product": "KPR-Syariah_EASY",
+    "product_category": "LOAN",
+    "amount": 1064453064
+  },
+  {
+    "customer_id": 2960,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 934097700
+  },
+  {
+    "customer_id": 2960,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 235518439
+  },
+  {
+    "customer_id": 2960,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 800000000
+  },
+  {
+    "customer_id": 2960,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 3000000
+  },
+  {
+    "customer_id": 2960,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 306821
+  },
+  {
+    "customer_id": 2960,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2960,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 2960,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 48848488
+  },
+  {
+    "customer_id": 2960,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 1000000
+  },
+  {
+    "customer_id": 2960,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 146
+  },
+  {
+    "customer_id": 2960,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 50852770
+  },
+  {
+    "customer_id": 3010,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 3010,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 29353534
+  },
+  {
+    "customer_id": 3010,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3010,
+    "product": "DEPOSITO TREASURY",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3010,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 169500000
+  },
+  {
+    "customer_id": 3010,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 1200000000
+  },
+  {
+    "customer_id": 3010,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 158550000
+  },
+  {
+    "customer_id": 3010,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 3010,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 502615038
+  },
+  {
+    "customer_id": 3010,
+    "product": "GIRO KND",
+    "product_category": "FUNDING",
+    "amount": 571795000
+  },
+  {
+    "customer_id": 3010,
+    "product": "KPM",
+    "product_category": "LOAN",
+    "amount": 9940014
+  },
+  {
+    "customer_id": 3010,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 1199134178
+  },
+  {
+    "customer_id": 3010,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1151560466
+  },
+  {
+    "customer_id": 3010,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 3010,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 13494740
+  },
+  {
+    "customer_id": 3010,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 3010,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3010,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 100789
+  },
+  {
+    "customer_id": 3010,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 159000
+  },
+  {
+    "customer_id": 3010,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 49560119
+  },
+  {
+    "customer_id": 3010,
+    "product": "TERM LOAN EMB KND",
+    "product_category": "LOAN",
+    "amount": 10999001336
+  },
+  {
+    "customer_id": 3010,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 13023
+  },
+  {
+    "customer_id": 3025,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 1142750000
+  },
+  {
+    "customer_id": 3025,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 26570036
+  },
+  {
+    "customer_id": 3025,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 70000000
+  },
+  {
+    "customer_id": 3025,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 561000000
+  },
+  {
+    "customer_id": 3025,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 116928563
+  },
+  {
+    "customer_id": 3025,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 125000000
+  },
+  {
+    "customer_id": 3025,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 2794000
+  },
+  {
+    "customer_id": 3025,
+    "product": "INVBACKLN_MPH",
+    "product_category": "LOAN",
+    "amount": 879366816
+  },
+  {
+    "customer_id": 3025,
+    "product": "KRK",
+    "product_category": "LOAN",
+    "amount": 1000482538
+  },
+  {
+    "customer_id": 3025,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 105436
+  },
+  {
+    "customer_id": 3025,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 3025,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 459540
+  },
+  {
+    "customer_id": 3025,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 1225997766
+  },
+  {
+    "customer_id": 3025,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 100226
+  },
+  {
+    "customer_id": 3025,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 5210539
+  },
+  {
+    "customer_id": 3025,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3025,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 1821952955
+  },
+  {
+    "customer_id": 3025,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 50000
+  },
+  {
+    "customer_id": 3105,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 3105,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3105,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3105,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3105,
+    "product": "DEPOSITO01SYA",
+    "product_category": "FUNDING",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 3105,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 40000000
+  },
+  {
+    "customer_id": 3105,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 3105,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 250000000
+  },
+  {
+    "customer_id": 3105,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3105,
+    "product": "KMGFEST2",
+    "product_category": "LOAN",
+    "amount": 288257184
+  },
+  {
+    "customer_id": 3105,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 424867122
+  },
+  {
+    "customer_id": 3105,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2592010182
+  },
+  {
+    "customer_id": 3105,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 48120500
+  },
+  {
+    "customer_id": 3105,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 265623
+  },
+  {
+    "customer_id": 3105,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 3105,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 31395388
+  },
+  {
+    "customer_id": 3105,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 3105,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3105,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 130819180
+  },
+  {
+    "customer_id": 3105,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 2583333314
+  },
+  {
+    "customer_id": 3105,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3161,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 3161,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 103294168
+  },
+  {
+    "customer_id": 3161,
+    "product": "DEMAND LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3161,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3161,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 564320680
+  },
+  {
+    "customer_id": 3161,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 3161,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3161,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 1068314064
+  },
+  {
+    "customer_id": 3161,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 383753550
+  },
+  {
+    "customer_id": 3161,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 8235866488
+  },
+  {
+    "customer_id": 3161,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 2000000000
+  },
+  {
+    "customer_id": 3161,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3161,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 115085
+  },
+  {
+    "customer_id": 3161,
+    "product": "SLDJIBOR",
+    "product_category": "LOAN",
+    "amount": 2216985886
+  },
+  {
+    "customer_id": 3161,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 100592
+  },
+  {
+    "customer_id": 3161,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 159759
+  },
+  {
+    "customer_id": 3161,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 6170186
+  },
+  {
+    "customer_id": 3161,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3161,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3172,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 250000
+  },
+  {
+    "customer_id": 3172,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 7485742
+  },
+  {
+    "customer_id": 3172,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3172,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 235045600
+  },
+  {
+    "customer_id": 3172,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3172,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 3172,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3172,
+    "product": "KPR-Syariah_EASY",
+    "product_category": "LOAN",
+    "amount": 2756007560
+  },
+  {
+    "customer_id": 3172,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 784354366
+  },
+  {
+    "customer_id": 3172,
+    "product": "KRK",
+    "product_category": "LOAN",
+    "amount": 1044096216
+  },
+  {
+    "customer_id": 3172,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 158550000
+  },
+  {
+    "customer_id": 3172,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3172,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 250624
+  },
+  {
+    "customer_id": 3172,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3172,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 240923384
+  },
+  {
+    "customer_id": 3172,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 9926784
+  },
+  {
+    "customer_id": 3172,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3172,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 901263063
+  },
+  {
+    "customer_id": 3172,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 23813
+  },
+  {
+    "customer_id": 3183,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 792750000
+  },
+  {
+    "customer_id": 3183,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 6420764
+  },
+  {
+    "customer_id": 3183,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 150000000
+  },
+  {
+    "customer_id": 3183,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 15746645
+  },
+  {
+    "customer_id": 3183,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3183,
+    "product": "GIRO KND",
+    "product_category": "FUNDING",
+    "amount": 2621257
+  },
+  {
+    "customer_id": 3183,
+    "product": "INVBACKLN_MPH",
+    "product_category": "LOAN",
+    "amount": 662288401
+  },
+  {
+    "customer_id": 3183,
+    "product": "KMG",
+    "product_category": "LOAN",
+    "amount": 486200856
+  },
+  {
+    "customer_id": 3183,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 563914934
+  },
+  {
+    "customer_id": 3183,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 435554936
+  },
+  {
+    "customer_id": 3183,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1979643984
+  },
+  {
+    "customer_id": 3183,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 10905574390
+  },
+  {
+    "customer_id": 3183,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 1255772
+  },
+  {
+    "customer_id": 3183,
+    "product": "MULTI CURRENCY SYA",
+    "product_category": "FUNDING",
+    "amount": 27645209
+  },
+  {
+    "customer_id": 3183,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 3183,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 200980
+  },
+  {
+    "customer_id": 3183,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 3183,
+    "product": "SLDJIBOR",
+    "product_category": "LOAN",
+    "amount": 6269806936
+  },
+  {
+    "customer_id": 3183,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 5043507
+  },
+  {
+    "customer_id": 3183,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 225458
+  },
+  {
+    "customer_id": 3183,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3183,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 300000
+  },
+  {
+    "customer_id": 3183,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 3173960
+  },
+  {
+    "customer_id": 3183,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 1076923064
+  },
+  {
+    "customer_id": 3183,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 326,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 3349,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 317100000
+  },
+  {
+    "customer_id": 3349,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 24497000
+  },
+  {
+    "customer_id": 3349,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3349,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3349,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 127182000
+  },
+  {
+    "customer_id": 3349,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3349,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3349,
+    "product": "KPM",
+    "product_category": "LOAN",
+    "amount": 8337294
+  },
+  {
+    "customer_id": 3349,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 137131108
+  },
+  {
+    "customer_id": 3349,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 1355870114
+  },
+  {
+    "customer_id": 3349,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1344916984
+  },
+  {
+    "customer_id": 3349,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 3739344683
+  },
+  {
+    "customer_id": 3349,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 3349,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 18991352
+  },
+  {
+    "customer_id": 3349,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 7191185
+  },
+  {
+    "customer_id": 3349,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 110037
+  },
+  {
+    "customer_id": 3349,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 800000
+  },
+  {
+    "customer_id": 3349,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 405045142
+  },
+  {
+    "customer_id": 3349,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3569,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 25000000
+  },
+  {
+    "customer_id": 3569,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3569,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3569,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3569,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3569,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 6533802917
+  },
+  {
+    "customer_id": 3569,
+    "product": "KPR-MYPA",
+    "product_category": "LOAN",
+    "amount": 184079102
+  },
+  {
+    "customer_id": 3569,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 9625000
+  },
+  {
+    "customer_id": 3569,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 300000000
+  },
+  {
+    "customer_id": 3569,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3569,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 1932006520
+  },
+  {
+    "customer_id": 3569,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 7281059
+  },
+  {
+    "customer_id": 3569,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 8482682
+  },
+  {
+    "customer_id": 3569,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 259457573
+  },
+  {
+    "customer_id": 3569,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3694,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 1191666667
+  },
+  {
+    "customer_id": 3694,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3694,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3694,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3694,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 24000000
+  },
+  {
+    "customer_id": 3694,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 3694,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 4481758
+  },
+  {
+    "customer_id": 3694,
+    "product": "KPM_COP",
+    "product_category": "LOAN",
+    "amount": 169914694
+  },
+  {
+    "customer_id": 3694,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 1334830380
+  },
+  {
+    "customer_id": 3694,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 726436602
+  },
+  {
+    "customer_id": 3694,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 9914290
+  },
+  {
+    "customer_id": 3694,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 300000000
+  },
+  {
+    "customer_id": 3694,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 8431146
+  },
+  {
+    "customer_id": 3694,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 3694,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 600126
+  },
+  {
+    "customer_id": 3694,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 261308870
+  },
+  {
+    "customer_id": 3694,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 27385600
+  },
+  {
+    "customer_id": 3694,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 100000
+  },
+  {
+    "customer_id": 3694,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 165211117
+  },
+  {
+    "customer_id": 3694,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3974,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 90000000
+  },
+  {
+    "customer_id": 3974,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3974,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3974,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 60000000
+  },
+  {
+    "customer_id": 3974,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3974,
+    "product": "DEPOSITO03SYA",
+    "product_category": "FUNDING",
+    "amount": 20159548
+  },
+  {
+    "customer_id": 3974,
+    "product": "DEPOSITO04SYA",
+    "product_category": "FUNDING",
+    "amount": 11000000
+  },
+  {
+    "customer_id": 3974,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 51473148
+  },
+  {
+    "customer_id": 3974,
+    "product": "KMG",
+    "product_category": "LOAN",
+    "amount": 130995938
+  },
+  {
+    "customer_id": 3974,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 781881704
+  },
+  {
+    "customer_id": 3974,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 3974,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 291105
+  },
+  {
+    "customer_id": 3974,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 495944496
+  },
+  {
+    "customer_id": 3974,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3974,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 108935
+  },
+  {
+    "customer_id": 3974,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 23491475
+  },
+  {
+    "customer_id": 3974,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 1005250000
+  },
+  {
+    "customer_id": 3974,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 33295642
+  },
+  {
+    "customer_id": 3974,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 18079291648
+  },
+  {
+    "customer_id": 3974,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3985,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 3985,
+    "product": "CPL KPR",
+    "product_category": "LOAN",
+    "amount": 3912862324
+  },
+  {
+    "customer_id": 3985,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 23824922
+  },
+  {
+    "customer_id": 3985,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3985,
+    "product": "DEPOSITO TREASURY",
+    "product_category": "FUNDING",
+    "amount": 575307171
+  },
+  {
+    "customer_id": 3985,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3985,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 70900000
+  },
+  {
+    "customer_id": 3985,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3985,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3985,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3985,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 972039202
+  },
+  {
+    "customer_id": 3985,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 1016444996
+  },
+  {
+    "customer_id": 3985,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 843231138
+  },
+  {
+    "customer_id": 3985,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 4009863334
+  },
+  {
+    "customer_id": 3985,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 1220000000
+  },
+  {
+    "customer_id": 3985,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 3985,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 3985,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 106726
+  },
+  {
+    "customer_id": 3985,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 2321752805
+  },
+  {
+    "customer_id": 3985,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3985,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 3985,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 18511945
+  },
+  {
+    "customer_id": 4062,
+    "product": "CPL KPR",
+    "product_category": "LOAN",
+    "amount": 4859387612
+  },
+  {
+    "customer_id": 4062,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4062,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 16279543
+  },
+  {
+    "customer_id": 4062,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 45785643
+  },
+  {
+    "customer_id": 4062,
+    "product": "DEPOSITO03SYA",
+    "product_category": "FUNDING",
+    "amount": 43589931
+  },
+  {
+    "customer_id": 4062,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4062,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 20000000
+  },
+  {
+    "customer_id": 4062,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4062,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 584000694
+  },
+  {
+    "customer_id": 4062,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 384703546
+  },
+  {
+    "customer_id": 4062,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 9760000
+  },
+  {
+    "customer_id": 4062,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 4062,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 431478
+  },
+  {
+    "customer_id": 4062,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 17099284
+  },
+  {
+    "customer_id": 4062,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4062,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 16031072
+  },
+  {
+    "customer_id": 4062,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4062,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 32129940
+  },
+  {
+    "customer_id": 4206,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 4206,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4206,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 4206,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 110000000
+  },
+  {
+    "customer_id": 4206,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4206,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4206,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2587076672
+  },
+  {
+    "customer_id": 4206,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 4206,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4206,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 10619001
+  },
+  {
+    "customer_id": 4206,
+    "product": "SLDJIBOR",
+    "product_category": "LOAN",
+    "amount": 199594706
+  },
+  {
+    "customer_id": 4206,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 403381
+  },
+  {
+    "customer_id": 4206,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 600309
+  },
+  {
+    "customer_id": 4206,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 1455927
+  },
+  {
+    "customer_id": 4206,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4206,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4251,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 317100000
+  },
+  {
+    "customer_id": 4251,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4251,
+    "product": "DEMAND LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 4251,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4251,
+    "product": "DEPOSITO TREASURY",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4251,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 793255204
+  },
+  {
+    "customer_id": 4251,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 20000000
+  },
+  {
+    "customer_id": 4251,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 250000000
+  },
+  {
+    "customer_id": 4251,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4251,
+    "product": "KPM",
+    "product_category": "LOAN",
+    "amount": 4057800
+  },
+  {
+    "customer_id": 4251,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4251,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 2819346294
+  },
+  {
+    "customer_id": 4251,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 241137116476
+  },
+  {
+    "customer_id": 4251,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 4251,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4251,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 1009406
+  },
+  {
+    "customer_id": 4251,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 100273
+  },
+  {
+    "customer_id": 4251,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 2032345818
+  },
+  {
+    "customer_id": 4251,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4251,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 13120942
+  },
+  {
+    "customer_id": 4251,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 250350
+  },
+  {
+    "customer_id": 4266,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 280000000
+  },
+  {
+    "customer_id": 4266,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 4049462
+  },
+  {
+    "customer_id": 4266,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 201057298
+  },
+  {
+    "customer_id": 4266,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 400000000
+  },
+  {
+    "customer_id": 4266,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 32750786
+  },
+  {
+    "customer_id": 4266,
+    "product": "GIROSYARIAH",
+    "product_category": "FUNDING",
+    "amount": 501465818
+  },
+  {
+    "customer_id": 4266,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4266,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 2279782178
+  },
+  {
+    "customer_id": 4266,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2068090928
+  },
+  {
+    "customer_id": 4266,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 2774703310
+  },
+  {
+    "customer_id": 4266,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 4034046
+  },
+  {
+    "customer_id": 4266,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 4266,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 28988826
+  },
+  {
+    "customer_id": 4266,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 535875
+  },
+  {
+    "customer_id": 4266,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 126691
+  },
+  {
+    "customer_id": 4266,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 750000
+  },
+  {
+    "customer_id": 4266,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 16772240
+  },
+  {
+    "customer_id": 4266,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 101970074
+  },
+  {
+    "customer_id": 4266,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 4781847
+  },
+  {
+    "customer_id": 4277,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 4277,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 12339430
+  },
+  {
+    "customer_id": 4277,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 26251848
+  },
+  {
+    "customer_id": 4277,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4277,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4277,
+    "product": "KMG_KENDALI",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4277,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 563396888
+  },
+  {
+    "customer_id": 4277,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 227011018
+  },
+  {
+    "customer_id": 4277,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2315644778
+  },
+  {
+    "customer_id": 4277,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 15959428568
+  },
+  {
+    "customer_id": 4277,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 600000000
+  },
+  {
+    "customer_id": 4277,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 1100000
+  },
+  {
+    "customer_id": 4277,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 189258
+  },
+  {
+    "customer_id": 4277,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4277,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 332499
+  },
+  {
+    "customer_id": 4277,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 4800000
+  },
+  {
+    "customer_id": 4277,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 21431581
+  },
+  {
+    "customer_id": 4277,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 36178606
+  },
+  {
+    "customer_id": 4288,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 1800000
+  },
+  {
+    "customer_id": 4288,
+    "product": "CPL KPR",
+    "product_category": "LOAN",
+    "amount": 3097467982
+  },
+  {
+    "customer_id": 4288,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4288,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 10241932
+  },
+  {
+    "customer_id": 4288,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 1450000000
+  },
+  {
+    "customer_id": 4288,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 3982424614
+  },
+  {
+    "customer_id": 4288,
+    "product": "INVBACKLN_MPH",
+    "product_category": "LOAN",
+    "amount": 2134387099
+  },
+  {
+    "customer_id": 4288,
+    "product": "KMG_KENDALI",
+    "product_category": "LOAN",
+    "amount": 8803198934
+  },
+  {
+    "customer_id": 4288,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1503029118
+  },
+  {
+    "customer_id": 4288,
+    "product": "KRDJBR3",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4288,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 261127948
+  },
+  {
+    "customer_id": 4288,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 30889254576
+  },
+  {
+    "customer_id": 4288,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 1896375000
+  },
+  {
+    "customer_id": 4288,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 6707246
+  },
+  {
+    "customer_id": 4288,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 108365
+  },
+  {
+    "customer_id": 4288,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 10369
+  },
+  {
+    "customer_id": 4288,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 8000000
+  },
+  {
+    "customer_id": 4288,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 1180501
+  },
+  {
+    "customer_id": 4288,
+    "product": "TERM LOAN 3M",
+    "product_category": "LOAN",
+    "amount": 34243774576
+  },
+  {
+    "customer_id": 4288,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 30000
+  },
+  {
+    "customer_id": 4426,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 4426,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 89602004
+  },
+  {
+    "customer_id": 4426,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 200000000
+  },
+  {
+    "customer_id": 4426,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4426,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 5000000
+  },
+  {
+    "customer_id": 4426,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 79275000
+  },
+  {
+    "customer_id": 4426,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 23518
+  },
+  {
+    "customer_id": 4426,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1261404292
+  },
+  {
+    "customer_id": 4426,
+    "product": "KRK",
+    "product_category": "LOAN",
+    "amount": 41182
+  },
+  {
+    "customer_id": 4426,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 238278024
+  },
+  {
+    "customer_id": 4426,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 20000000
+  },
+  {
+    "customer_id": 4426,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 2600000
+  },
+  {
+    "customer_id": 4426,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 846270
+  },
+  {
+    "customer_id": 4426,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4426,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4426,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 46013
+  },
+  {
+    "customer_id": 4426,
+    "product": null,
+    "product_category": "LOAN",
+    "amount": 18674220
+  },
+  {
+    "customer_id": 4799,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 1585500000
+  },
+  {
+    "customer_id": 4799,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 57932782
+  },
+  {
+    "customer_id": 4799,
+    "product": "DEPOSITO TREASURY",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4799,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 40000000
+  },
+  {
+    "customer_id": 4799,
+    "product": "DEPOSITO01SYA",
+    "product_category": "FUNDING",
+    "amount": 42051389
+  },
+  {
+    "customer_id": 4799,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 166882376
+  },
+  {
+    "customer_id": 4799,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4799,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4799,
+    "product": "INVBACKLN_MPH",
+    "product_category": "LOAN",
+    "amount": 1198430934
+  },
+  {
+    "customer_id": 4799,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 683427734
+  },
+  {
+    "customer_id": 4799,
+    "product": "KPRTOP",
+    "product_category": "LOAN",
+    "amount": 908078650
+  },
+  {
+    "customer_id": 4799,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 4799,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 21323452
+  },
+  {
+    "customer_id": 4799,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 264375
+  },
+  {
+    "customer_id": 4799,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 1499298
+  },
+  {
+    "customer_id": 4799,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 101520
+  },
+  {
+    "customer_id": 4799,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4799,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 13634177
+  },
+  {
+    "customer_id": 4799,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4799,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 58674
+  },
+  {
+    "customer_id": 4857,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 1815371448
+  },
+  {
+    "customer_id": 4857,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4857,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 4857,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4857,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 4857,
+    "product": "DEPOSITO06SYA",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 4857,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 214975063
+  },
+  {
+    "customer_id": 4857,
+    "product": "KMG",
+    "product_category": "LOAN",
+    "amount": 84853548
+  },
+  {
+    "customer_id": 4857,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1600048796
+  },
+  {
+    "customer_id": 4857,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 4857,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 27301264
+  },
+  {
+    "customer_id": 4857,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 946310
+  },
+  {
+    "customer_id": 4857,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 219307
+  },
+  {
+    "customer_id": 4857,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4857,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 9096944
+  },
+  {
+    "customer_id": 4857,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 242053
+  },
+  {
+    "customer_id": 4900,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 4900,
+    "product": "CPL KPR",
+    "product_category": "LOAN",
+    "amount": 1218993598
+  },
+  {
+    "customer_id": 4900,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 38700220
+  },
+  {
+    "customer_id": 4900,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 4900,
+    "product": "DEPOSITO TREASURY",
+    "product_category": "FUNDING",
+    "amount": 999741846
+  },
+  {
+    "customer_id": 4900,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 5845060809
+  },
+  {
+    "customer_id": 4900,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 600000000
+  },
+  {
+    "customer_id": 4900,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4900,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 525720160
+  },
+  {
+    "customer_id": 4900,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 4900,
+    "product": "KMG",
+    "product_category": "LOAN",
+    "amount": 905426122
+  },
+  {
+    "customer_id": 4900,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 1145108306
+  },
+  {
+    "customer_id": 4900,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2715573768
+  },
+  {
+    "customer_id": 4900,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 5338138140
+  },
+  {
+    "customer_id": 4900,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 9262715
+  },
+  {
+    "customer_id": 4900,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 190000000
+  },
+  {
+    "customer_id": 4900,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 10072214
+  },
+  {
+    "customer_id": 4900,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 4900,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 906826104
+  },
+  {
+    "customer_id": 4900,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 1015608091
+  },
+  {
+    "customer_id": 4900,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 22043062
+  },
+  {
+    "customer_id": 4900,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 1005600000
+  },
+  {
+    "customer_id": 4900,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 815089
+  },
+  {
+    "customer_id": 4900,
+    "product": "TERM LOAN",
+    "product_category": "LOAN",
+    "amount": 35633333348
+  },
+  {
+    "customer_id": 4900,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 5338992512
+  },
+  {
+    "customer_id": 4900,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 46178
+  },
+  {
+    "customer_id": 4926,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 4926,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 14474458
+  },
+  {
+    "customer_id": 4926,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 60060774
+  },
+  {
+    "customer_id": 4926,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 28651946
+  },
+  {
+    "customer_id": 4926,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 3500000
+  },
+  {
+    "customer_id": 4926,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 237746401
+  },
+  {
+    "customer_id": 4926,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 602602740
+  },
+  {
+    "customer_id": 4926,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 622978620
+  },
+  {
+    "customer_id": 4926,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 150000000
+  },
+  {
+    "customer_id": 4926,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 60213062
+  },
+  {
+    "customer_id": 4926,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 120619615
+  },
+  {
+    "customer_id": 4926,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 133012
+  },
+  {
+    "customer_id": 4926,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 162832118
+  },
+  {
+    "customer_id": 4926,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 801420
+  },
+  {
+    "customer_id": 4926,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 22855926
+  },
+  {
+    "customer_id": 4926,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 3874997
+  },
+  {
+    "customer_id": 4926,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 40740641
+  },
+  {
+    "customer_id": 4926,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 8031413
+  },
+  {
+    "customer_id": 5027,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 417100000
+  },
+  {
+    "customer_id": 5027,
+    "product": "CPL KND",
+    "product_category": "LOAN",
+    "amount": 12606231528
+  },
+  {
+    "customer_id": 5027,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 2537418
+  },
+  {
+    "customer_id": 5027,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 546375000
+  },
+  {
+    "customer_id": 5027,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 5027,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 63879795
+  },
+  {
+    "customer_id": 5027,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 5027,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": null
+  },
+  {
+    "customer_id": 5027,
+    "product": "GIRO KND",
+    "product_category": "FUNDING",
+    "amount": 223948921
+  },
+  {
+    "customer_id": 5027,
+    "product": "INVBACKLN",
+    "product_category": "LOAN",
+    "amount": 273402690
+  },
+  {
+    "customer_id": 5027,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 598039326
+  },
+  {
+    "customer_id": 5027,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 752935162
+  },
+  {
+    "customer_id": 5027,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 239134901
+  },
+  {
+    "customer_id": 5027,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 2600000000
+  },
+  {
+    "customer_id": 5027,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 157603
+  },
+  {
+    "customer_id": 5027,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 22629997
+  },
+  {
+    "customer_id": 5027,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 117230
+  },
+  {
+    "customer_id": 5027,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 6600000
+  },
+  {
+    "customer_id": 5027,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 114031889
+  },
+  {
+    "customer_id": 5027,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 230148326
+  },
+  {
+    "customer_id": 5203,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 300000
+  },
+  {
+    "customer_id": 5203,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 2000000
+  },
+  {
+    "customer_id": 5203,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 35000000
+  },
+  {
+    "customer_id": 5203,
+    "product": "DEPOSITO01SYA",
+    "product_category": "FUNDING",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 5203,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 15000000
+  },
+  {
+    "customer_id": 5203,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 35000000
+  },
+  {
+    "customer_id": 5203,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5203,
+    "product": "KPR-Syariah_EASY",
+    "product_category": "LOAN",
+    "amount": 1766736278
+  },
+  {
+    "customer_id": 5203,
+    "product": "KRK",
+    "product_category": "LOAN",
+    "amount": 998051573
+  },
+  {
+    "customer_id": 5203,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 2343406
+  },
+  {
+    "customer_id": 5203,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 30000000
+  },
+  {
+    "customer_id": 5203,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 1869760
+  },
+  {
+    "customer_id": 5203,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 302090864
+  },
+  {
+    "customer_id": 5203,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 107006
+  },
+  {
+    "customer_id": 5203,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 1108101798
+  },
+  {
+    "customer_id": 5203,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 14890176
+  },
+  {
+    "customer_id": 5203,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 47845808
+  },
+  {
+    "customer_id": 5203,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 2014300000
+  },
+  {
+    "customer_id": 5203,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 22953362
+  },
+  {
+    "customer_id": 5203,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 2328059
+  },
+  {
+    "customer_id": 5225,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 5225,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 5225,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 5225,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 5225,
+    "product": "DEPOSITO03SYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5225,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 792750000
+  },
+  {
+    "customer_id": 5225,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 125000000
+  },
+  {
+    "customer_id": 5225,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5225,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 5225,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 17530061024
+  },
+  {
+    "customer_id": 5225,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 15024519
+  },
+  {
+    "customer_id": 5225,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 5225,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 42863112
+  },
+  {
+    "customer_id": 5225,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 4071793
+  },
+  {
+    "customer_id": 5225,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 40578089
+  },
+  {
+    "customer_id": 5225,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 100712
+  },
+  {
+    "customer_id": 5225,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 20346260
+  },
+  {
+    "customer_id": 5225,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5225,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 8468309
+  },
+  {
+    "customer_id": 5232,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 5232,
+    "product": "CPL KPR",
+    "product_category": "LOAN",
+    "amount": 12923092004
+  },
+  {
+    "customer_id": 5232,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 110691504
+  },
+  {
+    "customer_id": 5232,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 376027570
+  },
+  {
+    "customer_id": 5232,
+    "product": "DEPOSITO01SYA",
+    "product_category": "FUNDING",
+    "amount": 89251882
+  },
+  {
+    "customer_id": 5232,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 200000000
+  },
+  {
+    "customer_id": 5232,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 5232,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5232,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 532731190
+  },
+  {
+    "customer_id": 5232,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2246008038
+  },
+  {
+    "customer_id": 5232,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 633860829
+  },
+  {
+    "customer_id": 5232,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5232,
+    "product": "MULTI CURRENCY SYA",
+    "product_category": "FUNDING",
+    "amount": 100001
+  },
+  {
+    "customer_id": 5232,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 135000000
+  },
+  {
+    "customer_id": 5232,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 23784072
+  },
+  {
+    "customer_id": 5232,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 25171
+  },
+  {
+    "customer_id": 5232,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5232,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 105017338
+  },
+  {
+    "customer_id": 5232,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 4068921
+  },
+  {
+    "customer_id": 5232,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5232,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 48140295
+  },
+  {
+    "customer_id": 5232,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5312,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 5312,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 12645906
+  },
+  {
+    "customer_id": 5312,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 5312,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 5000000
+  },
+  {
+    "customer_id": 5312,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5312,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 20000000
+  },
+  {
+    "customer_id": 5312,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5312,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 313900164
+  },
+  {
+    "customer_id": 5312,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 5565954152
+  },
+  {
+    "customer_id": 5312,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 1780000000
+  },
+  {
+    "customer_id": 5312,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 5312,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 5312,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 61229
+  },
+  {
+    "customer_id": 5312,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 133074
+  },
+  {
+    "customer_id": 5312,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 1656302
+  },
+  {
+    "customer_id": 5312,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5312,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 12110897
+  },
+  {
+    "customer_id": 5463,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 5463,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 18494511
+  },
+  {
+    "customer_id": 5463,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 300000000
+  },
+  {
+    "customer_id": 5463,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 5463,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 51411730
+  },
+  {
+    "customer_id": 5463,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 31080000
+  },
+  {
+    "customer_id": 5463,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 5463,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1242145582
+  },
+  {
+    "customer_id": 5463,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 201303507
+  },
+  {
+    "customer_id": 5463,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 5463,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 239908
+  },
+  {
+    "customer_id": 5463,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 10740027
+  },
+  {
+    "customer_id": 5463,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 851214
+  },
+  {
+    "customer_id": 5463,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 372878
+  },
+  {
+    "customer_id": 5463,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 2173263
+  },
+  {
+    "customer_id": 5725,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 147000000
+  },
+  {
+    "customer_id": 5725,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 37116570
+  },
+  {
+    "customer_id": 5725,
+    "product": "DEPOSITO TREASURY",
+    "product_category": "FUNDING",
+    "amount": 502257975
+  },
+  {
+    "customer_id": 5725,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 105570913
+  },
+  {
+    "customer_id": 5725,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 5000000
+  },
+  {
+    "customer_id": 5725,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 1300000000
+  },
+  {
+    "customer_id": 5725,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 722471778
+  },
+  {
+    "customer_id": 5725,
+    "product": "KMG",
+    "product_category": "LOAN",
+    "amount": 49533018
+  },
+  {
+    "customer_id": 5725,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 546375852
+  },
+  {
+    "customer_id": 5725,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 5725,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 3575758
+  },
+  {
+    "customer_id": 5725,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 5725,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5725,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 1000000
+  },
+  {
+    "customer_id": 5725,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 71976861
+  },
+  {
+    "customer_id": 5725,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 21664
+  },
+  {
+    "customer_id": 5849,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 964951155
+  },
+  {
+    "customer_id": 5849,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 5849,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 2000000000
+  },
+  {
+    "customer_id": 5849,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 5900000
+  },
+  {
+    "customer_id": 5849,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 5849,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": null
+  },
+  {
+    "customer_id": 5849,
+    "product": "GIROSYARIAH",
+    "product_category": "LOAN",
+    "amount": null
+  },
+  {
+    "customer_id": 5849,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 2077634276
+  },
+  {
+    "customer_id": 5849,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2142301670
+  },
+  {
+    "customer_id": 5849,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 19150914
+  },
+  {
+    "customer_id": 5849,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 1950000000
+  },
+  {
+    "customer_id": 5849,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 14482378
+  },
+  {
+    "customer_id": 5849,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 1160461
+  },
+  {
+    "customer_id": 5849,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 10126468
+  },
+  {
+    "customer_id": 5849,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 102998
+  },
+  {
+    "customer_id": 5849,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 4800000
+  },
+  {
+    "customer_id": 5849,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5849,
+    "product": "TERM LOAN",
+    "product_category": "LOAN",
+    "amount": 65473183908
+  },
+  {
+    "customer_id": 5849,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 157257
+  },
+  {
+    "customer_id": 5952,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 5952,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 5952,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 440000000
+  },
+  {
+    "customer_id": 5952,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5952,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5952,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 83015448
+  },
+  {
+    "customer_id": 5952,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 5952,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 2683473
+  },
+  {
+    "customer_id": 5952,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 1081175620
+  },
+  {
+    "customer_id": 5952,
+    "product": "KPR-Syariah_EASY",
+    "product_category": "LOAN",
+    "amount": 1306379918
+  },
+  {
+    "customer_id": 5952,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 313998058
+  },
+  {
+    "customer_id": 5952,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 5952,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 5952,
+    "product": "PERSONAL LOAN_DAILY",
+    "product_category": "LOAN",
+    "amount": 280000000
+  },
+  {
+    "customer_id": 5952,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 623851
+  },
+  {
+    "customer_id": 5952,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 249690
+  },
+  {
+    "customer_id": 5952,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5952,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 34444598
+  },
+  {
+    "customer_id": 5952,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 5952,
+    "product": "Tabungan TANDA & TABHAR_02",
+    "product_category": "FUNDING",
+    "amount": 27566642
+  },
+  {
+    "customer_id": 6133,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 792750000
+  },
+  {
+    "customer_id": 6133,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 255293764
+  },
+  {
+    "customer_id": 6133,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 1000000000
+  },
+  {
+    "customer_id": 6133,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 2000000000
+  },
+  {
+    "customer_id": 6133,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6133,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 310222371
+  },
+  {
+    "customer_id": 6133,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 6133,
+    "product": "KMG",
+    "product_category": "LOAN",
+    "amount": 203761576
+  },
+  {
+    "customer_id": 6133,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 650291206
+  },
+  {
+    "customer_id": 6133,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1544329372
+  },
+  {
+    "customer_id": 6133,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 118
+  },
+  {
+    "customer_id": 6133,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 6133,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 6133,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 998401
+  },
+  {
+    "customer_id": 6133,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 275000
+  },
+  {
+    "customer_id": 6133,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 80000000
+  },
+  {
+    "customer_id": 6133,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 100849
+  },
+  {
+    "customer_id": 6133,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 802844591
+  },
+  {
+    "customer_id": 6217,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 6217,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 4750
+  },
+  {
+    "customer_id": 6217,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 30042954983
+  },
+  {
+    "customer_id": 6217,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 1650000000
+  },
+  {
+    "customer_id": 6217,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6217,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 6217,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6217,
+    "product": "KPM",
+    "product_category": "LOAN",
+    "amount": 7712082
+  },
+  {
+    "customer_id": 6217,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 553105400
+  },
+  {
+    "customer_id": 6217,
+    "product": "KPR-Syariah_EASY",
+    "product_category": "LOAN",
+    "amount": 3291083380
+  },
+  {
+    "customer_id": 6217,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 1656594046
+  },
+  {
+    "customer_id": 6217,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 282560796
+  },
+  {
+    "customer_id": 6217,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 6217,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 6217,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 1544063
+  },
+  {
+    "customer_id": 6217,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 139256
+  },
+  {
+    "customer_id": 6217,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 3180263
+  },
+  {
+    "customer_id": 6217,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 42272699
+  },
+  {
+    "customer_id": 6217,
+    "product": "TERM LOAN",
+    "product_category": "LOAN",
+    "amount": 205144955628
+  },
+  {
+    "customer_id": 6217,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 164667
+  },
+  {
+    "customer_id": 6326,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 6326,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 8049080
+  },
+  {
+    "customer_id": 6326,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 6326,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 95807333
+  },
+  {
+    "customer_id": 6326,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 5000000
+  },
+  {
+    "customer_id": 6326,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 217437684
+  },
+  {
+    "customer_id": 6326,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 6326,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 733070716
+  },
+  {
+    "customer_id": 6326,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6326,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 20000000
+  },
+  {
+    "customer_id": 6326,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 26372506
+  },
+  {
+    "customer_id": 6326,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 6326,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6326,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 103639
+  },
+  {
+    "customer_id": 6326,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 122333956
+  },
+  {
+    "customer_id": 6326,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 46720597
+  },
+  {
+    "customer_id": 6326,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 199085075
+  },
+  {
+    "customer_id": 6326,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 5741679
+  },
+  {
+    "customer_id": 6386,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 6386,
+    "product": "CPL KPR",
+    "product_category": "LOAN",
+    "amount": 1737143790
+  },
+  {
+    "customer_id": 6386,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 10945698
+  },
+  {
+    "customer_id": 6386,
+    "product": "DEPOSITO TREASURY",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6386,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 250000000
+  },
+  {
+    "customer_id": 6386,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 100957069
+  },
+  {
+    "customer_id": 6386,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 22787096
+  },
+  {
+    "customer_id": 6386,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6386,
+    "product": "KPM",
+    "product_category": "LOAN",
+    "amount": 12380430
+  },
+  {
+    "customer_id": 6386,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 2928400
+  },
+  {
+    "customer_id": 6386,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 6386,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 16060746
+  },
+  {
+    "customer_id": 6386,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 32231412
+  },
+  {
+    "customer_id": 6386,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6386,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 202195
+  },
+  {
+    "customer_id": 6386,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 6155278
+  },
+  {
+    "customer_id": 6386,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6386,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 4967843
+  },
+  {
+    "customer_id": 65,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 15036089
+  },
+  {
+    "customer_id": 6513,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 6513,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 6513,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 6513,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 300000000
+  },
+  {
+    "customer_id": 6513,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 6513,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 111915336
+  },
+  {
+    "customer_id": 6513,
+    "product": "KMG_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1218029554
+  },
+  {
+    "customer_id": 6513,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 342445884
+  },
+  {
+    "customer_id": 6513,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2083232816
+  },
+  {
+    "customer_id": 6513,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 4561858104
+  },
+  {
+    "customer_id": 6513,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 6513,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 6513,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 1999224
+  },
+  {
+    "customer_id": 6513,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 103507
+  },
+  {
+    "customer_id": 6513,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 170753
+  },
+  {
+    "customer_id": 6513,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 1190430
+  },
+  {
+    "customer_id": 6513,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 1900000000
+  },
+  {
+    "customer_id": 6513,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 2188672
+  },
+  {
+    "customer_id": 6604,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 3182750000
+  },
+  {
+    "customer_id": 6604,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 11526
+  },
+  {
+    "customer_id": 6604,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 2500000000
+  },
+  {
+    "customer_id": 6604,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 25000000
+  },
+  {
+    "customer_id": 6604,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 78000000
+  },
+  {
+    "customer_id": 6604,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 88695929
+  },
+  {
+    "customer_id": 6604,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 6604,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1951217848
+  },
+  {
+    "customer_id": 6604,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 6604,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 6604,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 4722988
+  },
+  {
+    "customer_id": 6604,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6604,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 151950
+  },
+  {
+    "customer_id": 6604,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6604,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6604,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6911,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 400000000
+  },
+  {
+    "customer_id": 6911,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 6031422
+  },
+  {
+    "customer_id": 6911,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 59302592
+  },
+  {
+    "customer_id": 6911,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6911,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 20000000
+  },
+  {
+    "customer_id": 6911,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 6911,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 2228548354
+  },
+  {
+    "customer_id": 6911,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 798412210
+  },
+  {
+    "customer_id": 6911,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6911,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 550000000
+  },
+  {
+    "customer_id": 6911,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 1485912
+  },
+  {
+    "customer_id": 6911,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 12028176
+  },
+  {
+    "customer_id": 6911,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6911,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 153454
+  },
+  {
+    "customer_id": 6911,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 102000000
+  },
+  {
+    "customer_id": 6911,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6911,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 6911,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 197652550
+  },
+  {
+    "customer_id": 6911,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 71432259
+  },
+  {
+    "customer_id": 7023,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 1052750000
+  },
+  {
+    "customer_id": 7023,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 24375576
+  },
+  {
+    "customer_id": 7023,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 600000000
+  },
+  {
+    "customer_id": 7023,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 237825000
+  },
+  {
+    "customer_id": 7023,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 38417498
+  },
+  {
+    "customer_id": 7023,
+    "product": "INVBACKLN_MPH",
+    "product_category": "LOAN",
+    "amount": 423587571
+  },
+  {
+    "customer_id": 7023,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 7023,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 24599620
+  },
+  {
+    "customer_id": 7023,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 25895
+  },
+  {
+    "customer_id": 7023,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7023,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 781170
+  },
+  {
+    "customer_id": 7023,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 101600000
+  },
+  {
+    "customer_id": 7023,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 539138
+  },
+  {
+    "customer_id": 7023,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7027,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 121819960
+  },
+  {
+    "customer_id": 7027,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 7027,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 7027,
+    "product": "DEPOSITO01SYA",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 7027,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 7027,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 1000000000
+  },
+  {
+    "customer_id": 7027,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 30000000
+  },
+  {
+    "customer_id": 7027,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7027,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2838162434
+  },
+  {
+    "customer_id": 7027,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 3138788292
+  },
+  {
+    "customer_id": 7027,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 7027,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7027,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 7027,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 614430
+  },
+  {
+    "customer_id": 7027,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 2979151
+  },
+  {
+    "customer_id": 7027,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7027,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 628652
+  },
+  {
+    "customer_id": 7027,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7050,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 175000000
+  },
+  {
+    "customer_id": 7050,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7050,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7050,
+    "product": "DEPOSITO TREASURY",
+    "product_category": "FUNDING",
+    "amount": 765495425
+  },
+  {
+    "customer_id": 7050,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 7050,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 70534804
+  },
+  {
+    "customer_id": 7050,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 1500000000
+  },
+  {
+    "customer_id": 7050,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7050,
+    "product": "GIROSYARIAH",
+    "product_category": "FUNDING",
+    "amount": 108671
+  },
+  {
+    "customer_id": 7050,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 727462276
+  },
+  {
+    "customer_id": 7050,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 6885779606
+  },
+  {
+    "customer_id": 7050,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 120566
+  },
+  {
+    "customer_id": 7050,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 7050,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 202716
+  },
+  {
+    "customer_id": 7050,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 31690804
+  },
+  {
+    "customer_id": 7050,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 102700
+  },
+  {
+    "customer_id": 7050,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 5926287
+  },
+  {
+    "customer_id": 7050,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 42546110
+  },
+  {
+    "customer_id": 7050,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 12380819
+  },
+  {
+    "customer_id": 7050,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 1621307
+  },
+  {
+    "customer_id": 7163,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 7163,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 31025392
+  },
+  {
+    "customer_id": 7163,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7163,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 113485651
+  },
+  {
+    "customer_id": 7163,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7163,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7163,
+    "product": "GIROSYARIAH",
+    "product_category": "FUNDING",
+    "amount": 100169
+  },
+  {
+    "customer_id": 7163,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 1773701704
+  },
+  {
+    "customer_id": 7163,
+    "product": "KPR-Syariah_EASY",
+    "product_category": "LOAN",
+    "amount": 1490120976
+  },
+  {
+    "customer_id": 7163,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 1573412582
+  },
+  {
+    "customer_id": 7163,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1562068938
+  },
+  {
+    "customer_id": 7163,
+    "product": "KRK",
+    "product_category": "LOAN",
+    "amount": 226966715
+  },
+  {
+    "customer_id": 7163,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 6378601
+  },
+  {
+    "customer_id": 7163,
+    "product": "MULTI CURRENCY SYA",
+    "product_category": "FUNDING",
+    "amount": 26564330
+  },
+  {
+    "customer_id": 7163,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 7163,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7163,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 7163,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 70000
+  },
+  {
+    "customer_id": 7163,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7163,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 1054449267
+  },
+  {
+    "customer_id": 7163,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7163,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 18384555
+  },
+  {
+    "customer_id": 7170,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 2200000
+  },
+  {
+    "customer_id": 7170,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7170,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 90137458
+  },
+  {
+    "customer_id": 7170,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 95928189
+  },
+  {
+    "customer_id": 7170,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 160000000
+  },
+  {
+    "customer_id": 7170,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7170,
+    "product": "GIRO KND",
+    "product_category": "FUNDING",
+    "amount": 536189528
+  },
+  {
+    "customer_id": 7170,
+    "product": "GIROSYARIAH",
+    "product_category": "FUNDING",
+    "amount": 2004599
+  },
+  {
+    "customer_id": 7170,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 1844568800
+  },
+  {
+    "customer_id": 7170,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2886298918
+  },
+  {
+    "customer_id": 7170,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 26667350977
+  },
+  {
+    "customer_id": 7170,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 3729125000
+  },
+  {
+    "customer_id": 7170,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 387054
+  },
+  {
+    "customer_id": 7170,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 7170,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7170,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 211571
+  },
+  {
+    "customer_id": 7170,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 2000000
+  },
+  {
+    "customer_id": 7170,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 4860440
+  },
+  {
+    "customer_id": 7170,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 2056840
+  },
+  {
+    "customer_id": 7170,
+    "product": "TERM LOAN EMB KND",
+    "product_category": "LOAN",
+    "amount": 817611770
+  },
+  {
+    "customer_id": 7170,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 3234304
+  },
+  {
+    "customer_id": 7550,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 7550,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 124245452
+  },
+  {
+    "customer_id": 7550,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 32797143
+  },
+  {
+    "customer_id": 7550,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7550,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7550,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7550,
+    "product": "KPR-Syariah_EASY",
+    "product_category": "LOAN",
+    "amount": 1271794362
+  },
+  {
+    "customer_id": 7550,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 700258036
+  },
+  {
+    "customer_id": 7550,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2849628114
+  },
+  {
+    "customer_id": 7550,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 9398719216
+  },
+  {
+    "customer_id": 7550,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 7550,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 266780
+  },
+  {
+    "customer_id": 7550,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 7550,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7550,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 101389937
+  },
+  {
+    "customer_id": 7550,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 884100
+  },
+  {
+    "customer_id": 7550,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 1000000
+  },
+  {
+    "customer_id": 7550,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7550,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 1021586924
+  },
+  {
+    "customer_id": 7550,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 1577592
+  },
+  {
+    "customer_id": 7669,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 57933333
+  },
+  {
+    "customer_id": 7669,
+    "product": "CPL KPR",
+    "product_category": "LOAN",
+    "amount": 2062165974
+  },
+  {
+    "customer_id": 7669,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 2
+  },
+  {
+    "customer_id": 7669,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 140000000000
+  },
+  {
+    "customer_id": 7669,
+    "product": "DEPOHAR 21-31",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7669,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 6800000000
+  },
+  {
+    "customer_id": 7669,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7669,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7669,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7669,
+    "product": "KPR_FIXED_THP",
+    "product_category": "LOAN",
+    "amount": 5671922720
+  },
+  {
+    "customer_id": 7669,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 753974790
+  },
+  {
+    "customer_id": 7669,
+    "product": "KRK",
+    "product_category": "LOAN",
+    "amount": 2966675096
+  },
+  {
+    "customer_id": 7669,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 10824981600
+  },
+  {
+    "customer_id": 7669,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 7669,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7669,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 1158520
+  },
+  {
+    "customer_id": 7669,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7669,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 12408477
+  },
+  {
+    "customer_id": 7669,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 101036
+  },
+  {
+    "customer_id": 7669,
+    "product": "TERM LOAN",
+    "product_category": "LOAN",
+    "amount": 6062558400
+  },
+  {
+    "customer_id": 7669,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 3163955176
+  },
+  {
+    "customer_id": 7669,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 17537
+  },
+  {
+    "customer_id": 7732,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 200000000
+  },
+  {
+    "customer_id": 7732,
+    "product": "CPL KND",
+    "product_category": "LOAN",
+    "amount": 1969752268
+  },
+  {
+    "customer_id": 7732,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7732,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 60000000
+  },
+  {
+    "customer_id": 7732,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 250000000
+  },
+  {
+    "customer_id": 7732,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 30000000
+  },
+  {
+    "customer_id": 7732,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 1500000000
+  },
+  {
+    "customer_id": 7732,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7732,
+    "product": "GIRO KND",
+    "product_category": "FUNDING",
+    "amount": 13375432
+  },
+  {
+    "customer_id": 7732,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 388950256
+  },
+  {
+    "customer_id": 7732,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 941516906
+  },
+  {
+    "customer_id": 7732,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 905244754
+  },
+  {
+    "customer_id": 7732,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 222246750263
+  },
+  {
+    "customer_id": 7732,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 7732,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 1853898
+  },
+  {
+    "customer_id": 7732,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 7732,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 2163937
+  },
+  {
+    "customer_id": 7732,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 3686490
+  },
+  {
+    "customer_id": 7732,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7732,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 6214407
+  },
+  {
+    "customer_id": 7732,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 13381116
+  },
+  {
+    "customer_id": 7743,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 5062500
+  },
+  {
+    "customer_id": 7743,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7743,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 88770426
+  },
+  {
+    "customer_id": 7743,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 25239452
+  },
+  {
+    "customer_id": 7743,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 200000000
+  },
+  {
+    "customer_id": 7743,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 7743,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7743,
+    "product": "KPR-Syariah_EASY",
+    "product_category": "LOAN",
+    "amount": 2547121024
+  },
+  {
+    "customer_id": 7743,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 1304482916
+  },
+  {
+    "customer_id": 7743,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 789547000
+  },
+  {
+    "customer_id": 7743,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 1136928601
+  },
+  {
+    "customer_id": 7743,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7743,
+    "product": "MULTI CURRENCY SYA",
+    "product_category": "FUNDING",
+    "amount": 5707045
+  },
+  {
+    "customer_id": 7743,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 7743,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7743,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 15297090
+  },
+  {
+    "customer_id": 7743,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 122622
+  },
+  {
+    "customer_id": 7743,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 164551
+  },
+  {
+    "customer_id": 7743,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 624936
+  },
+  {
+    "customer_id": 7743,
+    "product": "TAKABUNGA",
+    "product_category": "FUNDING",
+    "amount": 15926688
+  },
+  {
+    "customer_id": 7743,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 2400000
+  },
+  {
+    "customer_id": 7743,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 1928898
+  },
+  {
+    "customer_id": 7743,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7772,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 5000000
+  },
+  {
+    "customer_id": 7772,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 25522268
+  },
+  {
+    "customer_id": 7772,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 233000000
+  },
+  {
+    "customer_id": 7772,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 7772,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 587356402
+  },
+  {
+    "customer_id": 7772,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7772,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7772,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 7772,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 19689710
+  },
+  {
+    "customer_id": 7772,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 1177959
+  },
+  {
+    "customer_id": 7772,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 104930
+  },
+  {
+    "customer_id": 7772,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 191954
+  },
+  {
+    "customer_id": 7772,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 40313031
+  },
+  {
+    "customer_id": 7772,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7772,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 786,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 23800000
+  },
+  {
+    "customer_id": 7903,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 7903,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7903,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7903,
+    "product": "DEPOSITO01SYA",
+    "product_category": "FUNDING",
+    "amount": 25000000
+  },
+  {
+    "customer_id": 7903,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 7903,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7903,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 7903,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 1099110248
+  },
+  {
+    "customer_id": 7903,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1225378696
+  },
+  {
+    "customer_id": 7903,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 12921825000
+  },
+  {
+    "customer_id": 7903,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 161950
+  },
+  {
+    "customer_id": 7903,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 7903,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 2115437
+  },
+  {
+    "customer_id": 7903,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 8008581979
+  },
+  {
+    "customer_id": 7903,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 100000
+  },
+  {
+    "customer_id": 7903,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 41453833
+  },
+  {
+    "customer_id": 7903,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 211045
+  },
+  {
+    "customer_id": 7969,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 26000000
+  },
+  {
+    "customer_id": 7969,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 80335676
+  },
+  {
+    "customer_id": 7969,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 7969,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 15000000
+  },
+  {
+    "customer_id": 7969,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 7969,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 22203249
+  },
+  {
+    "customer_id": 7969,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 60000000
+  },
+  {
+    "customer_id": 7969,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 93787
+  },
+  {
+    "customer_id": 7969,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 7969,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 28030770
+  },
+  {
+    "customer_id": 7969,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 633288
+  },
+  {
+    "customer_id": 7969,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 22711
+  },
+  {
+    "customer_id": 7969,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 2703789
+  },
+  {
+    "customer_id": 7969,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 1187500
+  },
+  {
+    "customer_id": 7969,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 6689938
+  },
+  {
+    "customer_id": 7969,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 166301041
+  },
+  {
+    "customer_id": 8097,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 60000000
+  },
+  {
+    "customer_id": 8097,
+    "product": "CPL KPR",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 8097,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 8833384
+  },
+  {
+    "customer_id": 8097,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 8097,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8097,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8097,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 47565000
+  },
+  {
+    "customer_id": 8097,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": null
+  },
+  {
+    "customer_id": 8097,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 3159764354
+  },
+  {
+    "customer_id": 8097,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 904107076
+  },
+  {
+    "customer_id": 8097,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 30000000
+  },
+  {
+    "customer_id": 8097,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 528072
+  },
+  {
+    "customer_id": 8097,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 11953158
+  },
+  {
+    "customer_id": 8097,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 228047
+  },
+  {
+    "customer_id": 8097,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 5000000
+  },
+  {
+    "customer_id": 8097,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8097,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 37179024
+  },
+  {
+    "customer_id": 8097,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 18605492
+  },
+  {
+    "customer_id": 8304,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 110000000
+  },
+  {
+    "customer_id": 8304,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 8304,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 55547522
+  },
+  {
+    "customer_id": 8304,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 250000000
+  },
+  {
+    "customer_id": 8304,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8304,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 72261509
+  },
+  {
+    "customer_id": 8304,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 50624482
+  },
+  {
+    "customer_id": 8304,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 8304,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 8304,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 23829529
+  },
+  {
+    "customer_id": 8304,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 14437427
+  },
+  {
+    "customer_id": 8304,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 1045745
+  },
+  {
+    "customer_id": 8304,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8304,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 2421237
+  },
+  {
+    "customer_id": 8644,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 396375000
+  },
+  {
+    "customer_id": 8644,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 69664472
+  },
+  {
+    "customer_id": 8644,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8644,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8644,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 25000000
+  },
+  {
+    "customer_id": 8644,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 210000000
+  },
+  {
+    "customer_id": 8644,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 40000000
+  },
+  {
+    "customer_id": 8644,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8644,
+    "product": "KPR-MYPA",
+    "product_category": "LOAN",
+    "amount": 16535024
+  },
+  {
+    "customer_id": 8644,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1206408014
+  },
+  {
+    "customer_id": 8644,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 1909486
+  },
+  {
+    "customer_id": 8644,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 1126375000
+  },
+  {
+    "customer_id": 8644,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 26613978
+  },
+  {
+    "customer_id": 8644,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 8644,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8644,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 21701482
+  },
+  {
+    "customer_id": 8644,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 82509
+  },
+  {
+    "customer_id": 8644,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8779,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 1585500000
+  },
+  {
+    "customer_id": 8779,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 8779,
+    "product": "DEPO14H",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8779,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 480000000
+  },
+  {
+    "customer_id": 8779,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 25643338
+  },
+  {
+    "customer_id": 8779,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 50000000
+  },
+  {
+    "customer_id": 8779,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 69285184
+  },
+  {
+    "customer_id": 8779,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 1233707238
+  },
+  {
+    "customer_id": 8779,
+    "product": "MULTI CURRENCY",
+    "product_category": "FUNDING",
+    "amount": 17803996
+  },
+  {
+    "customer_id": 8779,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 708000000
+  },
+  {
+    "customer_id": 8779,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 18929510
+  },
+  {
+    "customer_id": 8779,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 8779,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8779,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 6010659
+  },
+  {
+    "customer_id": 8779,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8779,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 167451
+  },
+  {
+    "customer_id": 8779,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 37740
+  },
+  {
+    "customer_id": 8797,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 8797,
+    "product": "CPL KPR",
+    "product_category": "LOAN",
+    "amount": 3465311964
+  },
+  {
+    "customer_id": 8797,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 8594520
+  },
+  {
+    "customer_id": 8797,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 5000000
+  },
+  {
+    "customer_id": 8797,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 13000000
+  },
+  {
+    "customer_id": 8797,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8797,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 32531566
+  },
+  {
+    "customer_id": 8797,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 29657411
+  },
+  {
+    "customer_id": 8797,
+    "product": "MULTI CURRENCY SYA",
+    "product_category": "FUNDING",
+    "amount": 1016055000
+  },
+  {
+    "customer_id": 8797,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 150000000
+  },
+  {
+    "customer_id": 8797,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 1483186
+  },
+  {
+    "customer_id": 8797,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 8797,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 6839349
+  },
+  {
+    "customer_id": 8797,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 9300540
+  },
+  {
+    "customer_id": 8797,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9216,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 240000000
+  },
+  {
+    "customer_id": 9216,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 9216,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9216,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9216,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 79275000
+  },
+  {
+    "customer_id": 9216,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 112443660
+  },
+  {
+    "customer_id": 9216,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 9216,
+    "product": "KPR-Syariah_EASY",
+    "product_category": "LOAN",
+    "amount": 1918328348
+  },
+  {
+    "customer_id": 9216,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 260663048
+  },
+  {
+    "customer_id": 9216,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 475650000
+  },
+  {
+    "customer_id": 9216,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 197052
+  },
+  {
+    "customer_id": 9216,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 0
+  },
+  {
+    "customer_id": 9216,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9216,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 500000
+  },
+  {
+    "customer_id": 9216,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 1400000
+  },
+  {
+    "customer_id": 9216,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9216,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 15669
+  },
+  {
+    "customer_id": 9227,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 0
+  },
+  {
+    "customer_id": 9227,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 9227,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 30000000
+  },
+  {
+    "customer_id": 9227,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9227,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 9227,
+    "product": "GIROSYARIAH",
+    "product_category": "FUNDING",
+    "amount": 20131163
+  },
+  {
+    "customer_id": 9227,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 331361350
+  },
+  {
+    "customer_id": 9227,
+    "product": "KPR-Syariah",
+    "product_category": "LOAN",
+    "amount": 606120288
+  },
+  {
+    "customer_id": 9227,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 2897716434
+  },
+  {
+    "customer_id": 9227,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 1023781816
+  },
+  {
+    "customer_id": 9227,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 9227,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 9227,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 3638798
+  },
+  {
+    "customer_id": 9227,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 475188
+  },
+  {
+    "customer_id": 9227,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9227,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 1085312
+  },
+  {
+    "customer_id": 9227,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 48438115
+  },
+  {
+    "customer_id": 9410,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 10000000
+  },
+  {
+    "customer_id": 9410,
+    "product": "CPL KND",
+    "product_category": "LOAN",
+    "amount": 3861096064
+  },
+  {
+    "customer_id": 9410,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 993100
+  },
+  {
+    "customer_id": 9410,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 9410,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 54666553
+  },
+  {
+    "customer_id": 9410,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9410,
+    "product": "DEPOSITO06",
+    "product_category": "FUNDING",
+    "amount": 10092464
+  },
+  {
+    "customer_id": 9410,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 100000000
+  },
+  {
+    "customer_id": 9410,
+    "product": "GIRO",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 9410,
+    "product": "GIRO KND",
+    "product_category": "FUNDING",
+    "amount": 30687419
+  },
+  {
+    "customer_id": 9410,
+    "product": "KPRSP15",
+    "product_category": "LOAN",
+    "amount": 2530126656
+  },
+  {
+    "customer_id": 9410,
+    "product": "KRK EMB",
+    "product_category": "LOAN",
+    "amount": 425440088
+  },
+  {
+    "customer_id": 9410,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 9410,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 4226302
+  },
+  {
+    "customer_id": 9410,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 6337174
+  },
+  {
+    "customer_id": 9410,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 165373
+  },
+  {
+    "customer_id": 9410,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 127747
+  },
+  {
+    "customer_id": 9410,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 34523560
+  },
+  {
+    "customer_id": 9410,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9410,
+    "product": "TERM LOAN EMB",
+    "product_category": "LOAN",
+    "amount": 588500084
+  },
+  {
+    "customer_id": 9410,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 6020458
+  },
+  {
+    "customer_id": 9716,
+    "product": "BANCA",
+    "product_category": "BANCA",
+    "amount": 60000000
+  },
+  {
+    "customer_id": 9716,
+    "product": "CREDIT CARD",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 9716,
+    "product": "DEMAND LOAN",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 9716,
+    "product": "DEPOSITO01",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9716,
+    "product": "DEPOSITO03",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9716,
+    "product": "DEPOSITO03SYA",
+    "product_category": "FUNDING",
+    "amount": 125000000
+  },
+  {
+    "customer_id": 9716,
+    "product": "DEPOSITO12",
+    "product_category": "FUNDING",
+    "amount": 500000000
+  },
+  {
+    "customer_id": 9716,
+    "product": "GIRO",
+    "product_category": "FUNDING",
+    "amount": 100978800
+  },
+  {
+    "customer_id": 9716,
+    "product": "KPR",
+    "product_category": "LOAN",
+    "amount": 168855000
+  },
+  {
+    "customer_id": 9716,
+    "product": "KPR_KENDALI",
+    "product_category": "LOAN",
+    "amount": 915114932
+  },
+  {
+    "customer_id": 9716,
+    "product": "LOAN SOFR",
+    "product_category": "LOAN",
+    "amount": 0
+  },
+  {
+    "customer_id": 9716,
+    "product": "ORI",
+    "product_category": "ORI",
+    "amount": 0
+  },
+  {
+    "customer_id": 9716,
+    "product": "PERSONAL LOAN",
+    "product_category": "LOAN",
+    "amount": 25440156
+  },
+  {
+    "customer_id": 9716,
+    "product": "REKSA",
+    "product_category": "REKSA",
+    "amount": 4861977
+  },
+  {
+    "customer_id": 9716,
+    "product": "TABSYA",
+    "product_category": "FUNDING",
+    "amount": 10200000
+  },
+  {
+    "customer_id": 9716,
+    "product": "TAB_MDHRBHSYA",
+    "product_category": "FUNDING",
+    "amount": 10641523
+  },
+  {
+    "customer_id": 9716,
+    "product": "TAKA",
+    "product_category": "FUNDING",
+    "amount": 2100000
+  },
+  {
+    "customer_id": 9716,
+    "product": "TAKASYA",
+    "product_category": "FUNDING",
+    "amount": 1005600000
+  },
+  {
+    "customer_id": 9716,
+    "product": "TANDA360",
+    "product_category": "FUNDING",
+    "amount": 0
+  },
+  {
+    "customer_id": 9716,
+    "product": "Tabungan TANDA & TABHAR",
+    "product_category": "FUNDING",
+    "amount": 0
+  }
+]
