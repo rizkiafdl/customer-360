@@ -80,3 +80,30 @@ Part 2 analyses of this assessment.
   sources is easier to review and to change.
 - **The KYC note as a ranking signal.** Rejected: a low income band with a
   high AUM is more likely a stale KYC record than an offer.
+
+## Update, 2026-11-24: offers grouped by product
+
+The redesign (spec `docs/superpowers/specs/2026-11-24-redesign-v2-design.md`)
+shows the fired rules of one customer as one card per product, not one card
+per rule. `productOffers()` in `src/lib/insights/product-offers.ts` builds the
+cards. The rules, the thresholds, and the fire counts (12 / 29 / 37 / 29 / 16
+/ 6) do not change.
+
+| Fired rule | Card |
+| --- | --- |
+| `investment-gap-reksa` / `-ori` / `-banca` | The REKSA / ORI / BANCA card. |
+| `cash-heavy` | Added to the REKSA card and to the ORI card when those cards exist. If neither exists (the customer holds both), its own `Cash` card. |
+| `high-income-no-banca` | Added to the BANCA card, or creates it. |
+| `no-aum` | Its own `No AUM` card. |
+
+The basis of a card is the cash amount when the card holds `cash-heavy`, the
+customer's AUM otherwise, and none for `No AUM`. The cards sort by:
+
+1. more supporting rules first,
+2. a higher basis amount first (a card with no basis sorts last),
+3. the position of the card's first rule in `RULE_ORDER`.
+
+`RULE_ORDER` still sets the order of the rules inside a card and the rule
+chip that the Customers table shows (`ruleChip()`). The worklist ranking
+(more fired rules, then AUM, then ID) does not change. The KYC note stays a
+separate note and never makes a card.
