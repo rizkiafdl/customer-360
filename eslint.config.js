@@ -22,7 +22,7 @@ const INSIGHTS = {
   message: 'Insights are the layer above domain (ADR 0004).',
 }
 const UI = {
-  regex: layer('(pages|components|routes|main)', '(pages|components|routes|main)'),
+  regex: layer('(pages|components|hooks|routes|main)', '(pages|components|hooks|routes|main)'),
   message: 'UI is the top layer. Nothing below it may import it (ADR 0004).',
 }
 const ANY_SRC_OUTSIDE_TYPES = {
@@ -34,7 +34,8 @@ const restrict = (...patterns) => ({
 })
 
 export default defineConfig([
-  globalIgnores(['dist', 'coverage', 'playwright-report', 'test-results']),
+  // .claude/worktrees/ holds local Claude Code agent checkouts, not repo files.
+  globalIgnores(['dist', 'coverage', 'playwright-report', 'test-results', '.claude/worktrees']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -61,14 +62,27 @@ export default defineConfig([
       'react-refresh/only-export-components': 'off',
     },
   },
+  {
+    // shadcn's generated sidebar hook sets state once in its effect to read
+    // the first viewport width. Kept as generated.
+    files: ['src/hooks/use-mobile.ts'],
+    rules: {
+      'react-hooks/set-state-in-effect': 'off',
+    },
+  },
   // Default for every file under src/: no import of src/data. A file in a
-  // folder with no layer block (a new `src/hooks/`, say) is still covered.
+  // folder with no layer block (a new `src/utils/`, say) is still covered.
   // Each layer block below replaces this setting for its own files.
   { files: ['src/**/*.{ts,tsx}'], ...restrict(DATA) },
   // One block per layer. The `files` globs do not overlap: a later block that
   // sets the same rule for the same file would replace this one, not merge.
   {
-    files: ['src/*.{ts,tsx}', 'src/pages/**/*.{ts,tsx}', 'src/components/**/*.{ts,tsx}'],
+    files: [
+      'src/*.{ts,tsx}',
+      'src/pages/**/*.{ts,tsx}',
+      'src/components/**/*.{ts,tsx}',
+      'src/hooks/**/*.{ts,tsx}',
+    ],
     ...restrict(DATA),
   },
   { files: ['src/lib/selectors/**/*.{ts,tsx}'], ...restrict(UI) },

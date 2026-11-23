@@ -32,7 +32,7 @@ describe('layer rule', () => {
     ['src/lib/insights/x.ts', '@/data'],
     ['src/lib/format.ts', '@/data'],
     // A folder with no layer block of its own still may not import src/data.
-    ['src/hooks/useX.ts', '@/data'],
+    ['src/utils/x.ts', '@/data'],
     ['src/lib/newdir/x.ts', '../../data'],
     ['src/test/x.ts', '@/data'],
     // No upward imports.
@@ -52,6 +52,10 @@ describe('layer rule', () => {
     ['src/lib/format.ts', '../data'],
     ['src/types/x.ts', '@/lib/domain'],
     ['src/types/x.ts', '../lib/format'],
+    // src/hooks/ (shadcn's hooks folder) is part of the UI layer.
+    ['src/lib/domain/x.ts', '@/hooks/use-mobile'],
+    ['src/lib/selectors/x.ts', '../../hooks/use-mobile'],
+    ['src/hooks/use-x.ts', '@/data'],
   ])('%s may not import %s', async (file, source) => {
     expect(await layerErrors(file, source)).toBe(1)
   })
@@ -74,6 +78,8 @@ describe('layer rule', () => {
     ['src/types/index.ts', './profile.ts'],
     ['src/lib/format.ts', 'clsx'],
     ['src/lib/format.test.ts', './format'],
+    ['src/components/ui/x.tsx', '@/hooks/use-mobile'],
+    ['src/hooks/use-x.ts', '@/lib/selectors/book'],
   ])('%s may import %s', async (file, source) => {
     expect(await layerErrors(file, source)).toBe(0)
   })
