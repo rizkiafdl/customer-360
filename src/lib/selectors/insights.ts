@@ -1,12 +1,10 @@
 /** Selectors that run the insight rules over every customer (ADR 0008). */
 import {
   RULE_ORDER,
-  VALUE_TIERS,
   evaluateCustomer,
   type CustomerEvaluation,
   type CustomerInput,
   type RuleId,
-  type ValueTier,
 } from '@/lib/insights'
 import type { PortfolioItem } from '@/types'
 import { dataset, type Dataset } from './dataset'
@@ -38,13 +36,6 @@ export function ruleFireCounts(evaluations: readonly CustomerEvaluation[]): Reco
   return counts
 }
 
-/** Customers per value tier. Every tier is present, 0 when empty. */
-export function tierCounts(evaluations: readonly CustomerEvaluation[]): Record<ValueTier, number> {
-  const counts = Object.fromEntries(VALUE_TIERS.map((tier) => [tier, 0])) as Record<ValueTier, number>
-  for (const evaluation of evaluations) counts[evaluation.tier] += 1
-  return counts
-}
-
 /** Customers with the KYC income-band note. */
 export function kycNoteCount(evaluations: readonly CustomerEvaluation[]): number {
   return evaluations.filter((evaluation) => evaluation.kycNote !== null).length
@@ -62,10 +53,6 @@ export function getCustomerEvaluation(customerId: number): CustomerEvaluation | 
 
 export function getRuleFireCounts(): Record<RuleId, number> {
   return ruleFireCounts(customerEvaluations)
-}
-
-export function getTierCounts(): Record<ValueTier, number> {
-  return tierCounts(customerEvaluations)
 }
 
 export function getKycNoteCount(): number {

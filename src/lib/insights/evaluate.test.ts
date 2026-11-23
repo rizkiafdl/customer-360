@@ -4,11 +4,10 @@ import { customer, row, rp } from './test-fixtures'
 import type { FiredInsight, RuleId } from './types'
 
 describe('evaluateCustomer', () => {
-  it('returns fired rules in RULE_ORDER, with the tier and AUM', () => {
+  it('returns fired rules in RULE_ORDER, with the AUM', () => {
     const result = evaluateCustomer(customer([row('FUNDING', 2_000_000_000, 'TABSYA')], '>100 Juta'))
     expect(result.customer_id).toBe(1)
     expect(result.aum).toBe(2_000_000_000)
-    expect(result.tier).toBe('Affluent')
     expect(result.insights.map((insight) => insight.id)).toEqual([
       'cash-heavy',
       'investment-gap-reksa',
@@ -32,7 +31,6 @@ describe('evaluateCustomer', () => {
     ]
     const result = evaluateCustomer(customer(rows, 'sd. 1 Juta'))
     expect(result.insights).toEqual([])
-    expect(result.tier).toBe('Affluent')
     expect(result.kycNote?.id).toBe('kyc-income-band')
     expect(result.kycNote?.reason).toBe(rp('Income band sd. 1 Juta. AUM Rp 1.000.000.003.'))
   })
@@ -40,7 +38,6 @@ describe('evaluateCustomer', () => {
   it('fires no AUM for a customer with no portfolio rows', () => {
     const result = evaluateCustomer(customer([]))
     expect(result.aum).toBe(0)
-    expect(result.tier).toBe('No AUM')
     expect(result.insights.map((insight) => insight.id)).toEqual(['no-aum'])
     expect(result.kycNote).toBeNull()
   })
@@ -48,10 +45,6 @@ describe('evaluateCustomer', () => {
   it('puts no AUM before high income without BANCA', () => {
     const result = evaluateCustomer(customer([], '>50 Juta - 100 Juta'))
     expect(result.insights.map((insight) => insight.id)).toEqual(['no-aum', 'high-income-no-banca'])
-  })
-
-  it('reaches Priority at exactly Rp 5.000.000.000', () => {
-    expect(evaluateCustomer(customer([row('FUNDING', 5_000_000_000, 'DEPOSITO01')])).tier).toBe('Priority')
   })
 })
 

@@ -11,17 +11,6 @@
  */
 
 /**
- * Value tier: Affluent starts here (Rp 1 Bn). Below it, AUM above 0 is Mass.
- * Source: user decision, 2026-11-23. Edges come from this data's AUM
- * distribution (median Rp 1.38 Bn); the Part 1 edges (Rp 10 jt, Rp 100 jt)
- * were rejected because 83 of 100 customers sit above Rp 100 jt.
- */
-export const AFFLUENT_MIN_AUM = 1_000_000_000
-
-/** Value tier: Priority starts here (Rp 5 Bn). Source: user decision, 2026-11-23. */
-export const PRIORITY_MIN_AUM = 5_000_000_000
-
-/**
  * Cash-heavy rule: fires when cash is at least this share of AUM.
  * Source: user decision, 2026-11-23.
  */
