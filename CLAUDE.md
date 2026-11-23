@@ -119,7 +119,23 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
 6. **Do not hand-edit `src/data/*.json`.** Change `scripts/excel/normalize.ts`,
    then run `npm run data:build` and commit the regenerated JSON.
 7. **Commits use Conventional Commits** (`feat:`, `fix:`, `chore:`, `docs:`,
-   `test:`, `refactor:`, `build:`).
+   `test:`, `refactor:`, `build:`). The author is the repo owner only: no
+   `Co-Authored-By` trailer, also in subagent commits.
+8. **Each feature follows one flow, on its own branch** (`feat/<feature>`, or
+   `ci/<topic>`):
+   1. `brainstorming` → feature spec (approved by the user, then committed).
+   2. `writing-plans` → plan.
+   3. `subagent-driven-development` runs the plan: one subagent per task,
+      with a review after each task. For small, config-only features,
+      `executing-plans` in the main session is allowed.
+   4. `verification-before-completion` (typecheck, lint, test, and build
+      pass; one `npm run check` after E0) and
+      `requesting-code-review` on the whole branch.
+   5. `finishing-a-development-branch` → PR. The user rebase-merges it after CI passes.
+
+   If the feature has an ADR, the brainstorm makes the decision, and the ADR
+   is task 1 of the plan. It goes in the same PR as the code, and the feature
+   spec links to it.
 
 ## Data model
 
