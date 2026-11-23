@@ -18,7 +18,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
-    include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts'],
+    include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts', 'eslint.config.test.ts'],
     css: true,
     // Reported in the CI job summary, not enforced (docs/adr/0003).
     coverage: {
