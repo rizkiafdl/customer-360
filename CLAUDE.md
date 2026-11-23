@@ -44,7 +44,7 @@ Before every commit, all of `typecheck`, `lint`, `test`, and `build` must pass.
 
 ## Folder structure
 
-```
+```text
 data/raw/AE Test_1126.xlsx   Raw source workbook. READ-ONLY: never edit, re-save, or reformat it.
 scripts/
   excel-to-json.ts           Entry point for `npm run data:build` (file I/O only).
@@ -150,6 +150,7 @@ renames all of them to `customer_id`.
 ### What the converter does and does not clean
 
 The converter does **shape cleaning** only:
+
 - skips fully empty rows (the raw sheets report ~16k and ~93k rows, but only 1,577 and 5,001 are non-empty),
 - checks the header row of each sheet,
 - trims text and maps empty cells to `null`,
@@ -160,6 +161,7 @@ The converter does **shape cleaning** only:
 
 It does **no business cleaning**. These raw facts stay in the JSON as they are,
 and any treatment of them belongs in `src/lib/` (and needs a user decision under Rule 3):
+
 - 1 null `gender` (customer 4857).
 - 1 null `product` (customer 4426, LOAN).
 - 5 null porto `amount` values (GIRO/GIROSYARIAH under LOAN).
