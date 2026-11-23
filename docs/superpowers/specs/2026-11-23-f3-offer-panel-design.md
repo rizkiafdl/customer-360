@@ -26,7 +26,6 @@ reason, then checks the evidence in the sections below.
   - A "What to offer" panel: one insight card per fired rule, in
     `RULE_ORDER`, and a fixed empty-state line when no rule fired.
   - The KYC income-band note, shown apart from the offers.
-  - The value tier on the detail page (4.5).
   - Every new text is a constant or a fixed template in
     `src/lib/insights/` with an exact-string test (CLAUDE.md Rule 9).
 - **Non-goals:** no new rule or threshold; no unfired rules (F6 lists
@@ -60,7 +59,6 @@ reason, then checks the evidence in the sections below.
   `high-income-no-banca` sees both cards. They are two rules with different
   evidence. Real data: customers 6386, 6513, 8797.
 - The KYC note is a note, not an offer: never ranked, never a top reason.
-- Tier names and edges: F2 spec section 4.
 
 ### 4.2 Approaches: where the panel's data comes from
 
@@ -97,7 +95,6 @@ interface OfferPanel { cards: OfferCard[]; emptyText: string | null;
 | Empty-state line | `No offer rule fired.` |
 | Note heading | `Note` |
 | Kind labels | `Opportunity`, `Warning`, `Info` |
-| Tier label template | `Tier: Affluent` (`Tier: ${tier}`) |
 
 The empty line says "offer rule", so it stays true when the KYC note shows
 below it (9 of the 16 customers with no fired rule have the note).
@@ -126,13 +123,6 @@ below it (9 of the 16 customers with no fired rule have the note).
 └────────────────────────────────────────────────────────────┘
 ```
 
-### 4.5 Value tier (builder's call)
-
-Neither the parent spec nor the F1 spec places the tier on the detail
-page. F3 shows it as the context line of the AUM KPI tile (`Tier:
-Affluent`), as `kpis.tierLabel`. Reason: the tier is a band of AUM, so it
-reads next to the AUM value.
-
 ## 5. Real-data counts (measured 2026-11-23)
 
 Selector contract tests pin these numbers.
@@ -148,9 +138,9 @@ Selector contract tests pin these numbers.
 - `panel.ts` tests: order, both BANCA cards, empty line only with no card,
   the note never in `cards`, kinds, exact strings for every constant.
 - Selector tests: the counts in section 5; for all 100 customers, card ids
-  equal `getCustomerEvaluation(id).insights` ids; `tierLabel` per tier.
+  equal `getCustomerEvaluation(id).insights` ids.
 - UI tests on fixture view models: cards, empty state, note apart, kind
-  label as text, tier on the AUM tile.
+  label as text.
 - e2e: `/customers/6513` shows exactly two cards, both with `No BANCA.`
   reasons;
   `/customers/1047` shows `No offer rule fired.` and the KYC note. No
