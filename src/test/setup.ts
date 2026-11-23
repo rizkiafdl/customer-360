@@ -3,7 +3,7 @@ import { cleanup } from '@testing-library/react'
 import { afterEach } from 'vitest'
 
 // jsdom lacks browser APIs that Recharts (ResizeObserver), the shadcn sidebar
-// (matchMedia), and cmdk (scrollIntoView) call. Node-environment tests have no
+// (matchMedia), cmdk and the Radix select (scrollIntoView, pointer capture) call. Node-environment tests have no
 // window, so the stubs are only added under jsdom.
 if (typeof window !== 'undefined') {
   class ResizeObserverStub {
@@ -24,6 +24,8 @@ if (typeof window !== 'undefined') {
       dispatchEvent: () => false,
     }) as MediaQueryList
   Element.prototype.scrollIntoView ??= () => {}
+  Element.prototype.hasPointerCapture ??= () => false
+  Element.prototype.releasePointerCapture ??= () => {}
 }
 
 afterEach(() => {

@@ -11,12 +11,11 @@ function renderAt(path: string) {
 }
 
 describe('routes', () => {
-  it('lists every customer at /', () => {
+  it('shows the worklist at /', () => {
     renderAt('/')
     expect(screen.getByRole('heading', { level: 1, name: 'Customers' })).toBeInTheDocument()
-    const list = screen.getByRole('list', { name: 'Customers' })
-    expect(within(list).getAllByRole('link')).toHaveLength(100)
-    expect(within(list).getByRole('link', { name: /Customer 4426/ })).toHaveAttribute('href', '/customers/4426')
+    const table = screen.getByRole('table', { name: 'Worklist' })
+    expect(within(table).getByRole('link', { name: 'Customer 4426' })).toHaveAttribute('href', '/customers/4426')
   })
 
   it('shows the app shell with the as-of date', () => {
