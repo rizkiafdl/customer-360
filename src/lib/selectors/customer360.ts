@@ -1,0 +1,305 @@
+/**
+ * The Customer 360 view model: every number and title the detail page shows,
+ * already computed (F1 spec, section 5). The page only renders it.
+ *
+ * `buildCustomer360(data, id)` is the pure selector. `getCustomer360(id)`
+ * reads the real data, grouped by `customer_id` once at module load.
+ */
+import {
+  AUM_CATEGORIES,
+  CATEGORY_COLORS,
+  DETAIL_WINDOW_START,
+  amountByCategory,
+  bankEntrySummary,
+  countBy,
+  customerAum,
+  daysSince,
+  digitalCounts,
+  earlierRows,
+  heldCount,
+  incomeRank,
+  isBankEntry,
+  isCustomerInitiated,
+  isHeld,
+  isHighIncome,
+  latestActivityDate,
+  loanExposure,
+  topWithOther,
+  weeklyCounts,
+  type BankEntryTotal,
+  type LabelCount,
+} from '@/lib/domain'
+import { formatDate, formatDayMonth, formatPercent } from '@/lib/format'
+import {
+  INCOME_BANDS,
+  type Gender,
+  type IncomeBand,
+  type PortfolioItem,
+  type ProductCategory,
+  type Profile,
+  type Transaction,
+  type TransactionMethod,
+  type TransactionType,
+} from '@/types'
+import { asOfDate, asOfDateOf } from './book'
+import { dataset, type Dataset } from './dataset'
+
+/** How many channels the channel mix shows before it folds the rest into "Other" (F1 spec 5.2). */
+const CHANNEL_MIX_TOP = 5
+
+export interface ProductRow {
+  key: string
+  product: string
+  category: ProductCategory
+  color: string
+  amount: number | null
+  held: boolean
+  /** Not held (0 or `null` amount): shown muted. */
+  muted: boolean
+}
+
+export interface TransactionRow {
+  key: string
+  date: string
+  method: TransactionMethod
+  type: TransactionType
+  amount: number
+  kind: 'customer' | 'bank'
+}
+
+export type TransactionFilter = 'all' | 'customer' | 'bank'
+
+export interface Customer360 {
+  id: number
+  heading: string
+  profile: {
+    gender: string
+    incomeBand: IncomeBand
+    incomeRankLabel: string
+    highIncome: boolean
+  }
+  kpis: {
+    aum: number
+    loanExposure: number
+    heldLabel: string
+    recency: { days: number | null; label: string; lastDate: string | null }
+    digital: { share: number | null; label: string; context: string }
+  }
+  holdings: {
+    /** `none`: no portfolio rows. `no-aum`: rows, but AUM 0. `aum`: AUM above 0. */
+    state: 'none' | 'no-aum' | 'aum'
+    emptyText: string | null
+    title: string | null
+    aumBars: { category: ProductCategory; amount: number; color: string }[]
+    products: ProductRow[]
+  }
+  activity: {
+    weeklyTitle: string
+    weekly: { weekStart: string; label: string; count: number }[]
+    earlierText: string | null
+    channelTitle: string | null
+    channelMix: LabelCount[]
+    typeTitle: string | null
+    typeMix: LabelCount[]
+  }
+  bankEntries: { title: string; rows: BankEntryTotal[] }
+  transactions: TransactionRow[]
+}
+
+interface CustomerRows {
+  profile: Profile
+  portfolio: PortfolioItem[]
+  transactions: Transaction[]
+}
+
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
+
+const GENDER_LABELS: Record<Gender, string> = { F: 'Female', M: 'Male' }
+
+function genderLabel(gender: Gender | null): string {
+  return gender === null ? 'Gender not recorded' : GENDER_LABELS[gender]
+}
+
+/** Rows per customer, built in one pass over each dataset. */
+export function groupByCustomer(data: Dataset): Map<number, CustomerRows> {
+  const rows = new Map<number, CustomerRows>()
+  for (const profile of data.profiles) rows.set(profile.customer_id, { profile, portfolio: [], transactions: [] })
+  for (const item of data.portfolio) rows.get(item.customer_id)?.portfolio.push(item)
+  for (const trx of data.transactions) rows.get(trx.customer_id)?.transactions.push(trx)
+  return rows
+}
+
+/** "X is 17% of 6 customer-initiated transactions", from the largest entry. */
+function mixTitle(entries: LabelCount[], total: number): string | null {
+  const top = entries[0]
+  if (!top || total === 0) return null
+  return `${top.label} is ${formatPercent(top.count / total)} of ${plural(total, 'customer-initiated transaction', 'customer-initiated transactions')}`
+}
+
+function holdingsOf(portfolio: PortfolioItem[]): Customer360['holdings'] {
+  const byCategory = amountByCategory(portfolio)
+  const aum = customerAum(portfolio)
+  const aumBars = AUM_CATEGORIES.map((category) => ({
+    category,
+    amount: byCategory[category],
+    color: CATEGORY_COLORS[category],
+  }))
+  const order: ProductCategory[] = [...AUM_CATEGORIES, 'LOAN']
+  const products = portfolio
+    .map((item, index) => ({ item, index }))
+    .sort(
+      (a, b) =>
+        order.indexOf(a.item.product_category) - order.indexOf(b.item.product_category) ||
+        (b.item.amount ?? -Infinity) - (a.item.amount ?? -Infinity) ||
+        a.index - b.index,
+    )
+    .map(({ item, index }) => ({
+      key: `${index}`,
+      product: item.product ?? 'Unnamed product',
+      category: item.product_category,
+      color: CATEGORY_COLORS[item.product_category],
+      amount: item.amount,
+      held: isHeld(item),
+      muted: !isHeld(item),
+    }))
+
+  if (portfolio.length === 0) {
+    return { state: 'none', emptyText: 'No portfolio rows.', title: null, aumBars, products }
+  }
+  if (aum === 0) {
+    const rows = plural(portfolio.length, 'product row', 'product rows')
+    return { state: 'no-aum', emptyText: `No AUM. ${rows}, none held in AUM categories.`, title: null, aumBars, products }
+  }
+  // Largest category; a tie goes to the first in AUM_CATEGORIES order.
+  const top = aumBars.reduce((best, bar) => (bar.amount > best.amount ? bar : best))
+  return {
+    state: 'aum',
+    emptyText: null,
+    title: `${formatPercent(top.amount / aum)} of AUM in ${top.category}`,
+    aumBars,
+    products,
+  }
+}
+
+function activityOf(customerTrx: Transaction[], asOf: string): Customer360['activity'] {
+  const inWindow = customerTrx.filter((t) => t.activity_date >= DETAIL_WINDOW_START && t.activity_date <= asOf)
+  const weekly = weeklyCounts(customerTrx, DETAIL_WINDOW_START, asOf).map((week) => ({
+    ...week,
+    // The first week can start before the window; label it by its first counted day.
+    label: formatDayMonth(week.weekStart < DETAIL_WINDOW_START ? DETAIL_WINDOW_START : week.weekStart),
+  }))
+  const earlier = earlierRows(customerTrx, DETAIL_WINDOW_START)
+  const channels = countBy(customerTrx, (t) => t.transaction_method)
+  const types = countBy(customerTrx, (t) => t.transaction_type)
+  return {
+    weeklyTitle: `${plural(inWindow.length, 'customer-initiated transaction', 'customer-initiated transactions')} since ${formatDate(DETAIL_WINDOW_START)}`,
+    weekly,
+    earlierText:
+      earlier.count > 0
+        ? `${plural(earlier.count, 'earlier transaction', 'earlier transactions')}, from ${earlier.earliest}`
+        : null,
+    channelTitle: mixTitle(channels, customerTrx.length),
+    channelMix: topWithOther(channels, CHANNEL_MIX_TOP),
+    typeTitle: mixTitle(types, customerTrx.length),
+    typeMix: types,
+  }
+}
+
+function customer360Of(rows: CustomerRows, asOf: string): Customer360 {
+  const { profile, portfolio, transactions } = rows
+  const customerTrx = transactions.filter(isCustomerInitiated)
+  const lastDate = customerTrx.length ? latestActivityDate(customerTrx) : null
+  const days = lastDate === null ? null : daysSince(lastDate, asOf)
+  const digital = digitalCounts(transactions)
+  const share = digital.counted === 0 ? null : digital.digital / digital.counted
+  const bankRows = bankEntrySummary(transactions)
+  const bankCount = bankRows.reduce((sum, row) => sum + row.count, 0)
+
+  return {
+    id: profile.customer_id,
+    heading: `Customer ${profile.customer_id}`,
+    profile: {
+      gender: genderLabel(profile.gender),
+      incomeBand: profile.customer_income,
+      incomeRankLabel: `rank ${incomeRank(profile.customer_income)} of ${INCOME_BANDS.length}`,
+      highIncome: isHighIncome(profile.customer_income),
+    },
+    kpis: {
+      aum: customerAum(portfolio),
+      loanExposure: loanExposure(portfolio),
+      heldLabel: `${heldCount(portfolio)} of ${portfolio.length} rows`,
+      recency: {
+        days,
+        label: days === null ? 'No customer-initiated transactions' : `${plural(days, 'day', 'days')} since last activity`,
+        lastDate,
+      },
+      digital: {
+        share,
+        label: share === null ? '—' : formatPercent(share),
+        context: `${digital.digital} of ${digital.counted} customer-initiated, BANCA method excluded`,
+      },
+    },
+    holdings: holdingsOf(portfolio),
+    activity: activityOf(customerTrx, asOf),
+    bankEntries: { title: bankCount ? plural(bankCount, 'bank entry', 'bank entries') : 'No bank entries', rows: bankRows },
+    transactions: transactions
+      .map((t, index) => ({ t, index }))
+      .sort((a, b) => b.t.activity_date.localeCompare(a.t.activity_date) || a.index - b.index)
+      .map(({ t, index }) => ({
+        key: `${index}`,
+        date: t.activity_date,
+        method: t.transaction_method,
+        type: t.transaction_type,
+        amount: t.transaction_amount,
+        kind: isBankEntry(t) ? 'bank' : 'customer',
+      })),
+  }
+}
+
+/** The view model for one customer, or `null` for an unknown ID. */
+export function buildCustomer360(data: Dataset, id: number): Customer360 | null {
+  const rows = groupByCustomer(data).get(id)
+  return rows ? customer360Of(rows, asOfDateOf(data)) : null
+}
+
+/** The rows of the transaction table for a filter: all, customer-initiated, or bank entries. */
+export function filterTransactionRows(rows: readonly TransactionRow[], filter: TransactionFilter): TransactionRow[] {
+  return filter === 'all' ? [...rows] : rows.filter((row) => row.kind === filter)
+}
+
+/** A route parameter as a customer ID: whole digits only, else `null`. */
+export function parseCustomerId(param: string | undefined): number | null {
+  return param !== undefined && /^\d+$/.test(param) ? Number(param) : null
+}
+
+export interface CustomerOption {
+  id: number
+  label: string
+  detail: string
+}
+
+/** One search option per customer, in ID order, with gender and income band as a second line. */
+export function customerOptions(data: Dataset): CustomerOption[] {
+  return [...data.profiles]
+    .sort((a, b) => a.customer_id - b.customer_id)
+    .map((p) => ({
+      id: p.customer_id,
+      label: `Customer ${p.customer_id}`,
+      detail: `${genderLabel(p.gender)} · ${p.customer_income}`,
+    }))
+}
+
+const byCustomer = groupByCustomer(dataset)
+const options = customerOptions(dataset)
+
+export function getCustomer360(id: number): Customer360 | null {
+  const rows = byCustomer.get(id)
+  return rows ? customer360Of(rows, asOfDate) : null
+}
+
+export function getCustomerOptions(): CustomerOption[] {
+  return options
+}
+
+/** The as-of date for the top bar, e.g. "As of 26 Apr 2024" (ADR 0005). */
+export const asOfLabel = `As of ${formatDate(asOfDate)}`
