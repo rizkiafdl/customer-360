@@ -75,7 +75,8 @@ e2e/                         Playwright smoke tests against the built site.
 docs/adr/                    Architecture Decision Records (project-wide decisions).
 docs/superpowers/specs/      Feature specs, written by the Superpowers brainstorming skill.
 docs/superpowers/plans/      Implementation plans, written by the Superpowers writing-plans skill.
-.claude/settings.json        Shared Claude Code config (enables the superpowers plugin).
+.claude/settings.json        Shared Claude Code config (superpowers plugin; push/PR/merge permissions for pr-shipper).
+.claude/agents/pr-shipper.md Agent that pushes a branch, opens the PR, waits for CI, and rebase-merges.
 ```
 
 Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
@@ -130,7 +131,7 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
    no `Co-Authored-By` trailer, also in subagent commits. A local
    `commit-msg` hook and CI enforce this with commitlint.
 8. **Each feature follows one flow, on its own branch** (`feat/<feature>`, or
-   `ci/<topic>`):
+   `ci/`, `docs/`, `chore/`, `fix/<topic>`):
    1. `brainstorming` → feature spec (approved by the user, then committed).
    2. `writing-plans` → plan.
    3. `subagent-driven-development` runs the plan: one subagent per task,
@@ -139,7 +140,15 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
    4. `verification-before-completion` (typecheck, lint, test, and build
       pass; one `npm run check` after E0) and
       `requesting-code-review` on the whole branch.
-   5. `finishing-a-development-branch` → PR. The user rebase-merges it after CI passes.
+   5. `finishing-a-development-branch` → PR. The main session is the
+      orchestrator: it writes the PR body to the scratchpad, then dispatches
+      the `pr-shipper` agent (`.claude/agents/pr-shipper.md`) with the
+      branch, title, and body file. The agent pushes, opens the PR, waits
+      for `checks` and `e2e`, rebase-merges only when both pass, and
+      watches the deploy. If CI fails, it stops and reports; the
+      orchestrator fixes the branch and dispatches it again. The agent never
+      edits code, force-pushes, or uses `--admin`, and the `main` ruleset
+      still rejects any merge that CI has not passed.
 
    If the feature has an ADR, the brainstorm makes the decision, and the ADR
    is task 1 of the plan. It goes in the same PR as the code, and the feature
