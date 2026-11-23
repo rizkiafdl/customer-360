@@ -19,7 +19,8 @@ export function WeeklyBars({ data, label }: { data: WeekDatum[]; label: string }
       aria-label={`${label}: ${data.map((w) => `week from ${w.label} ${w.count}`).join(', ')}`}
       className="aspect-auto h-44 w-full"
     >
-      <BarChart data={data} margin={{ left: 0, right: 8, top: 8, bottom: 0 }}>
+      {/* The container is role="img" with the data in its name, so the chart itself takes no keyboard focus. */}
+      <BarChart accessibilityLayer={false} data={data} margin={{ left: 0, right: 8, top: 8, bottom: 0 }}>
         <CartesianGrid vertical={false} />
         <XAxis dataKey="label" tick={AXIS_TICK} tickLine={false} axisLine={false} interval="preserveStartEnd" />
         <YAxis allowDecimals={false} width={28} tick={AXIS_TICK} tickLine={false} axisLine={false} />
