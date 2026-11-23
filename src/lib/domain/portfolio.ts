@@ -27,6 +27,11 @@ export function isHeld(item: PortfolioItem): boolean {
   return item.amount !== null && item.amount > 0
 }
 
+/** The customer holds at least one row of the category (`isHeld`, amount above 0). */
+export function holdsCategory(items: readonly PortfolioItem[], category: ProductCategory): boolean {
+  return items.some((item) => item.product_category === category && isHeld(item))
+}
+
 /** Number of rows the customer holds (`isHeld`), any category. */
 export function heldCount(items: readonly PortfolioItem[]): number {
   return items.filter(isHeld).length

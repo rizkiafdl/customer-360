@@ -2,9 +2,8 @@
  * The insight rules (ADR 0008). Each rule is a pure function of one
  * customer's inputs. Reasons come from fixed templates (CLAUDE.md Rule 9).
  */
-import { HIGH_INCOME_MIN_RANK, customerAum, isHeld, isHighIncome } from '@/lib/domain'
+import { HIGH_INCOME_MIN_RANK, customerAum, holdsCategory, isHighIncome } from '@/lib/domain'
 import { formatIDR } from '@/lib/format'
-import type { PortfolioItem } from '@/types'
 import { cashAmount } from './cash'
 import { formatSharePercent, formatWholePercent, incomeBandAtRank } from './text'
 import {
@@ -45,10 +44,6 @@ export function insightResult<Id extends InsightId>(
   return fired
     ? { id, fired: true, ruleText, evidence, reason: reason() }
     : { id, fired: false, ruleText, evidence, reason: null }
-}
-
-function holdsCategory(items: readonly PortfolioItem[], category: InvestmentCategory): boolean {
-  return items.some((item) => item.product_category === category && isHeld(item))
 }
 
 const CASH_HEAVY_TEXT =
