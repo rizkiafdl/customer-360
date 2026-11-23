@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { CATEGORY_COLORS } from '@/lib/domain'
 import type { PortfolioItem } from '@/types'
 import type { Dataset } from './dataset'
-import { buildOverview, getOverview } from './overview'
+import { buildOverview, getOverview, powerOfTenTicks } from './overview'
 
 function item(
   customer_id: number,
@@ -155,6 +155,16 @@ describe('buildOverview', () => {
     expect(overview.scatter.ticks).toHaveLength(8)
     expect(overview.scatter.ticks[0]).toEqual({ rank: 1, band: 'sd. 1 Juta' })
     expect(overview.scatter.ticks[7]).toEqual({ rank: 8, band: '>100 Juta' })
+  })
+})
+
+describe('powerOfTenTicks', () => {
+  it('gives at least two ticks when every value is the same power of ten', () => {
+    expect(powerOfTenTicks([10_000_000, 10_000_000])).toEqual([10_000_000, 100_000_000])
+  })
+
+  it('covers a single value that is not a power of ten', () => {
+    expect(powerOfTenTicks([15_036_089])).toEqual([10_000_000, 100_000_000])
   })
 })
 
