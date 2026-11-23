@@ -12,6 +12,12 @@ export interface BarDatum {
 /** Neutral bars for counts: not a category color, never red. */
 const NEUTRAL = 'var(--muted-foreground)'
 const config: ChartConfig = { value: { label: 'Value' } }
+/**
+ * Category axis width. The longest possible label, RETAIL TRANSACTION, is
+ * 123.6px at 12px Plus Jakarta Sans, and Recharts ends a label 8px before
+ * the axis edge. Checked in a real browser by the e2e smoke test.
+ */
+const LABEL_WIDTH = 136
 
 /**
  * One horizontal bar per entry, the value as a label at the end of each bar.
@@ -30,7 +36,17 @@ export function HorizontalBars({ data, format, label }: { data: BarDatum[]; form
     >
       <BarChart data={data} layout="vertical" margin={{ left: 0, right: 72, top: 4, bottom: 4 }}>
         <XAxis type="number" hide domain={[0, 'dataMax']} />
-        <YAxis type="category" dataKey="label" width={120} tickLine={false} axisLine={false} interval={0} />
+        <YAxis
+          type="category"
+          dataKey="label"
+          width={LABEL_WIDTH}
+          // Recharts measures a label in this style to decide where to wrap it.
+          // Without it, it measures at the body size (16px) and wraps labels that fit.
+          tick={{ style: { fontSize: 'var(--text-xs)' } }}
+          tickLine={false}
+          axisLine={false}
+          interval={0}
+        />
         <ChartTooltip
           cursor={false}
           content={({ active, payload }) => {

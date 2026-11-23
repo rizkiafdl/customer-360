@@ -57,3 +57,25 @@ test('the theme choice survives a reload', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Switch to dark theme' })).toBeVisible()
   expect(errors).toEqual([])
 })
+
+// jsdom cannot measure text, so the label fit is checked here. Customer 4857
+// has RETAIL TRANSACTION, the longest type label, in its type mix. Recharts
+// wraps a label that does not fit the axis width onto a second line.
+test('the bar chart category labels fit on one line inside the chart', async ({ page }) => {
+  const errors = collectErrors(page)
+  await page.goto('./customers/4857')
+  await expect(page.getByRole('img', { name: /^Type mix: .*RETAIL TRANSACTION/ })).toBeVisible()
+
+  const labels = page.locator('[role="img"] .recharts-yAxis-tick-labels text')
+  await expect(labels.filter({ hasText: 'RETAIL' })).toHaveCount(1)
+  const misfits: string[] = []
+  for (const label of await labels.all()) {
+    const text = (await label.textContent()) ?? ''
+    const box = await label.boundingBox()
+    const chart = await label.locator('xpath=ancestor::*[local-name()="svg"][1]').boundingBox()
+    const lines = await label.locator('tspan').count()
+    if (lines !== 1 || !box || !chart || box.x < chart.x) misfits.push(`${text} (${lines} lines)`)
+  }
+  expect(misfits).toEqual([])
+  expect(errors).toEqual([])
+})
