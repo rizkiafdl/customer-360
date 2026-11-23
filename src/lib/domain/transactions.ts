@@ -25,6 +25,19 @@ export function latestActivityDate(transactions: readonly Transaction[]): string
   )
 }
 
+/**
+ * The earliest `activity_date` over all rows, bank entries included. Shown as
+ * "First transaction", never as an account open date: the data has none.
+ * Throws a `RangeError` on an empty array.
+ */
+export function firstActivityDate(transactions: readonly Transaction[]): string {
+  if (transactions.length === 0) throw new RangeError('No transactions, so no first activity date.')
+  return transactions.reduce(
+    (first, trx) => (trx.activity_date < first ? trx.activity_date : first),
+    transactions[0]!.activity_date,
+  )
+}
+
 export interface LabelCount {
   label: string
   count: number

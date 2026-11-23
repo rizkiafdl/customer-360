@@ -5,7 +5,7 @@ import {
   type TransactionMethod,
   type TransactionType,
 } from '@/types'
-import { DIGITAL_METHODS, digitalCounts, digitalShare, isDigital } from './channels'
+import { DIGITAL_METHODS, digitalCounts, digitalShare, isDigital, topChannel } from './channels'
 
 function trx(transaction_method: TransactionMethod, transaction_type: TransactionType = 'TRANSFER'): Transaction {
   return {
@@ -68,5 +68,27 @@ describe('digitalCounts', () => {
       digital: 1,
       counted: 2,
     })
+  })
+})
+
+describe('topChannel', () => {
+  it('is the method with the most customer-initiated rows, bank entries left out', () => {
+    const rows = [
+      trx('MOBILE BANKING'),
+      trx('MOBILE BANKING'),
+      trx('ATM'),
+      trx('ATM', 'BUNGA'),
+      trx('ATM', 'BUNGA'),
+      trx('ATM', 'PAJAK'),
+    ]
+    expect(topChannel(rows)).toEqual({ method: 'MOBILE BANKING', count: 2, total: 3 })
+  })
+
+  it('breaks a tie by the method name in alphabetical order', () => {
+    expect(topChannel([trx('QRIS'), trx('ATM')])).toEqual({ method: 'ATM', count: 1, total: 2 })
+  })
+
+  it('is null when every row is a bank entry', () => {
+    expect(topChannel([trx('ATM', 'BUNGA'), trx('BRANCH', 'BIAYA')])).toBeNull()
   })
 })

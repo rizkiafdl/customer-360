@@ -5,6 +5,7 @@ import {
   OTHER_LABEL,
   bankEntrySummary,
   countBy,
+  firstActivityDate,
   isBankEntry,
   isCustomerInitiated,
   latestActivityDate,
@@ -117,5 +118,17 @@ describe('bankEntrySummary', () => {
 
   it('is empty when there are no bank entries', () => {
     expect(bankEntrySummary([row('TRANSFER', 'QRIS')])).toEqual([])
+  })
+})
+
+describe('firstActivityDate', () => {
+  it('is the earliest date over all rows, bank entries included', () => {
+    expect(firstActivityDate([trx('TRANSFER', '2024-04-01'), trx('BUNGA', '2011-01-27'), trx('TRANSFER', '2020-05-05')])).toBe(
+      '2011-01-27',
+    )
+  })
+
+  it('throws a RangeError on an empty array', () => {
+    expect(() => firstActivityDate([])).toThrow(RangeError)
   })
 })
