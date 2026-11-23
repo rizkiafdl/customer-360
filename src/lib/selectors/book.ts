@@ -1,6 +1,28 @@
 /** Selectors over the whole book of customers. */
-import { latestActivityDate } from '@/lib/domain'
+import { latestActivityDate, loanExposure } from '@/lib/domain'
+import { evaluateCustomer, type CustomerEvaluation } from '@/lib/insights'
+import type { PortfolioItem, Profile } from '@/types'
 import { dataset, type Dataset } from './dataset'
+import { groupByCustomer } from './grouping'
+
+/** One customer as the worklist (F4) and the overview (F5) see it. */
+export interface BookCustomer {
+  profile: Profile
+  portfolio: PortfolioItem[]
+  evaluation: CustomerEvaluation
+  /** LOAN total. Never added to `evaluation.aum`. */
+  loanExposure: number
+}
+
+/** One entry per profile, in profile order, over the shared grouping. */
+export function bookCustomersOf(data: Dataset): BookCustomer[] {
+  return [...groupByCustomer(data).values()].map(({ profile, portfolio }) => ({
+    profile,
+    portfolio,
+    evaluation: evaluateCustomer({ profile, portfolio }),
+    loanExposure: loanExposure(portfolio),
+  }))
+}
 
 export function customerCount(data: Dataset): number {
   return data.profiles.length
