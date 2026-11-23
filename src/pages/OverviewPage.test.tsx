@@ -31,14 +31,16 @@ describe('OverviewPage', () => {
     renderAt('/overview')
     const list = screen.getByRole('list', { name: 'Customers per opportunity type' })
     const links = within(list).getAllByRole('link')
-    expect(links.map((link) => link.textContent)).toEqual([
-      '12Cash-heavy AUM',
-      '29No REKSA',
-      '37No ORI',
-      '29No BANCA',
-      '16No AUM',
-      '6High income, no BANCA',
+    expect(links.map((link) => link.getAttribute('aria-label'))).toEqual([
+      'Cash-heavy AUM: 12 customers',
+      'No REKSA: 29 customers',
+      'No ORI: 37 customers',
+      'No BANCA: 29 customers',
+      'No AUM: 16 customers',
+      'High income, no BANCA: 6 customers',
     ])
+    expect(screen.getAllByRole('list', { name: 'Customers per opportunity type' })).toHaveLength(1)
+    expect(screen.queryByRole('region', { name: 'Customers per opportunity type' })).toBeNull()
     expect(links[2]).toHaveAttribute('href', '/?rule=investment-gap-ori')
   })
 
@@ -63,7 +65,7 @@ describe('OverviewPage', () => {
   it('opens the filtered worklist from an opportunity count', async () => {
     const user = userEvent.setup()
     const router = renderAt('/overview')
-    await user.click(screen.getByRole('link', { name: /No ORI$/ }))
+    await user.click(screen.getByRole('link', { name: 'No ORI: 37 customers' }))
     expect(router.state.location.pathname).toBe('/')
     expect(router.state.location.search).toBe('?rule=investment-gap-ori')
     const table = screen.getByRole('table', { name: 'Worklist' })

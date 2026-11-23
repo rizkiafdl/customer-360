@@ -60,12 +60,48 @@ describe('buildOverview', () => {
 
   it('counts customers per opportunity type, in RULE_ORDER, each linking to the filtered worklist', () => {
     expect(overview.opportunities).toEqual([
-      { id: 'cash-heavy', label: 'Cash-heavy AUM', count: 2, to: '/?rule=cash-heavy' },
-      { id: 'investment-gap-reksa', label: 'No REKSA', count: 1, to: '/?rule=investment-gap-reksa' },
-      { id: 'investment-gap-ori', label: 'No ORI', count: 1, to: '/?rule=investment-gap-ori' },
-      { id: 'investment-gap-banca', label: 'No BANCA', count: 1, to: '/?rule=investment-gap-banca' },
-      { id: 'no-aum', label: 'No AUM', count: 1, to: '/?rule=no-aum' },
-      { id: 'high-income-no-banca', label: 'High income, no BANCA', count: 1, to: '/?rule=high-income-no-banca' },
+      {
+        id: 'cash-heavy',
+        label: 'Cash-heavy AUM',
+        count: 2,
+        name: 'Cash-heavy AUM: 2 customers',
+        to: '/?rule=cash-heavy',
+      },
+      {
+        id: 'investment-gap-reksa',
+        label: 'No REKSA',
+        count: 1,
+        name: 'No REKSA: 1 customer',
+        to: '/?rule=investment-gap-reksa',
+      },
+      {
+        id: 'investment-gap-ori',
+        label: 'No ORI',
+        count: 1,
+        name: 'No ORI: 1 customer',
+        to: '/?rule=investment-gap-ori',
+      },
+      {
+        id: 'investment-gap-banca',
+        label: 'No BANCA',
+        count: 1,
+        name: 'No BANCA: 1 customer',
+        to: '/?rule=investment-gap-banca',
+      },
+      {
+        id: 'no-aum',
+        label: 'No AUM',
+        count: 1,
+        name: 'No AUM: 1 customer',
+        to: '/?rule=no-aum',
+      },
+      {
+        id: 'high-income-no-banca',
+        label: 'High income, no BANCA',
+        count: 1,
+        name: 'High income, no BANCA: 1 customer',
+        to: '/?rule=high-income-no-banca',
+      },
     ])
   })
 

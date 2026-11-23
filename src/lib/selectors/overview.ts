@@ -25,8 +25,11 @@ export interface Overview {
   header: string
   /** Two totals. Never added together. */
   totals: { aum: number; loanExposure: number }
-  /** One entry per rule, in `RULE_ORDER`. `to` opens the worklist filtered by the rule. */
-  opportunities: { id: RuleId; label: string; count: number; to: string }[]
+  /**
+   * One entry per rule, in `RULE_ORDER`. `to` opens the worklist filtered by
+   * the rule. `name` is the link's accessible name (`No ORI: 37 customers`).
+   */
+  opportunities: { id: RuleId; label: string; count: number; name: string; to: string }[]
   penetration: { title: string; bars: { label: ProductCategory; value: number; color: string }[] }
   scatter: {
     title: string
@@ -95,6 +98,7 @@ export function buildOverview(data: Dataset): Overview {
       id: rule.id,
       label: rule.label,
       count: counts[rule.id],
+      name: `${rule.label}: ${plural(counts[rule.id], 'customer', 'customers')}`,
       to: `/?rule=${rule.id}`,
     })),
     penetration: {
