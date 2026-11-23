@@ -10,6 +10,11 @@ export default defineConfig({
   // too, so paths are the same everywhere.
   base: '/customer-360/',
   plugins: [react(), tailwindcss()],
+  build: {
+    // The data JSON (~1.1 MB) is bundled on purpose (docs/adr/0001), so the
+    // one chunk is ~1.9 MB (~360 kB gzip). Warn only above 2 MB.
+    chunkSizeWarningLimit: 2048,
+  },
   resolve: {
     alias: {
       '@': path.resolve(import.meta.dirname, './src'),
