@@ -10,7 +10,7 @@ export interface CustomerEvaluation {
   aum: number
   tier: ValueTier
   /** Fired rules only, in `RULE_ORDER`. The first one is the top reason. */
-  insights: FiredInsight<RuleId>[]
+  insights: readonly FiredInsight<RuleId>[]
   /** The KYC income-band note when it fired, else `null`. Never a top reason. */
   kycNote: FiredInsight<'kyc-income-band'> | null
 }
