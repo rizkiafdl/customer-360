@@ -9,6 +9,8 @@ import {
   holdsCategory,
   isHeld,
   loanExposure,
+  loanFacilities,
+  shareOfAum,
 } from './portfolio'
 
 function row(
@@ -122,5 +124,54 @@ describe('holdsCategory', () => {
 
   it('is false with no row of the category', () => {
     expect(holdsCategory([row('FUNDING', 100)], 'ORI')).toBe(false)
+  })
+})
+
+describe('shareOfAum', () => {
+  it('is the amount over AUM for a held AUM row', () => {
+    expect(shareOfAum(row('FUNDING', 25), 100)).toBe(0.25)
+  })
+
+  it.each([
+    ['a LOAN row', row('LOAN', 25), 100],
+    ['a row with amount 0', row('ORI', 0), 100],
+    ['a row with a null amount', row('REKSA', null), 100],
+    ['AUM 0', row('FUNDING', 25), 0],
+  ] as const)('is null for %s', (_name, item, aum) => {
+    expect(shareOfAum(item, aum)).toBeNull()
+  })
+})
+
+describe('loanFacilities', () => {
+  const items = [
+    row('LOAN', 100, null),
+    row('LOAN', null, 'GIRO'),
+    row('LOAN', 300, 'KPR'),
+    row('LOAN', 0, 'CREDIT CARD'),
+    row('FUNDING', 999, 'TABUNGAN'),
+  ]
+
+  it('lists held LOAN rows, amount high to low, with the share of loan exposure', () => {
+    expect(loanFacilities(items).held).toEqual([
+      { product: 'KPR', amount: 300, shareOfExposure: 0.75 },
+      { product: 'Unnamed product', amount: 100, shareOfExposure: 0.25 },
+    ])
+  })
+
+  it('keeps LOAN rows with amount 0 or null as not held, and never a FUNDING row', () => {
+    expect(loanFacilities(items).notHeld.map((item) => item.product)).toEqual(['GIRO', 'CREDIT CARD'])
+  })
+
+  it('reports the loan exposure', () => {
+    expect(loanFacilities(items).exposure).toBe(400)
+  })
+
+  it('keeps equal amounts in data order', () => {
+    const tied = [row('LOAN', 50, 'A'), row('LOAN', 50, 'B')]
+    expect(loanFacilities(tied).held.map((f) => f.product)).toEqual(['A', 'B'])
+  })
+
+  it('is empty with no LOAN row', () => {
+    expect(loanFacilities([row('FUNDING', 10)])).toEqual({ held: [], notHeld: [], exposure: 0 })
   })
 })

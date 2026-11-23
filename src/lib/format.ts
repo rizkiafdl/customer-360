@@ -72,6 +72,12 @@ export function formatDayMonth(date: string): string {
   return `${day} ${month}`
 }
 
+/** `2014-07-03` → `Jul 2014`. */
+export function formatMonthYear(date: string): string {
+  const { month, year } = dateParts(date)
+  return `${month} ${year}`
+}
+
 /** A share from 0 to 1 as a whole percent: `0.784` → `78%`. */
 export function formatPercent(share: number): string {
   return `${Math.round(share * 100)}%`

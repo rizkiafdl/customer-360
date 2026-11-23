@@ -65,3 +65,45 @@ export function amountByCategory(
   for (const item of items) totals[item.product_category] += item.amount ?? 0
   return totals
 }
+
+/**
+ * The row's amount as a share of the customer's AUM. `null` for a LOAN row,
+ * a row that is not held, or AUM 0.
+ */
+export function shareOfAum(item: PortfolioItem, aum: number): number | null {
+  if (item.product_category === 'LOAN' || !isHeld(item) || aum === 0) return null
+  return item.amount! / aum
+}
+
+/** Label for the one LOAN row whose product is `null` in the data. */
+export const UNNAMED_PRODUCT = 'Unnamed product'
+
+export interface LoanFacility {
+  product: string
+  amount: number
+  /** amount / the customer's loan exposure. */
+  shareOfExposure: number
+}
+
+/**
+ * The customer's LOAN rows. `held` (amount above 0) sorts amount high to
+ * low, ties in data order. Product codes stay as they are: the data has no
+ * facility type, so no code is mapped to one.
+ */
+export function loanFacilities(items: readonly PortfolioItem[]): {
+  held: LoanFacility[]
+  notHeld: PortfolioItem[]
+  exposure: number
+} {
+  const loans = items.filter((item) => item.product_category === 'LOAN')
+  const exposure = loanExposure(loans)
+  const held = loans
+    .filter(isHeld)
+    .map((item) => ({
+      product: item.product ?? UNNAMED_PRODUCT,
+      amount: item.amount!,
+      shareOfExposure: item.amount! / exposure,
+    }))
+    .sort((a, b) => b.amount - a.amount)
+  return { held, notHeld: loans.filter((item) => !isHeld(item)), exposure }
+}

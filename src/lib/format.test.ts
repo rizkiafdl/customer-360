@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { formatDate, formatDayMonth, formatIDR, formatIDRShort, formatPercent } from './format'
+import { formatDate, formatDayMonth, formatIDR, formatIDRShort, formatMonthYear, formatPercent } from './format'
 
 // Intl puts a no-break space (U+00A0) between "Rp" and the number.
 const rp = (s: string) => s.replace(' ', ' ')
@@ -89,5 +89,15 @@ describe('formatPercent', () => {
     expect(formatPercent(0.625)).toBe('63%')
     expect(formatPercent(1)).toBe('100%')
     expect(formatPercent(0)).toBe('0%')
+  })
+})
+
+describe('formatMonthYear', () => {
+  it('shows the month name and the year', () => {
+    expect(formatMonthYear('2014-07-03')).toBe('Jul 2014')
+  })
+
+  it('rejects a value that is not a YYYY-MM-DD date', () => {
+    expect(() => formatMonthYear('2014-13-01')).toThrow(RangeError)
   })
 })

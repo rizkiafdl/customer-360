@@ -38,3 +38,24 @@ export function digitalShare(transactions: readonly Transaction[]): number | nul
   const { digital, counted } = digitalCounts(transactions)
   return counted === 0 ? null : digital / counted
 }
+
+export interface TopChannel {
+  method: TransactionMethod
+  /** Customer-initiated rows with this method. */
+  count: number
+  /** All customer-initiated rows. */
+  total: number
+}
+
+/**
+ * The method with the most customer-initiated rows (bank entries left out,
+ * user decision 2026-11-24). A tie goes to the method name first in
+ * alphabetical order. `null` when the customer has no customer-initiated row.
+ */
+export function topChannel(transactions: readonly Transaction[]): TopChannel | null {
+  const rows = transactions.filter(isCustomerInitiated)
+  const counts = new Map<TransactionMethod, number>()
+  for (const t of rows) counts.set(t.transaction_method, (counts.get(t.transaction_method) ?? 0) + 1)
+  const [top] = [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+  return top ? { method: top[0], count: top[1], total: rows.length } : null
+}
