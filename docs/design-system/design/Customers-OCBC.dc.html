@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OCBC red · Customers</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F7F6F5}
+a{color:#E2231A}a:hover{color:#9B1B14}
+.ic{width:16px;height:16px;flex:none}
+.th{padding:10px 12px;font-size:12px;font-weight:600;color:#5E6169;text-align:left;border-bottom:1px solid #E4E4DF;white-space:nowrap;background:#FAFAF8}
+.td{padding:0 12px;height:48px;font-size:14px;border-bottom:1px solid #EEEEEA;white-space:nowrap}
+.sel{min-height:40px;padding:0 10px;border:1px solid #D6D6D0;border-radius:8px;background:#FFFFFF;font:inherit;font-size:13px;color:#1D1B1A}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F7F6F5; font-family: Inter, system-ui, sans-serif; color: #1D1B1A; font-variant-numeric: tabular-nums">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E4E4DF">
+<div style="max-width: 1360px; margin: 0 auto; padding: 0 32px; min-height: 60px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px">
+<div style="display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px">
+<span style="width: 28px; height: 28px; border-radius: 8px; background: #E2231A; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; font-size: 13px">360</span>
+<span>Customer 360</span>
+</div>
+<nav aria-label="Main" style="display: flex; gap: 4px">
+<a href="Portfolio-OCBC.dc.html" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border-radius: 8px; color: #4A4D55; font-weight: 500; font-size: 14px; text-decoration: none"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>Portfolio</a>
+<a href="Customers-OCBC.dc.html" aria-current="page" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border-radius: 8px; background: #FFF1EF; color: #9B1B14; font-weight: 600; font-size: 14px; text-decoration: none"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Customers</a>
+</nav>
+<label style="flex: 1 1 280px; max-width: 520px; display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #E4E4DF; border-radius: 8px; background: #FAFAF8; color: #5E6169">
+<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+<span style="position: absolute; left: -9999px">Search customer</span>
+<input type="search" placeholder="Search customer ID" style="flex: 1; border: 0; background: transparent; font: inherit; font-size: 14px; color: #1D1B1A; outline: none; min-width: 0">
+</label>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5E6169">
+<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+Snapshot as of 26 Apr 2024
+</div>
+</div>
+</header>
+
+<main style="max-width: 1360px; margin: 0 auto; padding: 32px 32px 56px; display: flex; flex-direction: column; gap: 20px">
+
+<div>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 600; letter-spacing: -0.01em">Customers</h1>
+<p style="margin: 6px 0 0; font-size: 14px; color: #5E6169">100 customers, ranked by number of opportunities, then AUM. Select a row to preview.</p>
+</div>
+
+<div role="search" aria-label="Filter customers" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #5E6169"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4"/></svg>Filters</span>
+<label><span style="position: absolute; left: -9999px">Opportunity</span><select class="sel"><option>All opportunities</option><option>Cash-heavy AUM</option><option>No REKSA</option><option>No ORI</option><option>No BANCA</option><option>High income, no BANCA</option><option>No AUM</option></select></label>
+<label><span style="position: absolute; left: -9999px">Income band</span><select class="sel"><option>All income bands</option><option>sd. 1 Juta</option><option>&gt;1–3 Juta</option><option>&gt;3–5 Juta</option><option>&gt;5–10 Juta</option><option>&gt;10–25 Juta</option><option>&gt;25–50 Juta</option><option>&gt;50–100 Juta</option><option>&gt;100 Juta</option></select></label>
+<label><span style="position: absolute; left: -9999px">KYC note</span><select class="sel"><option>KYC: any</option><option>With KYC note</option><option>Without KYC note</option></select></label>
+<label><span style="position: absolute; left: -9999px">Last active</span><select class="sel"><option>Last active: any</option><option>≤ 30 days</option><option>31–90 days</option><option>&gt; 90 days</option></select></label>
+<label><span style="position: absolute; left: -9999px">AUM range</span><select class="sel"><option>AUM: any</option><option>No AUM</option><option>&lt; Rp 100 jt</option><option>Rp 100 jt – 1 M</option><option>&gt; Rp 1 M</option></select></label>
+<button type="button" style="min-height: 40px; padding: 0 12px; border: 0; background: transparent; font: inherit; font-size: 13px; color: #E2231A; font-weight: 600; cursor: pointer">Clear filters</button>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px">
+
+<section aria-label="Customer list" style="flex: 999 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #E4E4DF; border-radius: 12px; overflow: hidden">
+<div style="overflow-x: auto">
+<table style="width: 100%; border-collapse: collapse">
+<thead>
+<tr>
+<th class="th" style="width: 48px; text-align: right">#</th>
+<th class="th">Customer</th>
+<th class="th" style="text-align: right">AUM</th>
+<th class="th">Opportunities</th>
+<th class="th">Last active</th>
+<th class="th" style="width: 56px; text-align: center">KYC</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="14">
+<tr onClick="{{ r.pick }}" style="{{ r.rowStyle }}">
+<td class="td" style="text-align: right; color: #5E6169">{{ r.rank }}</td>
+<td class="td"><button type="button" onClick="{{ r.pick }}" aria-pressed="{{ r.pressed }}" style="border: 0; background: transparent; padding: 0; min-height: 44px; font: inherit; font-weight: 600; color: #1D1B1A; cursor: pointer">Customer {{ r.id }}</button></td>
+<td class="td" style="text-align: right; font-weight: 500">{{ r.aum }}</td>
+<td class="td">
+<span style="display: inline-flex; align-items: center; gap: 6px">
+<span style="{{ r.chipStyle }}">{{ r.chip }}</span>
+<sc-if value="{{ r.hasMore }}" hint-placeholder-val="{{ true }}"><span style="font-size: 12px; color: #5E6169; padding: 3px 8px; border: 1px solid #E4E4DF; border-radius: 12px">+{{ r.more }}</span></sc-if>
+</span>
+</td>
+<td class="td" style="{{ r.activeStyle }}">{{ r.active }}</td>
+<td class="td" style="text-align: center">
+<sc-if value="{{ r.kyc }}" hint-placeholder-val="{{ false }}"><svg role="img" aria-label="KYC note" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A5A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4M12 17h.01"/></svg></sc-if>
+</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 16px; font-size: 13px; color: #5E6169">
+<span>Showing 1–14 of 100</span>
+<span style="display: flex; gap: 6px">
+<button type="button" aria-label="Previous page" style="width: 40px; height: 40px; border: 1px solid #D6D6D0; border-radius: 8px; background: #FFFFFF; color: #4A4D55; cursor: pointer"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+<button type="button" aria-label="Next page" style="width: 40px; height: 40px; border: 1px solid #D6D6D0; border-radius: 8px; background: #FFFFFF; color: #4A4D55; cursor: pointer"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+</span>
+</div>
+</section>
+
+<aside aria-label="Customer preview" style="flex: 1 1 380px; max-width: 460px; background: #FFFFFF; border: 1px solid #E4E4DF; border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<span style="font-size: 12px; color: #5E6169">Preview · {{ pos }} of 14</span>
+<span style="display: flex; gap: 6px">
+<button type="button" onClick="{{ prev }}" aria-label="Previous customer" style="width: 40px; height: 40px; border: 1px solid #D6D6D0; border-radius: 8px; background: #FFFFFF; color: #4A4D55; cursor: pointer"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+<button type="button" onClick="{{ next }}" aria-label="Next customer" style="width: 40px; height: 40px; border: 1px solid #D6D6D0; border-radius: 8px; background: #FFFFFF; color: #4A4D55; cursor: pointer"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+</span>
+</div>
+
+<div>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Customer {{ sel.id }}</h2>
+<div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px">
+<sc-if value="{{ sel.detailed }}" hint-placeholder-val="{{ true }}">
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 12px; background: #F0F0EC; color: #4A4D55">Male · &gt;10–25 Juta</span>
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 12px; background: #FFF1EF; color: #9B1B14; font-weight: 600">High income</span>
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 12px; background: #F0F0EC; color: #4A4D55">Since 2014</span>
+</sc-if>
+<sc-if value="{{ sel.kyc }}" hint-placeholder-val="{{ false }}">
+<span style="display: inline-flex; align-items: center; gap: 4px; font-size: 12px; padding: 3px 8px; border-radius: 12px; background: #FBF1DC; color: #6B4600; font-weight: 600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4M12 17h.01"/></svg>KYC note</span>
+</sc-if>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<div style="border: 1px solid #EEEEEA; border-radius: 10px; padding: 12px"><div style="font-size: 12px; color: #5E6169">AUM</div><div style="margin-top: 4px; font-size: 18px; font-weight: 600">{{ sel.aum }}</div></div>
+<div style="border: 1px solid #EEEEEA; border-radius: 10px; padding: 12px"><div style="font-size: 12px; color: #5E6169">Loan exposure</div><div style="margin-top: 4px; font-size: 18px; font-weight: 600">{{ sel.loan }}</div></div>
+</div>
+
+<div>
+<div style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #5E6169"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Next best action</div>
+<div style="margin-top: 10px; border: 1px solid #F5C2BE; background: #FFF7F6; border-radius: 10px; padding: 14px">
+<div style="font-size: 15px; font-weight: 600">{{ sel.nbaTitle }}</div>
+<div style="margin-top: 4px; font-size: 13px; color: #4A4D55; line-height: 1.5">{{ sel.nbaWhy }}</div>
+</div>
+<sc-if value="{{ sel.detailed }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 8px; border: 1px solid #EEEEEA; border-radius: 10px; padding: 12px 14px; display: flex; justify-content: space-between; gap: 8px; font-size: 13px">
+<span><strong>Offer BANCA</strong> <span style="color: #5E6169">· no BANCA, high income</span></span>
+<span style="color: #5E6169">#2</span>
+</div>
+</sc-if>
+</div>
+
+<sc-if value="{{ sel.detailed }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #4A4D55"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>Mostly mobile banking (38%) · active 2 days ago</div>
+</sc-if>
+
+<a href="Customer360-OCBC.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; border-radius: 10px; background: #E2231A; color: #FFFFFF; font-weight: 600; font-size: 14px; text-decoration: none">Open full 360<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+</aside>
+
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1180}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { i: 0 }; }
+  renderVals() {
+    const data = [
+      ['8797', 'Rp 1,3 M', 'Rp 3,5 M', 4, 'cash', 84, 'Rp 1.061.852.300', false],
+      ['2759', 'Rp 13 M', 'Rp 33,9 M', 3, 'cash', 91, 'Rp 11.809.559.481', false],
+      ['2022', 'Rp 3,7 M', 'Rp 184,1 M', 3, 'cash', 82, 'Rp 3.004.503.624', true],
+      ['7027', 'Rp 1,4 M', 'Rp 6,1 M', 3, 'REKSA', 0, '', true],
+      ['7163', 'Rp 1,3 M', 'Rp 6,7 M', 3, 'cash', 83, 'Rp 1.105.946.922', true],
+      ['2146', 'Rp 423,7 jt', 'Rp 1 M', 3, 'REKSA', 0, '', false],
+      ['6386', 'Rp 420,2 jt', 'Rp 1,8 M', 3, 'ORI', 0, '', false],
+      ['4062', 'Rp 200,7 jt', 'Rp 5,8 M', 3, 'REKSA', 0, '', false],
+      ['7550', 'Rp 137,6 jt', 'Rp 15,4 M', 3, 'REKSA', 0, '', false],
+      ['4251', 'Rp 244,6 M', 'Rp 3,3 M', 2, 'cash', 99, 'Rp 243.182.933.859', false],
+      ['7732', 'Rp 224,4 M', 'Rp 4,2 M', 2, 'cash', 99, 'Rp 222.285.571.645', true],
+      ['6217', 'Rp 31,8 M', 'Rp 210,9 M', 2, 'ORI', 0, '', true],
+      ['7170', 'Rp 31,3 M', 'Rp 5,5 M', 2, 'cash', 86, 'Rp 27.217.908.259', false],
+      ['7903', 'Rp 21,1 M', 'Rp 2,3 M', 2, 'REKSA', 0, '', true]
+    ];
+    const chipColors = {
+      cash: 'background: #E8EEFB; color: #2D4C9E',
+      REKSA: 'background: #FBF1DC; color: #6B4600',
+      ORI: 'background: #E0F1EF; color: #0A5C56'
+    };
+    const i = this.state.i;
+    const rows = data.map((d, k) => {
+      const on = k === i;
+      return {
+        rank: k + 1, id: d[0], aum: d[1],
+        chip: d[4] === 'cash' ? 'Cash-heavy ' + d[5] + '%' : 'No ' + d[4],
+        chipStyle: 'font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 12px; ' + chipColors[d[4]],
+        more: d[3] - 1, hasMore: d[3] > 1,
+        active: k === 0 ? '2 days ago' : '[date]',
+        activeStyle: k === 0 ? 'color: #1D1B1A' : 'color: #8B8E95',
+        kyc: d[7],
+        pressed: on ? 'true' : 'false',
+        pick: () => this.setState({ i: k }),
+        rowStyle: 'cursor: pointer; ' + (on ? 'background: #FFF7F6; box-shadow: inset 3px 0 0 #E2231A' : '')
+      };
+    });
+    const d = data[i];
+    let nbaTitle, nbaWhy;
+    if (i === 0) {
+      nbaTitle = 'Offer REKSA';
+      nbaWhy = 'No REKSA yet, and 84% of AUM sits in cash (Rp 1.061.852.300). 2 rules support this.';
+    } else if (d[4] === 'cash') {
+      nbaTitle = 'Move idle cash into REKSA or ORI';
+      nbaWhy = d[5] + '% of AUM in cash (' + d[6] + '). ' + d[3] + ' opportunities in total.';
+    } else {
+      nbaTitle = 'Offer ' + d[4];
+      nbaWhy = 'No ' + d[4] + ' yet, AUM ' + d[1] + '. ' + d[3] + ' opportunities in total.';
+    }
+    const sel = { id: d[0], aum: d[1], loan: d[2], kyc: d[7], detailed: i === 0, nbaTitle, nbaWhy };
+    return {
+      rows, sel, pos: i + 1,
+      prev: () => this.setState({ i: (i + data.length - 1) % data.length }),
+      next: () => this.setState({ i: (i + 1) % data.length })
+    };
+  }
+}
+</script>
+</body>
+</html>

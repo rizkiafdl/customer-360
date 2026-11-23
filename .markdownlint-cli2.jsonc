@@ -10,6 +10,8 @@
     "test-results/**",
     ".superpowers/**",
     // Local Claude Code agent checkouts, not repo files.
-    ".claude/worktrees/**"
+    ".claude/worktrees/**",
+    // Claude Design export, kept as received for the redesign v2 spec.
+    "docs/design-system/**"
   ]
 }
