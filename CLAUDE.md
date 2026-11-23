@@ -126,8 +126,9 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
 6. **Do not hand-edit `src/data/*.json`.** Change `scripts/excel/normalize.ts`,
    then run `npm run data:build` and commit the regenerated JSON.
 7. **Commits use Conventional Commits** (`feat:`, `fix:`, `chore:`, `docs:`,
-   `test:`, `refactor:`, `build:`). The author is the repo owner only: no
-   `Co-Authored-By` trailer, also in subagent commits.
+   `test:`, `refactor:`, `build:`, `ci:`). The author is the repo owner only:
+   no `Co-Authored-By` trailer, also in subagent commits. A local
+   `commit-msg` hook and CI enforce this with commitlint.
 8. **Each feature follows one flow, on its own branch** (`feat/<feature>`, or
    `ci/<topic>`):
    1. `brainstorming` → feature spec (approved by the user, then committed).
