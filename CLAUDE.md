@@ -39,8 +39,13 @@ The reasons for each choice are in `docs/adr/0002-stack-choice.md`.
 | `npm run typecheck` | `tsc -b` for app code (`tsconfig.app.json`) and Node code (`tsconfig.node.json`). |
 | `npm run data:build` | Regenerate `src/data/*.json` from `data/raw/AE Test_1126.xlsx`. |
 | `npm run preview` | Serve the production build. |
+| `npm run check` | typecheck → lint → lint:md → test → build. |
+| `npm run lint:md` | markdownlint over every `*.md` file (`.markdownlint-cli2.jsonc`). |
+| `npm run test:coverage` | Vitest with the v8 coverage table (reported, not enforced). |
+| `npm run e2e` | Playwright smoke test against `dist/`. Run `npm run build` first. |
 
-Before every commit, all of `typecheck`, `lint`, `test`, and `build` must pass.
+`npm run check` must pass before every push. CI runs the same checks plus the
+e2e smoke test (`docs/adr/0003-engineering-workflow.md`).
 
 ## Folder structure
 
@@ -65,6 +70,8 @@ src/
   pages/                     Route-level components (render only).
   routes.tsx                 Route table, shared by `main.tsx` and tests.
   test/setup.ts              Vitest setup (jest-dom matchers, RTL cleanup).
+e2e/                         Playwright smoke tests against the built site.
+.github/                     CI workflow (checks → e2e → deploy) and Dependabot.
 docs/adr/                    Architecture Decision Records (project-wide decisions).
 docs/superpowers/specs/      Feature specs, written by the Superpowers brainstorming skill.
 docs/superpowers/plans/      Implementation plans, written by the Superpowers writing-plans skill.
