@@ -29,7 +29,7 @@ export function CustomerSearch() {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-72 p-0" align="start">
-        <Command>
+        <Command label="Search customers">
           <CommandInput placeholder="Customer ID" />
           <CommandList>
             <CommandEmpty>No customer with that ID.</CommandEmpty>
