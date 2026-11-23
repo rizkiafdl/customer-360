@@ -128,6 +128,19 @@ test('the bar chart category labels fit on one line inside the chart', async ({ 
   expect(errors).toEqual([])
 })
 
+test('the overview AUM axis is labelled at each power of ten', async ({ page }) => {
+  const errors = collectErrors(page)
+  await page.goto('./overview')
+  const chart = page.getByRole('img', { name: /^Income band vs AUM/ })
+  await expect(chart).toBeVisible()
+
+  const labels = chart.locator('.recharts-yAxis-tick-labels text')
+  await labels.first().waitFor()
+  const texts = (await labels.allTextContents()).map((text) => text.replace(/\s/g, ' '))
+  expect(texts).toEqual(['Rp 10 jt', 'Rp 100 jt', 'Rp 1 M', 'Rp 10 M', 'Rp 100 M', 'Rp 1 T'])
+  expect(errors).toEqual([])
+})
+
 for (const { path, chart } of [
   { path: './customers/4426', chart: /^Customer-initiated transactions per week/ },
   { path: './overview', chart: /^Income band vs AUM/ },

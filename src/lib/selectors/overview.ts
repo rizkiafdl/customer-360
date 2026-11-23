@@ -33,12 +33,29 @@ export interface Overview {
     /** How many customers are left out (AUM 0), or `null` when none are. */
     footer: string | null
     ticks: { rank: number; band: IncomeBand }[]
+    /** Log y axis ticks: each power of ten from at or below the lowest AUM to at or above the highest. Empty with no points. */
+    aumTicks: number[]
     /** AUM above 0 only: the y axis is log scale. */
     points: ScatterPoint[]
   }
 }
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
+
+/** Powers of ten that cover `values` (all above 0). Built by multiplying, so each tick is exact. */
+function powerOfTenTicks(values: readonly number[]): number[] {
+  if (values.length === 0) return []
+  const min = Math.min(...values)
+  const max = Math.max(...values)
+  let tick = 1
+  while (tick * 10 <= min) tick *= 10
+  const ticks = [tick]
+  while (tick < max) {
+    tick *= 10
+    ticks.push(tick)
+  }
+  return ticks
+}
 
 /** The four AUM categories first, then LOAN. */
 const PENETRATION_ORDER: readonly ProductCategory[] = [...AUM_CATEGORIES, 'LOAN']
@@ -88,6 +105,7 @@ export function buildOverview(data: Dataset): Overview {
       title: `${plural(points.length, 'customer', 'customers')} with AUM, ${kycPoints} with the KYC note`,
       footer: left === 0 ? null : `${plural(left, 'customer with no AUM is', 'customers with no AUM are')} not plotted.`,
       ticks: INCOME_BANDS.map((band) => ({ rank: incomeRank(band), band })),
+      aumTicks: powerOfTenTicks(points.map((p) => p.aum)),
       points,
     },
   }

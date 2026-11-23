@@ -106,6 +106,15 @@ describe('buildOverview', () => {
     expect(allAum.scatter.footer).toBeNull()
   })
 
+  it('gives the AUM axis one tick per power of ten, from below the lowest point to above the highest', () => {
+    expect(overview.scatter.aumTicks).toEqual([100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000, 100_000_000, 1_000_000_000])
+  })
+
+  it('has no AUM ticks when no customer has AUM', () => {
+    const noAum = buildOverview({ ...fixture, portfolio: [] })
+    expect(noAum.scatter.aumTicks).toEqual([])
+  })
+
   it('has one income tick per band, rank 1 to 8', () => {
     expect(overview.scatter.ticks).toHaveLength(8)
     expect(overview.scatter.ticks[0]).toEqual({ rank: 1, band: 'sd. 1 Juta' })
@@ -143,5 +152,9 @@ describe('overview on the real data', () => {
 
   it('gives the log axis only positive AUM, the lowest Rp 15.036.089', () => {
     expect(Math.min(...real.scatter.points.map((p) => p.aum))).toBe(15_036_089)
+  })
+
+  it('gives the AUM axis the ticks Rp 10 jt to Rp 1 T', () => {
+    expect(real.scatter.aumTicks).toEqual([1e7, 1e8, 1e9, 1e10, 1e11, 1e12])
   })
 })

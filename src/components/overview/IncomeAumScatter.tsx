@@ -65,7 +65,9 @@ export function IncomeAumScatter({ scatter, label }: { scatter: Overview['scatte
             type="number"
             dataKey="aum"
             scale="log"
-            domain={['auto', 'auto']}
+            domain={[scatter.aumTicks[0] ?? 'auto', scatter.aumTicks.at(-1) ?? 'auto']}
+            ticks={scatter.aumTicks}
+            interval={0}
             tickFormatter={(aum: number) => formatIDRShort(aum)}
             tick={AXIS_TICK}
             width={72}
