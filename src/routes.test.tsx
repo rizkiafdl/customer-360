@@ -49,6 +49,13 @@ describe('routes', () => {
     expect(link.className).not.toMatch(/brand/)
   })
 
+  it('gives the search input its own accessible name', async () => {
+    const user = userEvent.setup()
+    renderAt('/')
+    await user.click(screen.getByRole('combobox', { name: 'Search customer' }))
+    expect(screen.getByRole('combobox', { name: 'Search customers' })).toHaveAttribute('placeholder', 'Customer ID')
+  })
+
   it('opens a customer from the search', async () => {
     const user = userEvent.setup()
     const router = renderAt('/')
