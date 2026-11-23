@@ -25,6 +25,18 @@ test('the worklist ranks the customers and a row opens the detail page', async (
   expect(errors).toEqual([])
 })
 
+test('a letter typed in the middle of the worklist ID is dropped and the caret stays', async ({ page }) => {
+  await page.goto('./?q=4426')
+  const input = page.getByRole('textbox', { name: 'Filter by customer ID' })
+  await input.click()
+  await input.press('Home')
+  await input.press('ArrowRight')
+  await input.press('ArrowRight')
+  await input.pressSequentially('a7')
+  await expect(input).toHaveValue('44726')
+  await expect(page).toHaveURL(/\?q=44726$/)
+})
+
 test('the overview opens from a direct deep link and a count filters the worklist', async ({ page }) => {
   const errors = collectErrors(page)
   await page.goto('./overview')

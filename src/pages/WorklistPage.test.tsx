@@ -92,6 +92,22 @@ describe('WorklistPage', () => {
     expect(router.state.location.search).toBe('?q=44')
   })
 
+  it('keeps the caret in place when a letter is typed in the middle of the ID', async () => {
+    const user = userEvent.setup()
+    renderAt('/?q=4426')
+    const input = screen.getByRole<HTMLInputElement>('textbox', { name: 'Filter by customer ID' })
+    input.focus()
+    input.setSelectionRange(2, 2)
+    await user.keyboard('a7')
+    expect(input).toHaveValue('44726')
+  })
+
+  it('shows an empty ID box for a URL ID the filter ignores', () => {
+    renderAt('/?q=4a')
+    expect(screen.getByRole('textbox', { name: 'Filter by customer ID' })).toHaveValue('')
+    expect(bodyRows()).toHaveLength(100)
+  })
+
   it('sorts the Customer column in ascending order on the first click', async () => {
     const user = userEvent.setup()
     renderAt('/')

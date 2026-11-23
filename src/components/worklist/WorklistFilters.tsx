@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { RULES, type RuleId } from '@/lib/insights'
+import { toIdQuery } from '@/lib/selectors/worklist'
 
 /** The select has no empty item value, so "all types" is its own value. */
 const ALL = 'all'
@@ -15,7 +16,7 @@ export function WorklistFilters({
   onClear,
 }: {
   rule: RuleId | null
-  /** The raw `q` text, so the input shows what was typed. */
+  /** The ID box text: digits only (`toIdQuery`). */
   q: string
   onRuleChange: (rule: RuleId | null) => void
   onQueryChange: (q: string) => void
@@ -41,7 +42,19 @@ export function WorklistFilters({
         placeholder="ID contains"
         inputMode="numeric"
         value={q}
-        onChange={(event) => onQueryChange(event.target.value)}
+        onChange={(event) => {
+          // Strip non-digits in the field itself and put the caret back after
+          // the digits before it. Otherwise React resets the value and the
+          // caret jumps to the end.
+          const field = event.target
+          const q = toIdQuery(field.value)
+          if (q !== field.value) {
+            const caret = toIdQuery(field.value.slice(0, field.selectionStart ?? field.value.length)).length
+            field.value = q
+            field.setSelectionRange(caret, caret)
+          }
+          onQueryChange(q)
+        }}
         className="w-36"
       />
       <Button variant="outline" size="sm" onClick={onClear}>
