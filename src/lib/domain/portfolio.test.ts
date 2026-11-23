@@ -6,6 +6,7 @@ import {
   amountByCategory,
   customerAum,
   heldCount,
+  holdsCategory,
   isHeld,
   loanExposure,
 } from './portfolio'
@@ -103,5 +104,23 @@ describe('heldCount', () => {
   it('counts rows with amount above 0', () => {
     expect(heldCount(mixed)).toBe(3)
     expect(heldCount([])).toBe(0)
+  })
+})
+
+describe('holdsCategory', () => {
+  it('is true when a row of the category has an amount above 0', () => {
+    expect(holdsCategory([row('LOAN', 5), row('ORI', 1)], 'ORI')).toBe(true)
+  })
+
+  it('is false when the only row of the category has amount 0', () => {
+    expect(holdsCategory([row('ORI', 0)], 'ORI')).toBe(false)
+  })
+
+  it('is false when the only row of the category has a null amount', () => {
+    expect(holdsCategory([row('ORI', null)], 'ORI')).toBe(false)
+  })
+
+  it('is false with no row of the category', () => {
+    expect(holdsCategory([row('FUNDING', 100)], 'ORI')).toBe(false)
   })
 })
