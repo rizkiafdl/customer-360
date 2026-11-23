@@ -45,15 +45,19 @@ export interface Overview {
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
 
-/** Powers of ten that cover `values` (all above 0). Built by multiplying, so each tick is exact. */
-function powerOfTenTicks(values: readonly number[]): number[] {
+/**
+ * Powers of ten that cover `values`, at least two so the log axis has a
+ * range. Assumes every value is at least 1 (AUM is whole rupiah above 0).
+ * Built by multiplying, so each tick is exact.
+ */
+export function powerOfTenTicks(values: readonly number[]): number[] {
   if (values.length === 0) return []
   const min = Math.min(...values)
   const max = Math.max(...values)
   let tick = 1
   while (tick * 10 <= min) tick *= 10
   const ticks = [tick]
-  while (tick < max) {
+  while (tick < max || ticks.length < 2) {
     tick *= 10
     ticks.push(tick)
   }
