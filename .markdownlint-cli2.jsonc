@@ -8,6 +8,8 @@
     "coverage/**",
     "playwright-report/**",
     "test-results/**",
-    ".superpowers/**"
+    ".superpowers/**",
+    // Local Claude Code agent checkouts, not repo files.
+    ".claude/worktrees/**"
   ]
 }
