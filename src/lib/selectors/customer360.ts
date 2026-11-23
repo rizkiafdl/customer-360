@@ -30,6 +30,7 @@ import {
   type LabelCount,
 } from '@/lib/domain'
 import { formatDate, formatDayMonth, formatPercent } from '@/lib/format'
+import { evaluateCustomer, offerPanel, type OfferPanel } from '@/lib/insights'
 import {
   INCOME_BANDS,
   type Gender,
@@ -102,6 +103,8 @@ export interface Customer360 {
     typeTitle: string | null
     typeMix: LabelCount[]
   }
+  /** The "What to offer" panel (F3). */
+  offers: OfferPanel
   bankEntries: { title: string; rows: BankEntryTotal[] }
   transactions: TransactionRow[]
 }
@@ -226,6 +229,7 @@ function customer360Of(rows: CustomerRows, asOf: string): Customer360 {
     },
     holdings: holdingsOf(portfolio),
     activity: activityOf(customerTrx, asOf),
+    offers: offerPanel(evaluateCustomer({ profile, portfolio })),
     bankEntries: { title: bankCount ? plural(bankCount, 'bank entry', 'bank entries') : 'No bank entries', rows: bankRows },
     transactions: transactions
       .map((t, index) => ({ t, index }))
