@@ -35,7 +35,8 @@ export function HorizontalBars({ data, format, label }: { data: BarDatum[]; form
       className="aspect-auto w-full"
       style={{ height: data.length * 28 + 8 }}
     >
-      <BarChart data={data} layout="vertical" margin={{ left: 0, right: 72, top: 4, bottom: 4 }}>
+      {/* The container is role="img" with the data in its name, so the chart itself takes no keyboard focus. */}
+      <BarChart accessibilityLayer={false} data={data} layout="vertical" margin={{ left: 0, right: 72, top: 4, bottom: 4 }}>
         <XAxis type="number" hide domain={[0, 'dataMax']} />
         <YAxis
           type="category"

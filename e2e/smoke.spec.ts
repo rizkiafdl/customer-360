@@ -128,6 +128,15 @@ test('the bar chart category labels fit on one line inside the chart', async ({ 
   expect(errors).toEqual([])
 })
 
+for (const path of ['./customers/4426', './overview']) {
+  test(`no chart is a keyboard stop (${path})`, async ({ page }) => {
+    await page.goto(path)
+    await page.locator('[role="img"] svg').first().waitFor()
+    const stops = await page.evaluate<number>(`document.querySelectorAll('[role="img"] [tabindex]:not([tabindex="-1"])').length`)
+    expect(stops).toBe(0)
+  })
+}
+
 test('the overview AUM axis is labelled at each power of ten', async ({ page }) => {
   const errors = collectErrors(page)
   await page.goto('./overview')

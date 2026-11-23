@@ -47,7 +47,8 @@ export function IncomeAumScatter({ scatter, label }: { scatter: Overview['scatte
         aria-label={`${label}: ${scatter.title}`}
         className="aspect-auto h-80 w-full"
       >
-        <ScatterChart margin={{ left: 0, right: 12, top: 8, bottom: 0 }}>
+        {/* The container is role="img" with the data in its name, so the chart itself takes no keyboard focus. */}
+        <ScatterChart accessibilityLayer={false} margin={{ left: 0, right: 12, top: 8, bottom: 0 }}>
           <CartesianGrid />
           <XAxis
             type="number"
