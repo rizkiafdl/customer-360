@@ -41,6 +41,14 @@ describe('routes', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Page not found' })).toBeInTheDocument()
   })
 
+  it('keeps the "Back to customers" link out of brand red, also on hover', () => {
+    renderAt('/nope')
+    // Spec 4.6: red is for primary buttons, active nav, and the focus ring only.
+    const link = screen.getByRole('link', { name: 'Back to customers' })
+    expect(link).toHaveClass('text-foreground', 'underline', 'hover:text-foreground')
+    expect(link.className).not.toMatch(/brand/)
+  })
+
   it('opens a customer from the search', async () => {
     const user = userEvent.setup()
     const router = renderAt('/')
