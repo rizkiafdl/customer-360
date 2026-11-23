@@ -61,8 +61,8 @@ The as-of date is defined in ADR 0005.
   customers equals the AUM total over all non-LOAN rows.
 - A change to a definition is a change to this ADR, to one domain function,
   and to its tests. It is never a change in a component.
-- Business thresholds that Part 2 did not define (value tiers, digital
-  methods, insight triggers) are not here. They come from the user
+- Business thresholds that Part 2 did not define (digital methods,
+  insight triggers) are not here. They come from the user
   (CLAUDE.md Rule 3) and live in the insights layer.
 
 ## Alternatives considered

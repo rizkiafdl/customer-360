@@ -67,7 +67,7 @@ src/
     format.ts                `formatIDR()` — the only money formatter.
     domain/                  Business definitions (AUM, holds, bank entries, income rank, days since). ADR 0006.
     selectors/               The only importers of `src/data`. Pure `fn(dataset)` + bound exports (`asOfDate`).
-    insights/                Insight rules, value tiers, KYC note. Every cut-off lives in `thresholds.ts`. ADR 0008.
+    insights/                Insight rules, KYC note. Every cut-off lives in `thresholds.ts`. ADR 0008.
   components/ui/             shadcn/ui generated components (add with `npx shadcn@latest add <name>`).
   components/                App components (render only).
   pages/                     Route-level components (render only).
@@ -220,7 +220,7 @@ transactions as a net flow): `docs/adr/0006-business-definitions.md`, code in
 (`2024-04-26`), never today: `docs/adr/0005-as-of-date.md`.
 
 Insight rules (cash-heavy, investment gap, no AUM, high income without
-BANCA), value tiers, the KYC income-band note, the rule order, and every
+BANCA), the KYC income-band note, the rule order, and every
 threshold with its source: `docs/adr/0008-insight-rules-and-thresholds.md`,
 code in `src/lib/insights/` (thresholds only in `thresholds.ts`). The
 selectors in `src/lib/selectors/insights.ts` pin each fire count on the
