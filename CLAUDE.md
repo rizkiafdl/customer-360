@@ -65,12 +65,16 @@ src/
   types/                     Record types + allowed-value constants (one file per dataset).
   lib/                       Business logic: pure, tested functions. `utils.ts` is shadcn's `cn`.
     format.ts                `formatIDR()` — the only money formatter.
+    domain/                  Business definitions (AUM, holds, bank entries, income rank, days since). ADR 0006.
+    selectors/               The only importers of `src/data`. Pure `fn(dataset)` + bound exports (`asOfDate`).
+    insights/                (F2) Insight rules and the thresholds module.
   components/ui/             shadcn/ui generated components (add with `npx shadcn@latest add <name>`).
   components/                App components (render only).
   pages/                     Route-level components (render only).
   routes.tsx                 Route table, shared by `main.tsx` and tests.
   test/setup.ts              Vitest setup (jest-dom matchers, RTL cleanup).
 e2e/                         Playwright smoke tests against the built site.
+eslint.config.test.ts        Proves the ESLint layer rule blocks bad imports (ADR 0004).
 .github/                     CI workflow (checks → e2e → deploy) and Dependabot.
 docs/adr/                    Architecture Decision Records (project-wide decisions).
 docs/superpowers/specs/      Feature specs, written by the Superpowers brainstorming skill.
@@ -91,6 +95,17 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
    - Each function in `src/lib/` has a co-located `*.test.ts` file.
    - Components and pages call `src/lib/` functions and render the result. They
      do not compute business values inline.
+   - **Layers, one-way imports** (ADR 0004, enforced by `npm run lint`):
+     UI (`pages/`, `components/`, `routes.tsx`, `main.tsx`) → `lib/selectors/`
+     → `lib/insights/` → `lib/domain/` → `types/`. Shared helpers
+     (`lib/format.ts`, `lib/utils.ts`) are usable from any layer and import
+     nothing from `src/`.
+   - Only `src/lib/selectors/` imports `src/data`. No layer imports a layer
+     above it. Skipping layers downward is allowed (UI may import a domain
+     constant). Test files follow their layer's rule.
+   - Domain and insight functions take plain arrays (one customer's rows), so
+     their tests use small fixtures. Contract tests on the real data live in
+     `src/lib/selectors/`.
 2. **Money is IDR and always goes through `formatIDR()`** from `src/lib/format.ts`.
    - Never call `Intl.NumberFormat` or `toLocaleString` for money anywhere else.
    - Never hard-code `Rp` strings.
@@ -134,12 +149,11 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
    `ci/`, `docs/`, `chore/`, `fix/<topic>`):
    1. `brainstorming` → feature spec (approved by the user, then committed).
    2. `writing-plans` → plan.
-   3. `subagent-driven-development` runs the plan: one subagent per task,
-      with a review after each task. For small, config-only features,
-      `executing-plans` in the main session is allowed.
-   4. `verification-before-completion` (typecheck, lint, test, and build
-      pass; one `npm run check` after E0) and
-      `requesting-code-review` on the whole branch.
+   3. `executing-plans` in the main session, or one implementer subagent
+      for the whole feature, runs the plan. There is no review after each
+      task; TDD is the per-task gate.
+   4. `verification-before-completion` (one `npm run check`) and one
+      `requesting-code-review` over the whole branch.
    5. `finishing-a-development-branch` → PR. The main session is the
       orchestrator: it writes the PR body to the scratchpad, then dispatches
       the `pr-shipper` agent (`.claude/agents/pr-shipper.md`) with the
@@ -153,6 +167,14 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
    If the feature has an ADR, the brainstorm makes the decision, and the ADR
    is task 1 of the plan. It goes in the same PR as the code, and the feature
    spec links to it.
+9. **Copy rule for insight and rules text.** No AI-style filler.
+   - A reason is the fired rule plus its evidence numbers. Nothing else.
+   - No adjectives, no advice tone, no exclamation marks, no generated text.
+   - Money goes through `formatIDR()` (Rule 2).
+   - Text is built from fixed templates in `src/lib/insights/`, so tests
+     check exact strings.
+   - ✗ "Great opportunity to grow this customer's wealth with mutual funds!"
+     ✓ "No REKSA. AUM Rp 1.384.200.000, 92% in savings."
 
 ## Data model
 
@@ -190,3 +212,9 @@ and any treatment of them belongs in `src/lib/` (and needs a user decision under
 - 14 customers have no porto rows. Every customer has transactions.
 
 Data decisions: `docs/adr/0001-static-json-from-excel.md`.
+
+Business definitions (AUM excludes LOAN, holds = `amount > 0`, bank entries =
+`BUNGA`/`BIAYA`/`PAJAK`/`DENDA`, high income = income rank ≥ 5, never sum
+transactions as a net flow): `docs/adr/0006-business-definitions.md`, code in
+`src/lib/domain/`. The as-of date is the latest `activity_date`
+(`2024-04-26`), never today: `docs/adr/0005-as-of-date.md`.
