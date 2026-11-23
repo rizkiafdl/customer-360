@@ -1,5 +1,6 @@
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 import { ChartContainer, ChartTooltip, type ChartConfig } from '@/components/ui/chart'
+import { AXIS_TICK } from './axis'
 
 export interface WeekDatum {
   weekStart: string
@@ -20,8 +21,8 @@ export function WeeklyBars({ data, label }: { data: WeekDatum[]; label: string }
     >
       <BarChart data={data} margin={{ left: 0, right: 8, top: 8, bottom: 0 }}>
         <CartesianGrid vertical={false} />
-        <XAxis dataKey="label" tickLine={false} axisLine={false} interval="preserveStartEnd" />
-        <YAxis allowDecimals={false} width={28} tickLine={false} axisLine={false} />
+        <XAxis dataKey="label" tick={AXIS_TICK} tickLine={false} axisLine={false} interval="preserveStartEnd" />
+        <YAxis allowDecimals={false} width={28} tick={AXIS_TICK} tickLine={false} axisLine={false} />
         <ChartTooltip
           cursor={false}
           content={({ active, payload }) => {

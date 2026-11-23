@@ -1,6 +1,7 @@
 import { Bar, BarChart, Cell, LabelList, XAxis, YAxis } from 'recharts'
 import { ChartContainer, ChartTooltip, type ChartConfig } from '@/components/ui/chart'
 import { formatIDR, formatIDRShort } from '@/lib/format'
+import { AXIS_TICK } from './axis'
 
 export interface BarDatum {
   label: string
@@ -42,7 +43,7 @@ export function HorizontalBars({ data, format, label }: { data: BarDatum[]; form
           width={LABEL_WIDTH}
           // Recharts measures a label in this style to decide where to wrap it.
           // Without it, it measures at the body size (16px) and wraps labels that fit.
-          tick={{ style: { fontSize: 'var(--text-xs)' } }}
+          tick={AXIS_TICK}
           tickLine={false}
           axisLine={false}
           interval={0}
