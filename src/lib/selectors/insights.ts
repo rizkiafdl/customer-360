@@ -6,21 +6,12 @@ import {
   type CustomerInput,
   type RuleId,
 } from '@/lib/insights'
-import type { PortfolioItem } from '@/types'
 import { dataset, type Dataset } from './dataset'
+import { groupByCustomer } from './grouping'
 
 /** One input per profile, in profile order, each with that customer's rows only. */
 export function customerInputsOf(data: Dataset): CustomerInput[] {
-  const rowsByCustomer = new Map<number, PortfolioItem[]>()
-  for (const item of data.portfolio) {
-    const rows = rowsByCustomer.get(item.customer_id)
-    if (rows) rows.push(item)
-    else rowsByCustomer.set(item.customer_id, [item])
-  }
-  return data.profiles.map((profile) => ({
-    profile,
-    portfolio: rowsByCustomer.get(profile.customer_id) ?? [],
-  }))
+  return [...groupByCustomer(data).values()].map(({ profile, portfolio }) => ({ profile, portfolio }))
 }
 
 export function evaluationsOf(data: Dataset): CustomerEvaluation[] {

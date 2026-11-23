@@ -36,13 +36,13 @@ import {
   type IncomeBand,
   type PortfolioItem,
   type ProductCategory,
-  type Profile,
   type Transaction,
   type TransactionMethod,
   type TransactionType,
 } from '@/types'
 import { asOfDate, asOfDateOf } from './book'
 import { dataset, type Dataset } from './dataset'
+import { groupByCustomer, type CustomerRows } from './grouping'
 
 /** How many channels the channel mix shows before it folds the rest into "Other" (F1 spec 5.2). */
 const CHANNEL_MIX_TOP = 5
@@ -106,27 +106,12 @@ export interface Customer360 {
   transactions: TransactionRow[]
 }
 
-interface CustomerRows {
-  profile: Profile
-  portfolio: PortfolioItem[]
-  transactions: Transaction[]
-}
-
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
 
 const GENDER_LABELS: Record<Gender, string> = { F: 'Female', M: 'Male' }
 
 function genderLabel(gender: Gender | null): string {
   return gender === null ? 'Gender not recorded' : GENDER_LABELS[gender]
-}
-
-/** Rows per customer, built in one pass over each dataset. */
-export function groupByCustomer(data: Dataset): Map<number, CustomerRows> {
-  const rows = new Map<number, CustomerRows>()
-  for (const profile of data.profiles) rows.set(profile.customer_id, { profile, portfolio: [], transactions: [] })
-  for (const item of data.portfolio) rows.get(item.customer_id)?.portfolio.push(item)
-  for (const trx of data.transactions) rows.get(trx.customer_id)?.transactions.push(trx)
-  return rows
 }
 
 /** "X is 17% of 6 customer-initiated transactions", from the largest entry. */
