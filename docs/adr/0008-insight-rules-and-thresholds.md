@@ -30,11 +30,10 @@ Part 2 analyses of this assessment.
 - **One thresholds module,** `src/lib/insights/thresholds.ts`. Every value
   has a comment that names its source: a user decision with its date, or
   Part 1 or Part 2 by name.
-- **The rules and the tier** (user decisions, 2026-11-23):
+- **The rules** (user decisions, 2026-11-23):
 
   | Item | Condition |
   | --- | --- |
-  | Value tier | No AUM = 0; Mass < Rp 1 Bn; Affluent Rp 1 Bn to below Rp 5 Bn; Priority ≥ Rp 5 Bn |
   | `cash-heavy` | AUM > 0 and cash ≥ 80% of AUM. Cash = FUNDING products whose name does not start with `DEPO`. |
   | `investment-gap-reksa`, `-ori`, `-banca` | Holds no row of the category, and AUM > Rp 100.000.000 (Part 1 cut-off) |
   | `no-aum` | AUM = 0 |
@@ -51,7 +50,7 @@ Part 2 analyses of this assessment.
   plus its evidence numbers, money through `formatIDR()`, no adjectives, no
   advice tone. Tests assert exact strings.
 - **Contract tests** in `src/lib/selectors/` pin the fire count of every
-  rule, the tier counts, and the KYC note count on the committed data.
+  rule and the KYC note count on the committed data.
 
 ## Consequences
 
@@ -62,8 +61,6 @@ Part 2 analyses of this assessment.
   contract test on purpose.
 - The rules cannot learn. A new signal needs a new rule, a user decision,
   and tests.
-- The tier edges fit this data's distribution (median AUM Rp 1.38 Bn). On a
-  very different book they would need a new decision.
 
 ## Alternatives considered
 
@@ -73,9 +70,11 @@ Part 2 analyses of this assessment.
 - **Thresholds computed from the data at load time** (for example the
   top 20% by AUM). Rejected: the value moves with the data, and the rules
   page could not state it as a fixed number.
-- **Part 1 tier edges (Rp 10 jt, Rp 100 jt).** Rejected by the user: 83 of
-  100 customers sit above Rp 100 jt, so the top tier would hold almost
-  everyone.
+- **Value tiers by AUM** (No AUM, Mass < Rp 1 Bn, Affluent Rp 1–5 Bn,
+  Priority ≥ Rp 5 Bn). Built in F2, then removed by the user on 2026-11-23:
+  a label only, no rule or ranking used it. Before that, the Part 1 tier
+  edges (Rp 10 jt, Rp 100 jt) were rejected: 83 of 100 customers sit above
+  Rp 100 jt, so the top tier would hold almost everyone.
 - **Thresholds spread across the rule files.** Rejected: one module with
   sources is easier to review and to change.
 - **The KYC note as a ranking signal.** Rejected: a low income band with a
