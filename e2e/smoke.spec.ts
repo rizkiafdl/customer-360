@@ -34,7 +34,7 @@ test('the overview opens from a direct deep link and a count filters the worklis
   await expect(page.getByText('84 customers with AUM, 43 with the KYC note')).toBeVisible()
   await page
     .getByRole('list', { name: 'Customers per opportunity type' })
-    .getByRole('link', { name: /No ORI$/ })
+    .getByRole('link', { name: 'No ORI: 37 customers' })
     .click()
 
   await expect(page).toHaveURL(/\/\?rule=investment-gap-ori$/)
