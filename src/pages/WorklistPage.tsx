@@ -3,7 +3,7 @@ import { useLocation, useNavigationType, useSearchParams } from 'react-router'
 import { WorklistFilters } from '@/components/worklist/WorklistFilters'
 import { WorklistTable } from '@/components/worklist/WorklistTable'
 import type { RuleId } from '@/lib/insights'
-import { filterWorklist, getWorklist, parseWorklistFilters, toIdQuery, worklistSummary } from '@/lib/selectors/worklist'
+import { filterWorklist, getWorklist, parseWorklistFilters, worklistSummary } from '@/lib/selectors/worklist'
 
 /** Route `/`: the ranked opportunity worklist, filtered by the URL (F4 spec, section 4). */
 export function WorklistPage() {
@@ -15,14 +15,15 @@ export function WorklistPage() {
   // The ID box keeps its own text. The router commits URL changes in a
   // transition, so a box bound straight to `q` loses the caret on each key.
   // Filter writes use `replace`. Any other navigation (a link, Back) sets
-  // the box from the new URL. "Clear filters" empties it directly.
+  // the box from the new URL (empty when the filter ignores its `q`).
+  // "Clear filters" empties it directly.
   const location = useLocation()
   const navigationType = useNavigationType()
-  const [qText, setQText] = useState(params.get('q') ?? '')
+  const [qText, setQText] = useState(filters.q ?? '')
   const [seenKey, setSeenKey] = useState(location.key)
   if (location.key !== seenKey) {
     setSeenKey(location.key)
-    if (navigationType !== 'REPLACE') setQText(params.get('q') ?? '')
+    if (navigationType !== 'REPLACE') setQText(filters.q ?? '')
   }
 
   const setParam = (key: 'rule' | 'q', value: string | null) =>
@@ -48,8 +49,7 @@ export function WorklistPage() {
         rule={filters.rule}
         q={qText}
         onRuleChange={(rule: RuleId | null) => setParam('rule', rule)}
-        onQueryChange={(text) => {
-          const q = toIdQuery(text)
+        onQueryChange={(q) => {
           setQText(q)
           setParam('q', q)
         }}
