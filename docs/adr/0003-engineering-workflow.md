@@ -48,15 +48,24 @@ same checks as the code.
   (`markdownlint-cli2`, defaults with MD013 line length off), Vitest with v8
   coverage, a data drift check (`npm run data:build` then
   `git diff --exit-code src/data`), and the build. The build output is saved
-  as an artifact.
+  as the `dist` artifact. On `main` only, the same build is also saved as the
+  `github-pages` artifact with `actions/upload-pages-artifact`.
 - `e2e`: one Playwright smoke test (Chromium) against that build, served by
   `vite preview`. It fails on a missing heading, a page error, or a console
   error. Each feature that adds a route adds a test, with a direct deep-link
   load.
-- `deploy`: on push to `main` only. It deploys the same build that `e2e`
-  tested to GitHub Pages with the official actions
-  (`actions/upload-pages-artifact`, `actions/deploy-pages`). Only this job
-  gets write permissions.
+- `deploy`: on `main` only (a push, or a manual `workflow_dispatch` run).
+  It runs one step, `actions/deploy-pages`, which deploys the `github-pages`
+  artifact from `checks`. That is the same build that `e2e` tested. Only
+  this job gets write permissions.
+- The Pages artifact is uploaded in `checks`, not in `deploy`, for two
+  reasons. First, `actions/deploy-pages` lists the run's artifacts once, with
+  no retry, and an artifact uploaded less than a second earlier can be
+  missing from that list. Main runs 45190744525 and 45199705930 failed this
+  way ("Found 1 artifact(s)", then "No artifacts named github-pages").
+  Second, `actions/deploy-pages` fails when the run has more than one
+  `github-pages` artifact, so an upload in `deploy` made every rerun of that
+  job fail.
 - Coverage is shown in the job summary. No minimum is enforced.
 
 ### Hosting
@@ -86,6 +95,10 @@ same checks as the code.
   first.
 - Dependabot PRs need a manual rebase merge, like any other PR.
 - Deploys need no secrets. Pages uses the workflow's OIDC token.
+- If `deploy` fails, use "Re-run failed jobs". "Re-run all jobs" runs
+  `checks` again, which uploads a second `github-pages` artifact, so the
+  deploy fails. To redeploy from a clean run, start a `workflow_dispatch` run
+  on `main`.
 - A docs-only PR waits a few minutes for the full pipeline.
 
 ## Alternatives considered
@@ -113,6 +126,9 @@ same checks as the code.
   workflow never reports the required checks, so the PR waits forever. The
   workaround, a changed-files job, makes the workflow harder to read.
 - **No Markdown lint.** Rejected: format errors in the docs reach `main`.
+- **Upload the Pages artifact inside `deploy`.** Rejected: the deploy step
+  can run before the new artifact is listed, and every rerun of the job adds
+  one more `github-pages` artifact.
 - **`gh-pages` branch.** Rejected: puts build output in the git history.
 - **Vercel or Netlify.** Rejected: a second platform outside GitHub.
 - **`HashRouter`.** Rejected: works without the `404.html` copy, but every
