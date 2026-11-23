@@ -6,6 +6,9 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // GitHub Pages serves the repo under /customer-360/. Dev and preview use it
+  // too, so paths are the same everywhere.
+  base: '/customer-360/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
