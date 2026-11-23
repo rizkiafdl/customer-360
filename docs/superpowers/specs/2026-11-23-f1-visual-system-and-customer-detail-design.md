@@ -172,8 +172,10 @@ values are in the sRGB gamut. `--primary` is one step darker than
 
 - **App shell:** left sidebar with "Customers" (`/`) and the active item in
   brand red. Top bar: customer search, the as-of date ("As of 26 Apr
-  2024"), and the theme toggle. Works down to laptop width (1024 px);
-  below that the sidebar collapses (shadcn `sidebar` behavior).
+  2024"), and the theme toggle. Works down to tablet width (768 px);
+  below that the sidebar becomes a slide-in sheet. 768 px is the shadcn
+  `sidebar` default (`src/hooks/use-mobile.ts`). The first draft said
+  1024 px; the build kept the default.
 - **Customer search:** a combobox (shadcn `command` in a `popover`) over all
   100 customer IDs, with gender and income band as a second line. Selecting
   one opens `/customers/:id`. This is the "filter per customer".
