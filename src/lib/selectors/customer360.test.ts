@@ -11,6 +11,7 @@ import {
   type Customer360,
 } from './customer360'
 import { dataset } from './dataset'
+import { getCustomerEvaluation } from './insights'
 
 function build(id: number): Customer360 {
   const vm = buildCustomer360(fixtureDataset, id)
@@ -179,7 +180,30 @@ describe('customerOptions', () => {
       { id: 1, label: 'Customer 1', detail: 'Female · >10 Juta - 25 Juta' },
       { id: 2, label: 'Customer 2', detail: 'Gender not recorded · sd. 1 Juta' },
       { id: 3, label: 'Customer 3', detail: 'Male · >3 Juta - 5 Juta' },
+      { id: 4, label: 'Customer 4', detail: 'Female · >1 Juta - 3 Juta' },
     ])
+  })
+})
+
+describe('buildCustomer360: offers', () => {
+  it('shows both BANCA cards for the high-income customer with no BANCA held', () => {
+    const { offers } = build(1)
+    expect(offers.cards.map((card) => card.id)).toEqual(['investment-gap-banca', 'high-income-no-banca'])
+    expect(offers.emptyText).toBeNull()
+    expect(offers.note).toBeNull()
+  })
+
+  it('shows the no-AUM card, not the empty line, for a customer with no portfolio rows', () => {
+    const { offers } = build(2)
+    expect(offers.cards.map((card) => card.id)).toEqual(['no-aum'])
+    expect(offers.emptyText).toBeNull()
+  })
+
+  it('shows the empty line and the KYC note when only the note fired', () => {
+    const { offers } = build(4)
+    expect(offers.cards).toEqual([])
+    expect(offers.emptyText).toBe('No offer rule fired.')
+    expect(offers.note?.label).toBe('KYC income band')
   })
 })
 
@@ -200,6 +224,31 @@ describe('Customer 360 on the real data', () => {
     const states = dataset.profiles.map((p) => getCustomer360(p.customer_id)?.holdings.state)
     expect(states.filter((s) => s === 'none')).toHaveLength(14)
     expect(states.filter((s) => s === 'no-aum')).toHaveLength(2)
+  })
+
+  it('shows the measured offer card counts (F3 spec 5)', () => {
+    const panels = dataset.profiles.map((p) => getCustomer360(p.customer_id)!.offers)
+    const byCount = [0, 1, 2, 3, 4].map((n) => panels.filter((panel) => panel.cards.length === n).length)
+    expect(byCount).toEqual([16, 49, 26, 8, 1])
+    expect(panels.filter((panel) => panel.cards.length === 0 && panel.note !== null)).toHaveLength(9)
+  })
+
+  it('shows both BANCA cards for exactly customers 6386, 6513, and 8797', () => {
+    const both = dataset.profiles
+      .map((p) => getCustomer360(p.customer_id)!)
+      .filter((vm) => {
+        const ids = vm.offers.cards.map((card) => card.id)
+        return ids.includes('investment-gap-banca') && ids.includes('high-income-no-banca')
+      })
+      .map((vm) => vm.id)
+    expect(both).toEqual([6386, 6513, 8797])
+  })
+
+  it('shows one card per fired rule of the evaluation, for every customer', () => {
+    for (const { customer_id: id } of dataset.profiles) {
+      const cards = getCustomer360(id)!.offers.cards.map((card) => card.id)
+      expect(cards).toEqual(getCustomerEvaluation(id)!.insights.map((insight) => insight.id))
+    }
   })
 
   it('has one option per customer and the as-of label', () => {
