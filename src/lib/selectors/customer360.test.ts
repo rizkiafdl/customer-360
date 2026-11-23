@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { isCustomerInitiated } from '@/lib/domain'
 import { fixtureDataset } from '@/test/fixtures'
 import {
   asOfLabel,
@@ -17,6 +18,11 @@ function build(id: number): Customer360 {
   const vm = buildCustomer360(fixtureDataset, id)
   if (!vm) throw new Error(`fixture customer ${id} did not build`)
   return vm
+}
+
+/** The fixture transactions, with only the bank entries left for customer `id`. */
+function bankEntriesOnly(id: number) {
+  return fixtureDataset.transactions.filter((t) => t.customer_id !== id || !isCustomerInitiated(t))
 }
 
 describe('buildCustomer360: profile', () => {
@@ -61,9 +67,15 @@ describe('buildCustomer360: KPIs', () => {
   it('gives the digital share with its counts, BANCA method excluded', () => {
     expect(build(1).kpis.digital).toEqual({
       share: 0.6,
+      meter: 60,
       label: '60%',
       context: '3 of 5 customer-initiated, BANCA method excluded',
     })
+  })
+
+  it('gives an empty digital meter when no row is left to count', () => {
+    const vm = buildCustomer360({ ...fixtureDataset, transactions: bankEntriesOnly(2) }, 2)
+    expect(vm?.kpis.digital).toMatchObject({ share: null, meter: 0, label: '—' })
   })
 })
 
@@ -133,6 +145,12 @@ describe('buildCustomer360: activity', () => {
     expect(activity.channelTitle).toBe('ATM is 17% of 6 customer-initiated transactions')
     expect(activity.typeMix.map((e) => e.label)).not.toContain('BUNGA')
     expect(activity.typeMix).toHaveLength(6)
+    expect(activity.mixEmptyText).toBeNull()
+  })
+
+  it('gives the mix charts an empty text when no row is customer-initiated', () => {
+    const vm = buildCustomer360({ ...fixtureDataset, transactions: bankEntriesOnly(2) }, 2)
+    expect(vm?.activity.mixEmptyText).toBe('No customer-initiated transactions.')
   })
 })
 

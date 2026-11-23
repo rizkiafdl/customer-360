@@ -25,7 +25,7 @@ export function KpiRow({ kpis }: { kpis: Customer360['kpis'] }) {
           context={
             <>
               <Progress
-                value={digital.share === null ? 0 : digital.share * 100}
+                value={digital.meter}
                 aria-label="Digital share"
                 className="my-1 h-1.5 *:data-[slot=progress-indicator]:bg-muted-foreground"
               />
