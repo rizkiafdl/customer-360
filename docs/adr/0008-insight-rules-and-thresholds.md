@@ -92,7 +92,7 @@ cards. The rules, the thresholds, and the fire counts (12 / 29 / 37 / 29 / 16
 | Fired rule | Card |
 | --- | --- |
 | `investment-gap-reksa` / `-ori` / `-banca` | The REKSA / ORI / BANCA card. |
-| `cash-heavy` | Added to the REKSA card and to the ORI card when those cards exist. If neither exists (the customer holds both), its own `Cash` card. |
+| `cash-heavy` | Added to the REKSA card and to the ORI card when those cards exist. If neither exists (the customer holds both, or AUM is not above the gap floor), its own `Cash` card. |
 | `high-income-no-banca` | Added to the BANCA card, or creates it. |
 | `no-aum` | Its own `No AUM` card. |
 
