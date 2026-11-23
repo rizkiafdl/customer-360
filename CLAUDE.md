@@ -71,10 +71,12 @@ src/
     theme.ts                 Dark/light switch (`readStoredTheme`, `applyTheme`). ADR 0007.
     domain/                  Business definitions (AUM, holds, bank entries, income rank, days since). ADR 0006.
     selectors/               The only importers of `src/data`. Pure `fn(dataset)` + bound exports (`asOfDate`).
-    insights/                Insight rules, KYC note. Every cut-off lives in `thresholds.ts`. ADR 0008.
+    insights/                Insight rules, KYC note, and the worklist ranking. Every cut-off lives in `thresholds.ts`. ADR 0008.
   components/ui/             shadcn/ui generated components (add with `npx shadcn@latest add <name>`).
   components/                App components (render only): app shell, search, theme toggle.
   components/customer/       Customer 360 detail sections: KPI tiles, charts, tables.
+  components/worklist/       Worklist (`/`) table and filters.
+  components/overview/       Overview (`/overview`) opportunity strip and income-vs-AUM scatter.
   hooks/                     shadcn's hooks (`use-mobile`). UI layer (ADR 0004).
   pages/                     Route-level components (render only).
   routes.tsx                 Route table, shared by `main.tsx` and tests.

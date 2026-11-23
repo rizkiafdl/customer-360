@@ -11,12 +11,34 @@ function collectErrors(page: Page): string[] {
   return errors
 }
 
-test('home page lists the customers', async ({ page }) => {
+test('the worklist ranks the customers and a row opens the detail page', async ({ page }) => {
   const errors = collectErrors(page)
   await page.goto('./')
 
   await expect(page.getByRole('heading', { level: 1, name: 'Customers' })).toBeVisible()
-  await expect(page.getByRole('list', { name: 'Customers' }).getByRole('link')).toHaveCount(100)
+  const rows = page.getByRole('table', { name: 'Worklist' }).locator('tbody tr')
+  await expect(rows).toHaveCount(100)
+  await rows.first().getByRole('link', { name: 'Customer 8797' }).click()
+
+  await expect(page).toHaveURL(/\/customers\/8797$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'Customer 8797' })).toBeVisible()
+  expect(errors).toEqual([])
+})
+
+test('the overview opens from a direct deep link and a count filters the worklist', async ({ page }) => {
+  const errors = collectErrors(page)
+  await page.goto('./overview')
+
+  await expect(page.getByRole('heading', { level: 1, name: 'Overview' })).toBeVisible()
+  await expect(page.getByText('ORI held by 46 of 100 customers')).toBeVisible()
+  await expect(page.getByText('84 customers with AUM, 43 with the KYC note')).toBeVisible()
+  await page
+    .getByRole('list', { name: 'Customers per opportunity type' })
+    .getByRole('link', { name: /No ORI$/ })
+    .click()
+
+  await expect(page).toHaveURL(/\/\?rule=investment-gap-ori$/)
+  await expect(page.getByRole('table', { name: 'Worklist' }).locator('tbody tr')).toHaveCount(37)
   expect(errors).toEqual([])
 })
 
@@ -106,25 +128,30 @@ test('the bar chart category labels fit on one line inside the chart', async ({ 
   expect(errors).toEqual([])
 })
 
-test('chart axis text follows the theme color, not the Recharts default grey', async ({ page }) => {
-  const errors = collectErrors(page)
-  await page.goto('./customers/4426')
-  await expect(page.getByRole('img', { name: /^Customer-initiated transactions per week/ })).toBeVisible()
-  await page.locator('[role="img"] [class*="Axis-tick-labels"] text').first().waitFor()
+for (const { path, chart } of [
+  { path: './customers/4426', chart: /^Customer-initiated transactions per week/ },
+  { path: './overview', chart: /^Income band vs AUM/ },
+]) {
+  test(`chart axis text follows the theme color, not the Recharts default grey (${path})`, async ({ page }) => {
+    const errors = collectErrors(page)
+    await page.goto(path)
+    await expect(page.getByRole('img', { name: chart })).toBeVisible()
+    await page.locator('[role="img"] [class*="Axis-tick-labels"] text').first().waitFor()
 
-  // Strings, not functions: this file has no DOM types (it runs in Node).
-  const muted = await page.evaluate<string>(`(() => {
-    const probe = document.createElement('span')
-    probe.className = 'text-muted-foreground'
-    document.body.append(probe)
-    const color = getComputedStyle(probe).color
-    probe.remove()
-    return color
-  })()`)
-  const fills = await page.evaluate<string[]>(
-    `[...document.querySelectorAll('[role="img"] [class*="Axis-tick-labels"] text')].map((node) => getComputedStyle(node).fill)`,
-  )
-  expect(fills.length).toBeGreaterThan(0)
-  expect(fills.filter((fill) => fill !== muted)).toEqual([])
-  expect(errors).toEqual([])
-})
+    // Strings, not functions: this file has no DOM types (it runs in Node).
+    const muted = await page.evaluate<string>(`(() => {
+      const probe = document.createElement('span')
+      probe.className = 'text-muted-foreground'
+      document.body.append(probe)
+      const color = getComputedStyle(probe).color
+      probe.remove()
+      return color
+    })()`)
+    const fills = await page.evaluate<string[]>(
+      `[...document.querySelectorAll('[role="img"] [class*="Axis-tick-labels"] text')].map((node) => getComputedStyle(node).fill)`,
+    )
+    expect(fills.length).toBeGreaterThan(0)
+    expect(fills.filter((fill) => fill !== muted)).toEqual([])
+    expect(errors).toEqual([])
+  })
+}
