@@ -17,6 +17,7 @@ import {
   digitalCounts,
   digitalShare,
   earlierRows,
+  firstActivityDate,
   heldCount,
   incomeRank,
   isBankEntry,
@@ -25,13 +26,16 @@ import {
   isHighIncome,
   latestActivityDate,
   loanExposure,
+  loanFacilities,
+  shareOfAum,
   topWithOther,
   weeklyCounts,
   type BankEntryTotal,
   type LabelCount,
+  type LoanFacility,
 } from '@/lib/domain'
-import { formatDate, formatDayMonth, formatPercent } from '@/lib/format'
-import { evaluateCustomer, offerPanel, type OfferPanel } from '@/lib/insights'
+import { formatDate, formatDayMonth, formatIDR, formatMonthYear, formatPercent } from '@/lib/format'
+import { evaluateCustomer, offerPanel, productOffers, type OfferPanel, type ProductOffer } from '@/lib/insights'
 import {
   INCOME_BANDS,
   type Gender,
@@ -43,6 +47,7 @@ import {
   type TransactionType,
 } from '@/types'
 import { asOfDate, asOfDateOf } from './book'
+import { channelText } from './customers'
 import { dataset, type Dataset } from './dataset'
 import { groupByCustomer, type CustomerRows } from './grouping'
 
@@ -79,11 +84,15 @@ export interface Customer360 {
     incomeBand: IncomeBand
     incomeRankLabel: string
     highIncome: boolean
+    /** `First transaction Jul 2014`, bank entries included; `null` with no rows. */
+    firstTransaction: string | null
   }
   kpis: {
     aum: number
     loanExposure: number
     heldLabel: string
+    /** Held AUM rows and their categories in `AUM_CATEGORIES` order; `label` is `3 · FUNDING, ORI, REKSA`. */
+    products: { count: number; categories: ProductCategory[]; label: string }
     recency: { days: number | null; label: string; lastDate: string | null }
     /** `meter` is the share as a whole percent for the progress bar, 0 when there is no share. */
     digital: { share: number | null; meter: number; label: string; context: string }
@@ -95,6 +104,10 @@ export interface Customer360 {
     title: string | null
     aumBars: { category: ProductCategory; amount: number; color: string }[]
     products: ProductRow[]
+    /** Held AUM rows, amount high to low, each with its share of AUM. Never LOAN. */
+    held: { product: string; category: ProductCategory; color: string; amount: number; share: number }[]
+    /** AUM rows with amount 0 or `null`. Never LOAN. */
+    notHeld: ProductRow[]
   }
   activity: {
     weeklyTitle: string
@@ -109,6 +122,14 @@ export interface Customer360 {
   }
   /** The "What to offer" panel (F3). */
   offers: OfferPanel
+  /** The offers grouped by product (redesign v2). */
+  productOffers: ProductOffer[]
+  /** `Top channel: …` over customer-initiated rows; `null` with none. */
+  channelText: string | null
+  /** LOAN rows: code, amount, share of loan exposure. Never part of AUM. */
+  loans: { title: string; held: LoanFacility[]; notHeld: PortfolioItem[]; exposure: number; missingText: string }
+  /** The first 5 rows of `transactions` (latest first). */
+  recent: TransactionRow[]
   bankEntries: { title: string; rows: BankEntryTotal[] }
   transactions: TransactionRow[]
 }
@@ -155,12 +176,25 @@ function holdingsOf(portfolio: PortfolioItem[]): Customer360['holdings'] {
       muted: !isHeld(item),
     }))
 
+  const held = portfolio
+    .filter((item) => item.product_category !== 'LOAN' && isHeld(item))
+    .map((item) => ({
+      product: item.product ?? 'Unnamed product',
+      category: item.product_category,
+      color: CATEGORY_COLORS[item.product_category],
+      amount: item.amount!,
+      share: shareOfAum(item, aum)!,
+    }))
+    .sort((a, b) => b.amount - a.amount)
+  const notHeld = products.filter((row) => row.category !== 'LOAN' && !row.held)
+  const split = { held, notHeld }
+
   if (portfolio.length === 0) {
-    return { state: 'none', emptyText: 'No portfolio rows.', title: null, aumBars, products }
+    return { state: 'none', emptyText: 'No portfolio rows.', title: null, aumBars, products, ...split }
   }
   if (aum === 0) {
     const rows = plural(portfolio.length, 'product row', 'product rows')
-    return { state: 'no-aum', emptyText: `No AUM. ${rows}, none held in AUM categories.`, title: null, aumBars, products }
+    return { state: 'no-aum', emptyText: `No AUM. ${rows}, none held in AUM categories.`, title: null, aumBars, products, ...split }
   }
   // Largest category; a tie goes to the first in AUM_CATEGORIES order.
   const top = aumBars.reduce((best, bar) => (bar.amount > best.amount ? bar : best))
@@ -170,6 +204,7 @@ function holdingsOf(portfolio: PortfolioItem[]): Customer360['holdings'] {
     title: `${formatPercent(top.amount / aum)} of AUM in ${top.category}`,
     aumBars,
     products,
+    ...split,
   }
 }
 
@@ -198,6 +233,27 @@ function activityOf(customerTrx: Transaction[], asOf: string): Customer360['acti
   }
 }
 
+const LOANS_MISSING_TEXT = 'Facility type, collectibility, days past due, and maturity are not in the data.'
+
+function loansOf(portfolio: readonly PortfolioItem[]): Customer360['loans'] {
+  const { held, notHeld, exposure } = loanFacilities(portfolio)
+  const title =
+    held.length === 0
+      ? 'No loan facility held.'
+      : `${plural(held.length, 'loan facility', 'loan facilities')}, ${formatIDR(exposure)} in total`
+  return { title, held, notHeld, exposure, missingText: LOANS_MISSING_TEXT }
+}
+
+function productsKpi(portfolio: readonly PortfolioItem[]): Customer360['kpis']['products'] {
+  const held = portfolio.filter((item) => item.product_category !== 'LOAN' && isHeld(item))
+  const categories = AUM_CATEGORIES.filter((c) => held.some((item) => item.product_category === c))
+  return {
+    count: held.length,
+    categories,
+    label: categories.length ? `${held.length} · ${categories.join(', ')}` : `${held.length}`,
+  }
+}
+
 function customer360Of(rows: CustomerRows, asOf: string): Customer360 {
   const { profile, portfolio, transactions } = rows
   const customerTrx = transactions.filter(isCustomerInitiated)
@@ -207,6 +263,18 @@ function customer360Of(rows: CustomerRows, asOf: string): Customer360 {
   const share = digitalShare(transactions)
   const bankRows = bankEntrySummary(transactions)
   const bankCount = bankRows.reduce((sum, row) => sum + row.count, 0)
+  const evaluation = evaluateCustomer({ profile, portfolio })
+  const transactionRows: TransactionRow[] = transactions
+    .map((t, index) => ({ t, index }))
+    .sort((a, b) => b.t.activity_date.localeCompare(a.t.activity_date) || a.index - b.index)
+    .map(({ t, index }) => ({
+      key: `${index}`,
+      date: t.activity_date,
+      method: t.transaction_method,
+      type: t.transaction_type,
+      amount: t.transaction_amount,
+      kind: isBankEntry(t) ? 'bank' : 'customer',
+    }))
 
   return {
     id: profile.customer_id,
@@ -216,11 +284,15 @@ function customer360Of(rows: CustomerRows, asOf: string): Customer360 {
       incomeBand: profile.customer_income,
       incomeRankLabel: `rank ${incomeRank(profile.customer_income)} of ${INCOME_BANDS.length}`,
       highIncome: isHighIncome(profile.customer_income),
+      firstTransaction: transactions.length
+        ? `First transaction ${formatMonthYear(firstActivityDate(transactions))}`
+        : null,
     },
     kpis: {
       aum: customerAum(portfolio),
       loanExposure: loanExposure(portfolio),
       heldLabel: `${heldCount(portfolio)} of ${portfolio.length} rows`,
+      products: productsKpi(portfolio),
       recency: {
         days,
         label: days === null ? 'No customer-initiated transactions' : `${plural(days, 'day', 'days')} since last activity`,
@@ -235,19 +307,13 @@ function customer360Of(rows: CustomerRows, asOf: string): Customer360 {
     },
     holdings: holdingsOf(portfolio),
     activity: activityOf(customerTrx, asOf),
-    offers: offerPanel(evaluateCustomer({ profile, portfolio })),
+    offers: offerPanel(evaluation),
+    productOffers: productOffers(evaluation),
+    channelText: channelText(transactions),
+    loans: loansOf(portfolio),
     bankEntries: { title: bankCount ? plural(bankCount, 'bank entry', 'bank entries') : 'No bank entries', rows: bankRows },
-    transactions: transactions
-      .map((t, index) => ({ t, index }))
-      .sort((a, b) => b.t.activity_date.localeCompare(a.t.activity_date) || a.index - b.index)
-      .map(({ t, index }) => ({
-        key: `${index}`,
-        date: t.activity_date,
-        method: t.transaction_method,
-        type: t.transaction_type,
-        amount: t.transaction_amount,
-        kind: isBankEntry(t) ? 'bank' : 'customer',
-      })),
+    transactions: transactionRows,
+    recent: transactionRows.slice(0, 5),
   }
 }
 

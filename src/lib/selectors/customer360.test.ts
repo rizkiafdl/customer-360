@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { isCustomerInitiated } from '@/lib/domain'
+import { rp } from '@/lib/insights/test-fixtures'
 import { fixtureDataset } from '@/test/fixtures'
 import {
   asOfLabel,
@@ -34,6 +35,7 @@ describe('buildCustomer360: profile', () => {
       incomeBand: '>10 Juta - 25 Juta',
       incomeRankLabel: 'rank 5 of 8',
       highIncome: true,
+      firstTransaction: 'First transaction May 2023',
     })
   })
 
@@ -272,5 +274,97 @@ describe('Customer 360 on the real data', () => {
   it('has one option per customer and the as-of label', () => {
     expect(getCustomerOptions()).toHaveLength(100)
     expect(asOfLabel).toBe('As of 26 Apr 2024')
+  })
+})
+
+describe('buildCustomer360: redesign additions', () => {
+  const vm = build(1)
+
+  it('shows the first transaction, bank entries included', () => {
+    expect(vm.profile.firstTransaction).toBe('First transaction May 2023')
+    expect(build(2).profile.firstTransaction).toBe('First transaction Mar 2024')
+  })
+
+  it('counts the held AUM rows and their categories', () => {
+    expect(vm.kpis.products).toEqual({ count: 3, categories: ['FUNDING', 'ORI', 'REKSA'], label: '3 · FUNDING, ORI, REKSA' })
+    expect(build(3).kpis.products).toEqual({ count: 0, categories: [], label: '0' })
+  })
+
+  it('groups the offers by product', () => {
+    expect(vm.productOffers.map((offer) => [offer.product, offer.ruleIds])).toEqual([
+      ['BANCA', ['investment-gap-banca', 'high-income-no-banca']],
+    ])
+    expect(build(4).productOffers).toEqual([])
+  })
+
+  it('shows the top channel over customer-initiated rows', () => {
+    expect(vm.channelText).toBe('Top channel: ATM, 1 of 6 customer-initiated transactions (16%)')
+    const bankOnly = buildCustomer360({ ...fixtureDataset, transactions: bankEntriesOnly(2) }, 2)
+    expect(bankOnly?.channelText).toBeNull()
+  })
+
+  it('splits holdings into held AUM rows with their share of AUM, and AUM rows not held; LOAN is not there', () => {
+    expect(vm.holdings.held.map((row) => [row.product, row.category, row.amount, row.share])).toEqual([
+      ['TABUNGAN', 'FUNDING', 620_000_000, 0.62],
+      ['ORI', 'ORI', 200_000_000, 0.2],
+      ['REKSADANA', 'REKSA', 180_000_000, 0.18],
+    ])
+    expect(vm.holdings.notHeld.map((row) => [row.product, row.category])).toEqual([['BANCA', 'BANCA']])
+    expect([...vm.holdings.held, ...vm.holdings.notHeld].some((row) => row.category === 'LOAN')).toBe(false)
+  })
+
+  it('lists the loan facilities with a fixed title and the missing-data line', () => {
+    expect(vm.loans).toEqual({
+      title: rp('1 loan facility, Rp 250.000.000 in total'),
+      held: [{ product: 'KPR', amount: 250_000_000, shareOfExposure: 1 }],
+      notHeld: [{ customer_id: 1, product: null, product_category: 'LOAN', amount: null }],
+      exposure: 250_000_000,
+      missingText: 'Facility type, collectibility, days past due, and maturity are not in the data.',
+    })
+    expect(build(2).loans.title).toBe('No loan facility held.')
+  })
+
+  it('sorts several loans high to low; the shares add up to 1', () => {
+    const more = buildCustomer360(
+      {
+        ...fixtureDataset,
+        portfolio: [
+          ...fixtureDataset.portfolio,
+          { customer_id: 1, product: 'KTA', product_category: 'LOAN', amount: 750_000_000 },
+        ],
+      },
+      1,
+    )
+    expect(more?.loans.title).toBe(rp('2 loan facilities, Rp 1.000.000.000 in total'))
+    expect(more?.loans.held.map((loan) => [loan.product, loan.shareOfExposure])).toEqual([
+      ['KTA', 0.75],
+      ['KPR', 0.25],
+    ])
+  })
+
+  it('keeps the 5 latest transactions as the recent list', () => {
+    expect(vm.recent).toEqual(vm.transactions.slice(0, 5))
+    expect(vm.recent.map((row) => row.date)).toEqual(['2024-04-26', '2024-04-24', '2024-04-10', '2024-03-31', '2024-03-31'])
+    expect(build(3).recent).toHaveLength(1)
+  })
+})
+
+describe('Customer 360 redesign additions on the real data', () => {
+  const all = dataset.profiles.map((p) => getCustomer360(p.customer_id)!)
+
+  it('has 83 customers with a loan, at most 10 each', () => {
+    expect(all.filter((vm) => vm.loans.held.length > 0)).toHaveLength(83)
+    expect(Math.max(...all.map((vm) => vm.loans.held.length))).toBe(10)
+  })
+
+  it('pins the cards per product', () => {
+    const counts: Record<string, number> = {}
+    for (const vm of all) for (const offer of vm.productOffers) counts[offer.product] = (counts[offer.product] ?? 0) + 1
+    expect(counts).toEqual({ REKSA: 29, ORI: 37, BANCA: 32, Cash: 4, 'No AUM': 16 })
+  })
+
+  it('orders the cards of customer 8797 by rule count, then by the higher basis', () => {
+    // Both cards hold 2 rules; AUM Rp 1.262.383.866 is above cash Rp 1.061.852.300.
+    expect(getCustomer360(8797)?.productOffers.map((offer) => offer.product)).toEqual(['BANCA', 'REKSA'])
   })
 })
