@@ -15,6 +15,7 @@ import {
   customerAum,
   daysSince,
   digitalCounts,
+  digitalShare,
   earlierRows,
   heldCount,
   incomeRank,
@@ -84,7 +85,8 @@ export interface Customer360 {
     loanExposure: number
     heldLabel: string
     recency: { days: number | null; label: string; lastDate: string | null }
-    digital: { share: number | null; label: string; context: string }
+    /** `meter` is the share as a whole percent for the progress bar, 0 when there is no share. */
+    digital: { share: number | null; meter: number; label: string; context: string }
   }
   holdings: {
     /** `none`: no portfolio rows. `no-aum`: rows, but AUM 0. `aum`: AUM above 0. */
@@ -102,6 +104,8 @@ export interface Customer360 {
     channelMix: LabelCount[]
     typeTitle: string | null
     typeMix: LabelCount[]
+    /** Replaces both mix charts when no row is customer-initiated. */
+    mixEmptyText: string | null
   }
   /** The "What to offer" panel (F3). */
   offers: OfferPanel
@@ -190,6 +194,7 @@ function activityOf(customerTrx: Transaction[], asOf: string): Customer360['acti
     channelMix: topWithOther(channels, CHANNEL_MIX_TOP),
     typeTitle: mixTitle(types, customerTrx.length),
     typeMix: types,
+    mixEmptyText: customerTrx.length ? null : 'No customer-initiated transactions.',
   }
 }
 
@@ -199,7 +204,7 @@ function customer360Of(rows: CustomerRows, asOf: string): Customer360 {
   const lastDate = customerTrx.length ? latestActivityDate(customerTrx) : null
   const days = lastDate === null ? null : daysSince(lastDate, asOf)
   const digital = digitalCounts(transactions)
-  const share = digital.counted === 0 ? null : digital.digital / digital.counted
+  const share = digitalShare(transactions)
   const bankRows = bankEntrySummary(transactions)
   const bankCount = bankRows.reduce((sum, row) => sum + row.count, 0)
 
@@ -223,6 +228,7 @@ function customer360Of(rows: CustomerRows, asOf: string): Customer360 {
       },
       digital: {
         share,
+        meter: share === null ? 0 : Math.round(share * 100),
         label: share === null ? '—' : formatPercent(share),
         context: `${digital.digital} of ${digital.counted} customer-initiated, BANCA method excluded`,
       },

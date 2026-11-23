@@ -11,8 +11,6 @@ import { BANK_ENTRY_TYPES } from '@/lib/domain'
 import { OFFER_PANEL_TITLE } from '@/lib/insights'
 import type { Customer360 } from '@/lib/selectors/customer360'
 
-const NO_CUSTOMER_ROWS = 'No customer-initiated transactions.'
-
 function SectionHeading({ id, children }: { id: string; children: string }) {
   return (
     <h2 id={id} className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
@@ -61,7 +59,7 @@ export function CustomerDetail({ vm }: { vm: Customer360 }) {
           <ChartCard
             label="Channel mix"
             title={activity.channelTitle}
-            emptyText={activity.channelMix.length ? null : NO_CUSTOMER_ROWS}
+            emptyText={activity.mixEmptyText}
           >
             <HorizontalBars
               label="Channel mix"
@@ -69,7 +67,7 @@ export function CustomerDetail({ vm }: { vm: Customer360 }) {
               data={activity.channelMix.map((e) => ({ label: e.label, value: e.count }))}
             />
           </ChartCard>
-          <ChartCard label="Type mix" title={activity.typeTitle} emptyText={activity.typeMix.length ? null : NO_CUSTOMER_ROWS}>
+          <ChartCard label="Type mix" title={activity.typeTitle} emptyText={activity.mixEmptyText}>
             <HorizontalBars
               label="Type mix"
               format="count"
