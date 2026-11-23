@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { formatWholePercent, incomeBandAtRank } from './text'
+import { formatSharePercent, formatWholePercent, incomeBandAtRank } from './text'
 
 describe('formatWholePercent', () => {
   it.each([
@@ -16,6 +16,16 @@ describe('formatWholePercent', () => {
 
   it('throws a RangeError when the whole is not above 0', () => {
     expect(() => formatWholePercent(1, 0)).toThrow(RangeError)
+  })
+})
+
+describe('formatSharePercent', () => {
+  it.each([
+    [0.8, '80%'],
+    [0.57, '57%'], // 0.57 * 100 is 56.99999999999999 in floating point
+    [0.29, '29%'], // 0.29 * 100 is 28.999999999999996 in floating point
+  ])('share %d is %s', (share, text) => {
+    expect(formatSharePercent(share)).toBe(text)
   })
 })
 

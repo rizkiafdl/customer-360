@@ -6,7 +6,7 @@ import { HIGH_INCOME_MIN_RANK, customerAum, isHeld, isHighIncome } from '@/lib/d
 import { formatIDR } from '@/lib/format'
 import type { PortfolioItem } from '@/types'
 import { cashAmount } from './cash'
-import { formatWholePercent, incomeBandAtRank } from './text'
+import { formatSharePercent, formatWholePercent, incomeBandAtRank } from './text'
 import {
   CASH_HEAVY_MIN_SHARE,
   DEPOSIT_PRODUCT_PREFIX,
@@ -52,7 +52,7 @@ function holdsCategory(items: readonly PortfolioItem[], category: InvestmentCate
 }
 
 const CASH_HEAVY_TEXT =
-  `Cash is at least ${CASH_HEAVY_MIN_SHARE * 100}% of AUM, and AUM is above ${formatIDR(0)}. ` +
+  `Cash is at least ${formatSharePercent(CASH_HEAVY_MIN_SHARE)} of AUM, and AUM is above ${formatIDR(0)}. ` +
   `Cash = FUNDING products whose name does not start with ${DEPOSIT_PRODUCT_PREFIX}.`
 
 /** AUM above 0 and cash at least 80% of AUM. */
@@ -152,7 +152,7 @@ export const RULES: readonly RuleDefinition[] = [
     id: 'cash-heavy',
     label: 'Cash-heavy AUM',
     ruleText: CASH_HEAVY_TEXT,
-    source: `Cut-off ${CASH_HEAVY_MIN_SHARE * 100}% and the ${DEPOSIT_PRODUCT_PREFIX} split: ${USER_DECISION}`,
+    source: `Cut-off ${formatSharePercent(CASH_HEAVY_MIN_SHARE)} and the ${DEPOSIT_PRODUCT_PREFIX} split: ${USER_DECISION}`,
     evaluate: cashHeavy,
   },
   gapRule('REKSA'),
