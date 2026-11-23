@@ -50,7 +50,9 @@ export function HorizontalBars({ data, format, label }: { data: BarDatum[]; form
           <LabelList
             dataKey="value"
             position="right"
-            className="fill-foreground tabular-nums"
+            // Text color, not the bar color: chart colors are only checked at 3:1.
+            fill="var(--foreground)"
+            className="tabular-nums"
             formatter={(v: unknown) => (typeof v === 'number' ? short(v) : '')}
           />
         </Bar>
