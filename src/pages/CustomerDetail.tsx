@@ -2,11 +2,13 @@ import { BankEntriesTable } from '@/components/customer/BankEntriesTable'
 import { ChartCard } from '@/components/customer/ChartCard'
 import { HorizontalBars } from '@/components/customer/HorizontalBars'
 import { KpiRow } from '@/components/customer/KpiRow'
+import { OfferPanel } from '@/components/customer/OfferPanel'
 import { ProductTable } from '@/components/customer/ProductTable'
 import { ProfileHeader } from '@/components/customer/ProfileHeader'
 import { TransactionsTable } from '@/components/customer/TransactionsTable'
 import { WeeklyBars } from '@/components/customer/WeeklyBars'
 import { BANK_ENTRY_TYPES } from '@/lib/domain'
+import { OFFER_PANEL_TITLE } from '@/lib/insights'
 import type { Customer360 } from '@/lib/selectors/customer360'
 
 const NO_CUSTOMER_ROWS = 'No customer-initiated transactions.'
@@ -26,6 +28,11 @@ export function CustomerDetail({ vm }: { vm: Customer360 }) {
     <div className="flex flex-col gap-6">
       <ProfileHeader heading={vm.heading} profile={vm.profile} />
       <KpiRow kpis={vm.kpis} />
+
+      <section aria-labelledby="what-to-offer" className="flex flex-col gap-2">
+        <SectionHeading id="what-to-offer">{OFFER_PANEL_TITLE}</SectionHeading>
+        <OfferPanel panel={vm.offers} />
+      </section>
 
       <section aria-labelledby="holdings" className="flex flex-col gap-2">
         <SectionHeading id="holdings">Holdings</SectionHeading>

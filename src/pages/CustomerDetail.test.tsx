@@ -157,3 +157,44 @@ describe('CustomerDetail: empty and odd cases', () => {
     expect(screen.getByText('No bank entries.')).toBeInTheDocument()
   })
 })
+
+describe('CustomerDetail: What to offer', () => {
+  it('places the panel between the key figures and the holdings', () => {
+    renderDetail(1)
+    const kpis = screen.getByRole('region', { name: 'Key figures' })
+    const panel = screen.getByRole('region', { name: 'What to offer' })
+    const holdings = screen.getByRole('region', { name: 'Holdings' })
+    expect(kpis.compareDocumentPosition(panel) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    expect(panel.compareDocumentPosition(holdings) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+
+  it('shows one card per fired rule, with the kind as text, the reason, and the rule text', () => {
+    renderDetail(1)
+    const panel = screen.getByRole('region', { name: 'What to offer' })
+    const items = within(within(panel).getByRole('list', { name: 'Offers' })).getAllByRole('listitem')
+    expect(items).toHaveLength(2)
+    expect(within(items[0]!).getByText('Opportunity')).toBeInTheDocument()
+    expect(within(items[0]!).getByText('No BANCA')).toBeInTheDocument()
+    expect(within(items[0]!).getByText(`No BANCA. AUM ${idr(1_000_000_000)}.`)).toBeInTheDocument()
+    expect(within(items[0]!).getByText(`Holds no BANCA, and AUM is above ${idr(100_000_000)}.`)).toHaveClass(
+      'text-muted-foreground',
+    )
+    expect(within(items[1]!).getByText('High income, no BANCA')).toBeInTheDocument()
+    expect(within(items[1]!).getByText('No BANCA. Income band >10 Juta - 25 Juta.')).toBeInTheDocument()
+    expect(within(panel).queryByText('No offer rule fired.')).not.toBeInTheDocument()
+    expect(within(panel).queryByRole('heading', { name: 'Note' })).not.toBeInTheDocument()
+  })
+
+  it('shows the empty line and the KYC note apart from the offers', () => {
+    renderDetail(4)
+    const panel = screen.getByRole('region', { name: 'What to offer' })
+    expect(within(panel).getByText('No offer rule fired.')).toBeInTheDocument()
+    expect(within(panel).queryByRole('list', { name: 'Offers' })).not.toBeInTheDocument()
+    expect(within(panel).getByRole('heading', { name: 'Note' })).toBeInTheDocument()
+    const note = within(panel).getByText('KYC income band').closest('article')
+    expect(note).not.toBeNull()
+    expect(within(note!).getByText('Warning')).toBeInTheDocument()
+    expect(within(note!).getByText(`Income band >1 Juta - 3 Juta. AUM ${idr(1_000_000_000)}.`)).toBeInTheDocument()
+    expect(note!.closest('ul')).toBeNull()
+  })
+})
