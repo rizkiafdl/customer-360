@@ -25,3 +25,8 @@ dist-ssr
 
 # Claude Code: personal, machine-specific settings (shared config in .claude/ is committed)
 .claude/settings.local.json
+
+# Test output
+coverage/
+test-results/
+playwright-report/

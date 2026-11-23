@@ -20,5 +20,11 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.ts'],
     include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts'],
     css: true,
+    // Reported in the CI job summary, not enforced (docs/adr/0003).
+    coverage: {
+      provider: 'v8',
+      reporter: ['text'],
+      include: ['src/**', 'scripts/**'],
+    },
   },
 })
