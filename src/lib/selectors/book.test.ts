@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { customerAum } from '@/lib/domain'
 import type { PortfolioItem } from '@/types'
 import { asOfDate, asOfDateOf, bookCustomersOf, customerCount, getCustomerCount } from './book'
+import { fixtureDataset } from '@/test/fixtures'
 import { dataset, type Dataset } from './dataset'
 
 const fixture: Dataset = {
@@ -67,6 +68,49 @@ describe('bookCustomersOf', () => {
     const first = bookCustomersOf(withRows)[0]
     expect(first?.evaluation.customer_id).toBe(1)
     expect(first?.evaluation.insights.map((i) => i.id)).toEqual(['no-aum'])
+  })
+})
+
+describe('bookCustomersOf: recency, first transaction, and cash', () => {
+  const book = bookCustomersOf(fixtureDataset)
+  const first = book[0]
+
+  it('takes last active from customer-initiated rows only, against the book as-of date', () => {
+    // Customer 1 has a BUNGA row on 2024-04-26; the latest customer-initiated row is 2024-04-24.
+    expect(first?.lastActive).toEqual({ days: 2, date: '2024-04-24' })
+  })
+
+  it('has no last active date when every row is a bank entry', () => {
+    const bankOnly: Dataset = {
+      ...fixtureDataset,
+      transactions: fixtureDataset.transactions.map((t) =>
+        t.customer_id === 2 ? { ...t, transaction_type: 'BUNGA' as const } : t,
+      ),
+    }
+    expect(bookCustomersOf(bankOnly)[1]?.lastActive).toBeNull()
+  })
+
+  it('takes the first transaction over all rows, bank entries included', () => {
+    const early: Dataset = {
+      ...fixtureDataset,
+      transactions: [
+        ...fixtureDataset.transactions,
+        { activity_date: '2011-01-27', customer_id: 1, transaction_method: 'BRANCH', transaction_type: 'BUNGA', transaction_amount: 1 },
+      ],
+    }
+    expect(first?.firstTransaction).toBe('2023-05-02')
+    expect(bookCustomersOf(early)[0]?.firstTransaction).toBe('2011-01-27')
+  })
+
+  it('has no first transaction and no last active date for a customer with no rows', () => {
+    const [noRows] = bookCustomersOf({ ...fixtureDataset, transactions: [] })
+    expect(noRows?.firstTransaction).toBeNull()
+    expect(noRows?.lastActive).toBeNull()
+  })
+
+  it('carries the cash amount', () => {
+    expect(first?.cash).toBe(620_000_000)
+    expect(book[3]?.cash).toBe(100_000_000)
   })
 })
 

@@ -9,7 +9,7 @@ import { AUM_CATEGORIES, CATEGORY_COLORS, holdsCategory, incomeRank } from '@/li
 import { RULES, type RuleId } from '@/lib/insights'
 import { formatDate } from '@/lib/format'
 import { INCOME_BANDS, type IncomeBand, type ProductCategory } from '@/types'
-import { asOfDateOf, bookCustomersOf } from './book'
+import { asOfDateOf, bookCustomersOf, type BookCustomer } from './book'
 import { dataset, type Dataset } from './dataset'
 import { ruleFireCounts } from './insights'
 
@@ -67,6 +67,28 @@ export function powerOfTenTicks(values: readonly number[]): number[] {
 /** The four AUM categories first, then LOAN. */
 const PENETRATION_ORDER: readonly ProductCategory[] = [...AUM_CATEGORIES, 'LOAN']
 
+/** The income-vs-AUM scatter over a set of customers. Customers with AUM 0 are left out (log y axis). */
+export function scatterOf(book: readonly BookCustomer[]): Overview['scatter'] {
+  const points = book
+    .filter((c) => c.evaluation.aum > 0)
+    .map((c) => ({
+      customerId: c.profile.customer_id,
+      rank: incomeRank(c.profile.customer_income),
+      band: c.profile.customer_income,
+      aum: c.evaluation.aum,
+      kyc: c.evaluation.kycNote !== null,
+    }))
+  const kycPoints = points.filter((p) => p.kyc).length
+  const left = book.length - points.length
+  return {
+    title: `${plural(points.length, 'customer', 'customers')} with AUM, ${kycPoints} with the KYC note`,
+    footer: left === 0 ? null : `${plural(left, 'customer with no AUM is', 'customers with no AUM are')} not plotted.`,
+    ticks: INCOME_BANDS.map((band) => ({ rank: incomeRank(band), band })),
+    aumTicks: powerOfTenTicks(points.map((p) => p.aum)),
+    points,
+  }
+}
+
 export function buildOverview(data: Dataset): Overview {
   const book = bookCustomersOf(data)
   const total = book.length
@@ -79,18 +101,6 @@ export function buildOverview(data: Dataset): Overview {
   }))
   // Lowest count; a tie goes to the earlier category in PENETRATION_ORDER.
   const lowest = bars.reduce((low, bar) => (bar.value < low.value ? bar : low))
-
-  const points = book
-    .filter((c) => c.evaluation.aum > 0)
-    .map((c) => ({
-      customerId: c.profile.customer_id,
-      rank: incomeRank(c.profile.customer_income),
-      band: c.profile.customer_income,
-      aum: c.evaluation.aum,
-      kyc: c.evaluation.kycNote !== null,
-    }))
-  const kycPoints = points.filter((p) => p.kyc).length
-  const left = total - points.length
 
   return {
     header: `As of ${formatDate(asOfDateOf(data))} · ${plural(total, 'customer', 'customers')}`,
@@ -109,13 +119,7 @@ export function buildOverview(data: Dataset): Overview {
       title: `${lowest.label} held by ${lowest.value} of ${plural(total, 'customer', 'customers')}`,
       bars,
     },
-    scatter: {
-      title: `${plural(points.length, 'customer', 'customers')} with AUM, ${kycPoints} with the KYC note`,
-      footer: left === 0 ? null : `${plural(left, 'customer with no AUM is', 'customers with no AUM are')} not plotted.`,
-      ticks: INCOME_BANDS.map((band) => ({ rank: incomeRank(band), band })),
-      aumTicks: powerOfTenTicks(points.map((p) => p.aum)),
-      points,
-    },
+    scatter: scatterOf(book),
   }
 }
 
