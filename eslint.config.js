@@ -20,8 +20,8 @@ export default defineConfig([
     },
   },
   {
-    // Build-time Node code: the Excel converter and tool configs.
-    files: ['scripts/**/*.ts', '*.config.{js,ts}'],
+    // Build-time Node code: the Excel converter, e2e tests, and tool configs.
+    files: ['scripts/**/*.ts', 'e2e/**/*.ts', '*.config.{js,ts}'],
     languageOptions: {
       globals: globals.node,
     },
