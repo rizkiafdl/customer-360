@@ -79,3 +79,26 @@ test('the bar chart category labels fit on one line inside the chart', async ({ 
   expect(misfits).toEqual([])
   expect(errors).toEqual([])
 })
+
+test('chart axis text follows the theme color, not the Recharts default grey', async ({ page }) => {
+  const errors = collectErrors(page)
+  await page.goto('./customers/4426')
+  await expect(page.getByRole('img', { name: /^Customer-initiated transactions per week/ })).toBeVisible()
+  await page.locator('[role="img"] [class*="Axis-tick-labels"] text').first().waitFor()
+
+  // Strings, not functions: this file has no DOM types (it runs in Node).
+  const muted = await page.evaluate<string>(`(() => {
+    const probe = document.createElement('span')
+    probe.className = 'text-muted-foreground'
+    document.body.append(probe)
+    const color = getComputedStyle(probe).color
+    probe.remove()
+    return color
+  })()`)
+  const fills = await page.evaluate<string[]>(
+    `[...document.querySelectorAll('[role="img"] [class*="Axis-tick-labels"] text')].map((node) => getComputedStyle(node).fill)`,
+  )
+  expect(fills.length).toBeGreaterThan(0)
+  expect(fills.filter((fill) => fill !== muted)).toEqual([])
+  expect(errors).toEqual([])
+})
