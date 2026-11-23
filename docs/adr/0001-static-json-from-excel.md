@@ -42,7 +42,11 @@ Excel date serials, and a few nulls.
 
 - The app runs and deploys as static files. There are no services to run or secure.
 - Total JSON is ~1.1 MB raw. That is fine for this size. The bundle is
-  ~320 kB JS (~100 kB gzip) before features.
+  ~320 kB JS (~100 kB gzip) before features, and ~1.9 MB (~360 kB gzip)
+  with F1 to F5. Code splitting would not shrink it below Vite's 500 kB
+  warning, because the data alone is larger. `vite.config.ts` sets
+  `chunkSizeWarningLimit` to 2 MB, so the warning comes back only if the
+  bundle grows past that.
 - The JSON in git is a reviewable snapshot. A data change shows as a diff.
 - Generated JSON can drift from the converter if someone edits it by hand.
   `src/data/data.test.ts` checks row counts, ID links, enum values, and date
