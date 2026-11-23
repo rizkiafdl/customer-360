@@ -5,7 +5,7 @@ import {
   type TransactionMethod,
   type TransactionType,
 } from '@/types'
-import { DIGITAL_METHODS, digitalShare, isDigital } from './channels'
+import { DIGITAL_METHODS, digitalCounts, digitalShare, isDigital } from './channels'
 
 function trx(transaction_method: TransactionMethod, transaction_type: TransactionType = 'TRANSFER'): Transaction {
   return {
@@ -59,5 +59,14 @@ describe('digitalShare', () => {
 
   it('is null when only bank entries and BANCA rows exist', () => {
     expect(digitalShare([trx('BANCA'), trx('ATM', 'PAJAK')])).toBeNull()
+  })
+})
+
+describe('digitalCounts', () => {
+  it('gives the digital count and the counted total behind digitalShare', () => {
+    expect(digitalCounts([trx('QRIS'), trx('ATM'), trx('BANCA'), trx('ATM', 'BIAYA')])).toEqual({
+      digital: 1,
+      counted: 2,
+    })
   })
 })
