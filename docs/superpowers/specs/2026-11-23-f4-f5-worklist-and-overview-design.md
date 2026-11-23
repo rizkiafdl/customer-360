@@ -19,22 +19,24 @@ user's visual brief moved the summary strip from `/` to its own page,
 The RM plans outreach across the book. F4 makes `/` a ranked worklist:
 which customers have an offer opportunity, and the reason, with a link to
 the evidence on the detail page. F5 adds `/overview`: the book in a few
-numbers and three charts, where a click on a count opens the worklist
+numbers and two charts, where a click on a count opens the worklist
 filtered to those customers.
 
 ## 2. Goals, non-goals, anti-goals
 
 - **Goals:**
   - `/` is the worklist (section 4). It replaces F1's placeholder list.
-  - `/overview` holds the summary strip and three book charts (section 5).
+  - `/overview` holds the summary strip and two book charts (section 5).
   - The sidebar gains "Overview".
   - Every number, sort key, and title comes from pure, tested functions in
     `src/lib/insights/` or `src/lib/selectors/`. Components only render.
 - **Non-goals:**
   - No `/rules` page (F6). No change to the detail page (F1, F3).
-  - No new rule, tier, or threshold. No change to `src/lib/insights/`
+  - No new rule or threshold. No change to `src/lib/insights/`
     rules or thresholds.
   - No pagination (100 rows).
+  - No value tiers (removed by the user on 2026-11-23). Nothing replaces
+    them.
 - **Anti-goals (failure even if it works):**
   - AUM and loan exposure added together, anywhere.
   - The KYC note used as a top reason, a rank input, or an opportunity type.
@@ -73,7 +75,6 @@ filtered to those customers.
 | --- | --- |
 | `rank` | 1–100, position in the default order |
 | `customerId`, `href` | `/customers/:id` |
-| `tier`, `tierOrder` | `VALUE_TIERS` index, the sort key for the tier column |
 | `aum`, `loanExposure` | Two numbers. Never summed. |
 | `firedCount`, `ruleIds` | Fired rules, in `RULE_ORDER` |
 | `topReason`, `topReasonOrder` | Reason text, and its `RULE_ORDER` index (`null` when none) |
@@ -86,11 +87,11 @@ filtered to those customers.
 
 - F1's `DataTable` (TanStack, dense, sticky header, no pagination),
   initial state unsorted, so rows show in the default order.
-- Columns: Rank · Customer (a link "Customer 4426") · Tier · AUM · Loan
+- Columns: Rank · Customer (a link "Customer 4426") · AUM · Loan
   exposure · Rules · Top reason · KYC.
-- Every column sorts. Tier sorts by `tierOrder`, Top reason by
-  `topReasonOrder` with `null` last, KYC by present/absent (builder's call:
-  rule order and tier order mean more than A–Z). Sorting by Rank restores
+- Every column sorts. Top reason sorts by `topReasonOrder` with `null`
+  last, KYC by present/absent (builder's call: rule order means more than
+  A–Z). Sorting by Rank restores
   the default order.
 - Money cells use `formatIDRShort()` with the full `formatIDR()` value in
   a tooltip (F1 `Money`).
@@ -104,14 +105,13 @@ filtered to those customers.
 
 | Param | Values | Match |
 | --- | --- | --- |
-| `tier` | a `VALUE_TIERS` value | `row.tier` equals it |
 | `rule` | a `RULE_ORDER` id | the rule fired, at any position (builder's call: matches the overview count) |
 | `q` | digits | `customerId` as text contains `q` |
 
 - Filters combine with AND. An unknown value is ignored, not an error.
 - `parseWorklistFilters(params)` and `filterWorklist(rows, filters)` are
   pure selectors.
-- Controls above the table: a tier select, an opportunity-type select
+- Controls above the table: an opportunity-type select
   (labels from `RULES`), an ID input, and "Clear filters". Each writes the
   URL.
 - Header line from a fixed template: `100 customers.` or
@@ -128,8 +128,6 @@ filtered to those customers.
   customers` (as-of date from ADR 0005, F1's `formatDate`).
 - KPI tiles: **Total AUM** and **Total loan exposure**, two tiles, the
   loan tile with the context line `Not part of AUM.`
-- **Customers per tier:** four counts in `VALUE_TIERS` order, each a link
-  to `/?tier=<tier>`.
 - **Customers per opportunity type:** six counts in `RULE_ORDER`, labels
   from `RULES`, each a link to `/?rule=<id>`.
 - No "customers with ≥ 1 rule" and no KYC count in the strip.
@@ -139,7 +137,6 @@ filtered to those customers.
 | Chart | Data | Title template (example) |
 | --- | --- | --- |
 | Product penetration | Horizontal bar: customers holding each category (`isHeld`, `amount > 0`). Order FUNDING, ORI, BANCA, REKSA, LOAN; `CATEGORY_COLORS`. | `{category} held by {n} of {total} customers` for the lowest count, ties by that order → `ORI held by 46 of 100 customers` |
-| Tier distribution | Horizontal bar: customers per tier, `VALUE_TIERS` order, neutral bar color (tiers are not categories). | `{n} of {total} customers in {tier}` for the largest tier, ties by `VALUE_TIERS` order → `40 of 100 customers in Affluent` |
 | Income band vs AUM | Scatter. x = income rank 1–8, ticks labelled with the band. y = AUM, log scale, AUM > 0 only, ticks in `formatIDRShort()`. Two series: "KYC note" (`--warning`, triangle) and "No KYC note" (`--info`, circle), with a legend. | `{n} customers with AUM, {k} with the KYC note` → `84 customers with AUM, 43 with the KYC note`. Footer: `16 customers with no AUM are not plotted.` |
 
 - Builder's calls: LOAN is last in the penetration bar so the four AUM
@@ -167,7 +164,7 @@ filtered to those customers.
 - **Selectors:** `worklist.ts` and `overview.ts` are new files. They do
   not edit `insights.ts` (builder's call: F3 may edit it in parallel).
 - **Layers:** no change to ADR 0004 or the ESLint rule.
-- **shadcn:** add `select` for the two filter controls.
+- **shadcn:** add `select` for the opportunity-type filter.
 
 ## 7. Numbers on the real data
 
@@ -177,7 +174,6 @@ Measured on 2026-11-23 against the committed JSON. Contract tests pin them.
 | --- | --- |
 | Total AUM | Rp 811.749.876.893 (`Rp 811,7 M`) |
 | Total loan exposure | Rp 1.582.500.470.995 (`Rp 1,6 T`) |
-| Tiers No AUM / Mass / Affluent / Priority | 16 / 28 / 40 / 16 |
 | Opportunity counts, `RULE_ORDER` | 12 / 29 / 37 / 29 / 16 / 6 |
 | Penetration FUNDING / ORI / BANCA / REKSA / LOAN | 84 / 46 / 54 / 54 / 83 |
 | Fired-rule count 0 / 1 / 2 / 3 / 4 | 16 / 49 / 26 / 8 / 1 |
@@ -194,8 +190,8 @@ Measured on 2026-11-23 against the committed JSON. Contract tests pin them.
   scatter, title ties, and exact title strings.
 - Contract tests pin every number in section 7.
 - UI tests: `/` renders 100 rows in the default order; `/?rule=investment-gap-ori`
-  shows 37 rows; `/overview` shows the strip, and a tier link opens
-  `/?tier=…`.
+  shows 37 rows; `/overview` shows the strip, and an opportunity link
+  opens `/?rule=…`.
 - e2e: `/` worklist, a row link opens the detail page; `/overview` deep
   link, a count link filters the worklist. No console errors.
 - `npm run check` exits 0. CLAUDE.md lists `ranking.ts` under insights.
