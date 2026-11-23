@@ -4,6 +4,7 @@
 - **Status:** Written in a non-interactive run on 2026-11-23. Product
   decisions are the user's (2026-11-23). Other calls are marked "builder's
   call", each with one line of reason.
+- **Shipped:** PR #11, merged on 2026-11-23. The minor review findings were closed in PR #13.
 - **Parent spec:** `docs/superpowers/specs/2026-11-23-customer-360-product-design.md`,
   feature F3, sections 5.3, 5.4, and 6.
 - **Depends on:** F2 (merged) and F1

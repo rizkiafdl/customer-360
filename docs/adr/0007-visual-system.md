@@ -6,9 +6,9 @@
 ## Context
 
 F1 builds the first screen of the app. Every later page (the worklist, the
-summary strip, the rules page) reuses its colors, type, money format, and
-chart rules. If each page chose its own colors, the same category or flag
-would look different from one screen to the next.
+overview) reuses its colors, type, money format, and chart rules. If each
+page chose its own colors, the same category or flag would look different
+from one screen to the next.
 
 The users in the story are bank Relationship Managers. The page must feel
 calm and dense with data, like a banking workspace. The user's design brief

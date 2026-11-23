@@ -4,6 +4,7 @@
 - **Status:** Written by the builder under the user's fast flow. Every
   business rule here is a user decision of 2026-11-23. Each UI call is
   marked "builder's call" with a one-line reason.
+- **Shipped:** PR #12, merged on 2026-11-23. The minor review findings were closed in PR #13.
 - **Parent spec:** `docs/superpowers/specs/2026-11-23-customer-360-product-design.md`,
   features F4 and F5, section 6.1.
 - **Depends on:** F2 (merged), F1 (`2026-11-23-f1-visual-system-and-customer-detail-design.md`:

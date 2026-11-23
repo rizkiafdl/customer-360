@@ -4,6 +4,7 @@
 - **Status:** Approved on 2026-11-23 under the user's fast flow. The visual
   direction is the user's design brief of 2026-11-23. The page calls are
   mine and are marked "my call".
+- **Shipped:** PR #10, merged on 2026-11-23. The minor review findings were closed in PR #13.
 - **Parent spec:** `docs/superpowers/specs/2026-11-23-customer-360-product-design.md`,
   feature F1 and section 6.
 - **ADR written here:** 0007 (theme, chart library, brand red is not risk).

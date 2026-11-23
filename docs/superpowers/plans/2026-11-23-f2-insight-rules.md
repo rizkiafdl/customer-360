@@ -1,6 +1,6 @@
 # F2 Insight Rules Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Pure, tested insight rules, value tier, and KYC note in `src/lib/insights/`, plus selectors with contract tests on the real data.
 
@@ -9,6 +9,8 @@
 **Tech Stack:** TypeScript 6 strict, Vitest.
 
 **Spec:** `docs/superpowers/specs/2026-11-23-f2-insight-rules-design.md`
+
+**Status:** Done. Shipped in PR #8, merged on 2026-11-23. The PR description lists each change from this plan. PR #9 later removed the value tiers (user decision of 2026-11-23). ADR 0008 records why. The code has no tier.
 
 ## Global Constraints
 
@@ -30,40 +32,40 @@
 
 ### Task 1: ADR 0008
 
-- [ ] Write `docs/adr/0008-insight-rules-and-thresholds.md` (Nygard + Alternatives considered, like ADR 0005). Run `npm run lint:md`.
-- [ ] `git commit -m "docs: add ADR 0008 for insight rules and thresholds"`
+- [x] Write `docs/adr/0008-insight-rules-and-thresholds.md` (Nygard + Alternatives considered, like ADR 0005). Run `npm run lint:md`.
+- [x] `git commit -m "docs: add ADR 0008 for insight rules and thresholds"`
 
 ### Task 2: Thresholds and value tier
 
 **Files:** `src/lib/insights/thresholds.ts`, `tiers.ts`, `tiers.test.ts`, `thresholds.test.ts`.
 
-- [ ] Write tests: tier at 0, 1, Rp 1 Bn − 1, Rp 1 Bn, Rp 5 Bn − 1, Rp 5 Bn; negative AUM throws `RangeError`; thresholds pinned to spec values.
-- [ ] Run `npx vitest run src/lib/insights` → FAIL (module missing). Implement. Run → PASS.
-- [ ] `git commit -m "feat: add the insight thresholds and the value tier"`
+- [x] Write tests: tier at 0, 1, Rp 1 Bn − 1, Rp 1 Bn, Rp 5 Bn − 1, Rp 5 Bn; negative AUM throws `RangeError`; thresholds pinned to spec values.
+- [x] Run `npx vitest run src/lib/insights` → FAIL (module missing). Implement. Run → PASS.
+- [x] `git commit -m "feat: add the insight thresholds and the value tier"`
 
 ### Task 3: Cash split and the rules
 
 **Files:** `src/lib/insights/types.ts`, `cash.ts`, `text.ts`, `rules.ts`, and their tests.
 
-- [ ] Write tests for `isDepositProduct`, `cashAmount`, `wholePercent`, and each rule: fires, does not fire, no rows, AUM 0, `null` amount, `null` product, exact edges, exact reason and rule text.
-- [ ] Run → FAIL. Implement. Run → PASS.
-- [ ] `git commit -m "feat: add the cash-heavy, investment gap, no AUM, and high income rules"`
+- [x] Write tests for `isDepositProduct`, `cashAmount`, `wholePercent`, and each rule: fires, does not fire, no rows, AUM 0, `null` amount, `null` product, exact edges, exact reason and rule text.
+- [x] Run → FAIL. Implement. Run → PASS.
+- [x] `git commit -m "feat: add the cash-heavy, investment gap, no AUM, and high income rules"`
 
 ### Task 4: KYC note
 
-- [ ] Tests in `kyc.test.ts`: rank 3 with AUM Rp 1 Bn fires; rank 4 or AUM below Rp 1 Bn does not; exact text. FAIL → implement `kyc.ts` → PASS.
-- [ ] `git commit -m "feat: add the KYC income band note"`
+- [x] Tests in `kyc.test.ts`: rank 3 with AUM Rp 1 Bn fires; rank 4 or AUM below Rp 1 Bn does not; exact text. FAIL → implement `kyc.ts` → PASS.
+- [x] `git commit -m "feat: add the KYC income band note"`
 
 ### Task 5: evaluateCustomer
 
-- [ ] Tests in `evaluate.test.ts`: order follows `RULE_ORDER`; KYC note separate; tier set; no rows. FAIL → implement `evaluate.ts` and `index.ts` → PASS.
-- [ ] `git commit -m "feat: evaluate all insight rules for one customer"`
+- [x] Tests in `evaluate.test.ts`: order follows `RULE_ORDER`; KYC note separate; tier set; no rows. FAIL → implement `evaluate.ts` and `index.ts` → PASS.
+- [x] `git commit -m "feat: evaluate all insight rules for one customer"`
 
 ### Task 6: Selectors and contract tests
 
-- [ ] `src/lib/selectors/insights.test.ts`: fixture tests, then real-data counts from spec section 5. FAIL → implement `insights.ts` → PASS.
-- [ ] `git commit -m "feat: add insight selectors with fire-count contract tests"`
+- [x] `src/lib/selectors/insights.test.ts`: fixture tests, then real-data counts from spec section 5. FAIL → implement `insights.ts` → PASS.
+- [x] `git commit -m "feat: add insight selectors with fire-count contract tests"`
 
 ### Task 7: Verify
 
-- [ ] `npm run check` → exit 0.
+- [x] `npm run check` → exit 0.

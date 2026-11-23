@@ -1,7 +1,10 @@
 # Customer 360 — product design
 
 - **Date:** 2026-11-23
-- **Status:** Draft, waiting for user review
+- **Status:** Approved and built as E0 and F0–F5 (PRs #1–#13, merged on
+  2026-11-23). F6 was not built (see F6 below). Each feature spec records
+  what changed from this plan. For example, the value tiers were removed,
+  and the book summary (F5) moved to its own route, `/overview`.
 - **Scope:** the whole product. This doc does not specify any single feature
   in detail. Each feature listed in section 7 gets its own brainstorm, spec,
   plan, and branch.
@@ -44,6 +47,7 @@ customer).
   "holds", same "high income").
 - A reviewer can read the rules page (F6) and understand every rule, its
   threshold, its source, and the data limits, without reading code.
+  F6 was not built. ADR 0008 is the written record of the same content.
 - The repo applies standard engineering practice: every change is checked
   by CI (typecheck, lint, unit tests, build, e2e smoke test), and every change on `main`
   is built and deployed automatically to a public URL on GitHub. Details
@@ -227,9 +231,10 @@ src/pages/, src/components/   render only             call selectors
 
 | Route | Content | Feature |
 | --- | --- | --- |
-| `/` | Summary strip + opportunity worklist | F5, F4 |
+| `/` | Opportunity worklist | F4 |
+| `/overview` | Book totals, customers per opportunity type, two charts | F5 |
 | `/customers/:id` | Customer 360 detail + "what to offer" panel | F1, F3 |
-| `/rules` | How the rules work | F6 |
+| `/rules` | How the rules work. **Not built.** | F6 |
 
 Worklist filters and sort live in URL search params (ADR 0002). All routes
 sit under the base path `/customer-360/` (section 10).
@@ -344,6 +349,10 @@ Each feature is small enough for its own brainstorm → spec → plan → branch
 
 ### F6. How the rules work
 
+- **Status:** not built. The project stopped after F5 on 2026-11-24 to
+  meet the assessment deadline. ADR 0008 lists every rule, threshold, and
+  source, and the contract tests in `src/lib/selectors/` pin each fire
+  count on the real data.
 - **What:** route `/rules`. For each rule: the condition, the threshold,
   the source of the threshold, how many customers it fires for, and the
   data limits from section 3. Follows the copy rule. Written for

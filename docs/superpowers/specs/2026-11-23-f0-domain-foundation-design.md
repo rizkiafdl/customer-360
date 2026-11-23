@@ -2,6 +2,7 @@
 
 - **Date:** 2026-11-23
 - **Status:** Approved by the user on 2026-11-23 (builder check: nothing important left).
+- **Shipped:** PR #6, merged on 2026-11-23.
 - **Parent spec:** `docs/superpowers/specs/2026-11-23-customer-360-product-design.md`,
   feature F0, sections 3, 5.1, 5.4, 6, and 8.
 - **ADRs written here:** 0004 (layers), 0005 (as-of date), 0006 (business
