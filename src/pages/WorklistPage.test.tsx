@@ -83,6 +83,23 @@ describe('WorklistPage', () => {
     expect(screen.getByRole('textbox', { name: 'Filter by customer ID' })).toHaveValue('')
   })
 
+  it('keeps only digits in the ID box', async () => {
+    const user = userEvent.setup()
+    const router = renderAt('/')
+    const input = screen.getByRole('textbox', { name: 'Filter by customer ID' })
+    await user.type(input, '4a4 ')
+    expect(input).toHaveValue('44')
+    expect(router.state.location.search).toBe('?q=44')
+  })
+
+  it('sorts the Customer column in ascending order on the first click', async () => {
+    const user = userEvent.setup()
+    renderAt('/')
+    await user.click(screen.getByRole('button', { name: 'Customer' }))
+    const ids = column(1).map((text) => Number(text.replace('Customer ', '')))
+    expect(ids).toEqual([...ids].sort((a, b) => a - b))
+  })
+
   it('shows the new ID when a link changes the URL', async () => {
     const router = renderAt('/?q=44')
     await act(() => router.navigate('/?q=12'))

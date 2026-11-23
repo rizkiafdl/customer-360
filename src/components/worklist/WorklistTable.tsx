@@ -12,8 +12,10 @@ const helper = createColumnHelper<Features, WorklistRow>()
 const columns = helper.columns([
   // Ascending first, so one click on Rank restores the default order.
   helper.accessor('rank', { header: 'Rank', sortDescFirst: false }),
+  // Ascending first: an ID list reads from the lowest ID.
   helper.accessor('customerId', {
     header: 'Customer',
+    sortDescFirst: false,
     cell: (info) => (
       <Link
         to={info.row.original.href}

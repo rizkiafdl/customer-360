@@ -7,6 +7,7 @@ import {
   filterWorklist,
   getWorklist,
   parseWorklistFilters,
+  toIdQuery,
   worklistSummary,
   type WorklistFilters,
 } from './worklist'
@@ -97,6 +98,14 @@ describe('buildWorklist', () => {
 
   it('has no KYC note for a customer without one', () => {
     expect(rows[0]?.kycNote).toBeNull()
+  })
+})
+
+describe('toIdQuery', () => {
+  it('keeps only the digits of what was typed or pasted', () => {
+    expect(toIdQuery('44a 2')).toBe('442')
+    expect(toIdQuery(' 4426 ')).toBe('4426')
+    expect(toIdQuery('abc')).toBe('')
   })
 })
 
