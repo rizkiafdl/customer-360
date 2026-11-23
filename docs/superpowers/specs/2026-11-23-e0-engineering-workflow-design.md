@@ -2,6 +2,7 @@
 
 - **Date:** 2026-11-23
 - **Status:** Approved by the user on 2026-11-23.
+- **Shipped:** PR #1, merged on 2026-11-23.
 - **Parent spec:** `docs/superpowers/specs/2026-11-23-customer-360-product-design.md`,
   feature E0 and section 10.
 - **ADR written here:** 0003 (engineering workflow).

@@ -2,6 +2,7 @@
 
 - **Date:** 2026-11-23
 - **Status:** Approved by the orchestrator on 2026-11-23 under the user's fast flow; all thresholds are user decisions of 2026-11-23.
+- **Shipped:** PR #8, merged on 2026-11-23. PR #9 later removed the value tiers (user decision of 2026-11-23). ADR 0008 records why. The code has no tier.
 - **Parent spec:** `docs/superpowers/specs/2026-11-23-customer-360-product-design.md`,
   feature F2, sections 5.2, 5.3, 5.4, and 7.
 - **ADR written here:** [0008](../../adr/0008-insight-rules-and-thresholds.md)

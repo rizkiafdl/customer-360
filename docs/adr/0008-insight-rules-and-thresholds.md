@@ -6,8 +6,8 @@
 ## Context
 
 The app tells a relationship manager what to offer each customer and why
-(F3 panel, F4 worklist, F5 summary, F6 rules page). Four features read the
-same flags, so the flags need one definition.
+(F3 panel, F4 worklist, F5 overview). Three features read the same flags,
+so the flags need one definition.
 
 The data is small (100 customers) and static, with no outcome column: no
 record of which offers were accepted. A model cannot be trained or
@@ -54,8 +54,9 @@ Part 2 analyses of this assessment.
 
 ## Consequences
 
-- Each reason traces to one rule and one threshold with a source. F6 can
-  print the rule, its threshold, and its live fire count.
+- Each reason traces to one rule and one threshold with a source. A rules
+  page could print the rule, its threshold, and its live fire count. That
+  page (F6) was not built, so this ADR is the written record.
 - A changed threshold or a data change that moves a count fails CI. The
   change then has to update the thresholds module, this ADR, and the
   contract test on purpose.

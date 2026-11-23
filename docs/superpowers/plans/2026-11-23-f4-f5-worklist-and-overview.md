@@ -1,6 +1,6 @@
 # F4 + F5 Worklist and Overview Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** `/` becomes the ranked opportunity worklist with URL filters; `/overview` shows the summary strip and two book charts.
 
@@ -9,6 +9,8 @@
 **Tech Stack:** React 19, React Router search params, TanStack Table, shadcn `chart` (Recharts) and `select`, Vitest, Playwright.
 
 **Spec:** `docs/superpowers/specs/2026-11-23-f4-f5-worklist-and-overview-design.md`
+
+**Status:** Done. Shipped in PR #12, merged on 2026-11-23. The PR description lists each change from this plan. The minor review findings were closed in PR #13.
 
 ## Global Constraints
 
@@ -36,9 +38,9 @@
 
 **Produces:** `holdsCategory(items: readonly PortfolioItem[], category: ProductCategory): boolean`; `compareWorklist(a: CustomerEvaluation, b: CustomerEvaluation): number`.
 
-- [ ] **Step 1: Failing tests:** `holdsCategory` false for `amount` 0 or `null`, true for `> 0`; `compareWorklist`: 2 rules beats 1 rule at lower AUM; same count → higher AUM first; same count and AUM → lower `customer_id` first; 0 rules last; adding a `kycNote` changes nothing. Run → FAIL.
-- [ ] **Step 2:** Implement; `rules.ts` drops its private helper and imports `holdsCategory`. `npx vitest run src/lib` → PASS (F2 tests unchanged).
-- [ ] **Step 3:** Commit `feat: add the worklist ranking and move holdsCategory to domain`.
+- [x] **Step 1: Failing tests:** `holdsCategory` false for `amount` 0 or `null`, true for `> 0`; `compareWorklist`: 2 rules beats 1 rule at lower AUM; same count → higher AUM first; same count and AUM → lower `customer_id` first; 0 rules last; adding a `kycNote` changes nothing. Run → FAIL.
+- [x] **Step 2:** Implement; `rules.ts` drops its private helper and imports `holdsCategory`. `npx vitest run src/lib` → PASS (F2 tests unchanged).
+- [x] **Step 3:** Commit `feat: add the worklist ranking and move holdsCategory to domain`.
 
 ### Task 2: Worklist selector
 
@@ -46,8 +48,8 @@
 
 **Produces:** `WorklistRow` (spec 4.2 fields); `buildWorklist(data: Dataset): WorklistRow[]`; `getWorklist()`; `WorklistFilters = { rule: RuleId | null; q: string | null }`; `parseWorklistFilters(params: URLSearchParams): WorklistFilters`; `filterWorklist(rows, filters): WorklistRow[]`; `worklistSummary(shown: number, total: number, filters): string`.
 
-- [ ] **Step 1: Failing tests:** fixtures (`src/test/fixtures.ts`): rows in `compareWorklist` order, `rank` 1…n; `topReason` = `insights[0].reason`, `null` with no rule; `loanExposure` separate from `aum`; Review Focus 2 and 3; `rule` matches a non-top fired rule; filters AND; summaries `100 customers.`, `37 of 100 customers. Opportunity: No ORI.` Contract: row 1 is 8797, row 100 is 7969; `firedCount` spread 16/49/26/8/1; top reason counts per spec 7; `?rule=investment-gap-ori` → 37. Run → FAIL.
-- [ ] **Step 2:** Implement over `customerEvaluations` plus `loanExposure` per customer. Run → PASS. Commit `feat: add the worklist view model and filters`.
+- [x] **Step 1: Failing tests:** fixtures (`src/test/fixtures.ts`): rows in `compareWorklist` order, `rank` 1…n; `topReason` = `insights[0].reason`, `null` with no rule; `loanExposure` separate from `aum`; Review Focus 2 and 3; `rule` matches a non-top fired rule; filters AND; summaries `100 customers.`, `37 of 100 customers. Opportunity: No ORI.` Contract: row 1 is 8797, row 100 is 7969; `firedCount` spread 16/49/26/8/1; top reason counts per spec 7; `?rule=investment-gap-ori` → 37. Run → FAIL.
+- [x] **Step 2:** Implement over `customerEvaluations` plus `loanExposure` per customer. Run → PASS. Commit `feat: add the worklist view model and filters`.
 
 ### Task 3: Overview selector
 
@@ -55,27 +57,27 @@
 
 **Produces:** `Overview = { header: string; totals: { aum: number; loanExposure: number }; opportunities: { id; label; count; to }[]; penetration: { title; bars: BarDatum-shaped { label; value; color }[] }; scatter: { title; footer: string | null; ticks: { rank; band }[]; points: { customerId; rank; band; aum; kyc: boolean }[] } }`; `buildOverview(data)`; `getOverview()`.
 
-- [ ] **Step 1: Failing tests:** fixtures: penetration counts `amount > 0` only, order FUNDING, ORI, BANCA, REKSA, LOAN; lowest-count title with a tie taking the earlier category; scatter drops AUM 0 and `footer` is `null` when none dropped; `to` value `/?rule=cash-heavy`. Contract (spec 7): header `As of 26 Apr 2024 · 100 customers`; totals 811749876893 and 1582500470995; opportunities 12/29/37/29/16/6; titles `ORI held by 46 of 100 customers`, `84 customers with AUM, 43 with the KYC note`; footer `16 customers with no AUM are not plotted.` Run → FAIL.
-- [ ] **Step 2:** Implement. Run → PASS. Commit `feat: add the book overview view model`.
+- [x] **Step 1: Failing tests:** fixtures: penetration counts `amount > 0` only, order FUNDING, ORI, BANCA, REKSA, LOAN; lowest-count title with a tie taking the earlier category; scatter drops AUM 0 and `footer` is `null` when none dropped; `to` value `/?rule=cash-heavy`. Contract (spec 7): header `As of 26 Apr 2024 · 100 customers`; totals 811749876893 and 1582500470995; opportunities 12/29/37/29/16/6; titles `ORI held by 46 of 100 customers`, `84 customers with AUM, 43 with the KYC note`; footer `16 customers with no AUM are not plotted.` Run → FAIL.
+- [x] **Step 2:** Implement. Run → PASS. Commit `feat: add the book overview view model`.
 
 ### Task 4: Worklist page at `/`
 
 **Files:** `npx shadcn@latest add select`; create `src/pages/WorklistPage.tsx` (+ test), `src/components/worklist/*`; delete `src/pages/HomePage.tsx`; modify `src/routes.tsx`, `src/routes.test.tsx`.
 
-- [ ] **Step 1: Failing tests:** `/` has `h1` "Customers" and a table "Worklist" with 100 body rows, first row link `Customer 8797` → `/customers/8797`; `/?rule=investment-gap-ori` shows 37 rows and the summary line; "Clear filters" restores 100; a row with no rule shows `No rule fired`; a KYC row shows `KYC note`; Review Focus 4. Run → FAIL.
-- [ ] **Step 2:** Implement with `useSearchParams` → `parseWorklistFilters` → `filterWorklist`; columns sort on `topReasonOrder`, `rank`. Run → PASS. Commit `feat: replace the home list with the opportunity worklist`.
+- [x] **Step 1: Failing tests:** `/` has `h1` "Customers" and a table "Worklist" with 100 body rows, first row link `Customer 8797` → `/customers/8797`; `/?rule=investment-gap-ori` shows 37 rows and the summary line; "Clear filters" restores 100; a row with no rule shows `No rule fired`; a KYC row shows `KYC note`; Review Focus 4. Run → FAIL.
+- [x] **Step 2:** Implement with `useSearchParams` → `parseWorklistFilters` → `filterWorklist`; columns sort on `topReasonOrder`, `rank`. Run → PASS. Commit `feat: replace the home list with the opportunity worklist`.
 
 ### Task 5: Overview page and sidebar
 
 **Files:** create `src/pages/OverviewPage.tsx` (+ test), `src/components/overview/*` (strip, `IncomeAumScatter`); modify `src/components/AppShell.tsx`, `src/routes.tsx`, `src/routes.test.tsx`.
 
-- [ ] **Step 1: Failing tests:** `/overview` has `h1` "Overview", the header line, tiles "Total AUM" and "Total loan exposure" with `Not part of AUM.`, the two chart titles, the footer; clicking opportunity "No ORI" lands on `/` with 37 rows; sidebar shows "Overview" with `aria-current="page"` on `/overview` only. Run → FAIL.
-- [ ] **Step 2:** Implement. Scatter: two `Scatter` series (`--warning` triangle "KYC note", `--info` circle "No KYC note"), `YAxis scale="log"`, ticks via `formatIDRShort`. Run → PASS. Commit `feat: add the book overview page`.
+- [x] **Step 1: Failing tests:** `/overview` has `h1` "Overview", the header line, tiles "Total AUM" and "Total loan exposure" with `Not part of AUM.`, the two chart titles, the footer; clicking opportunity "No ORI" lands on `/` with 37 rows; sidebar shows "Overview" with `aria-current="page"` on `/overview` only. Run → FAIL.
+- [x] **Step 2:** Implement. Scatter: two `Scatter` series (`--warning` triangle "KYC note", `--info` circle "No KYC note"), `YAxis scale="log"`, ticks via `formatIDRShort`. Run → PASS. Commit `feat: add the book overview page`.
 
 ### Task 6: e2e, CLAUDE.md, full check
 
 **Files:** `e2e/smoke.spec.ts`, `CLAUDE.md`.
 
-- [ ] **Step 1:** e2e: replace "home page lists the customers" with: `/` shows 100 worklist rows, the first link opens `Customer 8797`; `./overview` deep link shows the two titles; its "No ORI" count opens a 37-row worklist. Each asserts no console or page errors.
-- [ ] **Step 2:** CLAUDE.md folder structure: `lib/insights/` line adds "and the worklist ranking".
-- [ ] **Step 3:** `npm run check` → exit 0; `npm run e2e` → PASS. Commit `test: add e2e checks for the worklist and overview`.
+- [x] **Step 1:** e2e: replace "home page lists the customers" with: `/` shows 100 worklist rows, the first link opens `Customer 8797`; `./overview` deep link shows the two titles; its "No ORI" count opens a 37-row worklist. Each asserts no console or page errors.
+- [x] **Step 2:** CLAUDE.md folder structure: `lib/insights/` line adds "and the worklist ranking".
+- [x] **Step 3:** `npm run check` → exit 0; `npm run e2e` → PASS. Commit `test: add e2e checks for the worklist and overview`.
