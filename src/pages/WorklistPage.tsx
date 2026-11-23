@@ -1,4 +1,5 @@
-import { useSearchParams } from 'react-router'
+import { useState } from 'react'
+import { useLocation, useNavigationType, useSearchParams } from 'react-router'
 import { WorklistFilters } from '@/components/worklist/WorklistFilters'
 import { WorklistTable } from '@/components/worklist/WorklistTable'
 import type { RuleId } from '@/lib/insights'
@@ -10,6 +11,19 @@ export function WorklistPage() {
   const rows = getWorklist()
   const filters = parseWorklistFilters(params)
   const visible = filterWorklist(rows, filters)
+
+  // The ID box keeps its own text. The router commits URL changes in a
+  // transition, so a box bound straight to `q` loses the caret on each key.
+  // Filter writes use `replace`. Any other navigation (a link, Back) sets
+  // the box from the new URL. "Clear filters" empties it directly.
+  const location = useLocation()
+  const navigationType = useNavigationType()
+  const [qText, setQText] = useState(params.get('q') ?? '')
+  const [seenKey, setSeenKey] = useState(location.key)
+  if (location.key !== seenKey) {
+    setSeenKey(location.key)
+    if (navigationType !== 'REPLACE') setQText(params.get('q') ?? '')
+  }
 
   const setParam = (key: 'rule' | 'q', value: string | null) =>
     setParams(
@@ -32,10 +46,16 @@ export function WorklistPage() {
       </div>
       <WorklistFilters
         rule={filters.rule}
-        q={params.get('q') ?? ''}
+        q={qText}
         onRuleChange={(rule: RuleId | null) => setParam('rule', rule)}
-        onQueryChange={(q) => setParam('q', q)}
-        onClear={() => setParams(new URLSearchParams(), { replace: true })}
+        onQueryChange={(q) => {
+          setQText(q)
+          setParam('q', q)
+        }}
+        onClear={() => {
+          setQText('')
+          setParams(new URLSearchParams(), { replace: true })
+        }}
       />
       <WorklistTable rows={visible} />
     </section>

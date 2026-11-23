@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react'
+import { act, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { RouterProvider, createMemoryRouter } from 'react-router'
 import { describe, expect, it } from 'vitest'
@@ -63,6 +63,30 @@ describe('WorklistPage', () => {
     await user.type(screen.getByRole('textbox', { name: 'Filter by customer ID' }), '8797')
     expect(router.state.location.search).toBe('?q=8797')
     expect(bodyRows()).toHaveLength(1)
+  })
+
+  it('keeps the caret in place when editing the middle of the ID', async () => {
+    const user = userEvent.setup()
+    const router = renderAt('/?q=8797')
+    const input = screen.getByRole<HTMLInputElement>('textbox', { name: 'Filter by customer ID' })
+    input.focus()
+    input.setSelectionRange(1, 1)
+    await user.keyboard('55')
+    expect(input).toHaveValue('855797')
+    expect(router.state.location.search).toBe('?q=855797')
+  })
+
+  it('empties the ID box with "Clear filters"', async () => {
+    const user = userEvent.setup()
+    renderAt('/?q=44')
+    await user.click(screen.getByRole('button', { name: 'Clear filters' }))
+    expect(screen.getByRole('textbox', { name: 'Filter by customer ID' })).toHaveValue('')
+  })
+
+  it('shows the new ID when a link changes the URL', async () => {
+    const router = renderAt('/?q=44')
+    await act(() => router.navigate('/?q=12'))
+    expect(screen.getByRole('textbox', { name: 'Filter by customer ID' })).toHaveValue('12')
   })
 
   it('writes the opportunity type to the URL', async () => {
