@@ -1,6 +1,7 @@
 /** Selectors over the whole book of customers. */
-import { latestActivityDate, loanExposure } from '@/lib/domain'
-import { evaluateCustomer, type CustomerEvaluation } from '@/lib/insights'
+import { daysSince, firstActivityDate, isCustomerInitiated, latestActivityDate, loanExposure } from '@/lib/domain'
+import { cashAmount, evaluateCustomer, type CustomerEvaluation } from '@/lib/insights'
+import type { Transaction } from '@/types'
 import type { PortfolioItem, Profile } from '@/types'
 import { dataset, type Dataset } from './dataset'
 import { groupByCustomer } from './grouping'
@@ -12,15 +13,35 @@ export interface BookCustomer {
   evaluation: CustomerEvaluation
   /** LOAN total. Never added to `evaluation.aum`. */
   loanExposure: number
+  /** The latest customer-initiated row and its days before the book as-of date; `null` with no such row. */
+  lastActive: { days: number; date: string } | null
+  /** The earliest row, bank entries included (`YYYY-MM-DD`); `null` with no rows. */
+  firstTransaction: string | null
+  /** Cash amount (`cashAmount`), the basis of the cash-heavy rule. */
+  cash: number
 }
 
-/** One entry per profile, in profile order, over the shared grouping. */
+function lastActiveOf(transactions: readonly Transaction[], asOf: string | null): BookCustomer['lastActive'] {
+  const initiated = transactions.filter(isCustomerInitiated)
+  if (asOf === null || initiated.length === 0) return null
+  const date = latestActivityDate(initiated)
+  return { days: daysSince(date, asOf), date }
+}
+
+/**
+ * One entry per profile, in profile order, over the shared grouping. Recency
+ * is measured against the as-of date of the whole dataset (ADR 0005).
+ */
 export function bookCustomersOf(data: Dataset): BookCustomer[] {
-  return [...groupByCustomer(data).values()].map(({ profile, portfolio }) => ({
+  const asOf = data.transactions.length > 0 ? asOfDateOf(data) : null
+  return [...groupByCustomer(data).values()].map(({ profile, portfolio, transactions }) => ({
     profile,
     portfolio,
     evaluation: evaluateCustomer({ profile, portfolio }),
     loanExposure: loanExposure(portfolio),
+    lastActive: lastActiveOf(transactions, asOf),
+    firstTransaction: transactions.length > 0 ? firstActivityDate(transactions) : null,
+    cash: cashAmount(portfolio),
   }))
 }
 
