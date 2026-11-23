@@ -1,6 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import type { PortfolioItem, ProductCategory } from '@/types'
-import { AUM_CATEGORIES, amountByCategory, customerAum, isHeld, loanExposure } from './portfolio'
+import {
+  AUM_CATEGORIES,
+  CATEGORY_COLORS,
+  amountByCategory,
+  customerAum,
+  heldCount,
+  isHeld,
+  loanExposure,
+} from './portfolio'
 
 function row(
   product_category: ProductCategory,
@@ -72,5 +80,28 @@ describe('amountByCategory', () => {
 
   it('counts null as 0', () => {
     expect(amountByCategory(mixed)).toEqual({ FUNDING: 100, LOAN: 999, ORI: 50, BANCA: 0, REKSA: 0 })
+  })
+})
+
+describe('CATEGORY_COLORS', () => {
+  it('maps the AUM categories to --chart-1..4 in AUM order', () => {
+    expect(AUM_CATEGORIES.map((c) => CATEGORY_COLORS[c])).toEqual([
+      'var(--chart-1)',
+      'var(--chart-2)',
+      'var(--chart-3)',
+      'var(--chart-4)',
+    ])
+  })
+
+  it('gives LOAN its own token, unlike every AUM category', () => {
+    expect(CATEGORY_COLORS.LOAN).toBe('var(--chart-5)')
+    expect(AUM_CATEGORIES.map((c) => CATEGORY_COLORS[c])).not.toContain(CATEGORY_COLORS.LOAN)
+  })
+})
+
+describe('heldCount', () => {
+  it('counts rows with amount above 0', () => {
+    expect(heldCount(mixed)).toBe(3)
+    expect(heldCount([])).toBe(0)
   })
 })

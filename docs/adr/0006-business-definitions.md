@@ -38,6 +38,9 @@ pure function in `src/lib/domain/`, with tests.
 | Customer-initiated | Every transaction that is not a bank entry. Behavior views use these only. | `isCustomerInitiated` |
 | Income rank | 1 for `sd. 1 Juta` up to 8 for `>100 Juta`, the order of `INCOME_BANDS`. | `incomeRank` |
 | High income | Income rank 5 or higher (`>10 Juta - 25 Juta` and above). 18 of 100 customers. | `HIGH_INCOME_MIN_RANK`, `isHighIncome` |
+| Digital method | MOBILE BANKING, INTERNET BANKING, SMS BANKING, QRIS, VIRTUAL DEBIT CARD, VELOCITY, CREDIT CARD, DEBIT CARD. Not digital: ATM, BRANCH, MERCHANT. User decision, 2026-11-23 (cards count as digital). | `DIGITAL_METHODS`, `isDigital` |
+| Digital share | Digital count / count over customer-initiated transactions, with the `BANCA` method left out (97 customers use it, also without a BANCA holding, so it is not a channel signal). `null` when nothing is left to count. Measured over the 100 customers: p10 64%, median 78%, p90 89%. | `digitalShare` |
+| Detail window | 2024-03-01 to the as-of date. 87% of transactions fall in March and April 2024. Activity views show this window in detail and count older rows apart. | `DETAIL_WINDOW_START`, `weeklyCounts`, `earlierRows` |
 
 Two further rules:
 
@@ -61,8 +64,8 @@ The as-of date is defined in ADR 0005.
   customers equals the AUM total over all non-LOAN rows.
 - A change to a definition is a change to this ADR, to one domain function,
   and to its tests. It is never a change in a component.
-- Business thresholds that Part 2 did not define (digital methods,
-  insight triggers) are not here. They come from the user
+- Business thresholds that Part 2 did not define (insight triggers) are
+  not here. They come from the user
   (CLAUDE.md Rule 3) and live in the insights layer.
 
 ## Alternatives considered

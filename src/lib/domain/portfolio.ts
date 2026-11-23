@@ -9,9 +9,27 @@ import { PRODUCT_CATEGORIES, type PortfolioItem, type ProductCategory } from '@/
 /** Categories that count toward AUM. LOAN is excluded. */
 export const AUM_CATEGORIES: readonly ProductCategory[] = ['FUNDING', 'ORI', 'BANCA', 'REKSA']
 
+/**
+ * One color token per category, for charts, dots, and badges (ADR 0007).
+ * The AUM categories take --chart-1..4. LOAN takes --chart-5, a neutral hue,
+ * because it is never part of AUM. No category is red.
+ */
+export const CATEGORY_COLORS: Readonly<Record<ProductCategory, string>> = {
+  FUNDING: 'var(--chart-1)',
+  ORI: 'var(--chart-2)',
+  BANCA: 'var(--chart-3)',
+  REKSA: 'var(--chart-4)',
+  LOAN: 'var(--chart-5)',
+}
+
 /** A customer holds a product when its amount is above 0. `null` and 0 are not held. */
 export function isHeld(item: PortfolioItem): boolean {
   return item.amount !== null && item.amount > 0
+}
+
+/** Number of rows the customer holds (`isHeld`), any category. */
+export function heldCount(items: readonly PortfolioItem[]): number {
+  return items.filter(isHeld).length
 }
 
 function sumAmounts(items: readonly PortfolioItem[]): number {
