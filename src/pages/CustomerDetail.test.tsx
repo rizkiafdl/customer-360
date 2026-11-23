@@ -101,6 +101,43 @@ describe('CustomerDetail: full customer', () => {
   })
 })
 
+describe('CustomerDetail: chart content', () => {
+  // Each chart's accessible name lists its data, so these names check what the bars draw.
+  it('names the AUM chart with each AUM category and its full amount', () => {
+    const vm = vmFor(1)
+    renderDetail(1)
+    // An accessible name keeps the no-break spaces, so this uses formatIDR as it is.
+    const bars = vm.holdings.aumBars.map((bar) => `${bar.category} ${formatIDR(bar.amount)}`).join(', ')
+    expect(screen.getByRole('img', { name: `AUM by category: ${bars}` })).toBeInTheDocument()
+  })
+
+  it('names the channel mix chart with each channel and its count', () => {
+    const vm = vmFor(1)
+    renderDetail(1)
+    const entries = vm.activity.channelMix.map((e) => `${e.label} ${e.count}`).join(', ')
+    expect(screen.getByRole('img', { name: `Channel mix: ${entries}` })).toBeInTheDocument()
+  })
+
+  it('names the type mix chart with each type and its count', () => {
+    const vm = vmFor(1)
+    renderDetail(1)
+    const entries = vm.activity.typeMix.map((e) => `${e.label} ${e.count}`).join(', ')
+    expect(screen.getByRole('img', { name: `Type mix: ${entries}` })).toBeInTheDocument()
+  })
+
+  it('names the weekly chart with each week and its count', () => {
+    const vm = vmFor(1)
+    renderDetail(1)
+    const weeks = vm.activity.weekly.map((w) => `week from ${w.label} ${w.count}`).join(', ')
+    expect(screen.getByRole('img', { name: `Customer-initiated transactions per week: ${weeks}` })).toBeInTheDocument()
+  })
+
+  it('draws no AUM chart when AUM is 0', () => {
+    renderDetail(3)
+    expect(screen.queryByRole('img', { name: /^AUM by category/ })).not.toBeInTheDocument()
+  })
+})
+
 describe('CustomerDetail: empty and odd cases', () => {
   it('replaces the holdings with "No portfolio rows." and shows Rp 0 tiles', () => {
     renderDetail(2)
