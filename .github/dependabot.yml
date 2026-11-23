@@ -9,6 +9,12 @@ updates:
     commit-message:
       prefix: build
       include: scope
+    # typescript-eslint accepts only typescript >=4.8.4 <6.1.0, and TypeScript
+    # minors can break. Remove this rule when typescript-eslint supports the
+    # next TypeScript version.
+    ignore:
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
     groups:
       npm:
         patterns: ["*"]
