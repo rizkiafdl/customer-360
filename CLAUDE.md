@@ -19,6 +19,7 @@ read the repo, not only run the app.
 | Build / dev server | Vite 8 |
 | UI | React 19 + TypeScript 6 (`strict`, `noUncheckedIndexedAccess`) |
 | Styling / components | Tailwind CSS v4 + shadcn/ui (style `radix-nova`, base color neutral, lucide icons) |
+| Font | Plus Jakarta Sans (`@fontsource-variable/plus-jakarta-sans`) |
 | Charts | Recharts |
 | Tables | TanStack Table |
 | Routing | React Router (library mode: `createBrowserRouter` + `RouterProvider`) |
@@ -55,6 +56,8 @@ scripts/
   excel-to-json.ts           Entry point for `npm run data:build` (file I/O only).
   excel/normalize.ts         Pure parsing/validation functions used by the converter.
   excel/normalize.test.ts    Unit tests for the converter logic.
+  theme/contrast.ts          OKLCH → sRGB and WCAG contrast, used by the theme contrast test.
+  theme/contrast.test.ts     Checks every token pairing in src/index.css, both themes (ADR 0007).
 src/
   data/                      GENERATED JSON (committed) + index.ts (typed exports).
     profiles.json            100 rows  (sheet `profile`)
@@ -64,15 +67,19 @@ src/
     data.test.ts             Contract test on the committed JSON.
   types/                     Record types + allowed-value constants (one file per dataset).
   lib/                       Business logic: pure, tested functions. `utils.ts` is shadcn's `cn`.
-    format.ts                `formatIDR()` — the only money formatter.
+    format.ts                `formatIDR()` and `formatIDRShort()` — the only money formatters. Date and percent labels.
+    theme.ts                 Dark/light switch (`readStoredTheme`, `applyTheme`). ADR 0007.
     domain/                  Business definitions (AUM, holds, bank entries, income rank, days since). ADR 0006.
     selectors/               The only importers of `src/data`. Pure `fn(dataset)` + bound exports (`asOfDate`).
     insights/                Insight rules, KYC note. Every cut-off lives in `thresholds.ts`. ADR 0008.
   components/ui/             shadcn/ui generated components (add with `npx shadcn@latest add <name>`).
-  components/                App components (render only).
+  components/                App components (render only): app shell, search, theme toggle.
+  components/customer/       Customer 360 detail sections: KPI tiles, charts, tables.
+  hooks/                     shadcn's hooks (`use-mobile`). UI layer (ADR 0004).
   pages/                     Route-level components (render only).
   routes.tsx                 Route table, shared by `main.tsx` and tests.
-  test/setup.ts              Vitest setup (jest-dom matchers, RTL cleanup).
+  test/setup.ts              Vitest setup (jest-dom matchers, RTL cleanup, jsdom polyfills).
+  test/fixtures.ts           Small hand-made `Dataset` for selector and UI tests.
 e2e/                         Playwright smoke tests against the built site.
 eslint.config.test.ts        Proves the ESLint layer rule blocks bad imports (ADR 0004).
 .github/                     CI workflow (checks → e2e → deploy) and Dependabot.
@@ -106,7 +113,10 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
    - Domain and insight functions take plain arrays (one customer's rows), so
      their tests use small fixtures. Contract tests on the real data live in
      `src/lib/selectors/`.
-2. **Money is IDR and always goes through `formatIDR()`** from `src/lib/format.ts`.
+2. **Money is IDR and always goes through `formatIDR()` or `formatIDRShort()`** from `src/lib/format.ts`.
+   - `formatIDR()` is the full form (`Rp 1.384.200.000`). `formatIDRShort()`
+     is for tiles and chart labels (`Rp 1,4 M`), and the full value is
+     always shown next to it in a tooltip.
    - Never call `Intl.NumberFormat` or `toLocaleString` for money anywhere else.
    - Never hard-code `Rp` strings.
 3. **Never invent business thresholds. Ask the user.**
@@ -175,6 +185,14 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
      check exact strings.
    - ✗ "Great opportunity to grow this customer's wealth with mutual funds!"
      ✓ "No REKSA. AUM Rp 1.384.200.000, 92% in savings."
+10. **All UI follows the visual system** in
+    `docs/superpowers/specs/2026-11-23-f1-visual-system-and-customer-detail-design.md`
+    section 4 and ADR 0007.
+    - Colors live only as CSS variables in `src/index.css`. No hex, `rgb()`,
+      or `oklch()` in `src/components/` or `src/pages/`.
+    - Brand red is for primary buttons, active nav, and the focus ring. It is
+      never a risk color, a chart series, or a large surface.
+    - LOAN is never added to or stacked with AUM.
 
 ## Data model
 
