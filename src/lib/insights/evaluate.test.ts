@@ -1,6 +1,7 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, expectTypeOf, it } from 'vitest'
 import { evaluateCustomer } from './evaluate'
 import { customer, row, rp } from './test-fixtures'
+import type { FiredInsight, RuleId } from './types'
 
 describe('evaluateCustomer', () => {
   it('returns fired rules in RULE_ORDER, with the tier and AUM', () => {
@@ -51,5 +52,12 @@ describe('evaluateCustomer', () => {
 
   it('reaches Priority at exactly Rp 5.000.000.000', () => {
     expect(evaluateCustomer(customer([row('FUNDING', 5_000_000_000, 'DEPOSITO01')])).tier).toBe('Priority')
+  })
+})
+
+describe('CustomerEvaluation.insights', () => {
+  it('is read-only, so no caller can reorder the shared top reason', () => {
+    const result = evaluateCustomer(customer([]))
+    expectTypeOf(result.insights).toEqualTypeOf<readonly FiredInsight<RuleId>[]>()
   })
 })
