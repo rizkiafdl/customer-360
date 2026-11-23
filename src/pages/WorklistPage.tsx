@@ -3,7 +3,7 @@ import { useLocation, useNavigationType, useSearchParams } from 'react-router'
 import { WorklistFilters } from '@/components/worklist/WorklistFilters'
 import { WorklistTable } from '@/components/worklist/WorklistTable'
 import type { RuleId } from '@/lib/insights'
-import { filterWorklist, getWorklist, parseWorklistFilters, worklistSummary } from '@/lib/selectors/worklist'
+import { filterWorklist, getWorklist, parseWorklistFilters, toIdQuery, worklistSummary } from '@/lib/selectors/worklist'
 
 /** Route `/`: the ranked opportunity worklist, filtered by the URL (F4 spec, section 4). */
 export function WorklistPage() {
@@ -48,7 +48,8 @@ export function WorklistPage() {
         rule={filters.rule}
         q={qText}
         onRuleChange={(rule: RuleId | null) => setParam('rule', rule)}
-        onQueryChange={(q) => {
+        onQueryChange={(text) => {
+          const q = toIdQuery(text)
           setQText(q)
           setParam('q', q)
         }}

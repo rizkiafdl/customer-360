@@ -59,6 +59,11 @@ function isRuleId(value: string | null): value is RuleId {
   return (RULE_ORDER as readonly (string | null)[]).includes(value)
 }
 
+/** The ID box text: digits only, so the box never shows text that the filter ignores. */
+export function toIdQuery(text: string): string {
+  return text.replace(/\D/g, '')
+}
+
 /** The filters from the URL. An unknown rule or a non-digit ID is ignored. */
 export function parseWorklistFilters(params: URLSearchParams): WorklistFilters {
   const rule = params.get('rule')
