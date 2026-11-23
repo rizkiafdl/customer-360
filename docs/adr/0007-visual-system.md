@@ -64,14 +64,19 @@ shadcn/ui (ADR 0002) already themes its components through CSS variables in
   - Chart titles state a fact with numbers from a fixed template built in
     `src/lib/selectors/` (copy rule, CLAUDE.md Rule 9).
 - **Short money:** `formatIDRShort()` (`Rp 1,2 M`) next to `formatIDR()`.
-  Every short value shows the full value in a tooltip.
+  Every short value shows the full value in a tooltip. Outside charts the
+  tooltip opens on hover and on keyboard focus. Inside a chart it opens on
+  hover only: a chart is one `role="img"` element and not a keyboard stop.
+  Its accessible name holds every full value, and the AUM chart sits next
+  to the product table, which shows each full amount.
 - **Contrast is tested.** A Node test under `scripts/theme/` parses both
   theme blocks of `src/index.css`, converts each `oklch` value to sRGB, and
   checks the WCAG ratio of each pairing: text ≥ 4.5:1, chart colors and the
   focus ring on cards ≥ 3:1. It also checks that each tested value is inside
   the sRGB gamut, so the browser does not clip it to another color.
 - **The 3:1 focus indicator is the opaque `--ring` color.** The test checks
-  that token. shadcn controls draw it as an opaque `border-ring` and add a
+  that token on `--card`, and `--sidebar-ring` on `--sidebar` for the
+  sidebar items. shadcn controls draw it as an opaque `border-ring` and add a
   `ring-ring/50` halo around it; the halo is decoration and is not what
   passes 3:1. App components (links, cards) use the opaque `ring-ring`.
 
