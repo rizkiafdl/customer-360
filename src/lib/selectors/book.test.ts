@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { customerAum } from '@/lib/domain'
 import type { PortfolioItem } from '@/types'
-import { asOfDate, asOfDateOf, customerCount, getCustomerCount } from './book'
+import { asOfDate, asOfDateOf, bookCustomersOf, customerCount, getCustomerCount } from './book'
 import { dataset, type Dataset } from './dataset'
 
 const fixture: Dataset = {
@@ -37,6 +37,36 @@ describe('customerCount', () => {
 describe('asOfDateOf', () => {
   it('is the latest transaction date', () => {
     expect(asOfDateOf(fixture)).toBe('2024-02-10')
+  })
+})
+
+describe('bookCustomersOf', () => {
+  const withRows: Dataset = {
+    ...fixture,
+    portfolio: [
+      { customer_id: 2, product: 'TABSYA', product_category: 'FUNDING', amount: 300 },
+      { customer_id: 2, product: 'KPR', product_category: 'LOAN', amount: 700 },
+      { customer_id: 2, product: 'KPR', product_category: 'LOAN', amount: null },
+    ],
+  }
+
+  it('gives one entry per profile, in profile order, with that customer rows only', () => {
+    const book = bookCustomersOf(withRows)
+    expect(book.map((c) => c.profile.customer_id)).toEqual([1, 2])
+    expect(book[0]?.portfolio).toEqual([])
+    expect(book[1]?.portfolio).toHaveLength(3)
+  })
+
+  it('keeps loan exposure apart from AUM', () => {
+    const second = bookCustomersOf(withRows)[1]
+    expect(second?.evaluation.aum).toBe(300)
+    expect(second?.loanExposure).toBe(700)
+  })
+
+  it('carries the evaluation of each customer', () => {
+    const first = bookCustomersOf(withRows)[0]
+    expect(first?.evaluation.customer_id).toBe(1)
+    expect(first?.evaluation.insights.map((i) => i.id)).toEqual(['no-aum'])
   })
 })
 
