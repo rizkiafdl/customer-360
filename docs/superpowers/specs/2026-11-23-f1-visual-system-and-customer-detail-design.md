@@ -118,6 +118,34 @@ token table when done.
   ≥ 3 (non-text UI). The test lives under `scripts/` (Node code, typechecked
   by `tsconfig.node.json`).
 
+#### Builder's final values
+
+Measured by `scripts/theme/contrast.ts` (WCAG ratio, OKLCH converted to
+sRGB). Targets: text pairings ≥ 4.5, `ring` and chart colors ≥ 3. All
+values are in the sRGB gamut. `--primary` is one step darker than
+`#ED1C24`, because white on `#ED1C24` is about 4.4:1 (ADR 0007).
+
+| Token | Dark | Ratio | Light | Ratio | Pairing |
+| --- | --- | --- | --- | --- | --- |
+| `--background` | `oklch(0.211 0.004 49)` | — | `oklch(0.985 0.003 75)` | — | — |
+| `--card` | `oklch(0.245 0.005 49)` | — | `oklch(1 0 0)` | — | — |
+| `--popover` | `oklch(0.28 0.006 49)` | — | `oklch(1 0 0)` | — | — |
+| `--foreground` | `oklch(0.95 0.008 75)` | 14.03 | `oklch(0.2 0.006 49)` | 18.12 | on `card` |
+| `--muted-foreground` | `oklch(0.72 0.012 70)` | 6.54 | `oklch(0.5 0.01 60)` | 6.01 | on `card` |
+| `--primary` | `oklch(0.585 0.228 27)` | 4.71 | `oklch(0.585 0.228 27)` | 4.71 | `primary-foreground` on it |
+| `--ring` | `oklch(0.585 0.228 27)` | 3.45 | `oklch(0.585 0.228 27)` | 4.71 | on `card` |
+| `--brand-deep` | `oklch(0.371 0.119 20)` | — | `oklch(0.371 0.119 20)` | — | — |
+| `--brand-text` | `oklch(0.72 0.15 22)` | 6.13 | `oklch(0.53 0.21 27)` | 5.89 | on `card` |
+| `--opportunity` | `oklch(0.75 0.12 170)` | 7.70 | `oklch(0.5 0.085 170)` | 5.73 | on `card` |
+| `--warning` | `oklch(0.8 0.14 80)` | 8.58 | `oklch(0.55 0.12 70)` | 4.98 | on `card` |
+| `--risk` | `oklch(0.74 0.15 55)` | 6.75 | `oklch(0.55 0.13 50)` | 5.09 | on `card` |
+| `--info` | `oklch(0.75 0.04 240)` | 7.35 | `oklch(0.5 0.04 240)` | 5.95 | on `card` |
+| `--chart-1` (FUNDING) | `oklch(0.68 0.13 250)` | 5.67 | `oklch(0.55 0.15 250)` | 4.85 | on `card` |
+| `--chart-2` (ORI) | `oklch(0.72 0.11 190)` | 6.87 | `oklch(0.58 0.1 190)` | 4.08 | on `card` |
+| `--chart-3` (BANCA) | `oklch(0.68 0.14 300)` | 5.36 | `oklch(0.55 0.16 300)` | 5.21 | on `card` |
+| `--chart-4` (REKSA) | `oklch(0.78 0.13 85)` | 8.06 | `oklch(0.65 0.13 80)` | 3.29 | on `card` |
+| `--chart-5` (LOAN) | `oklch(0.62 0.01 60)` | 4.45 | `oklch(0.6 0.01 60)` | 3.96 | on `card` |
+
 ### 4.3 Type and numbers
 
 - Plus Jakarta Sans, variable, from `@fontsource-variable/plus-jakarta-sans`.
