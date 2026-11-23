@@ -11,6 +11,14 @@ export function formatWholePercent(part: number, whole: number): string {
   return `${Math.floor((part * 100) / whole)}%`
 }
 
+/**
+ * A threshold share (0 to 1) as a whole percent, e.g. `0.8` → `80%`.
+ * Rounded to the nearest whole, because `0.57 * 100` is `56.99999999999999`.
+ */
+export function formatSharePercent(share: number): string {
+  return `${Math.round(share * 100)}%`
+}
+
 /** The income band at a rank (1 = `sd. 1 Juta`, 8 = `>100 Juta`). */
 export function incomeBandAtRank(rank: number): IncomeBand {
   const band = INCOME_BANDS[rank - 1]
