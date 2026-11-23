@@ -77,8 +77,10 @@ is not. `npm run lint` and CI apply the rule to the whole repo.
   load the 5,000-row dataset.
 - The insights and selectors folders are covered by the config before
   their first file exists.
-- A new top-level folder under `src/` has no layer until the config gains
-  a block for it. The ESLint test must gain a case at the same time.
+- A default block forbids `src/data` for every file under `src/`, so a new
+  folder with no layer block (for example `src/hooks/`) still cannot read
+  the raw data. It gets no other layer check until the config gains a block
+  for it, and the ESLint test must gain a case at the same time.
 
 ## Alternatives considered
 

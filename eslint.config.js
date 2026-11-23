@@ -61,6 +61,10 @@ export default defineConfig([
       'react-refresh/only-export-components': 'off',
     },
   },
+  // Default for every file under src/: no import of src/data. A file in a
+  // folder with no layer block (a new `src/hooks/`, say) is still covered.
+  // Each layer block below replaces this setting for its own files.
+  { files: ['src/**/*.{ts,tsx}'], ...restrict(DATA) },
   // One block per layer. The `files` globs do not overlap: a later block that
   // sets the same rule for the same file would replace this one, not merge.
   {

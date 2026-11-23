@@ -31,6 +31,10 @@ describe('layer rule', () => {
     ['src/lib/domain/x.test.ts', '@/data'],
     ['src/lib/insights/x.ts', '@/data'],
     ['src/lib/format.ts', '@/data'],
+    // A folder with no layer block of its own still may not import src/data.
+    ['src/hooks/useX.ts', '@/data'],
+    ['src/lib/newdir/x.ts', '../../data'],
+    ['src/test/x.ts', '@/data'],
     // No upward imports.
     ['src/lib/domain/x.ts', '@/lib/selectors/book'],
     ['src/lib/domain/x.ts', '../selectors/book'],
