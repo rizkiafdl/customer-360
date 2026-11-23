@@ -30,6 +30,32 @@ test('a customer page opens from a direct deep link', async ({ page }) => {
   expect(errors).toEqual([])
 })
 
+// Customer 6513 fires only the two BANCA rules: both cards show, never deduped.
+test('the offer panel shows both BANCA cards', async ({ page }) => {
+  const errors = collectErrors(page)
+  await page.goto('./customers/6513')
+
+  const offers = page.getByRole('region', { name: 'What to offer' }).getByRole('list', { name: 'Offers' })
+  const items = offers.getByRole('listitem')
+  await expect(items).toHaveCount(2)
+  await expect(items.nth(0)).toContainText('No BANCA.')
+  await expect(items.nth(1)).toContainText('No BANCA.')
+  expect(errors).toEqual([])
+})
+
+// Customer 1047 fires no offer rule but has the KYC note.
+test('the offer panel shows the empty line and the KYC note', async ({ page }) => {
+  const errors = collectErrors(page)
+  await page.goto('./customers/1047')
+
+  const panel = page.getByRole('region', { name: 'What to offer' })
+  await expect(panel.getByText('No offer rule fired.')).toBeVisible()
+  await expect(panel.getByRole('heading', { name: 'Note' })).toBeVisible()
+  await expect(panel.getByText('KYC income band')).toBeVisible()
+  await expect(panel.getByRole('list', { name: 'Offers' })).toHaveCount(0)
+  expect(errors).toEqual([])
+})
+
 test('the search opens a customer', async ({ page }) => {
   const errors = collectErrors(page)
   await page.goto('./')
