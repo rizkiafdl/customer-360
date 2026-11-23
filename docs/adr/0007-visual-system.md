@@ -70,6 +70,10 @@ shadcn/ui (ADR 0002) already themes its components through CSS variables in
   checks the WCAG ratio of each pairing: text ≥ 4.5:1, chart colors and the
   focus ring on cards ≥ 3:1. It also checks that each tested value is inside
   the sRGB gamut, so the browser does not clip it to another color.
+- **The 3:1 focus indicator is the opaque `--ring` color.** The test checks
+  that token. shadcn controls draw it as an opaque `border-ring` and add a
+  `ring-ring/50` halo around it; the halo is decoration and is not what
+  passes 3:1. App components (links, cards) use the opaque `ring-ring`.
 
 ## Consequences
 
