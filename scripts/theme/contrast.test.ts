@@ -101,6 +101,11 @@ describe.each(['dark', 'light'] as const)('%s theme tokens', (name) => {
     expect(contrastRatio(get(token), get('card'))).toBeGreaterThanOrEqual(3)
   })
 
+  // Sidebar items draw focus with their own token, on the sidebar surface.
+  it('--sidebar-ring on --sidebar is at least 3:1', () => {
+    expect(contrastRatio(get('sidebar-ring'), get('sidebar'))).toBeGreaterThanOrEqual(3)
+  })
+
   it('layers surfaces: background < card < popover in dark, by lightness', () => {
     if (name === 'light') return
     const l = (t: string) => parseOklch(get(t)).l
@@ -109,7 +114,7 @@ describe.each(['dark', 'light'] as const)('%s theme tokens', (name) => {
   })
 
   it('keeps every tested token inside the sRGB gamut', () => {
-    const tested = new Set([...TEXT_ON_SURFACES.flat(), ...UI_ON_CARD, 'card'])
+    const tested = new Set([...TEXT_ON_SURFACES.flat(), ...UI_ON_CARD, 'card', 'sidebar-ring'])
     const outside = [...tested].filter((t) => !inGamut(get(t)))
     expect(outside).toEqual([])
   })
