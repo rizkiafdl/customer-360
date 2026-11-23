@@ -1,3 +1,4 @@
+export * from './channels'
 export * from './dates'
 export * from './income'
 export * from './portfolio'

@@ -24,3 +24,45 @@ export function latestActivityDate(transactions: readonly Transaction[]): string
     '',
   )
 }
+
+export interface LabelCount {
+  label: string
+  count: number
+}
+
+/** Row count per key, most first; ties sort by label. */
+export function countBy<T>(rows: readonly T[], key: (row: T) => string): LabelCount[] {
+  const counts = new Map<string, number>()
+  for (const row of rows) {
+    const k = key(row)
+    counts.set(k, (counts.get(k) ?? 0) + 1)
+  }
+  return [...counts]
+    .map(([label, count]) => ({ label, count }))
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label))
+}
+
+/** Label of the bucket that holds every entry after the first n. */
+export const OTHER_LABEL = 'Other'
+
+/** The first `n` entries, plus one `Other` entry with the rest when any are left. */
+export function topWithOther(entries: readonly LabelCount[], n: number): LabelCount[] {
+  const rest = entries.slice(n).reduce((sum, e) => sum + e.count, 0)
+  const top = entries.slice(0, n)
+  return rest > 0 ? [...top, { label: OTHER_LABEL, count: rest }] : top
+}
+
+export interface BankEntryTotal {
+  type: TransactionType
+  count: number
+  /** Sum of `transaction_amount`: volume per type, not a flow (ADR 0006). */
+  amount: number
+}
+
+/** Count and amount per bank-entry type, in `BANK_ENTRY_TYPES` order. Types with no rows are left out. */
+export function bankEntrySummary(transactions: readonly Transaction[]): BankEntryTotal[] {
+  return BANK_ENTRY_TYPES.map((type) => {
+    const rows = transactions.filter((t) => t.transaction_type === type)
+    return { type, count: rows.length, amount: rows.reduce((sum, t) => sum + t.transaction_amount, 0) }
+  }).filter((total) => total.count > 0)
+}

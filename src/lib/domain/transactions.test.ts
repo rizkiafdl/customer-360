@@ -2,9 +2,13 @@ import { describe, expect, it } from 'vitest'
 import { TRANSACTION_TYPES, type Transaction, type TransactionType } from '@/types'
 import {
   BANK_ENTRY_TYPES,
+  OTHER_LABEL,
+  bankEntrySummary,
+  countBy,
   isBankEntry,
   isCustomerInitiated,
   latestActivityDate,
+  topWithOther,
 } from './transactions'
 
 function trx(transaction_type: TransactionType, activity_date = '2024-04-01'): Transaction {
@@ -47,5 +51,71 @@ describe('latestActivityDate', () => {
 
   it('throws a RangeError for no transactions', () => {
     expect(() => latestActivityDate([])).toThrow(RangeError)
+  })
+})
+
+function row(
+  transaction_type: TransactionType,
+  transaction_method: Transaction['transaction_method'],
+  transaction_amount = 1000,
+): Transaction {
+  return { activity_date: '2024-04-01', customer_id: 1, transaction_method, transaction_type, transaction_amount }
+}
+
+describe('countBy', () => {
+  it('counts per key, most first, ties by name', () => {
+    const rows = [row('TRANSFER', 'QRIS'), row('PAYMENT', 'ATM'), row('TRANSFER', 'ATM'), row('OTHERS', 'BRANCH')]
+    expect(countBy(rows, (t) => t.transaction_method)).toEqual([
+      { label: 'ATM', count: 2 },
+      { label: 'BRANCH', count: 1 },
+      { label: 'QRIS', count: 1 },
+    ])
+  })
+
+  it('is empty for no rows', () => {
+    expect(countBy([], (t: Transaction) => t.transaction_type)).toEqual([])
+  })
+})
+
+describe('topWithOther', () => {
+  const entries = [
+    { label: 'A', count: 5 },
+    { label: 'B', count: 4 },
+    { label: 'C', count: 3 },
+  ]
+
+  it('keeps the first n and folds the rest into Other', () => {
+    expect(topWithOther(entries, 2)).toEqual([
+      { label: 'A', count: 5 },
+      { label: 'B', count: 4 },
+      { label: OTHER_LABEL, count: 3 },
+    ])
+  })
+
+  it('has no Other when nothing is left over', () => {
+    expect(topWithOther(entries, 3)).toEqual(entries)
+  })
+
+  it('names the bucket Other', () => {
+    expect(OTHER_LABEL).toBe('Other')
+  })
+})
+
+describe('bankEntrySummary', () => {
+  it('gives count and amount per bank-entry type, in BANK_ENTRY_TYPES order', () => {
+    const rows = [
+      row('PAJAK', 'BRANCH', 20),
+      row('BUNGA', 'BRANCH', 100),
+      row('BUNGA', 'BRANCH', 50.5),
+      row('TRANSFER', 'QRIS', 9999),
+    ]
+    expect(bankEntrySummary(rows)).toEqual([
+      { type: 'BUNGA', count: 2, amount: 150.5 },
+      { type: 'PAJAK', count: 1, amount: 20 },
+    ])
+  })
+
+  it('is empty when there are no bank entries', () => {
+    expect(bankEntrySummary([row('TRANSFER', 'QRIS')])).toEqual([])
   })
 })
