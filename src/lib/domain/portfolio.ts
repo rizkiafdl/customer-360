@@ -1,0 +1,44 @@
+/**
+ * Portfolio definitions reused from Part 2 (ADR 0006).
+ *
+ * Every function takes one customer's rows. None of them filters by
+ * `customer_id`; that is the selectors' job (ADR 0004).
+ */
+import { PRODUCT_CATEGORIES, type PortfolioItem, type ProductCategory } from '@/types'
+
+/** Categories that count toward AUM. LOAN is excluded. */
+export const AUM_CATEGORIES: readonly ProductCategory[] = ['FUNDING', 'ORI', 'BANCA', 'REKSA']
+
+/** A customer holds a product when its amount is above 0. `null` and 0 are not held. */
+export function isHeld(item: PortfolioItem): boolean {
+  return item.amount !== null && item.amount > 0
+}
+
+function sumAmounts(items: readonly PortfolioItem[]): number {
+  return items.reduce((total, item) => total + (item.amount ?? 0), 0)
+}
+
+/** Sum of `amount` over FUNDING, ORI, BANCA, and REKSA. `null` counts as 0. */
+export function customerAum(items: readonly PortfolioItem[]): number {
+  return sumAmounts(items.filter((item) => AUM_CATEGORIES.includes(item.product_category)))
+}
+
+/** Sum of `amount` over LOAN. `null` counts as 0. Never part of AUM. */
+export function loanExposure(items: readonly PortfolioItem[]): number {
+  return sumAmounts(items.filter((item) => item.product_category === 'LOAN'))
+}
+
+/**
+ * One total per category, all five present. Groups by category, never by
+ * product name: GIRO under FUNDING and GIRO under LOAN stay apart.
+ */
+export function amountByCategory(
+  items: readonly PortfolioItem[],
+): Record<ProductCategory, number> {
+  const totals = Object.fromEntries(PRODUCT_CATEGORIES.map((c) => [c, 0])) as Record<
+    ProductCategory,
+    number
+  >
+  for (const item of items) totals[item.product_category] += item.amount ?? 0
+  return totals
+}
