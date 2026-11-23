@@ -1,6 +1,7 @@
 export * from './cash'
 export * from './evaluate'
 export * from './kyc'
+export * from './panel'
 export * from './rules'
 export * from './text'
 export * from './thresholds'
