@@ -8,6 +8,10 @@ import { CustomerDetail } from './CustomerDetail'
 // That warning is the only console message this test allows.
 const ZERO_SIZE_CHART = /^The width\(0\) and height\(0\) of chart should be greater than 0,/
 
+// 100 full renders take about 1 s locally, but more than the 5 s default
+// on the CI runner with coverage on.
+const ALL_CUSTOMERS_TIMEOUT_MS = 30_000
+
 describe('CustomerDetail: every real customer', () => {
   const messages: string[] = []
   const record = (...args: unknown[]) => {
@@ -39,5 +43,5 @@ describe('CustomerDetail: every real customer', () => {
       cleanup()
     }
     expect(messages.filter((message) => !ZERO_SIZE_CHART.test(message))).toEqual([])
-  })
+  }, ALL_CUSTOMERS_TIMEOUT_MS)
 })
