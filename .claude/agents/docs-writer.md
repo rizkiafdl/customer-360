@@ -8,7 +8,7 @@ hooks:
     - matcher: "Edit|Write|NotebookEdit"
       hooks:
         - type: command
-          command: 'npx --no-install tsx "$CLAUDE_PROJECT_DIR/scripts/agents/guard-paths.ts" docs-writer'
+          command: 'npx --no-install tsx "$CLAUDE_PROJECT_DIR/scripts/agents/guard-paths.ts" docs-writer || exit 2'
 ---
 
 # docs-writer

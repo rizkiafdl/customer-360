@@ -8,7 +8,7 @@ hooks:
     - matcher: "Edit|Write|NotebookEdit"
       hooks:
         - type: command
-          command: 'npx --no-install tsx "$CLAUDE_PROJECT_DIR/scripts/agents/guard-paths.ts" test-writer'
+          command: 'npx --no-install tsx "$CLAUDE_PROJECT_DIR/scripts/agents/guard-paths.ts" test-writer || exit 2'
 ---
 
 # test-writer
@@ -31,8 +31,12 @@ with a new `BRIEF`. The code from earlier tasks is in the worktree.
 
 Test files only: `**/*.test.ts`, `**/*.test.tsx`, `e2e/**`, and
 `src/test/**` (fixtures and the Vitest setup). A hook blocks every other
-path. Do not try to get around it with `Bash` (`sed -i`, redirects): the
-orchestrator checks `git diff --name-only` and rejects the task.
+path, and so do the protected files (`vite.config.ts`,
+`playwright.config.ts`, `package.json`, `package-lock.json`,
+`scripts/agents/`, `.claude/`). Do not try to get around it with `Bash`
+(`sed -i`, redirects): at the RED gate the orchestrator checks every changed
+and untracked path with `scripts/agents/check-paths.ts test-writer` and
+rejects the task.
 
 ## Steps
 

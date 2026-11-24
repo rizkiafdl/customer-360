@@ -110,7 +110,9 @@ The user chose sonnet for tests and code, and opus for `docs-writer` and
       `implementer`, which writes the code until the tests pass.
    5. **GREEN gate.** The orchestrator runs the full suite, then
       `git diff --name-only` to confirm that `implementer` changed no test
-      file.
+      file. (Review update: the RED gate stages the tests after a
+      `check-paths.ts test-writer` run, so the GREEN check sees only
+      `implementer`'s changes. CLAUDE.md Rule 8 has the commands.)
    6. The orchestrator commits the tests and the code together in **one
       commit** (user, 2026-11-24), with the message from the plan, and
       writes the ledger line.

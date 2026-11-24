@@ -8,7 +8,7 @@ hooks:
     - matcher: "Edit|Write|NotebookEdit"
       hooks:
         - type: command
-          command: 'npx --no-install tsx "$CLAUDE_PROJECT_DIR/scripts/agents/guard-paths.ts" implementer'
+          command: 'npx --no-install tsx "$CLAUDE_PROJECT_DIR/scripts/agents/guard-paths.ts" implementer || exit 2'
 ---
 
 # implementer
@@ -29,9 +29,13 @@ with a new `BRIEF` and `TESTS`.
 ## What you may edit
 
 Everything except test files (`**/*.test.ts`, `**/*.test.tsx`,
-`e2e/**`, `src/test/**`). A hook blocks test files. Do not get around it
-with `Bash`: the orchestrator checks `git diff --name-only` and rejects the
-task.
+`e2e/**`, `src/test/**`) and the protected files (`vite.config.ts`,
+`playwright.config.ts`, `package.json`, `package-lock.json`,
+`scripts/agents/`, `.claude/`). A hook blocks them. If the task needs a
+protected file changed, stop and report the change. Do not get around the
+hook with `Bash`: at the GREEN gate the orchestrator checks every unstaged
+and untracked path with `scripts/agents/check-paths.ts implementer` and
+rejects the task.
 
 ## Steps
 

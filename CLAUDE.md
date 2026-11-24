@@ -60,6 +60,7 @@ scripts/
   theme/contrast.test.ts     Checks every token pairing in src/index.css, both themes (ADR 0009).
   agents/test-paths.ts       Path rule for the agent edit guard (test files vs code vs docs).
   agents/guard-paths.ts      PreToolUse hook entry: exit 2 blocks an edit outside the agent's role.
+  agents/check-paths.ts      Gate check: lists changed paths (from git) that a role may not touch.
 src/
   data/                      GENERATED JSON (committed) + index.ts (typed exports).
     profiles.json            100 rows  (sheet `profile`)
@@ -180,10 +181,15 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
       1. `test-writer` writes the task's tests.
       2. **RED gate:** the orchestrator runs them. Each must fail because
          the behavior is missing, not because of a typo or a bad import.
+         Then it pipes the changed and untracked paths
+         (`{ git diff --name-only; git ls-files -o --exclude-standard; }`)
+         into `npx tsx scripts/agents/check-paths.ts test-writer`, which
+         must exit 0, and runs `git add -A` to stage the tests.
       3. `implementer` writes the code until the tests pass.
-      4. **GREEN gate:** the orchestrator runs `npm run test`, then
-         `git diff --name-only` to confirm that `implementer` changed no
-         test file.
+      4. **GREEN gate:** the orchestrator runs `npm run test`, then pipes the
+         same two `git` lists into `check-paths.ts implementer`. The tests
+         are staged, so the lists hold only what `implementer` changed, and
+         the check must exit 0.
       5. The orchestrator commits tests and code together in one commit.
 
       If `implementer` reports a wrong test, the orchestrator decides,
@@ -210,9 +216,13 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
 
    A `PreToolUse` hook (`scripts/agents/guard-paths.ts`) blocks
    `test-writer` from code, `implementer` from test files, and `docs-writer`
-   from anything outside `docs/`. The hook does not see edits made through
-   `Bash`, and a hook command that errors does not block. So the GREEN
-   gate's `git diff --name-only` check is required, not optional.
+   from anything outside `docs/`. Protected files (`vite.config.ts`,
+   `playwright.config.ts`, `package.json`, `package-lock.json`,
+   `scripts/agents/`, `.claude/`) are for the orchestrator only, because a
+   test can be switched off through them. The hook command ends in
+   `|| exit 2`, so a hook that cannot start blocks the edit. The hook does
+   not see edits made through `Bash`, so the `check-paths.ts` runs at the
+   RED and GREEN gates are required, not optional.
 9. **Copy rule for insight and rules text.** No AI-style filler.
    - A reason is the fired rule plus its evidence numbers. Nothing else.
    - No adjectives, no advice tone, no exclamation marks, no generated text.

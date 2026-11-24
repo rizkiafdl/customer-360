@@ -160,14 +160,17 @@ The roles are split, and each has a fixed model:
 | `pr-shipper` | Agent | sonnet | Nothing (git push and `gh` only) |
 
 - **Two gates per task, run by the orchestrator.** RED: the new tests fail
-  because the behavior is missing. GREEN: the full suite passes and
-  `git diff --name-only` shows no test file changed by `implementer`. Then
-  one commit holds the task's tests and code, so every commit on `main`
-  passes CI.
+  because the behavior is missing, `scripts/agents/check-paths.ts` finds no
+  changed path outside `test-writer`'s role, and the tests are staged.
+  GREEN: the full suite passes, and `check-paths.ts` finds no unstaged or
+  untracked path outside `implementer`'s role. Then one commit holds the
+  task's tests and code, so every commit on `main` passes CI.
 - **A path guard.** Each editing agent has a `PreToolUse` hook that runs
   `scripts/agents/guard-paths.ts` with its role and blocks edits outside
-  it. The diff check covers what the hook cannot see (`Bash` edits, a hook
-  that errors).
+  it. Test config, package files, the guard, and `.claude/` are protected:
+  only the orchestrator edits them. The hook command ends in `|| exit 2`,
+  so a hook that cannot start blocks. The gate checks cover what the hook
+  cannot see (`Bash` edits).
 - **Parallel work** follows CLAUDE.md Rule 11: specs and plans in parallel,
   code in parallel only across features that share no file and no
   interface, reviews in parallel, and one `pr-shipper` at a time.
