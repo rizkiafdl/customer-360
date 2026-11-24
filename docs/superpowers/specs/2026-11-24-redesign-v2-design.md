@@ -359,7 +359,7 @@ share of AUM.
 
 ## 6. UI (part B, `feat/redesign-ui`)
 
-### 6.1 Visual system v2 (new ADR 0009, replaces ADR 0007)
+### 6.1 Visual system v2 ([ADR 0009](../../adr/0009-visual-system-v2.md), replaces ADR 0007)
 
 Kept from ADR 0007: colors only as CSS variables in `src/index.css`;
 red is never a risk color, a chart series, or a flag; every flag has an
