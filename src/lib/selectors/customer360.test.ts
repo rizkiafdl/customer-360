@@ -9,6 +9,7 @@ import {
   getCustomer360,
   getCustomerOptions,
   parseCustomerId,
+  parseTab,
   snapshotLabel,
   type Customer360,
 } from './customer360'
@@ -26,14 +27,24 @@ function bankEntriesOnly(id: number) {
   return fixtureDataset.transactions.filter((t) => t.customer_id !== id || !isCustomerInitiated(t))
 }
 
+describe('parseTab', () => {
+  it('reads a known tab', () => {
+    expect(parseTab('loans')).toBe('loans')
+    expect(parseTab('transactions')).toBe('transactions')
+  })
+
+  it.each([null, '', 'LOANS', 'bogus'])('opens Overview for %j', (value) => {
+    expect(parseTab(value)).toBe('overview')
+  })
+})
+
 describe('buildCustomer360: profile', () => {
-  it('gives the heading, gender, and income rank', () => {
+  it('gives the heading, gender, and income band, with no income rank label', () => {
     const vm = build(1)
     expect(vm.heading).toBe('Customer 1')
     expect(vm.profile).toEqual({
       gender: 'Female',
       incomeBand: '>10 Juta - 25 Juta',
-      incomeRankLabel: 'rank 5 of 8',
       highIncome: true,
       firstTransaction: 'First transaction May 2023',
     })
@@ -54,10 +65,6 @@ describe('buildCustomer360: KPIs', () => {
     const { kpis } = build(1)
     expect(kpis.aum).toBe(1_000_000_000)
     expect(kpis.loanExposure).toBe(250_000_000)
-  })
-
-  it('counts held rows out of all rows', () => {
-    expect(build(1).kpis.heldLabel).toBe('4 of 6 rows')
   })
 
   it('gives days since the last customer-initiated transaction, bank entries ignored', () => {
@@ -113,7 +120,6 @@ describe('buildCustomer360: holdings', () => {
     expect(vm.holdings).toMatchObject({ state: 'none', emptyText: 'No portfolio rows.', title: null, products: [] })
     expect(vm.kpis.aum).toBe(0)
     expect(vm.kpis.loanExposure).toBe(0)
-    expect(vm.kpis.heldLabel).toBe('0 of 0 rows')
   })
 
   it('says "none held in AUM categories" for AUM 0 with a held LOAN', () => {
@@ -269,6 +275,11 @@ describe('Customer 360 on the real data', () => {
       const cards = getCustomer360(id)!.offers.cards.map((card) => card.id)
       expect(cards).toEqual(getCustomerEvaluation(id)!.insights.map((insight) => insight.id))
     }
+  })
+
+  it('shows no income rank label on the real data', () => {
+    expect(getCustomer360(8797)?.profile).not.toHaveProperty('incomeRankLabel')
+    expect(getCustomer360(8797)?.kpis).not.toHaveProperty('heldLabel')
   })
 
   it('has one option per customer and the as-of label', () => {

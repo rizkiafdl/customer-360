@@ -260,6 +260,11 @@ export function neighbours(
   }
 }
 
+/** `2 of 37 in your filtered list`. */
+export function positionText({ position, total }: { position: number; total: number }): string {
+  return `${position} of ${total} in your filtered list`
+}
+
 let customerRows: readonly CustomerRow[] | undefined
 
 /** The real-data rows, built on first use so that importing a text helper costs nothing. */

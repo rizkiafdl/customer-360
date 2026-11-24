@@ -13,6 +13,7 @@ import {
   lastActiveText,
   listHref,
   neighbours,
+  positionText,
   paginate,
   parseCustomerFilters,
   toIdQuery,
@@ -49,6 +50,13 @@ describe('links that keep the filters', () => {
     expect(customerHref(8797, filters, 'overview')).toBe('/customers/8797?rule=investment-gap-ori')
     expect(customerHref(8797, filters, null)).toBe('/customers/8797?rule=investment-gap-ori')
     expect(customerHref(8797, parse(''), 'loans')).toBe('/customers/8797?tab=loans')
+  })
+})
+
+describe('positionText', () => {
+  it('says where the customer sits in the filtered list', () => {
+    expect(positionText({ position: 2, total: 37 })).toBe('2 of 37 in your filtered list')
+    expect(positionText({ position: 1, total: 1 })).toBe('1 of 1 in your filtered list')
   })
 })
 

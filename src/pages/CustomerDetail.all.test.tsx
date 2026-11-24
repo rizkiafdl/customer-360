@@ -1,16 +1,16 @@
 import { cleanup, render, screen } from '@testing-library/react'
+import { RouterProvider, createMemoryRouter } from 'react-router'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { TooltipProvider } from '@/components/ui/tooltip'
-import { getCustomer360, getCustomerOptions } from '@/lib/selectors/customer360'
-import { CustomerDetail } from './CustomerDetail'
+import { CUSTOMER_TABS, getCustomerOptions } from '@/lib/selectors/customer360'
+import { routes } from '@/routes'
 
 // jsdom has no layout, so every Recharts container measures 0 x 0 and warns.
 // That warning is the only console message this test allows.
 const ZERO_SIZE_CHART = /^The width\(0\) and height\(0\) of chart should be greater than 0,/
 
-// 100 full renders take about 1 s locally, but more than the 5 s default
-// on the CI runner with coverage on.
-const ALL_CUSTOMERS_TIMEOUT_MS = 30_000
+// 500 full renders (100 customers x 5 tabs) take a few seconds locally, and
+// more on the CI runner with coverage on.
+const ALL_CUSTOMERS_TIMEOUT_MS = 120_000
 
 describe('CustomerDetail: every real customer', () => {
   const messages: string[] = []
@@ -28,19 +28,16 @@ describe('CustomerDetail: every real customer', () => {
     vi.restoreAllMocks()
   })
 
-  it('renders all 100 customers with no console error or warning', () => {
+  it('renders all 100 customers at every tab with no console error or warning', () => {
     const ids = getCustomerOptions().map((option) => option.id)
     expect(ids).toHaveLength(100)
     for (const id of ids) {
-      const vm = getCustomer360(id)
-      if (!vm) throw new Error(`customer ${id} did not build`)
-      render(
-        <TooltipProvider>
-          <CustomerDetail vm={vm} />
-        </TooltipProvider>,
-      )
-      expect(screen.getByRole('heading', { level: 1, name: `Customer ${id}` })).toBeInTheDocument()
-      cleanup()
+      for (const tab of CUSTOMER_TABS) {
+        const router = createMemoryRouter(routes, { initialEntries: [`/customers/${id}?tab=${tab}`] })
+        render(<RouterProvider router={router} />)
+        expect(screen.getByRole('heading', { level: 1, name: `Customer ${id}` })).toBeInTheDocument()
+        cleanup()
+      }
     }
     expect(messages.filter((message) => !ZERO_SIZE_CHART.test(message))).toEqual([])
   }, ALL_CUSTOMERS_TIMEOUT_MS)
