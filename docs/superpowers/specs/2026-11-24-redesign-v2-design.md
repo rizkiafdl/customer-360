@@ -202,6 +202,12 @@ the same for every card of one customer):
 2. a higher `basis.amount` first,
 3. the position of the card's first rule in `RULE_ORDER`.
 
+Update, 2026-11-24 (user decision after the part A review): key 2 is
+dropped. Within one customer every `aum` basis is the same number and a
+`cash` basis is never above it, so key 2 only put cash cards below AUM cards
+and `No AUM` last. Cards now sort by rule count, then by `RULE_ORDER`.
+Customer 8797 shows REKSA first, as in the design.
+
 The KYC note is not a card. It stays a separate note, as in F3.
 
 New `ruleChip(insight)`: the short chip text for a fired rule, from fixed

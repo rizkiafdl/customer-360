@@ -97,11 +97,16 @@ cards. The rules, the thresholds, and the fire counts (12 / 29 / 37 / 29 / 16
 | `no-aum` | Its own `No AUM` card. |
 
 The basis of a card is the cash amount when the card holds `cash-heavy`, the
-customer's AUM otherwise, and none for `No AUM`. The cards sort by:
+customer's AUM otherwise, and none for `No AUM`. The basis is shown on the
+card; it does not sort the cards. The cards sort by:
 
 1. more supporting rules first,
-2. a higher basis amount first (a card with no basis sorts last),
-3. the position of the card's first rule in `RULE_ORDER`.
+2. the position of the card's first rule in `RULE_ORDER`.
+
+A sort by basis amount was in the redesign spec and was dropped by the user
+on 2026-11-24, after review: within one customer every AUM basis is the same
+number and the cash basis is never above it, so that key only pushed cash
+cards below AUM cards and the `No AUM` card to the end.
 
 `RULE_ORDER` still sets the order of the rules inside a card and the rule
 chip that the Customers table shows (`ruleChip()`). The worklist ranking
