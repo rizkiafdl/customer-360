@@ -14,7 +14,25 @@ import { asOfDateOf, bookCustomersOf, type BookCustomer } from './book'
 import { customersQuery, type LacksCategory } from './customers'
 import { dataset, type Dataset } from './dataset'
 import { ruleFireCounts } from './insights'
-import { scatterOf, type Overview } from './overview'
+
+export interface ScatterPoint {
+  customerId: number
+  rank: number
+  band: IncomeBand
+  aum: number
+  kyc: boolean
+}
+
+export interface PortfolioScatter {
+  title: string
+  /** How many customers are left out (AUM 0), or `null` when none are. */
+  footer: string | null
+  ticks: { rank: number; band: IncomeBand }[]
+  /** Log y axis ticks: each power of ten from at or below the lowest AUM to at or above the highest. Empty with no points. */
+  aumTicks: number[]
+  /** AUM above 0 only: the y axis is log scale. */
+  points: ScatterPoint[]
+}
 
 export interface Portfolio {
   header: string
@@ -25,18 +43,33 @@ export interface Portfolio {
   totals: { aum: number; loanExposure: number }
   kyc: { count: number; text: string; to: string }
   opportunitiesLine: string
-  /** One entry per rule, in `RULE_ORDER`. The tiles overlap, so the amounts are never added. */
+  /**
+   * One entry per rule, in `RULE_ORDER`. The tiles overlap, so the amounts are never added.
+   * `name` is the link's accessible name (`No ORI: 37 customers`).
+   */
   opportunities: {
     id: RuleId
     label: string
     count: number
+    name: string
     ruleText: string
     amountLine: string | null
     to: string
   }[]
-  /** The four AUM categories, then LOAN. LOAN has no link: no rule offers it. */
-  penetration: { label: ProductCategory; held: number; notHeld: number; color: string; to: string | null }[]
-  scatter: Overview['scatter']
+  /**
+   * The four AUM categories, then LOAN. LOAN has no link: no rule offers it.
+   * `name` is the row's accessible name (`ORI: 46 held, 54 not held`).
+   */
+  penetration: {
+    label: ProductCategory
+    held: number
+    notHeld: number
+    notHeldText: string
+    name: string
+    color: string
+    to: string | null
+  }[]
+  scatter: PortfolioScatter
 }
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
@@ -44,6 +77,47 @@ const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one :
 const sum = (values: readonly number[]) => values.reduce((total, value) => total + value, 0)
 
 const PENETRATION_ORDER: readonly ProductCategory[] = [...AUM_CATEGORIES, 'LOAN']
+
+/**
+ * Powers of ten that cover `values`, at least two so the log axis has a
+ * range. Assumes every value is at least 1 (AUM is whole rupiah above 0).
+ * Built by multiplying, so each tick is exact.
+ */
+export function powerOfTenTicks(values: readonly number[]): number[] {
+  if (values.length === 0) return []
+  const min = Math.min(...values)
+  const max = Math.max(...values)
+  let tick = 1
+  while (tick * 10 <= min) tick *= 10
+  const ticks = [tick]
+  while (tick < max || ticks.length < 2) {
+    tick *= 10
+    ticks.push(tick)
+  }
+  return ticks
+}
+
+/** The income-vs-AUM scatter over a set of customers. Customers with AUM 0 are left out (log y axis). */
+export function scatterOf(book: readonly BookCustomer[]): PortfolioScatter {
+  const points = book
+    .filter((c) => c.evaluation.aum > 0)
+    .map((c) => ({
+      customerId: c.profile.customer_id,
+      rank: incomeRank(c.profile.customer_income),
+      band: c.profile.customer_income,
+      aum: c.evaluation.aum,
+      kyc: c.evaluation.kycNote !== null,
+    }))
+  const kycPoints = points.filter((p) => p.kyc).length
+  const left = book.length - points.length
+  return {
+    title: `${plural(points.length, 'customer', 'customers')} with AUM, ${kycPoints} with the KYC note`,
+    footer: left === 0 ? null : `${plural(left, 'customer with no AUM is', 'customers with no AUM are')} not plotted.`,
+    ticks: INCOME_BANDS.map((band) => ({ rank: incomeRank(band), band })),
+    aumTicks: powerOfTenTicks(points.map((p) => p.aum)),
+    points,
+  }
+}
 
 function isLacksCategory(category: ProductCategory): category is LacksCategory {
   return category !== 'LOAN'
@@ -102,6 +176,7 @@ export function buildPortfolio(data: Dataset, bandRank: number | null): Portfoli
       id: rule.id,
       label: rule.label,
       count: counts[rule.id],
+      name: `${rule.label}: ${plural(counts[rule.id], 'customer', 'customers')}`,
       ruleText: rule.ruleText,
       amountLine: amountLine(
         rule.id,
@@ -111,10 +186,13 @@ export function buildPortfolio(data: Dataset, bandRank: number | null): Portfoli
     })),
     penetration: PENETRATION_ORDER.map((category) => {
       const held = book.filter((c) => holdsCategory(c.portfolio, category)).length
+      const notHeld = count - held
       return {
         label: category,
         held,
-        notHeld: count - held,
+        notHeld,
+        notHeldText: `${notHeld} not held`,
+        name: `${category}: ${held} held, ${notHeld} not held`,
         color: CATEGORY_COLORS[category],
         to: isLacksCategory(category) ? `/customers${customersQuery({ band: rank, lacks: category })}` : null,
       }

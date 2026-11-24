@@ -1,17 +1,19 @@
-import type { RouteObject } from 'react-router'
+import { Navigate, type RouteObject } from 'react-router'
 import { AppShell } from '@/components/AppShell'
 import { CustomerPage } from '@/pages/CustomerPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
-import { OverviewPage } from '@/pages/OverviewPage'
+import { PortfolioPage } from '@/pages/PortfolioPage'
 import { WorklistPage } from '@/pages/WorklistPage'
 
 export const routes: RouteObject[] = [
   {
     element: <AppShell />,
     children: [
-      { index: true, element: <WorklistPage /> },
-      { path: 'overview', element: <OverviewPage /> },
+      { index: true, element: <PortfolioPage /> },
+      { path: 'customers', element: <WorklistPage /> },
       { path: 'customers/:id', element: <CustomerPage /> },
+      // The F5 overview became the Portfolio home page (ADR 0009).
+      { path: 'overview', element: <Navigate to="/" replace /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

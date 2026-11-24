@@ -62,14 +62,6 @@ export default defineConfig([
       'react-refresh/only-export-components': 'off',
     },
   },
-  {
-    // shadcn's generated sidebar hook sets state once in its effect to read
-    // the first viewport width. Kept as generated.
-    files: ['src/hooks/use-mobile.ts'],
-    rules: {
-      'react-hooks/set-state-in-effect': 'off',
-    },
-  },
   // Default for every file under src/: no import of src/data. A file in a
   // folder with no layer block (a new `src/utils/`, say) is still covered.
   // Each layer block below replaces this setting for its own files.

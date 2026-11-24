@@ -2,7 +2,7 @@ import { CartesianGrid, Scatter, ScatterChart, XAxis, YAxis } from 'recharts'
 import { AXIS_TICK } from '@/components/customer/axis'
 import { ChartContainer, ChartTooltip, type ChartConfig } from '@/components/ui/chart'
 import { formatIDR, formatIDRShort } from '@/lib/format'
-import type { Overview, ScatterPoint } from '@/lib/selectors/overview'
+import type { PortfolioScatter, ScatterPoint } from '@/lib/selectors/portfolio'
 
 const KYC_COLOR = 'var(--warning)'
 const PLAIN_COLOR = 'var(--info)'
@@ -35,7 +35,7 @@ function Legend() {
  * One point per customer with AUM: income rank on x (labelled with the band),
  * AUM on a log y axis. Points with the KYC note are triangles in the warning color.
  */
-export function IncomeAumScatter({ scatter, label }: { scatter: Overview['scatter']; label: string }) {
+export function IncomeAumScatter({ scatter, label }: { scatter: PortfolioScatter; label: string }) {
   const kyc = scatter.points.filter((p) => p.kyc)
   const plain = scatter.points.filter((p) => !p.kyc)
   const bandAt = new Map(scatter.ticks.map((t) => [t.rank, t.band]))

@@ -3,13 +3,13 @@ import { isCustomerInitiated } from '@/lib/domain'
 import { rp } from '@/lib/insights/test-fixtures'
 import { fixtureDataset } from '@/test/fixtures'
 import {
-  asOfLabel,
   buildCustomer360,
   customerOptions,
   filterTransactionRows,
   getCustomer360,
   getCustomerOptions,
   parseCustomerId,
+  snapshotLabel,
   type Customer360,
 } from './customer360'
 import { dataset } from './dataset'
@@ -273,7 +273,7 @@ describe('Customer 360 on the real data', () => {
 
   it('has one option per customer and the as-of label', () => {
     expect(getCustomerOptions()).toHaveLength(100)
-    expect(asOfLabel).toBe('As of 26 Apr 2024')
+    expect(snapshotLabel).toBe('Snapshot as of 26 Apr 2024')
   })
 })
 
