@@ -107,6 +107,18 @@
     --chart-4: oklch(0.63 0.125 78);
     --chart-5: oklch(0.646 0.011 267.3);
     --radius: 0.5rem;
+
+    /* Spotlight search (spec 2026-11-24-spotlight-search-design.md, 5.7). */
+    --sp-scrim: oklch(0.974 0.002 0 / 30%);
+    --sp-scrim-fallback: oklch(0 0 0 / 35%);
+    --sp-panel: oklch(1 0 0 / 74%);
+    --sp-panel-border: oklch(1 0 0 / 75%);
+    --sp-divider: oklch(0.224 0.004 48.6 / 8%);
+    --sp-active-bg: oklch(0.585 0.223 29.1 / 9%);
+    --sp-active-text: oklch(0.447 0.164 28.9);
+    --sp-icon-bg: oklch(0.224 0.004 48.6 / 6%);
+    --sp-kbd: oklch(0.224 0.004 48.6 / 7%);
+    --sp-shadow: 0 30px 80px oklch(0.224 0.004 48.6 / 22%), 0 0 0 1px oklch(0.224 0.004 48.6 / 6%);
 }
 
 .dark {
@@ -148,6 +160,18 @@
     --chart-3: oklch(0.7 0.13 294);
     --chart-4: oklch(0.78 0.13 80);
     --chart-5: oklch(0.65 0.011 267);
+
+    /* Spotlight search (spec 2026-11-24-spotlight-search-design.md, 5.7). */
+    --sp-scrim: oklch(0.134 0 0 / 45%);
+    --sp-scrim-fallback: oklch(0 0 0 / 35%);
+    --sp-panel: oklch(0.269 0 0 / 72%);
+    --sp-panel-border: oklch(1 0 0 / 10%);
+    --sp-divider: oklch(1 0 0 / 8%);
+    --sp-active-bg: oklch(0.71 0.182 26.6 / 16%);
+    --sp-active-text: oklch(0.837 0.089 24.2);
+    --sp-icon-bg: oklch(1 0 0 / 8%);
+    --sp-kbd: oklch(1 0 0 / 10%);
+    --sp-shadow: 0 30px 80px oklch(0 0 0 / 55%), 0 0 0 1px oklch(0 0 0 / 40%);
 }
 
 @layer base {
