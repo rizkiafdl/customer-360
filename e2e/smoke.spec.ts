@@ -11,22 +11,44 @@ function collectErrors(page: Page): string[] {
   return errors
 }
 
-test('the worklist ranks the customers and a row opens the detail page', async ({ page }) => {
+test('the Portfolio opens at the root and a tile filters the Customers list', async ({ page }) => {
   const errors = collectErrors(page)
   await page.goto('./')
 
+  await expect(page.getByRole('heading', { level: 1, name: 'Portfolio' })).toBeVisible()
+  await expect(page.getByText('84 customers with AUM, 43 with the KYC note')).toBeVisible()
+  await page.getByRole('list', { name: 'Opportunities' }).getByRole('link', { name: 'No ORI: 37 customers' }).click()
+
+  await expect(page).toHaveURL(/\/customers\?rule=investment-gap-ori$/)
+  await expect(page.getByRole('table', { name: 'Customers' }).locator('tbody tr')).toHaveCount(25)
+  await expect(page.getByText('Showing 1–25 of 37')).toBeVisible()
+  expect(errors).toEqual([])
+})
+
+test('the old overview link lands on the Portfolio', async ({ page }) => {
+  const errors = collectErrors(page)
+  await page.goto('./overview')
+
+  await expect(page.getByRole('heading', { level: 1, name: 'Portfolio' })).toBeVisible()
+  await expect(page).toHaveURL(/\/customer-360\/$/)
+  expect(errors).toEqual([])
+})
+
+test('the Customers list shows a page of 25 and a row opens the customer', async ({ page }) => {
+  const errors = collectErrors(page)
+  await page.goto('./customers')
+
   await expect(page.getByRole('heading', { level: 1, name: 'Customers' })).toBeVisible()
-  const rows = page.getByRole('table', { name: 'Worklist' }).locator('tbody tr')
-  await expect(rows).toHaveCount(100)
-  await rows.first().getByRole('link', { name: 'Customer 8797' }).click()
+  await expect(page.getByRole('table', { name: 'Customers' }).locator('tbody tr')).toHaveCount(25)
+  await page.getByRole('link', { name: 'Open customer 8797' }).click()
 
   await expect(page).toHaveURL(/\/customers\/8797$/)
   await expect(page.getByRole('heading', { level: 1, name: 'Customer 8797' })).toBeVisible()
   expect(errors).toEqual([])
 })
 
-test('a letter typed in the middle of the worklist ID is dropped and the caret stays', async ({ page }) => {
-  await page.goto('./?q=4426')
+test('a letter typed in the middle of the Customers ID is dropped and the caret stays', async ({ page }) => {
+  await page.goto('./customers?q=4426')
   const input = page.getByRole('textbox', { name: 'Filter by customer ID' })
   await input.click()
   await input.press('Home')
@@ -34,51 +56,47 @@ test('a letter typed in the middle of the worklist ID is dropped and the caret s
   await input.press('ArrowRight')
   await input.pressSequentially('a7')
   await expect(input).toHaveValue('44726')
-  await expect(page).toHaveURL(/\?q=44726$/)
+  await expect(page).toHaveURL(/\/customers\?q=44726$/)
 })
 
-test('the overview opens from a direct deep link and a count filters the worklist', async ({ page }) => {
+test('the preview follows a row chosen with the keyboard', async ({ page }) => {
   const errors = collectErrors(page)
-  await page.goto('./overview')
+  await page.goto('./customers')
+  const preview = page.getByRole('region', { name: 'Preview' })
+  await expect(preview.getByRole('heading', { name: 'Customer 8797' })).toBeVisible()
 
-  await expect(page.getByRole('heading', { level: 1, name: 'Overview' })).toBeVisible()
-  await expect(page.getByText('ORI held by 46 of 100 customers')).toBeVisible()
-  await expect(page.getByText('84 customers with AUM, 43 with the KYC note')).toBeVisible()
-  await page
-    .getByRole('list', { name: 'Customers per opportunity type' })
-    .getByRole('link', { name: 'No ORI: 37 customers' })
-    .click()
-
-  await expect(page).toHaveURL(/\/\?rule=investment-gap-ori$/)
-  await expect(page.getByRole('table', { name: 'Worklist' }).locator('tbody tr')).toHaveCount(37)
+  await page.getByRole('table', { name: 'Customers' }).locator('tbody tr').nth(1).getByRole('button').focus()
+  await page.keyboard.press('Enter')
+  await expect(preview.getByRole('heading', { name: 'Customer 2759' })).toBeVisible()
   expect(errors).toEqual([])
 })
 
-test('a customer page opens from a direct deep link', async ({ page }) => {
+test('a customer page opens from a direct deep link, also on a tab', async ({ page }) => {
   const errors = collectErrors(page)
   await page.goto('./customers/4426')
 
   await expect(page.getByRole('heading', { level: 1, name: 'Customer 4426' })).toBeVisible()
   await expect(page.getByRole('region', { name: 'Key figures' })).toBeVisible()
+
+  await page.goto('./customers/4426?tab=transactions')
   await expect(page.getByRole('table', { name: 'Transactions' })).toBeVisible()
   expect(errors).toEqual([])
 })
 
-// Customer 6513 fires only the two BANCA rules: both cards show, never deduped.
-test('the offer panel shows both BANCA cards', async ({ page }) => {
+// Customer 6513 fires only the two BANCA rules: one BANCA card lists both reasons.
+test('the offers show one BANCA card with both reasons', async ({ page }) => {
   const errors = collectErrors(page)
   await page.goto('./customers/6513')
 
   const offers = page.getByRole('region', { name: 'What to offer' }).getByRole('list', { name: 'Offers' })
-  const items = offers.getByRole('listitem')
-  await expect(items).toHaveCount(2)
-  await expect(items.nth(0)).toContainText('No BANCA.')
-  await expect(items.nth(1)).toContainText('No BANCA.')
+  const cards = offers.getByRole('listitem', { name: /^BANCA/ })
+  await expect(cards).toHaveCount(1)
+  await expect(cards.getByText(/^No BANCA\./)).toHaveCount(2)
   expect(errors).toEqual([])
 })
 
 // Customer 1047 fires no offer rule but has the KYC note.
-test('the offer panel shows the empty line and the KYC note', async ({ page }) => {
+test('the offers show the empty line and the KYC note', async ({ page }) => {
   const errors = collectErrors(page)
   await page.goto('./customers/1047')
 
@@ -104,18 +122,26 @@ test('the search opens a customer', async ({ page }) => {
   expect(errors).toEqual([])
 })
 
-test('the theme choice survives a reload', async ({ page }) => {
+test('light is the default and the dark choice survives a reload', async ({ page }) => {
   const errors = collectErrors(page)
   await page.goto('./')
+  await expect(page.locator('html')).not.toHaveClass(/dark/)
+
+  await page.getByRole('button', { name: 'Switch to dark theme' }).click()
   await expect(page.locator('html')).toHaveClass(/dark/)
 
-  await page.getByRole('button', { name: 'Switch to light theme' }).click()
-  await expect(page.locator('html')).not.toHaveClass(/dark/)
-
   await page.reload()
-  await expect(page.locator('html')).not.toHaveClass(/dark/)
-  await expect(page.getByRole('button', { name: 'Switch to dark theme' })).toBeVisible()
+  await expect(page.locator('html')).toHaveClass(/dark/)
+  await expect(page.getByRole('button', { name: 'Switch to light theme' })).toBeVisible()
   expect(errors).toEqual([])
+})
+
+// A viewer who chose dark under ADR 0007 keeps it, applied before the first paint.
+test('a stored dark choice applies before the page script runs', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('theme', 'dark'))
+  await page.goto('./')
+  const darkAtFirstPaint = await page.evaluate<boolean>(`document.documentElement.classList.contains('dark')`)
+  expect(darkAtFirstPaint).toBe(true)
 })
 
 // jsdom cannot measure text, so the label fit is checked here. Customer 4857
@@ -123,7 +149,7 @@ test('the theme choice survives a reload', async ({ page }) => {
 // wraps a label that does not fit the axis width onto a second line.
 test('the bar chart category labels fit on one line inside the chart', async ({ page }) => {
   const errors = collectErrors(page)
-  await page.goto('./customers/4857')
+  await page.goto('./customers/4857?tab=activity')
   await expect(page.getByRole('img', { name: /^Type mix: .*RETAIL TRANSACTION/ })).toBeVisible()
 
   const labels = page.locator('[role="img"] .recharts-yAxis-tick-labels text')
@@ -140,7 +166,7 @@ test('the bar chart category labels fit on one line inside the chart', async ({ 
   expect(errors).toEqual([])
 })
 
-for (const path of ['./customers/4426', './overview']) {
+for (const path of ['./customers/4426?tab=activity', './']) {
   test(`no chart is a keyboard stop (${path})`, async ({ page }) => {
     await page.goto(path)
     await page.locator('[role="img"] svg').first().waitFor()
@@ -149,9 +175,9 @@ for (const path of ['./customers/4426', './overview']) {
   })
 }
 
-test('the overview AUM axis is labelled at each power of ten', async ({ page }) => {
+test('the Portfolio AUM axis is labelled at each power of ten', async ({ page }) => {
   const errors = collectErrors(page)
-  await page.goto('./overview')
+  await page.goto('./')
   const chart = page.getByRole('img', { name: /^Income band vs AUM/ })
   await expect(chart).toBeVisible()
 
@@ -163,8 +189,8 @@ test('the overview AUM axis is labelled at each power of ten', async ({ page }) 
 })
 
 for (const { path, chart } of [
-  { path: './customers/4426', chart: /^Customer-initiated transactions per week/ },
-  { path: './overview', chart: /^Income band vs AUM/ },
+  { path: './customers/4426?tab=activity', chart: /^Customer-initiated transactions per week/ },
+  { path: './', chart: /^Income band vs AUM/ },
 ]) {
   test(`chart axis text follows the theme color, not the Recharts default grey (${path})`, async ({ page }) => {
     const errors = collectErrors(page)
