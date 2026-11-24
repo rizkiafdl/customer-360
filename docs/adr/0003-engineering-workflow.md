@@ -135,3 +135,58 @@ same checks as the code.
   URL gets `/#/`.
 - **Unpinned Node.** Rejected: CI and local can run different versions.
 - **Manual dependency updates.** Rejected: easy to forget.
+
+## Update, 2026-11-24: agent teams
+
+### Why the roles are split
+
+Until this update, the main session wrote most of the code itself, and for
+some features one subagent wrote both the tests and the code. The agent that
+wrote the code could also change the tests until they passed, so a green
+suite proved less than it seemed. Every role also ran on the same expensive
+model. Design: `docs/superpowers/specs/2026-11-24-agent-teams-design.md`.
+
+### Roles, gates, and the guard
+
+The roles are split, and each has a fixed model:
+
+| Role | Who | Model | Edits |
+| --- | --- | --- | --- |
+| Orchestrator | The main session | The session's model | Ledger, commits, PR body, rulings |
+| `docs-writer` | Agent, one per spec | opus | `docs/` only (spec and plan) |
+| `test-writer` | Agent, one per spec | sonnet | Test files only |
+| `implementer` | Agent, one per spec | sonnet | Everything except test files |
+| `reviewer` | Agent, one per branch | opus | Nothing (read-only) |
+| `pr-shipper` | Agent | sonnet | Nothing (git push and `gh` only) |
+
+- **Two gates per task, run by the orchestrator.** RED: the new tests fail
+  because the behavior is missing. GREEN: the full suite passes and
+  `git diff --name-only` shows no test file changed by `implementer`. Then
+  one commit holds the task's tests and code, so every commit on `main`
+  passes CI.
+- **A path guard.** Each editing agent has a `PreToolUse` hook that runs
+  `scripts/agents/guard-paths.ts` with its role and blocks edits outside
+  it. The diff check covers what the hook cannot see (`Bash` edits, a hook
+  that errors).
+- **Parallel work** follows CLAUDE.md Rule 11: specs and plans in parallel,
+  code in parallel only across features that share no file and no
+  interface, reviews in parallel, and one `pr-shipper` at a time.
+
+### What follows
+
+- A test that the plan asks for is written before the code, by an agent that
+  does not write that code.
+- Code and tests run on a cheaper model. The plan and the review, which need
+  the most judgment, run on opus. So the plan must give every name, value,
+  and command a sonnet agent needs.
+- Each task costs two handoffs and two gate runs. One pair per spec,
+  continued with `SendMessage`, keeps that to one cold start per agent.
+- A long plan can fill an agent's context. The ledger keeps the progress.
+
+### Options not chosen
+
+- **One implementer writes tests and code.** Rejected: the cheapest, but the
+  code author can still change the tests.
+- **A new test-writer and implementer for each task.** Rejected: two cold
+  starts per task, and each new agent must re-read the code from earlier
+  tasks.
