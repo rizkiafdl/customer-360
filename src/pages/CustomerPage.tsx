@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import { useParams, useSearchParams } from 'react-router'
 import { CustomerNav } from '@/components/customer/CustomerNav'
+import { recordCustomerVisit } from '@/lib/recent-customers'
 import { getCustomer360, parseCustomerId, parseTab, type CustomerTab } from '@/lib/selectors/customer360'
 import { filterCustomers, getCustomerRows, neighbours, parseCustomerFilters } from '@/lib/selectors/customers'
 import { CustomerDetail } from './CustomerDetail'
@@ -14,6 +16,12 @@ export function CustomerPage() {
   const [params, setParams] = useSearchParams()
   const customerId = parseCustomerId(id)
   const vm = customerId === null ? null : getCustomer360(customerId)
+  const realId = vm ? vm.id : null
+
+  useEffect(() => {
+    if (realId !== null) recordCustomerVisit(realId)
+  }, [realId])
+
   if (!vm) return <NotFoundPage title="Customer not found" />
 
   const filters = parseCustomerFilters(params)

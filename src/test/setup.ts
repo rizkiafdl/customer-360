@@ -30,4 +30,5 @@ if (typeof window !== 'undefined') {
 
 afterEach(() => {
   cleanup()
+  if (typeof window !== 'undefined') localStorage.clear()
 })
