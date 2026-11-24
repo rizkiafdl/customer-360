@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { applyTheme, readStoredTheme, type Theme } from '@/lib/theme'
 
-/** Switches between the dark default and light (ADR 0007). */
+/** Switches between the light default and dark (ADR 0009). */
 export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>(readStoredTheme)
   const next: Theme = theme === 'dark' ? 'light' : 'dark'

@@ -54,7 +54,7 @@ income" chip a red tint. Both break the "red is not a series or a flag" rule.
   | Token | Light value | Use |
   | --- | --- | --- |
   | `--primary` | `#E2231A` | Primary buttons, the active nav bar, the focus ring. White text on it passes. |
-  | `--primary-strong` | `#9B1B14` | Red text and links, hover and pressed states. Replaces `--brand-deep` and `--brand-text`. |
+  | `--primary-strong` | `#9B1B14` | Red text and links. Replaces `--brand-deep` and `--brand-text`. Buttons hover with `--primary` at 90%. |
   | `--primary-tint` | `#FFF1EF` | Small tinted backgrounds (a selected chip). |
   | `--selected` | `#FFF7F6` | The selected table row. |
   | `--primary-border` | `#F5C2BE` | The border of a selected control. |

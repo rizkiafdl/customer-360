@@ -10,7 +10,7 @@ import { PRODUCT_CATEGORIES, type PortfolioItem, type ProductCategory } from '@/
 export const AUM_CATEGORIES: readonly ProductCategory[] = ['FUNDING', 'ORI', 'BANCA', 'REKSA']
 
 /**
- * One color token per category, for charts, dots, and badges (ADR 0007).
+ * One color token per category, for charts, dots, and badges (ADR 0009).
  * The AUM categories take --chart-1..4. LOAN takes --chart-5, a neutral hue,
  * because it is never part of AUM. No category is red.
  */

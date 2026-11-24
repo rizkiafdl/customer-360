@@ -14,9 +14,10 @@ export interface BarDatum {
 const NEUTRAL = 'var(--muted-foreground)'
 const config: ChartConfig = { value: { label: 'Value' } }
 /**
- * Category axis width. The longest possible label, RETAIL TRANSACTION, is
- * 123.6px at 12px Plus Jakarta Sans, and Recharts ends a label 8px before
- * the axis edge. Checked in a real browser by the e2e smoke test.
+ * Category axis width for the longest possible label, RETAIL TRANSACTION, at
+ * 12px Inter (measured for Plus Jakarta Sans at 123.6px; the font changed in
+ * ADR 0009). Recharts ends a label 8px before the axis edge. The e2e smoke
+ * test checks the fit in a real browser.
  */
 const LABEL_WIDTH = 136
 
