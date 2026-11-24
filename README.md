@@ -10,6 +10,9 @@ and shadcn/ui, on static data generated from an Excel workbook.
 
 > Status: done. E0 and F0–F5 are built, tested, and deployed. F6 (a
 > rules page) was planned but not built. ADR 0008 holds the same content.
+> The redesign v2 (2026-11-24) replaced the worklist, the overview, and the
+> sidebar with the pages below and a light theme by default
+> ([ADR 0009](docs/adr/0009-visual-system-v2.md)).
 
 ## What it does
 
@@ -18,9 +21,10 @@ outreach across their customers.
 
 | Route | Page | What it shows |
 | --- | --- | --- |
-| `/` | Worklist | Customers with an offer opportunity, ranked, each with its top reason. Filter by opportunity type (`?rule=`) or customer ID (`?q=`). Filters live in the URL. |
-| `/customers/:id` | Customer 360 | Profile, KPI tiles, "What to offer" panel with the rule and evidence for each offer, holdings, activity charts, bank entries, and all transactions. |
-| `/overview` | Overview | Total AUM and total loan exposure (never added together), customers per opportunity type (each links to the filtered worklist), product penetration, and income band vs AUM. |
+| `/` | Portfolio | The book over all customers or one income band (`?band=`): customers, total AUM and loan exposure (never added together), customers with the KYC note, one tile per offer rule, held / not held per product, and income band vs AUM. Every tile and AUM product links to the filtered Customers list. |
+| `/customers` | Customers | All customers in the ranked order, 25 per page, with a preview panel. Filter by offer rule (`?rule=`), income band (`?band=`), KYC note (`?kyc=`), product not held (`?lacks=`), or customer ID (`?q=`). Filters live in the URL. |
+| `/customers/:id` | Customer 360 | Profile, KPI tiles, prev/next through the filtered list, and five tabs (`?tab=`): Overview (offers grouped by product, with the rules and evidence), Holdings, Loans, Activity, and Transactions. |
+| `/overview` | — | Redirects to `/` (the old overview page became Portfolio). |
 
 Every offer comes from a fixed rule with a stated threshold. There is no
 scoring model. The rules, thresholds, and their sources are in
@@ -73,6 +77,8 @@ All three join on `customer_id`.
     entries, and high income.
   - [0008](docs/adr/0008-insight-rules-and-thresholds.md): the offer
     rules and every threshold.
+  - [0009](docs/adr/0009-visual-system-v2.md): the colors, fonts, and
+    theme rules of the UI.
 - [`docs/superpowers/specs/`](docs/superpowers/specs/): one spec per
   feature. Start with the
   [product design](docs/superpowers/specs/2026-11-23-customer-360-product-design.md).

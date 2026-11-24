@@ -19,7 +19,7 @@ read the repo, not only run the app.
 | Build / dev server | Vite 8 |
 | UI | React 19 + TypeScript 6 (`strict`, `noUncheckedIndexedAccess`) |
 | Styling / components | Tailwind CSS v4 + shadcn/ui (style `radix-nova`, base color neutral, lucide icons) |
-| Font | Plus Jakarta Sans (`@fontsource-variable/plus-jakarta-sans`) |
+| Font | Inter (body) and Space Grotesk (headings, large numbers), `@fontsource-variable/inter` and `@fontsource-variable/space-grotesk` |
 | Charts | Recharts |
 | Tables | TanStack Table |
 | Routing | React Router (library mode: `createBrowserRouter` + `RouterProvider`) |
@@ -57,7 +57,7 @@ scripts/
   excel/normalize.ts         Pure parsing/validation functions used by the converter.
   excel/normalize.test.ts    Unit tests for the converter logic.
   theme/contrast.ts          OKLCH → sRGB and WCAG contrast, used by the theme contrast test.
-  theme/contrast.test.ts     Checks every token pairing in src/index.css, both themes (ADR 0007).
+  theme/contrast.test.ts     Checks every token pairing in src/index.css, both themes (ADR 0009).
 src/
   data/                      GENERATED JSON (committed) + index.ts (typed exports).
     profiles.json            100 rows  (sheet `profile`)
@@ -68,16 +68,15 @@ src/
   types/                     Record types + allowed-value constants (one file per dataset).
   lib/                       Business logic: pure, tested functions. `utils.ts` is shadcn's `cn`.
     format.ts                `formatIDR()` and `formatIDRShort()` — the only money formatters. Date and percent labels.
-    theme.ts                 Dark/light switch (`readStoredTheme`, `applyTheme`). ADR 0007.
+    theme.ts                 Light/dark switch, light by default (`readStoredTheme`, `applyTheme`). ADR 0009.
     domain/                  Business definitions (AUM, holds, bank entries, income rank, days since). ADR 0006.
-    selectors/               The only importers of `src/data`. Pure `fn(dataset)` + bound exports (`asOfDate`).
-    insights/                Insight rules, KYC note, and the worklist ranking. Every cut-off lives in `thresholds.ts`. ADR 0008.
+    selectors/               The only importers of `src/data`. Pure `fn(dataset)` + bound exports (`asOfDate`). One per page: `portfolio.ts`, `customers.ts`, `customer360.ts`.
+    insights/                Insight rules, KYC note, offers by product, and the ranking. Every cut-off lives in `thresholds.ts`. ADR 0008.
   components/ui/             shadcn/ui generated components (add with `npx shadcn@latest add <name>`).
-  components/                App components (render only): app shell, search, theme toggle.
-  components/customer/       Customer 360 detail sections: KPI tiles, charts, tables.
-  components/worklist/       Worklist (`/`) table and filters.
-  components/overview/       Overview (`/overview`) opportunity strip and income-vs-AUM scatter.
-  hooks/                     shadcn's hooks (`use-mobile`). UI layer (ADR 0004).
+  components/                App components (render only): top bar (app shell), search, theme toggle.
+  components/portfolio/      Portfolio (`/`): band chips, opportunity tiles, penetration list, income-vs-AUM scatter.
+  components/customers/      Customers (`/customers`): filters, the paged table, the preview panel.
+  components/customer/       Customer 360 (`/customers/:id`): header, nav, KPI tiles, tab content (offers, charts, tables).
   pages/                     Route-level components (render only).
   routes.tsx                 Route table, shared by `main.tsx` and tests.
   test/setup.ts              Vitest setup (jest-dom matchers, RTL cleanup, jsdom polyfills).
@@ -188,8 +187,8 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
    - ✗ "Great opportunity to grow this customer's wealth with mutual funds!"
      ✓ "No REKSA. AUM Rp 1.384.200.000, 92% in savings."
 10. **All UI follows the visual system** in
-    `docs/superpowers/specs/2026-11-23-f1-visual-system-and-customer-detail-design.md`
-    section 4 and ADR 0007.
+    `docs/superpowers/specs/2026-11-24-redesign-v2-design.md`
+    section 6 and ADR 0009 (which supersedes ADR 0007).
     - Colors live only as CSS variables in `src/index.css`. No hex, `rgb()`,
       or `oklch()` in `src/components/` or `src/pages/`.
     - Brand red is for primary buttons, active nav, and the focus ring. It is
