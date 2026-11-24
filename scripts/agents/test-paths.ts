@@ -2,7 +2,10 @@
  * The path rule behind the agent edit guard (spec
  * docs/superpowers/specs/2026-11-24-agent-teams-design.md, section 5.3).
  * Test files belong to test-writer, everything else to implementer, and
- * docs-writer edits docs/ only. Pure functions; the hook entry is guard-paths.ts.
+ * docs-writer edits docs/ only. Protected files (test config, package files,
+ * the guard, `.claude/`) belong to the orchestrator: an agent could switch a
+ * test off through them without touching a test file. Pure functions; the
+ * hook entry is guard-paths.ts and the gate check is check-paths.ts.
  */
 
 export type GuardRole = 'test-writer' | 'implementer' | 'docs-writer'
@@ -13,8 +16,17 @@ export const GUARD_ROLES: readonly GuardRole[] = ['test-writer', 'implementer', 
 const TEST_FILE = /\.test\.tsx?$/
 const TEST_DIR = /(^|\/)(e2e|src\/test)\//
 const DOCS_DIR = /(^|\/)docs\//
+const PROTECTED_FILE = /(^|\/)(vite\.config\.ts|playwright\.config\.ts|package\.json|package-lock\.json)$/
+const PROTECTED_DIR = /(^|\/)(scripts\/agents|\.claude)\//
+// A worktree checkout sits under .claude/worktrees/<name>/. The rest of the path is the repo path.
+const WORKTREE_PREFIX = /^.*\/\.claude\/worktrees\/[^/]+\//
 
-const toPosix = (path: string): string => path.replace(/\\/g, '/')
+const toPosix = (path: string): string => path.replace(/\\/g, '/').replace(WORKTREE_PREFIX, '')
+
+function isProtectedPath(path: string): boolean {
+  const posix = toPosix(path)
+  return PROTECTED_FILE.test(posix) || PROTECTED_DIR.test(posix)
+}
 
 /** True for `*.test.ts(x)`, anything under `e2e/`, and anything under `src/test/`. */
 export function isTestPath(path: string): boolean {
@@ -24,6 +36,9 @@ export function isTestPath(path: string): boolean {
 
 /** Null when `role` may edit `path`; otherwise the reason the agent reads when the edit is blocked. */
 export function guardDecision(role: GuardRole, path: string): string | null {
+  if (role !== 'docs-writer' && isProtectedPath(path)) {
+    return `${path} is protected. Only the orchestrator edits it. Report the change you need.`
+  }
   switch (role) {
     case 'implementer':
       return isTestPath(path)
@@ -34,6 +49,11 @@ export function guardDecision(role: GuardRole, path: string): string | null {
     case 'docs-writer':
       return DOCS_DIR.test(toPosix(path)) ? null : `${path} is outside docs/. docs-writer edits docs/ only.`
   }
+}
+
+/** The changed paths `role` may not touch. The orchestrator's RED and GREEN gates feed it `git` output. */
+export function pathViolations(role: GuardRole, paths: readonly string[]): string[] {
+  return paths.filter((path) => path !== '' && guardDecision(role, path) !== null)
 }
 
 /** The file path of an Edit, Write, or NotebookEdit call from the PreToolUse hook input, or null. */
