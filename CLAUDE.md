@@ -58,6 +58,8 @@ scripts/
   excel/normalize.test.ts    Unit tests for the converter logic.
   theme/contrast.ts          OKLCH → sRGB and WCAG contrast, used by the theme contrast test.
   theme/contrast.test.ts     Checks every token pairing in src/index.css, both themes (ADR 0009).
+  agents/test-paths.ts       Path rule for the agent edit guard (test files vs code vs docs).
+  agents/guard-paths.ts      PreToolUse hook entry: exit 2 blocks an edit outside the agent's role.
 src/
   data/                      GENERATED JSON (committed) + index.ts (typed exports).
     profiles.json            100 rows  (sheet `profile`)
@@ -89,6 +91,10 @@ docs/superpowers/specs/      Feature specs, written by the Superpowers brainstor
 docs/superpowers/plans/      Implementation plans, written by the Superpowers writing-plans skill.
 .claude/settings.json        Shared Claude Code config (superpowers plugin; push/PR/merge permissions for pr-shipper).
 .claude/agents/pr-shipper.md Agent that pushes a branch, opens the PR, waits for CI, and rebase-merges.
+.claude/agents/docs-writer.md  Agent (opus) that writes a spec and its plan from the brainstorm's decisions. docs/ only.
+.claude/agents/test-writer.md  Agent (sonnet) that writes a task's failing tests. Test files only.
+.claude/agents/implementer.md  Agent (sonnet) that makes a task's tests pass. Never edits test files.
+.claude/agents/reviewer.md     Agent (opus) that reviews a whole branch once, read-only.
 ```
 
 Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
@@ -158,13 +164,36 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
    `commit-msg` hook and CI enforce this with commitlint.
 8. **Each feature follows one flow, on its own branch** (`feat/<feature>`, or
    `ci/`, `docs/`, `chore/`, `fix/<topic>`):
-   1. `brainstorming` → feature spec (approved by the user, then committed).
-   2. `writing-plans` → plan.
-   3. `executing-plans` in the main session, or one implementer subagent
-      for the whole feature, runs the plan. There is no review after each
-      task; TDD is the per-task gate.
-   4. `verification-before-completion` (one `npm run check`) and one
-      `requesting-code-review` over the whole branch.
+   The main session is the **orchestrator**. It runs the brainstorm with
+   the user, gates every task, makes every commit, and ships. The agents in
+   `.claude/agents/` do the writing (spec
+   `docs/superpowers/specs/2026-11-24-agent-teams-design.md`, ADR 0003
+   update).
+
+   1. `brainstorming` with the user, in the main session (a subagent cannot
+      ask the user). Then `docs-writer` writes the feature spec from the
+      decisions. The user approves it, and the orchestrator commits it.
+   2. `docs-writer` writes the plan with `writing-plans`.
+   3. One `test-writer` and one `implementer` for the spec run the plan,
+      one task at a time, in plan order. The orchestrator continues the
+      same two agents with `SendMessage` for each task. For each task:
+      1. `test-writer` writes the task's tests.
+      2. **RED gate:** the orchestrator runs them. Each must fail because
+         the behavior is missing, not because of a typo or a bad import.
+      3. `implementer` writes the code until the tests pass.
+      4. **GREEN gate:** the orchestrator runs `npm run test`, then
+         `git diff --name-only` to confirm that `implementer` changed no
+         test file.
+      5. The orchestrator commits tests and code together in one commit.
+
+      If `implementer` reports a wrong test, the orchestrator decides,
+      writes a `Ruling:` line in the ledger, and sends the change to
+      `test-writer`. A docs-only or config-only task skips `test-writer`,
+      and the ledger says why. There is no review after each task; the two
+      gates are the per-task check.
+   4. `verification-before-completion` (one `npm run check`), then
+      `reviewer` reviews the whole branch once. The fix pass for critical
+      and important findings uses the same pair and the same gates.
    5. `finishing-a-development-branch` → PR. The main session is the
       orchestrator: it writes the PR body to the scratchpad, then dispatches
       the `pr-shipper` agent (`.claude/agents/pr-shipper.md`) with the
@@ -178,6 +207,12 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
    If the feature has an ADR, the brainstorm makes the decision, and the ADR
    is task 1 of the plan. It goes in the same PR as the code, and the feature
    spec links to it.
+
+   A `PreToolUse` hook (`scripts/agents/guard-paths.ts`) blocks
+   `test-writer` from code, `implementer` from test files, and `docs-writer`
+   from anything outside `docs/`. The hook does not see edits made through
+   `Bash`, and a hook command that errors does not block. So the GREEN
+   gate's `git diff --name-only` check is required, not optional.
 9. **Copy rule for insight and rules text.** No AI-style filler.
    - A reason is the fired rule plus its evidence numbers. Nothing else.
    - No adjectives, no advice tone, no exclamation marks, no generated text.
@@ -194,6 +229,19 @@ Import alias: `@/` maps to `src/` (configured in `tsconfig.json`,
     - Brand red is for primary buttons, active nav, and the focus ring. It is
       never a risk color, a chart series, or a large surface.
     - LOAN is never added to or stacked with AUM.
+11. **Parallel work.** A **team** is one worktree, one branch, and its own
+    `docs-writer`, `test-writer`, `implementer`, and `reviewer`. The
+    orchestrator and `pr-shipper` are shared.
+    1. **Specs and plans:** always allowed in parallel, each team in its own
+       worktree and branch.
+    2. **Code within one plan:** never in parallel.
+    3. **Code across features:** allowed only if the orchestrator compares
+       the two plans' file lists and Interfaces blocks first and finds no
+       shared file and no shared interface. Otherwise the second team waits
+       until the first PR merges.
+    4. **Reviews:** allowed in parallel (read-only).
+    5. **`pr-shipper`:** one at a time. A second branch rebases onto `main`
+       before it ships.
 
 ## Data model
 
