@@ -81,6 +81,7 @@ const TEXT_ON_SURFACES: [string, string][] = [
   ['risk', 'card'],
   ['info', 'card'],
   ['primary-foreground', 'primary'],
+  ['primary-foreground', 'primary-hover'],
   ['opportunity-foreground', 'opportunity'],
   ['warning-foreground', 'warning'],
   ['risk-foreground', 'risk'],

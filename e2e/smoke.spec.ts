@@ -215,3 +215,28 @@ for (const { path, chart } of [
     expect(errors).toEqual([])
   })
 }
+
+// ADR 0009: touch targets are at least 40 px. A coarse pointer (phone emulation) must get controls
+// of at least 40 x 40 px. Text links inside a sentence are not controls and are not checked.
+test.describe('on a touch screen', () => {
+  test.use({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true })
+
+  for (const path of ['./', './customers', './customers/8797', './customers/8797?tab=holdings', './customers/8797?tab=loans']) {
+    test(`every control is at least 40 x 40 px (${path})`, async ({ page }) => {
+      await page.goto(path)
+      await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+      const small = await page
+        .locator('button, [role="tab"], [role="combobox"], input, a[aria-label]')
+        .evaluateAll((elements) =>
+          elements.flatMap((element) => {
+            const box = element.getBoundingClientRect()
+            if (box.width === 0 && box.height === 0) return []
+            if (box.width >= 40 && box.height >= 40) return []
+            const name = element.getAttribute('aria-label') ?? element.textContent?.trim() ?? element.tagName
+            return [`${name}: ${Math.round(box.width)}x${Math.round(box.height)}`]
+          }),
+        )
+      expect(small).toEqual([])
+    })
+  }
+})

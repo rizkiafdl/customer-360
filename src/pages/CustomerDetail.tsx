@@ -1,5 +1,5 @@
 import { LandmarkIcon } from 'lucide-react'
-import type { ReactNode } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 import { BankEntriesTable } from '@/components/customer/BankEntriesTable'
 import { ChartCard } from '@/components/customer/ChartCard'
 import { HorizontalBars } from '@/components/customer/HorizontalBars'
@@ -66,6 +66,18 @@ export function CustomerDetail({
   nav: ReactNode
 }) {
   const { holdings, activity, bankEntries, offers } = vm
+  // "View all" unmounts the Overview panel it sits in, so the focus moves to the Transactions tab
+  // once that tab is selected, instead of dropping to <body>.
+  const transactionsTab = useRef<HTMLButtonElement>(null)
+  const focusTransactions = useRef(false)
+  useEffect(() => {
+    if (tab === 'transactions' && focusTransactions.current) transactionsTab.current?.focus()
+    focusTransactions.current = false
+  }, [tab])
+  function viewAllTransactions() {
+    focusTransactions.current = true
+    onTabChange('transactions')
+  }
   return (
     <div className="flex flex-col gap-5">
       {nav}
@@ -75,7 +87,12 @@ export function CustomerDetail({
       <Tabs value={tab} onValueChange={(value) => onTabChange(parseTab(value))} className="gap-4">
         <TabsList variant="line" aria-label="Customer sections" className="w-full justify-start overflow-x-auto border-b">
           {CUSTOMER_TABS.map((id) => (
-            <TabsTrigger key={id} value={id} className="flex-none px-3">
+            <TabsTrigger
+              key={id}
+              ref={id === 'transactions' ? transactionsTab : undefined}
+              value={id}
+              className="flex-none px-3 text-muted-foreground"
+            >
               {TAB_LABELS[id]}
             </TabsTrigger>
           ))}
@@ -102,7 +119,7 @@ export function CustomerDetail({
             </section>
             <div className="flex flex-col gap-4">
               <AumChart holdings={holdings} />
-              <RecentTransactions rows={vm.recent} onViewAll={() => onTabChange('transactions')} />
+              <RecentTransactions rows={vm.recent} onViewAll={viewAllTransactions} />
             </div>
           </div>
         </TabsContent>
