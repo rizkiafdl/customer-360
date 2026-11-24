@@ -84,6 +84,7 @@ export function contrastRatio(a: string, b: string): number {
  * to blend with.
  */
 export function contrastOver(fg: string, layers: readonly string[]): number {
+  if (parseAlpha(fg) !== 1) throw new Error('contrastOver: the text colour must be opaque')
   const [base, ...rest] = layers
   if (base === undefined) throw new Error('contrastOver: layers must not be empty')
   if (parseAlpha(base) !== 1) throw new Error('contrastOver: the first layer must be opaque')
