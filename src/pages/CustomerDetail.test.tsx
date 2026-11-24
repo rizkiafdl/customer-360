@@ -296,6 +296,21 @@ describe('Customer 360 on the real data', () => {
     expect(screen.getByRole('table', { name: 'Transactions' })).toBeInTheDocument()
   })
 
+  it('moves the focus to the Transactions tab when "View all" is pressed with the keyboard', async () => {
+    const user = userEvent.setup()
+    renderAt('/customers/8797')
+    screen.getByRole('button', { name: 'View all' }).focus()
+    await user.keyboard('{Enter}')
+    expect(screen.getByRole('tab', { name: 'Transactions' })).toHaveFocus()
+  })
+
+  it('gives the inactive tab labels the muted text color, not foreground at 60% (4.40:1 in light)', () => {
+    renderAt('/customers/8797')
+    const holdings = screen.getByRole('tab', { name: 'Holdings' })
+    expect(holdings).toHaveClass('text-muted-foreground')
+    expect(holdings.className).not.toMatch(/(^|\s)text-foreground\/60/)
+  })
+
   it('selects Overview for an unknown tab', () => {
     renderAt('/customers/8797?tab=bogus')
     expect(screen.getByRole('tab', { name: 'Overview' })).toHaveAttribute('aria-selected', 'true')

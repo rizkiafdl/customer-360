@@ -78,7 +78,11 @@ income" chip a red tint. Both break the "red is not a series or a flag" rule.
   removed. Amounts and counts use tabular numbers and are right-aligned in
   tables.
 - **Shape:** radius 8 px for controls, 12–14 px for cards; touch targets at
-  least 40 px; Lucide icons at 16 px, stroke 2.
+  least 40 × 40 px on a coarse pointer (one `@media (pointer: coarse)` rule in
+  `src/index.css`, so mouse layouts keep the handoff's density); Lucide icons
+  at 16 px, stroke 2.
+- **Primary button hover:** `--primary-hover`, a darker red, so the white
+  label keeps 4.5:1. A lighter hover (shadcn's `bg-primary/80`) fails it.
 - **Navigation:** a top bar replaces the sidebar. Every `--sidebar*` token is
   removed.
 
