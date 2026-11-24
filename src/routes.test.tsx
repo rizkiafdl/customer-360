@@ -11,16 +11,21 @@ function renderAt(path: string) {
 }
 
 describe('routes', () => {
-  it('shows the worklist at /', () => {
+  it('shows the Portfolio at /', () => {
     renderAt('/')
+    expect(screen.getByRole('heading', { level: 1, name: 'Portfolio' })).toBeInTheDocument()
+  })
+
+  it('shows the worklist at /customers', () => {
+    renderAt('/customers')
     expect(screen.getByRole('heading', { level: 1, name: 'Customers' })).toBeInTheDocument()
     const table = screen.getByRole('table', { name: 'Worklist' })
     expect(within(table).getByRole('link', { name: 'Customer 4426' })).toHaveAttribute('href', '/customers/4426')
   })
 
-  it('shows the app shell with the as-of date', () => {
+  it('shows the app shell with the snapshot date', () => {
     renderAt('/')
-    expect(screen.getByText('As of 26 Apr 2024')).toBeInTheDocument()
+    expect(screen.getByText('Snapshot as of 26 Apr 2024')).toBeInTheDocument()
     expect(screen.getByRole('navigation', { name: 'Main' })).toBeInTheDocument()
   })
 
@@ -32,7 +37,7 @@ describe('routes', () => {
   it.each(['/customers/abc', '/customers/1'])('shows "Customer not found" for %s', (path) => {
     renderAt(path)
     expect(screen.getByRole('heading', { level: 1, name: 'Customer not found' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Back to customers' })).toHaveAttribute('href', '/')
+    expect(screen.getByRole('link', { name: 'Back to customers' })).toHaveAttribute('href', '/customers')
   })
 
   it('shows "Page not found" for an unknown path', () => {

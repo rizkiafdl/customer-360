@@ -6,7 +6,7 @@ import type { PortfolioItem, Profile } from '@/types'
 import { dataset, type Dataset } from './dataset'
 import { groupByCustomer } from './grouping'
 
-/** One customer as the worklist (F4) and the overview (F5) see it. */
+/** One customer as the Customers list and the Portfolio page see it. */
 export interface BookCustomer {
   profile: Profile
   portfolio: PortfolioItem[]

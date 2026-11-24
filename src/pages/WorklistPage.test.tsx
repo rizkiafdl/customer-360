@@ -24,7 +24,7 @@ const TOP_REASON = 5
 
 describe('WorklistPage', () => {
   it('lists all 100 customers in the default order', () => {
-    renderAt('/')
+    renderAt('/customers')
     expect(screen.getByRole('heading', { level: 1, name: 'Customers' })).toBeInTheDocument()
     expect(screen.getByText('100 customers.')).toBeInTheDocument()
     const rows = bodyRows()
@@ -35,31 +35,31 @@ describe('WorklistPage', () => {
   })
 
   it('makes only the customer cell a link', () => {
-    renderAt('/')
+    renderAt('/customers')
     expect(within(bodyRows()[0]!).getAllByRole('link')).toHaveLength(1)
   })
 
   it('shows "No rule fired" and the KYC marker for a customer with only the KYC note', () => {
-    renderAt('/?q=3569')
+    renderAt('/customers?q=3569')
     const [row] = bodyRows()
     expect(within(row!).getByText('No rule fired')).toBeInTheDocument()
     expect(within(row!).getByText('KYC note')).toBeInTheDocument()
   })
 
   it('filters by opportunity type from the URL', () => {
-    renderAt('/?rule=investment-gap-ori')
+    renderAt('/customers?rule=investment-gap-ori')
     expect(bodyRows()).toHaveLength(37)
     expect(screen.getByText('37 of 100 customers. Opportunity: No ORI.')).toBeInTheDocument()
   })
 
   it('ignores an unknown rule in the URL', () => {
-    renderAt('/?rule=nope')
+    renderAt('/customers?rule=nope')
     expect(bodyRows()).toHaveLength(100)
   })
 
   it('writes the ID filter to the URL', async () => {
     const user = userEvent.setup()
-    const router = renderAt('/')
+    const router = renderAt('/customers')
     await user.type(screen.getByRole('textbox', { name: 'Filter by customer ID' }), '8797')
     expect(router.state.location.search).toBe('?q=8797')
     expect(bodyRows()).toHaveLength(1)
@@ -67,7 +67,7 @@ describe('WorklistPage', () => {
 
   it('keeps the caret in place when editing the middle of the ID', async () => {
     const user = userEvent.setup()
-    const router = renderAt('/?q=8797')
+    const router = renderAt('/customers?q=8797')
     const input = screen.getByRole<HTMLInputElement>('textbox', { name: 'Filter by customer ID' })
     input.focus()
     input.setSelectionRange(1, 1)
@@ -78,14 +78,14 @@ describe('WorklistPage', () => {
 
   it('empties the ID box with "Clear filters"', async () => {
     const user = userEvent.setup()
-    renderAt('/?q=44')
+    renderAt('/customers?q=44')
     await user.click(screen.getByRole('button', { name: 'Clear filters' }))
     expect(screen.getByRole('textbox', { name: 'Filter by customer ID' })).toHaveValue('')
   })
 
   it('keeps only digits in the ID box', async () => {
     const user = userEvent.setup()
-    const router = renderAt('/')
+    const router = renderAt('/customers')
     const input = screen.getByRole('textbox', { name: 'Filter by customer ID' })
     await user.type(input, '4a4 ')
     expect(input).toHaveValue('44')
@@ -94,7 +94,7 @@ describe('WorklistPage', () => {
 
   it('keeps the caret in place when a letter is typed in the middle of the ID', async () => {
     const user = userEvent.setup()
-    renderAt('/?q=4426')
+    renderAt('/customers?q=4426')
     const input = screen.getByRole<HTMLInputElement>('textbox', { name: 'Filter by customer ID' })
     input.focus()
     input.setSelectionRange(2, 2)
@@ -103,28 +103,28 @@ describe('WorklistPage', () => {
   })
 
   it('shows an empty ID box for a URL ID the filter ignores', () => {
-    renderAt('/?q=4a')
+    renderAt('/customers?q=4a')
     expect(screen.getByRole('textbox', { name: 'Filter by customer ID' })).toHaveValue('')
     expect(bodyRows()).toHaveLength(100)
   })
 
   it('sorts the Customer column in ascending order on the first click', async () => {
     const user = userEvent.setup()
-    renderAt('/')
+    renderAt('/customers')
     await user.click(screen.getByRole('button', { name: 'Customer' }))
     const ids = column(1).map((text) => Number(text.replace('Customer ', '')))
     expect(ids).toEqual([...ids].sort((a, b) => a - b))
   })
 
   it('shows the new ID when a link changes the URL', async () => {
-    const router = renderAt('/?q=44')
-    await act(() => router.navigate('/?q=12'))
+    const router = renderAt('/customers?q=44')
+    await act(() => router.navigate('/customers?q=12'))
     expect(screen.getByRole('textbox', { name: 'Filter by customer ID' })).toHaveValue('12')
   })
 
   it('writes the opportunity type to the URL', async () => {
     const user = userEvent.setup()
-    const router = renderAt('/')
+    const router = renderAt('/customers')
     await user.click(screen.getByRole('combobox', { name: 'Opportunity type' }))
     await user.click(screen.getByRole('option', { name: 'No ORI' }))
     expect(router.state.location.search).toBe('?rule=investment-gap-ori')
@@ -133,20 +133,20 @@ describe('WorklistPage', () => {
 
   it('restores all rows with "Clear filters"', async () => {
     const user = userEvent.setup()
-    const router = renderAt('/?rule=investment-gap-ori&q=4')
+    const router = renderAt('/customers?rule=investment-gap-ori&q=4')
     await user.click(screen.getByRole('button', { name: 'Clear filters' }))
     expect(router.state.location.search).toBe('')
     expect(bodyRows()).toHaveLength(100)
   })
 
   it('says so when no customer matches', () => {
-    renderAt('/?q=999999')
+    renderAt('/customers?q=999999')
     expect(screen.getByText('No customers match these filters.')).toBeInTheDocument()
   })
 
   it('keeps "No rule fired" rows last when sorting by top reason, both directions', async () => {
     const user = userEvent.setup()
-    renderAt('/')
+    renderAt('/customers')
     const header = screen.getByRole('button', { name: 'Top reason' })
     await user.click(header)
     let reasons = column(TOP_REASON)
@@ -160,7 +160,7 @@ describe('WorklistPage', () => {
 
   it('restores the default order when sorting by rank', async () => {
     const user = userEvent.setup()
-    renderAt('/')
+    renderAt('/customers')
     await user.click(screen.getByRole('button', { name: 'AUM' }))
     await user.click(screen.getByRole('button', { name: 'Rank' }))
     expect(column(0).slice(0, 3)).toEqual(['1', '2', '3'])

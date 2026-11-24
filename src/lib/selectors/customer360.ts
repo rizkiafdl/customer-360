@@ -362,5 +362,5 @@ export function getCustomerOptions(): CustomerOption[] {
   return options
 }
 
-/** The as-of date for the top bar, e.g. "As of 26 Apr 2024" (ADR 0005). */
-export const asOfLabel = `As of ${formatDate(asOfDate)}`
+/** The as-of date for the top bar, e.g. "Snapshot as of 26 Apr 2024" (ADR 0005). */
+export const snapshotLabel = `Snapshot as of ${formatDate(asOfDate)}`

@@ -6,7 +6,7 @@ export function NotFoundPage({ title = 'Page not found' }: { title?: string }) {
     <section className="py-12">
       <h1 className="font-heading text-xl font-semibold">{title}</h1>
       <p className="mt-2 text-sm">
-        <Link to="/" className="text-foreground underline underline-offset-4 hover:text-foreground">
+        <Link to="/customers" className="text-foreground underline underline-offset-4 hover:text-foreground">
           Back to customers
         </Link>
       </p>
