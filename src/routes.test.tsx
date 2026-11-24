@@ -16,11 +16,11 @@ describe('routes', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Portfolio' })).toBeInTheDocument()
   })
 
-  it('shows the worklist at /customers', () => {
+  it('shows the Customers list at /customers', () => {
     renderAt('/customers')
     expect(screen.getByRole('heading', { level: 1, name: 'Customers' })).toBeInTheDocument()
-    const table = screen.getByRole('table', { name: 'Worklist' })
-    expect(within(table).getByRole('link', { name: 'Customer 4426' })).toHaveAttribute('href', '/customers/4426')
+    const table = screen.getByRole('table', { name: 'Customers' })
+    expect(within(table).getByRole('link', { name: 'Open customer 8797' })).toHaveAttribute('href', '/customers/8797')
   })
 
   it('shows the app shell with the snapshot date', () => {

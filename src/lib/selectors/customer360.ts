@@ -38,7 +38,6 @@ import { formatDate, formatDayMonth, formatIDR, formatMonthYear, formatPercent }
 import { evaluateCustomer, offerPanel, productOffers, type OfferPanel, type ProductOffer } from '@/lib/insights'
 import {
   INCOME_BANDS,
-  type Gender,
   type IncomeBand,
   type PortfolioItem,
   type ProductCategory,
@@ -47,7 +46,7 @@ import {
   type TransactionType,
 } from '@/types'
 import { asOfDate, asOfDateOf } from './book'
-import { channelText } from './customers'
+import { channelText, genderLabel } from './customers'
 import { dataset, type Dataset } from './dataset'
 import { groupByCustomer, type CustomerRows } from './grouping'
 
@@ -135,12 +134,6 @@ export interface Customer360 {
 }
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
-
-const GENDER_LABELS: Record<Gender, string> = { F: 'Female', M: 'Male' }
-
-function genderLabel(gender: Gender | null): string {
-  return gender === null ? 'Gender not recorded' : GENDER_LABELS[gender]
-}
 
 /** "X is 17% of 6 customer-initiated transactions", from the largest entry. */
 function mixTitle(entries: LabelCount[], total: number): string | null {

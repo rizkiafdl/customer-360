@@ -3,14 +3,14 @@ import { AppShell } from '@/components/AppShell'
 import { CustomerPage } from '@/pages/CustomerPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { PortfolioPage } from '@/pages/PortfolioPage'
-import { WorklistPage } from '@/pages/WorklistPage'
+import { CustomersPage } from '@/pages/CustomersPage'
 
 export const routes: RouteObject[] = [
   {
     element: <AppShell />,
     children: [
       { index: true, element: <PortfolioPage /> },
-      { path: 'customers', element: <WorklistPage /> },
+      { path: 'customers', element: <CustomersPage /> },
       { path: 'customers/:id', element: <CustomerPage /> },
       // The F5 overview became the Portfolio home page (ADR 0009).
       { path: 'overview', element: <Navigate to="/" replace /> },
