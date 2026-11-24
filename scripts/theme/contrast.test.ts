@@ -123,6 +123,25 @@ const TEXT_ON_SURFACES: [string, string][] = [
 ]
 const UI_ON_CARD = ['chart-1', 'chart-2', 'chart-3', 'chart-4', 'chart-5', 'ring', 'primary']
 
+const SPOTLIGHT_STACKS: Record<string, string[]> = {
+  'the panel over --background': ['background', 'sp-scrim', 'sp-panel'],
+  'the panel over --card': ['card', 'sp-scrim', 'sp-panel'],
+  'the fallback panel': ['card'],
+}
+
+const SPOTLIGHT_PAIRS: [string, string | null, number][] = [
+  ['foreground', null, 4.5],
+  ['muted-foreground', null, 4.5],
+  ['muted-foreground', 'sp-kbd', 4.5],
+  ['sp-active-text', 'sp-active-bg', 4.5],
+  ['muted-foreground', 'sp-active-bg', 4.5],
+  ['muted-foreground', 'sp-icon-bg', 3],
+]
+
+const SPOTLIGHT_CASES = Object.entries(SPOTLIGHT_STACKS).flatMap(([stackName, stack]) =>
+  SPOTLIGHT_PAIRS.map(([fg, extra, min]) => [fg, stackName, extra, min, stack] as const),
+)
+
 describe.each(['dark', 'light'] as const)('%s theme tokens', (name) => {
   const tokens = themes[name]
   const get = (token: string): string => {
@@ -156,9 +175,32 @@ describe.each(['dark', 'light'] as const)('%s theme tokens', (name) => {
   })
 
   it('keeps every tested token inside the sRGB gamut', () => {
-    const tested = new Set([...TEXT_ON_SURFACES.flat(), ...UI_ON_CARD, 'card', 'background'])
+    const tested = new Set([
+      ...TEXT_ON_SURFACES.flat(),
+      ...UI_ON_CARD,
+      'card',
+      'background',
+      'sp-scrim',
+      'sp-scrim-fallback',
+      'sp-panel',
+      'sp-panel-border',
+      'sp-divider',
+      'sp-active-bg',
+      'sp-active-text',
+      'sp-icon-bg',
+      'sp-kbd',
+    ])
     const outside = [...tested].filter((t) => !inGamut(get(t)))
     expect(outside).toEqual([])
+  })
+
+  it.each(SPOTLIGHT_CASES)('--%s on %s + %s is at least %d:1', (fg, _stackName, extra, min, stack) => {
+    const layers = [...stack, extra].filter((layer): layer is string => Boolean(layer)).map(get)
+    expect(contrastOver(get(fg), layers)).toBeGreaterThanOrEqual(min)
+  })
+
+  it('keeps --sp-shadow as a string the parser never reads', () => {
+    expect(tokens['sp-shadow']).toMatch(/^0 30px 80px oklch\(/)
   })
 })
 
