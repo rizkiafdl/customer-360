@@ -49,10 +49,36 @@ export function customersQuery(filters: Partial<CustomerFilters>): string {
   return query ? `?${query}` : ''
 }
 
+/** `/customers` with the filters, without the page (spec 4.3). */
+export function listHref(filters: CustomerFilters): string {
+  return `/customers${customersQuery({ ...filters, page: 1 })}`
+}
+
+/** `/customers/<id>` with the filters except the page, then `tab` when it is set and not `overview`. */
+export function customerHref(id: number, filters: CustomerFilters, tab?: string | null): string {
+  const query = customersQuery({ ...filters, page: 1 })
+  const tabPart = tab && tab !== 'overview' ? `${query ? '&' : '?'}tab=${encodeURIComponent(tab)}` : ''
+  return `/customers/${id}${query}${tabPart}`
+}
+
+/** The ID box text: digits only, so the box never shows text that the filter ignores. */
+export function toIdQuery(text: string): string {
+  return text.replace(/\D/g, '')
+}
+
+const GENDER_LABELS: Record<Gender, string> = { F: 'Female', M: 'Male' }
+
+/** `Female`, `Male`, or `Gender not recorded`. */
+export function genderLabel(gender: Gender | null): string {
+  return gender === null ? 'Gender not recorded' : GENDER_LABELS[gender]
+}
+
 /** What the preview panel shows for one row. Every text comes from a fixed template. */
 export interface CustomerPreview {
   gender: Gender | null
   incomeBand: IncomeBand
+  /** `Female · >10 Juta - 25 Juta`. */
+  detail: string
   highIncome: boolean
   /** `First transaction Jul 2014`, or `null` with no rows. */
   firstTransaction: string | null
@@ -128,6 +154,7 @@ function rowOf(customer: BookCustomer, transactions: readonly Transaction[], ind
     preview: {
       gender: profile.gender,
       incomeBand: profile.customer_income,
+      detail: `${genderLabel(profile.gender)} · ${profile.customer_income}`,
       highIncome: isHighIncome(profile.customer_income),
       firstTransaction: firstTransaction && `First transaction ${formatMonthYear(firstTransaction)}`,
       offers: productOffers(evaluation).slice(0, 2),
@@ -233,8 +260,10 @@ export function neighbours(
   }
 }
 
-const customerRows = buildCustomerRows(dataset)
+let customerRows: readonly CustomerRow[] | undefined
 
-export function getCustomerRows(): CustomerRow[] {
+/** The real-data rows, built on first use so that importing a text helper costs nothing. */
+export function getCustomerRows(): readonly CustomerRow[] {
+  customerRows ??= buildCustomerRows(dataset)
   return customerRows
 }

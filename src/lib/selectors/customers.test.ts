@@ -4,18 +4,20 @@ import { fixtureDataset } from '@/test/fixtures'
 import {
   buildCustomerRows,
   channelText,
+  customerHref,
   customerSummary,
   customersQuery,
   filterCustomers,
   getCustomerRows,
   lastActiveLabel,
   lastActiveText,
+  listHref,
   neighbours,
   paginate,
   parseCustomerFilters,
+  toIdQuery,
   type CustomerFilters,
 } from './customers'
-import { getWorklist } from './worklist'
 
 const NONE: CustomerFilters = { rule: null, band: null, kyc: null, lacks: null, q: null, page: 1 }
 const parse = (query: string) => parseCustomerFilters(new URLSearchParams(query))
@@ -31,6 +33,30 @@ describe('customersQuery', () => {
       customersQuery({ page: 2, q: '12', lacks: 'ORI', kyc: false, band: 4, rule: 'investment-gap-reksa' }),
     ).toBe('?rule=investment-gap-reksa&band=4&kyc=no&lacks=ORI&q=12&page=2')
     expect(customersQuery({ kyc: true })).toBe('?kyc=yes')
+  })
+})
+
+describe('links that keep the filters', () => {
+  const filters = { ...parse('rule=investment-gap-ori'), page: 3 }
+
+  it('drops the page from the list link', () => {
+    expect(listHref(filters)).toBe('/customers?rule=investment-gap-ori')
+    expect(listHref(parse(''))).toBe('/customers')
+  })
+
+  it('opens a customer with the filters and the tab last', () => {
+    expect(customerHref(8797, filters, 'loans')).toBe('/customers/8797?rule=investment-gap-ori&tab=loans')
+    expect(customerHref(8797, filters, 'overview')).toBe('/customers/8797?rule=investment-gap-ori')
+    expect(customerHref(8797, filters, null)).toBe('/customers/8797?rule=investment-gap-ori')
+    expect(customerHref(8797, parse(''), 'loans')).toBe('/customers/8797?tab=loans')
+  })
+})
+
+describe('toIdQuery', () => {
+  it('keeps only the digits of what was typed or pasted', () => {
+    expect(toIdQuery('44a 2')).toBe('442')
+    expect(toIdQuery(' 4426 ')).toBe('4426')
+    expect(toIdQuery('abc')).toBe('')
   })
 })
 
@@ -104,6 +130,7 @@ describe('buildCustomerRows', () => {
     expect(first?.preview).toEqual({
       gender: 'F',
       incomeBand: '>10 Juta - 25 Juta',
+      detail: 'Female · >10 Juta - 25 Juta',
       highIncome: true,
       firstTransaction: 'First transaction May 2023',
       offers: [expect.objectContaining({ product: 'BANCA', title: 'BANCA · 2 rules', basisText: rp('AUM Rp 1.000.000.000') })],
@@ -111,6 +138,7 @@ describe('buildCustomerRows', () => {
       lastActiveText: 'Last active 2 days ago, 24 Apr 2024',
     })
     expect(second?.preview.gender).toBeNull()
+    expect(second?.preview.detail).toBe('Gender not recorded · sd. 1 Juta')
     expect(fourth?.preview.offers).toEqual([])
   })
 })
@@ -229,8 +257,7 @@ describe('customers on the real data', () => {
   const count = (query: string) => filterCustomers(rows, parse(query)).length
 
   it('keeps the worklist order', () => {
-    expect(rows.map((row) => row.customerId)).toEqual(getWorklist().map((row) => row.customerId))
-    expect(rows[0]?.customerId).toBe(8797)
+    expect(rows.slice(0, 5).map((row) => row.customerId)).toEqual([8797, 2759, 2022, 7027, 7163])
   })
 
   it('pins the filter counts', () => {
