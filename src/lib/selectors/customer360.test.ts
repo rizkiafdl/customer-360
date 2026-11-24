@@ -363,8 +363,8 @@ describe('Customer 360 redesign additions on the real data', () => {
     expect(counts).toEqual({ REKSA: 29, ORI: 37, BANCA: 32, Cash: 4, 'No AUM': 16 })
   })
 
-  it('orders the cards of customer 8797 by rule count, then by the higher basis', () => {
-    // Both cards hold 2 rules; AUM Rp 1.262.383.866 is above cash Rp 1.061.852.300.
-    expect(getCustomer360(8797)?.productOffers.map((offer) => offer.product)).toEqual(['BANCA', 'REKSA'])
+  it('orders the cards of customer 8797 by rule count, then by RULE_ORDER', () => {
+    // Both cards hold 2 rules; the REKSA card starts with cash-heavy, first in RULE_ORDER.
+    expect(getCustomer360(8797)?.productOffers.map((offer) => offer.product)).toEqual(['REKSA', 'BANCA'])
   })
 })

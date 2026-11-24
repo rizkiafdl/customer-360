@@ -10,10 +10,10 @@ describe('productOffers', () => {
     )
     const offers = productOffers(evaluation)
     expect(offers.map((offer) => [offer.product, offer.ruleIds, offer.basis])).toEqual([
-      ['BANCA', ['investment-gap-banca', 'high-income-no-banca'], { kind: 'aum', amount: 1_000_000_000 }],
       ['REKSA', ['cash-heavy', 'investment-gap-reksa'], { kind: 'cash', amount: 900_000_000 }],
+      ['BANCA', ['investment-gap-banca', 'high-income-no-banca'], { kind: 'aum', amount: 1_000_000_000 }],
     ])
-    expect(offers[1]?.reasons).toEqual([
+    expect(offers[0]?.reasons).toEqual([
       rp('90% of AUM in cash. AUM Rp 1.000.000.000, cash Rp 900.000.000.'),
       rp('No REKSA. AUM Rp 1.000.000.000.'),
     ])
@@ -42,15 +42,15 @@ describe('productOffers', () => {
     ])
   })
 
-  it('puts the BANCA card (AUM 0) before the No AUM card (no basis) at equal rule count', () => {
+  it('puts the No AUM card before the BANCA card at equal rule count (RULE_ORDER)', () => {
     const offers = productOffers(evaluateCustomer(customer([], '>100 Juta')))
     expect(offers.map((offer) => [offer.product, offer.basis])).toEqual([
-      ['BANCA', { kind: 'aum', amount: 0 }],
       ['No AUM', null],
+      ['BANCA', { kind: 'aum', amount: 0 }],
     ])
   })
 
-  it('puts the higher basis first, then the RULE_ORDER position', () => {
+  it('orders cards with equal rule counts by RULE_ORDER, not by the basis amount', () => {
     const byAmount = productOffers(
       evaluateCustomer(
         customer([
@@ -61,13 +61,25 @@ describe('productOffers', () => {
       ),
     )
     expect(byAmount.map((offer) => [offer.product, offer.basis?.amount])).toEqual([
-      ['BANCA', 1_000_000_000],
       ['Cash', 900_000_000],
+      ['BANCA', 1_000_000_000],
     ])
     const tied = productOffers(
       evaluateCustomer(customer([row('FUNDING', 500_000_000, 'DEPOSITO01'), row('BANCA', 1, 'BANCA')])),
     )
     expect(tied.map((offer) => offer.product)).toEqual(['REKSA', 'ORI'])
+  })
+
+  it('puts a card with more rules first', () => {
+    // No REKSA, no ORI, no BANCA, cash-heavy, high income: REKSA and ORI hold 2 rules, BANCA holds 2.
+    const offers = productOffers(
+      evaluateCustomer(customer([row('FUNDING', 900_000_000, 'TABUNGAN'), row('FUNDING', 100_000_000, 'DEPOSITO01')], 'sd. 1 Juta')),
+    )
+    expect(offers.map((offer) => [offer.product, offer.ruleIds.length])).toEqual([
+      ['REKSA', 2],
+      ['ORI', 2],
+      ['BANCA', 1],
+    ])
   })
 
   it('returns no card when no rule fired, also when the KYC note fired', () => {
@@ -87,8 +99,8 @@ describe('productOffers', () => {
       evaluateCustomer(customer([row('FUNDING', 900_000_000, 'TABUNGAN'), row('ORI', 100_000_000, 'ORI')], '>100 Juta')),
     )
     expect(offers.map((offer) => [offer.title, offer.basisText])).toEqual([
-      ['BANCA · 2 rules', rp('AUM Rp 1.000.000.000')],
       ['REKSA · 2 rules', rp('Cash Rp 900.000.000')],
+      ['BANCA · 2 rules', rp('AUM Rp 1.000.000.000')],
     ])
     const noAum = productOffers(evaluateCustomer(customer([])))
     expect(noAum.map((offer) => [offer.title, offer.basisText])).toEqual([['No AUM · 1 rule', null]])

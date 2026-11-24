@@ -41,7 +41,7 @@ function cardsFor(id: RuleId, products: ReadonlySet<OfferProduct>): OfferProduct
 
 const orderIndex = (id: RuleId) => RULE_ORDER.indexOf(id)
 
-/** One card per product from the fired rules. The KYC note is never a card. */
+/** One card per product from the fired rules, more rules first, then `RULE_ORDER`. The KYC note is never a card. */
 export function productOffers(evaluation: CustomerEvaluation): ProductOffer[] {
   const gapProducts = new Set(
     evaluation.insights.flatMap((insight) => (insight.id === 'cash-heavy' ? [] : [GAP_PRODUCTS[insight.id]!])),
@@ -70,12 +70,9 @@ export function productOffers(evaluation: CustomerEvaluation): ProductOffer[] {
         basisText: basis && `${basis.kind === 'cash' ? 'Cash' : 'AUM'} ${formatIDR(basis.amount)}`,
       }
     })
-    .sort(
-      (a, b) =>
-        b.ruleIds.length - a.ruleIds.length ||
-        (b.basis?.amount ?? -1) - (a.basis?.amount ?? -1) ||
-        orderIndex(a.ruleIds[0]!) - orderIndex(b.ruleIds[0]!),
-    )
+    // More rules first, then RULE_ORDER of the card's first rule. Not by basis: within one
+    // customer every AUM basis is the same number and cash is never above it (user decision, 2026-11-24).
+    .sort((a, b) => b.ruleIds.length - a.ruleIds.length || orderIndex(a.ruleIds[0]!) - orderIndex(b.ruleIds[0]!))
 }
 
 /** Short chip text: `Cash-heavy 84%` for cash-heavy, the rule label for every other rule. */
