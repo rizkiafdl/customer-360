@@ -80,6 +80,12 @@ describe('contrastOver', () => {
   it('throws when the first layer is not opaque', () => {
     expect(() => contrastOver('oklch(0 0 0)', ['oklch(1 0 0 / 50%)'])).toThrow(/opaque/)
   })
+
+  it('throws when the text colour is not opaque', () => {
+    expect(() => contrastOver('oklch(0 0 0 / 80%)', ['oklch(1 0 0)'])).toThrow(
+      /text colour must be opaque/,
+    )
+  })
 })
 
 describe('parseThemeBlocks', () => {
@@ -136,6 +142,7 @@ const SPOTLIGHT_PAIRS: [string, string | null, number][] = [
   ['sp-active-text', 'sp-active-bg', 4.5],
   ['muted-foreground', 'sp-active-bg', 4.5],
   ['muted-foreground', 'sp-icon-bg', 3],
+  ['ring', null, 3],
 ]
 
 const SPOTLIGHT_CASES = Object.entries(SPOTLIGHT_STACKS).flatMap(([stackName, stack]) =>
@@ -216,5 +223,9 @@ describe('light theme follows the handoff palette (ADR 0009)', () => {
     ['muted-foreground', 6.19],
   ])('--%s keeps the handoff contrast with white (%f:1)', (token, ratio) => {
     expect(contrastRatio(light[token]!, white)).toBeCloseTo(ratio, 1)
+  })
+
+  it('keeps light --sp-active-text equal to --primary-strong', () => {
+    expect(light['sp-active-text']).toBe(light['primary-strong'])
   })
 })

@@ -54,6 +54,12 @@ it('gives the panel the reference size and frost', () => {
   expect(block).toContain('sp-pop .22s cubic-bezier(.2, .8, .2, 1)')
 })
 
+it('keeps the panel inside a short viewport', () => {
+  const block = blockAfter(css, '.spotlight-panel {')
+  expect(block).toContain('max-height: calc(100dvh - 120px)')
+  expect(block).toContain('overflow-y: auto')
+})
+
 it('turns both animations off for reduced motion', () => {
   const block = blockAfter(css, '@media (prefers-reduced-motion: reduce)')
   expect(block).toContain('.spotlight-scrim')
