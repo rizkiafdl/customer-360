@@ -7,7 +7,7 @@
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { contrastRatio, inGamut, parseOklch, parseThemeBlocks } from './contrast.ts'
+import { contrastOver, contrastRatio, inGamut, parseAlpha, parseOklch, parseThemeBlocks } from './contrast.ts'
 
 describe('parseOklch', () => {
   it('reads lightness, chroma, and hue', () => {
@@ -45,6 +45,40 @@ describe('inGamut', () => {
   it('is true for grey and false for a chroma sRGB cannot show', () => {
     expect(inGamut('oklch(0.5 0 0)')).toBe(true)
     expect(inGamut('oklch(0.9 0.3 150)')).toBe(false)
+  })
+})
+
+describe('parseAlpha', () => {
+  it('is 1 with no alpha', () => {
+    expect(parseAlpha('oklch(0.5 0.1 120)')).toBe(1)
+  })
+
+  it('reads a percent alpha', () => {
+    expect(parseAlpha('oklch(1 0 0 / 74%)')).toBe(0.74)
+  })
+
+  it('reads a number alpha', () => {
+    expect(parseAlpha('oklch(1 0 0 / 0.3)')).toBe(0.3)
+  })
+})
+
+describe('contrastOver', () => {
+  it('matches contrastRatio on one opaque layer', () => {
+    expect(contrastOver('oklch(0.5693 0 0)', ['oklch(1 0 0)'])).toBeCloseTo(4.48, 1)
+  })
+
+  it('blends 50% black over white in gamma-encoded sRGB', () => {
+    expect(
+      contrastOver('oklch(0 0 0)', ['oklch(1 0 0)', 'oklch(0 0 0 / 50%)']),
+    ).toBeCloseTo(5.28, 1)
+  })
+
+  it('lets an opaque top layer hide the base', () => {
+    expect(contrastOver('oklch(1 0 0)', ['oklch(1 0 0)', 'oklch(0 0 0)'])).toBeCloseTo(21, 1)
+  })
+
+  it('throws when the first layer is not opaque', () => {
+    expect(() => contrastOver('oklch(0 0 0)', ['oklch(1 0 0 / 50%)'])).toThrow(/opaque/)
   })
 })
 
