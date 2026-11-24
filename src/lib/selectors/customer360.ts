@@ -343,33 +343,11 @@ export function parseCustomerId(param: string | undefined): number | null {
   return param !== undefined && /^\d+$/.test(param) ? Number(param) : null
 }
 
-export interface CustomerOption {
-  id: number
-  label: string
-  detail: string
-}
-
-/** One search option per customer, in ID order, with gender and income band as a second line. */
-export function customerOptions(data: Dataset): CustomerOption[] {
-  return [...data.profiles]
-    .sort((a, b) => a.customer_id - b.customer_id)
-    .map((p) => ({
-      id: p.customer_id,
-      label: `Customer ${p.customer_id}`,
-      detail: `${genderLabel(p.gender)} · ${p.customer_income}`,
-    }))
-}
-
 const byCustomer = groupByCustomer(dataset)
-const options = customerOptions(dataset)
 
 export function getCustomer360(id: number): Customer360 | null {
   const rows = byCustomer.get(id)
   return rows ? customer360Of(rows, asOfDate) : null
-}
-
-export function getCustomerOptions(): CustomerOption[] {
-  return options
 }
 
 /** The as-of date for the top bar, e.g. "Snapshot as of 26 Apr 2024" (ADR 0005). */

@@ -4,15 +4,14 @@ import { rp } from '@/lib/insights/test-fixtures'
 import { fixtureDataset } from '@/test/fixtures'
 import {
   buildCustomer360,
-  customerOptions,
   filterTransactionRows,
   getCustomer360,
-  getCustomerOptions,
   parseCustomerId,
   parseTab,
   snapshotLabel,
   type Customer360,
 } from './customer360'
+import * as customer360 from './customer360'
 import { dataset } from './dataset'
 import { getCustomerEvaluation } from './insights'
 
@@ -193,15 +192,9 @@ describe('parseCustomerId', () => {
   })
 })
 
-describe('customerOptions', () => {
-  it('gives an ID, a label, and a detail line per customer, in ID order', () => {
-    expect(customerOptions(fixtureDataset)).toEqual([
-      { id: 1, label: 'Customer 1', detail: 'Female · >10 Juta - 25 Juta' },
-      { id: 2, label: 'Customer 2', detail: 'Gender not recorded · sd. 1 Juta' },
-      { id: 3, label: 'Customer 3', detail: 'Male · >3 Juta - 5 Juta' },
-      { id: 4, label: 'Customer 4', detail: 'Female · >1 Juta - 3 Juta' },
-    ])
-  })
+it('no longer exports the customer options', () => {
+  expect(Object.keys(customer360)).not.toContain('customerOptions')
+  expect(Object.keys(customer360)).not.toContain('getCustomerOptions')
 })
 
 describe('buildCustomer360: offers', () => {
@@ -275,8 +268,7 @@ describe('Customer 360 on the real data', () => {
     expect(getCustomer360(8797)?.kpis).not.toHaveProperty('heldLabel')
   })
 
-  it('has one option per customer and the as-of label', () => {
-    expect(getCustomerOptions()).toHaveLength(100)
+  it('shows the as-of label', () => {
     expect(snapshotLabel).toBe('Snapshot as of 26 Apr 2024')
   })
 })
