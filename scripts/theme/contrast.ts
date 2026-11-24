@@ -1,5 +1,5 @@
 /**
- * WCAG contrast for the `oklch()` theme tokens in src/index.css (ADR 0007).
+ * WCAG contrast for the `oklch()` theme tokens in src/index.css (ADR 0009).
  *
  * OKLCH → OKLab → linear sRGB uses Björn Ottosson's published matrices.
  * WCAG relative luminance is a weighted sum of linear sRGB, so no gamma step

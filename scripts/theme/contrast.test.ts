@@ -1,7 +1,7 @@
 // @vitest-environment node
 /**
- * Contrast test for the theme tokens in src/index.css (ADR 0007). Pairs and
- * minimum ratios come from the F1 spec, section 4.2: text >= 4.5:1, non-text
+ * Contrast test for the theme tokens in src/index.css (ADR 0009). Pairs and
+ * minimum ratios: text >= 4.5:1, non-text
  * UI (chart colors, focus ring) >= 3:1.
  */
 import { readFileSync } from 'node:fs'
@@ -69,21 +69,24 @@ const TEXT_ON_SURFACES: [string, string][] = [
   ['muted-foreground', 'card'],
   ['muted-foreground', 'background'],
   ['muted-foreground', 'muted'],
-  ['sidebar-foreground', 'sidebar'],
-  ['brand-text', 'card'],
+  ['primary-strong', 'card'],
+  ['primary-strong', 'background'],
+  ['primary-strong', 'primary-tint'],
+  ['primary-strong', 'selected'],
+  ['foreground', 'selected'],
+  ['foreground', 'primary-tint'],
+  ['warning-surface-foreground', 'warning-surface'],
   ['opportunity', 'card'],
   ['warning', 'card'],
   ['risk', 'card'],
   ['info', 'card'],
   ['primary-foreground', 'primary'],
-  ['primary-foreground', 'brand-deep'],
-  ['sidebar-primary-foreground', 'sidebar-primary'],
   ['opportunity-foreground', 'opportunity'],
   ['warning-foreground', 'warning'],
   ['risk-foreground', 'risk'],
   ['info-foreground', 'info'],
 ]
-const UI_ON_CARD = ['chart-1', 'chart-2', 'chart-3', 'chart-4', 'chart-5', 'ring']
+const UI_ON_CARD = ['chart-1', 'chart-2', 'chart-3', 'chart-4', 'chart-5', 'ring', 'primary']
 
 describe.each(['dark', 'light'] as const)('%s theme tokens', (name) => {
   const tokens = themes[name]
@@ -101,9 +104,13 @@ describe.each(['dark', 'light'] as const)('%s theme tokens', (name) => {
     expect(contrastRatio(get(token), get('card'))).toBeGreaterThanOrEqual(3)
   })
 
-  // Sidebar items draw focus with their own token, on the sidebar surface.
-  it('--sidebar-ring on --sidebar is at least 3:1', () => {
-    expect(contrastRatio(get('sidebar-ring'), get('sidebar'))).toBeGreaterThanOrEqual(3)
+  // The focus ring also sits on the page background (top bar links, chips).
+  it('--ring on --background is at least 3:1', () => {
+    expect(contrastRatio(get('ring'), get('background'))).toBeGreaterThanOrEqual(3)
+  })
+
+  it('has no sidebar or old brand tokens left', () => {
+    expect(Object.keys(tokens).filter((t) => t.startsWith('sidebar') || t.startsWith('brand-'))).toEqual([])
   })
 
   it('layers surfaces: background < card < popover in dark, by lightness', () => {
@@ -114,8 +121,23 @@ describe.each(['dark', 'light'] as const)('%s theme tokens', (name) => {
   })
 
   it('keeps every tested token inside the sRGB gamut', () => {
-    const tested = new Set([...TEXT_ON_SURFACES.flat(), ...UI_ON_CARD, 'card', 'sidebar-ring'])
+    const tested = new Set([...TEXT_ON_SURFACES.flat(), ...UI_ON_CARD, 'card', 'background'])
     const outside = [...tested].filter((t) => !inGamut(get(t)))
     expect(outside).toEqual([])
+  })
+})
+
+describe('light theme follows the handoff palette (ADR 0009)', () => {
+  // Hex values from the handoff, written as oklch in index.css. Compared through contrast with white,
+  // so a rounding difference in the oklch digits does not fail the test.
+  const light = themes.light
+  const white = 'oklch(1 0 0)'
+  it.each([
+    ['primary', 4.69],
+    ['primary-strong', 8.2],
+    ['foreground', 17.16],
+    ['muted-foreground', 6.19],
+  ])('--%s keeps the handoff contrast with white (%f:1)', (token, ratio) => {
+    expect(contrastRatio(light[token]!, white)).toBeCloseTo(ratio, 1)
   })
 })

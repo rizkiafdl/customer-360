@@ -8,25 +8,25 @@ afterEach(() => {
 })
 
 describe('readStoredTheme', () => {
-  it('is dark when nothing is stored', () => {
-    expect(readStoredTheme()).toBe('dark')
-  })
-
-  it('is light when light is stored', () => {
-    localStorage.setItem(THEME_KEY, 'light')
+  it('is light when nothing is stored', () => {
     expect(readStoredTheme()).toBe('light')
   })
 
-  it('is dark for an unknown stored value', () => {
-    localStorage.setItem(THEME_KEY, 'sepia')
+  it('is dark when dark is stored (a choice made under ADR 0007 is kept)', () => {
+    localStorage.setItem(THEME_KEY, 'dark')
     expect(readStoredTheme()).toBe('dark')
   })
 
-  it('is dark when storage throws', () => {
+  it('is light for an unknown stored value', () => {
+    localStorage.setItem(THEME_KEY, 'sepia')
+    expect(readStoredTheme()).toBe('light')
+  })
+
+  it('is light when storage throws', () => {
     vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
       throw new Error('blocked')
     })
-    expect(readStoredTheme()).toBe('dark')
+    expect(readStoredTheme()).toBe('light')
   })
 })
 

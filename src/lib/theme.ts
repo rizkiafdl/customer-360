@@ -1,5 +1,5 @@
 /**
- * Theme switch (ADR 0007). Dark is the default; the viewer's choice is kept
+ * Theme switch (ADR 0009). Light is the default; the viewer's choice is kept
  * in localStorage under `theme`. index.html runs the same read inline before
  * the first paint, so keep the key and the default in sync with it.
  */
@@ -7,12 +7,12 @@ export type Theme = 'light' | 'dark'
 
 export const THEME_KEY = 'theme'
 
-/** The stored theme, or dark when nothing valid is stored or storage is blocked. */
+/** The stored theme, or light when nothing valid is stored or storage is blocked. */
 export function readStoredTheme(): Theme {
   try {
-    return localStorage.getItem(THEME_KEY) === 'light' ? 'light' : 'dark'
+    return localStorage.getItem(THEME_KEY) === 'dark' ? 'dark' : 'light'
   } catch {
-    return 'dark'
+    return 'light'
   }
 }
 
