@@ -3,7 +3,7 @@ import { cleanup } from '@testing-library/react'
 import { afterEach } from 'vitest'
 
 // jsdom lacks browser APIs that Recharts (ResizeObserver), media queries
-// (matchMedia), cmdk and the Radix select (scrollIntoView, pointer capture) call. Node-environment tests have no
+// (matchMedia), the Spotlight list and the Radix select (scrollIntoView, pointer capture) call. Node-environment tests have no
 // window, so the stubs are only added under jsdom.
 if (typeof window !== 'undefined') {
   class ResizeObserverStub {
