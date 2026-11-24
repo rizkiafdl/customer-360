@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Outlet, RouterProvider, createMemoryRouter } from 'react-router'
 import { describe, expect, it } from 'vitest'
@@ -68,6 +68,14 @@ describe('SpotlightSearch', () => {
     const user = userEvent.setup()
     renderSearch()
     await user.keyboard('{Meta>}k{/Meta}')
+    expect(screen.getByRole('dialog', { name: 'Search' })).toBeInTheDocument()
+  })
+
+  it('ignores a held shortcut', () => {
+    renderSearch()
+    fireEvent.keyDown(document, { key: 'k', ctrlKey: true })
+    expect(screen.getByRole('dialog', { name: 'Search' })).toBeInTheDocument()
+    fireEvent.keyDown(document, { key: 'k', ctrlKey: true, repeat: true })
     expect(screen.getByRole('dialog', { name: 'Search' })).toBeInTheDocument()
   })
 

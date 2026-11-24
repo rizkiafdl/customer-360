@@ -84,9 +84,19 @@ describe('Spotlight', () => {
     const user = userEvent.setup()
     renderSpotlight()
     await user.type(screen.getByRole('combobox'), 'zzz')
-    expect(screen.getByText('No customer, filter or page matches “zzz”.')).toBeInTheDocument()
+    expect(within(screen.getByRole('listbox')).getByText('No customer, filter or page matches “zzz”.')).toBeInTheDocument()
     expect(options()).toHaveLength(0)
     expect(screen.getByRole('combobox')).not.toHaveAttribute('aria-activedescendant')
+  })
+
+  it('announces the no-match line', async () => {
+    const user = userEvent.setup()
+    renderSpotlight()
+    const combobox = screen.getByRole('combobox')
+    await user.type(combobox, 'zzz')
+    expect(screen.getByRole('status')).toHaveTextContent('No customer, filter or page matches “zzz”.')
+    await user.clear(combobox)
+    expect(screen.getByRole('status')).toBeEmptyDOMElement()
   })
 
   it('wraps the active row with the arrow keys', async () => {
@@ -119,9 +129,16 @@ describe('Spotlight', () => {
     renderSpotlight()
     await user.type(screen.getByRole('combobox'), 'no')
     expect(within(options()[0]!).getByText('↵ Open')).toBeInTheDocument()
-    expect(within(options()[0]!).queryByText('29')).not.toBeInTheDocument()
-    expect(within(options()[1]!).getByText('37')).toBeInTheDocument()
+    expect(within(options()[0]!).getByText('29')).toHaveClass('sr-only')
+    expect(within(options()[1]!).getByText('37')).not.toHaveClass('sr-only')
     expect(within(options()[1]!).queryByText('↵ Open')).not.toBeInTheDocument()
+  })
+
+  it('keeps the count in the active filter option name', async () => {
+    const user = userEvent.setup()
+    renderSpotlight()
+    await user.type(screen.getByRole('combobox'), 'no')
+    expect(options()[0]).toHaveAccessibleName(/29$/)
   })
 
   it('opens the customer on Enter', async () => {
@@ -147,6 +164,16 @@ describe('Spotlight', () => {
     await user.type(screen.getByRole('combobox'), 'zzz{Enter}')
     expect(router.state.location.pathname).toBe('/')
     expect(onClose).not.toHaveBeenCalled()
+  })
+
+  it('does not open a row on Enter during composition', async () => {
+    const user = userEvent.setup()
+    const { router } = renderSpotlight()
+    const combobox = screen.getByRole('combobox')
+    await user.type(combobox, '87')
+    fireEvent.keyDown(combobox, { key: 'Enter', isComposing: true })
+    expect(router.state.location.pathname).toBe('/')
+    expect(screen.getByRole('dialog', { name: 'Search' })).toBeInTheDocument()
   })
 
   it('keeps focus in the input on mousedown in the list', () => {

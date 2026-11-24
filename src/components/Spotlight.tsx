@@ -29,6 +29,8 @@ export function Spotlight({ onClose }: { onClose: () => void }) {
 
   const sections = getSpotlightSections(query, recentIds)
   const items = sections.flatMap((section) => section.items)
+  const trimmedQuery = query.trim()
+  const statusText = items.length === 0 && trimmedQuery !== '' ? noMatchText(query) : ''
 
   function choose(item: SpotlightItem | undefined) {
     if (!item) return
@@ -49,6 +51,7 @@ export function Spotlight({ onClose }: { onClose: () => void }) {
   }
 
   function onInputKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.nativeEvent.isComposing) return
     if (event.key === 'ArrowDown') {
       event.preventDefault()
       moveActive(1)
@@ -80,6 +83,9 @@ export function Spotlight({ onClose }: { onClose: () => void }) {
         }}
       >
         <Dialog.Title className="sr-only">Search</Dialog.Title>
+        <div role="status" className="sr-only">
+          {statusText}
+        </div>
         <div className="flex items-center gap-[14px] border-b border-sp-divider px-5 py-[18px]">
           <SearchIcon className="size-[22px] shrink-0 opacity-70" aria-hidden="true" />
           <label htmlFor={`${baseId}-input`} className="sr-only">
@@ -166,15 +172,21 @@ export function Spotlight({ onClose }: { onClose: () => void }) {
                         {item.subtitle}
                       </span>
                     </span>
-                    {selected ? (
+                    {selected && (
                       <span aria-hidden="true" className="shrink-0 text-xs font-semibold text-sp-active-text">
                         ↵ Open
                       </span>
-                    ) : item.count !== null ? (
-                      <span className="min-w-7 shrink-0 rounded-[10px] bg-sp-kbd px-2 py-0.5 text-center text-xs font-semibold text-muted-foreground">
+                    )}
+                    {item.count !== null && (
+                      <span
+                        className={cn(
+                          'min-w-7 shrink-0 rounded-[10px] bg-sp-kbd px-2 py-0.5 text-center text-xs font-semibold text-muted-foreground',
+                          selected && 'sr-only',
+                        )}
+                      >
                         {item.count}
                       </span>
-                    ) : null}
+                    )}
                   </li>
                 )
               }),

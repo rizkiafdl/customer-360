@@ -16,6 +16,7 @@ export function SpotlightSearch() {
     function onKeyDown(event: KeyboardEvent) {
       if (!isSpotlightShortcut(event)) return
       event.preventDefault()
+      if (event.repeat) return
       setOpen((current) => !current)
     }
     document.addEventListener('keydown', onKeyDown)
