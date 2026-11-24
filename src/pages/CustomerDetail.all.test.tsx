@@ -1,7 +1,8 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { RouterProvider, createMemoryRouter } from 'react-router'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { CUSTOMER_TABS, getCustomerOptions } from '@/lib/selectors/customer360'
+import { CUSTOMER_TABS } from '@/lib/selectors/customer360'
+import { getCustomerRows } from '@/lib/selectors/customers'
 import { routes } from '@/routes'
 
 // jsdom has no layout, so every Recharts container measures 0 x 0 and warns.
@@ -29,7 +30,7 @@ describe('CustomerDetail: every real customer', () => {
   })
 
   it('renders all 100 customers at every tab with no console error or warning', () => {
-    const ids = getCustomerOptions().map((option) => option.id)
+    const ids = getCustomerRows().map((row) => row.customerId)
     expect(ids).toHaveLength(100)
     for (const id of ids) {
       for (const tab of CUSTOMER_TABS) {

@@ -4,13 +4,7 @@ import { RouterProvider, createMemoryRouter } from 'react-router'
 import { describe, expect, it } from 'vitest'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { formatIDR, formatIDRShort, formatPercent } from '@/lib/format'
-import {
-  buildCustomer360,
-  getCustomer360,
-  getCustomerOptions,
-  type Customer360,
-  type CustomerTab,
-} from '@/lib/selectors/customer360'
+import { buildCustomer360, getCustomer360, type Customer360, type CustomerTab } from '@/lib/selectors/customer360'
 import { filterCustomers, getCustomerRows, parseCustomerFilters } from '@/lib/selectors/customers'
 import { routes } from '@/routes'
 import { fixtureDataset } from '@/test/fixtures'
@@ -367,7 +361,7 @@ describe('Customer 360 on the real data', () => {
   })
 
   it('lists 10 loans, high to low, for the customer with the most', () => {
-    const vms = getCustomerOptions().map((o) => getCustomer360(o.id)!)
+    const vms = getCustomerRows().map((row) => getCustomer360(row.customerId)!)
     const most = vms.reduce((best, vm) => (vm.loans.held.length > best.loans.held.length ? vm : best))
     renderAt(`/customers/${most.id}?tab=loans`)
     const rows = within(screen.getByRole('table', { name: 'Loan facilities' })).getAllByRole('row').slice(1)
@@ -380,8 +374,8 @@ describe('Customer 360 on the real data', () => {
   })
 
   it('says "No loan facility held." for a customer with no held loan', () => {
-    const none = getCustomerOptions().find((o) => getCustomer360(o.id)!.loans.held.length === 0)!
-    renderAt(`/customers/${none.id}?tab=loans`)
+    const none = getCustomerRows().find((row) => getCustomer360(row.customerId)!.loans.held.length === 0)!
+    renderAt(`/customers/${none.customerId}?tab=loans`)
     expect(screen.getByText('No loan facility held.')).toBeInTheDocument()
     expect(screen.queryByRole('table', { name: 'Loan facilities' })).toBeNull()
     expect(screen.getByText('Facility type, collectibility, days past due, and maturity are not in the data.')).toBeInTheDocument()
