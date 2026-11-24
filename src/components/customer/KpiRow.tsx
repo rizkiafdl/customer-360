@@ -13,11 +13,11 @@ export function KpiRow({ kpis }: { kpis: Customer360['kpis'] }) {
         <KpiTile label="AUM">
           <Money amount={kpis.aum} />
         </KpiTile>
-        <KpiTile label="Loan exposure">
+        <KpiTile label="Loan exposure" context="Outside AUM">
           <Money amount={kpis.loanExposure} />
         </KpiTile>
-        <KpiTile label="Products held">{kpis.heldLabel}</KpiTile>
-        <KpiTile label="Last activity" context={recency.lastDate ? formatDate(recency.lastDate) : undefined}>
+        <KpiTile label="Products held">{kpis.products.label}</KpiTile>
+        <KpiTile label="Last active" context={recency.lastDate ? formatDate(recency.lastDate) : undefined}>
           {recency.label}
         </KpiTile>
         <KpiTile

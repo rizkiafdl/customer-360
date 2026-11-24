@@ -18,8 +18,6 @@ import {
   digitalShare,
   earlierRows,
   firstActivityDate,
-  heldCount,
-  incomeRank,
   isBankEntry,
   isCustomerInitiated,
   isHeld,
@@ -29,6 +27,7 @@ import {
   loanFacilities,
   shareOfAum,
   topWithOther,
+  UNNAMED_PRODUCT,
   weeklyCounts,
   type BankEntryTotal,
   type LabelCount,
@@ -37,7 +36,6 @@ import {
 import { formatDate, formatDayMonth, formatIDR, formatMonthYear, formatPercent } from '@/lib/format'
 import { evaluateCustomer, offerPanel, productOffers, type OfferPanel, type ProductOffer } from '@/lib/insights'
 import {
-  INCOME_BANDS,
   type IncomeBand,
   type PortfolioItem,
   type ProductCategory,
@@ -75,13 +73,22 @@ export interface TransactionRow {
 
 export type TransactionFilter = 'all' | 'customer' | 'bank'
 
+/** The Customer 360 tabs, in display order. The tab is the URL param `tab`; Overview is the default. */
+export const CUSTOMER_TABS = ['overview', 'holdings', 'loans', 'activity', 'transactions'] as const
+
+export type CustomerTab = (typeof CUSTOMER_TABS)[number]
+
+/** The `tab` param as a tab. An unknown or missing value is Overview. */
+export function parseTab(value: string | null): CustomerTab {
+  return (CUSTOMER_TABS as readonly (string | null)[]).includes(value) ? (value as CustomerTab) : 'overview'
+}
+
 export interface Customer360 {
   id: number
   heading: string
   profile: {
     gender: string
     incomeBand: IncomeBand
-    incomeRankLabel: string
     highIncome: boolean
     /** `First transaction Jul 2014`, bank entries included; `null` with no rows. */
     firstTransaction: string | null
@@ -89,7 +96,6 @@ export interface Customer360 {
   kpis: {
     aum: number
     loanExposure: number
-    heldLabel: string
     /** Held AUM rows and their categories in `AUM_CATEGORIES` order; `label` is `3 · FUNDING, ORI, REKSA`. */
     products: { count: number; categories: ProductCategory[]; label: string }
     recency: { days: number | null; label: string; lastDate: string | null }
@@ -161,7 +167,7 @@ function holdingsOf(portfolio: PortfolioItem[]): Customer360['holdings'] {
     )
     .map(({ item, index }) => ({
       key: `${index}`,
-      product: item.product ?? 'Unnamed product',
+      product: item.product ?? UNNAMED_PRODUCT,
       category: item.product_category,
       color: CATEGORY_COLORS[item.product_category],
       amount: item.amount,
@@ -172,7 +178,7 @@ function holdingsOf(portfolio: PortfolioItem[]): Customer360['holdings'] {
   const held = portfolio
     .filter((item) => item.product_category !== 'LOAN' && isHeld(item))
     .map((item) => ({
-      product: item.product ?? 'Unnamed product',
+      product: item.product ?? UNNAMED_PRODUCT,
       category: item.product_category,
       color: CATEGORY_COLORS[item.product_category],
       amount: item.amount!,
@@ -275,7 +281,6 @@ function customer360Of(rows: CustomerRows, asOf: string): Customer360 {
     profile: {
       gender: genderLabel(profile.gender),
       incomeBand: profile.customer_income,
-      incomeRankLabel: `rank ${incomeRank(profile.customer_income)} of ${INCOME_BANDS.length}`,
       highIncome: isHighIncome(profile.customer_income),
       firstTransaction: transactions.length
         ? `First transaction ${formatMonthYear(firstActivityDate(transactions))}`
@@ -284,7 +289,6 @@ function customer360Of(rows: CustomerRows, asOf: string): Customer360 {
     kpis: {
       aum: customerAum(portfolio),
       loanExposure: loanExposure(portfolio),
-      heldLabel: `${heldCount(portfolio)} of ${portfolio.length} rows`,
       products: productsKpi(portfolio),
       recency: {
         days,
