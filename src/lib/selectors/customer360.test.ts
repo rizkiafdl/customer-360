@@ -102,22 +102,15 @@ describe('buildCustomer360: holdings', () => {
     ])
   })
 
-  it('lists products by category with names, held flags, and muted rows', () => {
-    const rows = build(1).holdings.products
-    expect(rows.map((r) => [r.product, r.category, r.amount, r.held, r.muted])).toEqual([
-      ['TABUNGAN', 'FUNDING', 620_000_000, true, false],
-      ['ORI', 'ORI', 200_000_000, true, false],
-      ['BANCA', 'BANCA', 0, false, true],
-      ['REKSADANA', 'REKSA', 180_000_000, true, false],
-      ['KPR', 'LOAN', 250_000_000, true, false],
-      ['Unnamed product', 'LOAN', null, false, true],
-    ])
-    expect(rows[5]?.color).toBe('var(--chart-5)')
+  it('counts the AUM rows not held for the toggle, singular aware', () => {
+    expect(build(1).holdings.notHeldText).toBe('1 product not held')
+    expect(build(1).holdings).not.toHaveProperty('products')
+    expect(build(2).holdings.notHeldText).toBeNull()
   })
 
   it('has no rows state for a customer with no portfolio rows', () => {
     const vm = build(2)
-    expect(vm.holdings).toMatchObject({ state: 'none', emptyText: 'No portfolio rows.', title: null, products: [] })
+    expect(vm.holdings).toMatchObject({ state: 'none', emptyText: 'No portfolio rows.', title: null, held: [], notHeld: [] })
     expect(vm.kpis.aum).toBe(0)
     expect(vm.kpis.loanExposure).toBe(0)
   })
@@ -126,7 +119,7 @@ describe('buildCustomer360: holdings', () => {
     const vm = build(3)
     expect(vm.holdings.state).toBe('no-aum')
     expect(vm.holdings.emptyText).toBe('No AUM. 1 product row, none held in AUM categories.')
-    expect(vm.holdings.products).toHaveLength(1)
+    expect(vm.holdings.held).toHaveLength(0)
     expect(vm.kpis.loanExposure).toBe(23_800_000)
   })
 })
@@ -328,11 +321,13 @@ describe('buildCustomer360: redesign additions', () => {
     expect(vm.loans).toEqual({
       title: rp('1 loan facility, Rp 250.000.000 in total'),
       held: [{ product: 'KPR', amount: 250_000_000, shareOfExposure: 1 }],
-      notHeld: [{ customer_id: 1, product: null, product_category: 'LOAN', amount: null }],
+      notHeld: [{ key: '0', product: 'Unnamed product', amount: null }],
+      notHeldText: '1 loan row not held',
       exposure: 250_000_000,
       missingText: 'Facility type, collectibility, days past due, and maturity are not in the data.',
     })
     expect(build(2).loans.title).toBe('No loan facility held.')
+    expect(build(2).loans.notHeldText).toBeNull()
   })
 
   it('sorts several loans high to low; the shares add up to 1', () => {

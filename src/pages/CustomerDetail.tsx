@@ -1,3 +1,4 @@
+import { LandmarkIcon } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { BankEntriesTable } from '@/components/customer/BankEntriesTable'
 import { ChartCard } from '@/components/customer/ChartCard'
@@ -5,9 +6,11 @@ import { HorizontalBars } from '@/components/customer/HorizontalBars'
 import { InsightCard } from '@/components/customer/InsightCard'
 import { KpiRow } from '@/components/customer/KpiRow'
 import { ProductOfferList } from '@/components/customer/ProductOfferList'
-import { ProductTable } from '@/components/customer/ProductTable'
+import { LoanNotHeldTable, LoanTable } from '@/components/customer/LoanTable'
+import { NotHeldTable, ProductTable } from '@/components/customer/ProductTable'
 import { ProfileHeader } from '@/components/customer/ProfileHeader'
 import { RecentTransactions } from '@/components/customer/RecentTransactions'
+import { RevealToggle } from '@/components/customer/RevealToggle'
 import { TransactionsTable } from '@/components/customer/TransactionsTable'
 import { WeeklyBars } from '@/components/customer/WeeklyBars'
 import { Separator } from '@/components/ui/separator'
@@ -104,19 +107,36 @@ export function CustomerDetail({
           </div>
         </TabsContent>
 
-        <TabsContent value="holdings">
+        <TabsContent value="holdings" className="flex flex-col gap-3">
           {holdings.state === 'none' ? (
             <p className="rounded-lg border bg-card p-6 text-center text-sm text-muted-foreground">{holdings.emptyText}</p>
           ) : (
-            <div className="grid gap-3 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-              <AumChart holdings={holdings} />
-              <ProductTable rows={holdings.products} />
-            </div>
+            <>
+              <div className="grid items-start gap-3 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+                <AumChart holdings={holdings} />
+                {holdings.held.length ? <ProductTable rows={holdings.held} /> : null}
+              </div>
+              {holdings.notHeldText ? (
+                <RevealToggle label={holdings.notHeldText}>
+                  <NotHeldTable rows={holdings.notHeld} />
+                </RevealToggle>
+              ) : null}
+              <p className="text-sm text-muted-foreground">Loans are on the Loans tab, outside AUM.</p>
+            </>
           )}
         </TabsContent>
 
-        <TabsContent value="loans" className="flex flex-col gap-2">
-          <p className="text-sm font-medium">{vm.loans.title}</p>
+        <TabsContent value="loans" className="flex flex-col gap-3">
+          <h2 className="flex items-center gap-2 font-heading text-base font-semibold">
+            <LandmarkIcon aria-hidden="true" className="size-4 text-muted-foreground" />
+            {vm.loans.title}
+          </h2>
+          {vm.loans.held.length ? <LoanTable rows={vm.loans.held} /> : null}
+          {vm.loans.notHeldText ? (
+            <RevealToggle label={vm.loans.notHeldText}>
+              <LoanNotHeldTable rows={vm.loans.notHeld} />
+            </RevealToggle>
+          ) : null}
           <p className="text-sm text-muted-foreground">{vm.loans.missingText}</p>
         </TabsContent>
 

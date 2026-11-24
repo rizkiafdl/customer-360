@@ -36,7 +36,7 @@ export function WeeklyBars({ data, label }: { data: WeekDatum[]; label: string }
             )
           }}
         />
-        <Bar dataKey="count" fill="var(--muted-foreground)" radius={2} isAnimationActive={false} />
+        <Bar dataKey="count" fill="var(--chart-1)" radius={2} isAnimationActive={false} />
       </BarChart>
     </ChartContainer>
   )

@@ -3,8 +3,14 @@ import userEvent from '@testing-library/user-event'
 import { RouterProvider, createMemoryRouter } from 'react-router'
 import { describe, expect, it } from 'vitest'
 import { TooltipProvider } from '@/components/ui/tooltip'
-import { formatIDR, formatIDRShort } from '@/lib/format'
-import { buildCustomer360, getCustomer360, type Customer360, type CustomerTab } from '@/lib/selectors/customer360'
+import { formatIDR, formatIDRShort, formatPercent } from '@/lib/format'
+import {
+  buildCustomer360,
+  getCustomer360,
+  getCustomerOptions,
+  type Customer360,
+  type CustomerTab,
+} from '@/lib/selectors/customer360'
 import { filterCustomers, getCustomerRows, parseCustomerFilters } from '@/lib/selectors/customers'
 import { routes } from '@/routes'
 import { fixtureDataset } from '@/test/fixtures'
@@ -62,14 +68,36 @@ describe('CustomerDetail: full customer', () => {
     expect(within(kpis).getByText('60%')).toBeInTheDocument()
   })
 
-  it('shows the AUM title, the product table, and muted rows with no amount', () => {
+  it('shows the held AUM rows with their share, and the rows not held behind a toggle', async () => {
+    const user = userEvent.setup()
     renderDetail(1, 'holdings')
-    expect(screen.getByText('62% of AUM in FUNDING')).toBeInTheDocument()
-    const products = screen.getByRole('table', { name: 'Products' })
-    expect(within(products).getAllByRole('row')).toHaveLength(7)
-    const unnamed = within(products).getByText('Unnamed product').closest('tr')
-    expect(unnamed).toHaveClass('text-muted-foreground')
-    expect(within(unnamed!).getByText('—')).toBeInTheDocument()
+    const holdings = screen.getByRole('table', { name: 'Holdings' })
+    expect(within(holdings).getAllByRole('row')).toHaveLength(4)
+    expect(within(holdings).getByText('62%')).toBeInTheDocument()
+    expect(within(holdings).queryByText('KPR')).toBeNull()
+    const toggle = screen.getByRole('button', { name: '1 product not held' })
+    expect(toggle).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.queryByRole('table', { name: 'Products not held' })).toBeNull()
+    await user.click(toggle)
+    expect(toggle).toHaveAttribute('aria-expanded', 'true')
+    expect(within(screen.getByRole('table', { name: 'Products not held' })).getByText('BANCA', { selector: 'td' })).toBeInTheDocument()
+    expect(screen.getByText('Loans are on the Loans tab, outside AUM.')).toBeInTheDocument()
+  })
+
+  it('lists the loan facility and the loan row not held behind a toggle', async () => {
+    const user = userEvent.setup()
+    renderDetail(1, 'loans')
+    expect(screen.getByText(vmFor(1).loans.title.replace(/\s+/g, ' '))).toBeInTheDocument()
+    const loans = screen.getByRole('table', { name: 'Loan facilities' })
+    const [, row] = within(loans).getAllByRole('row')
+    expect(within(row!).getAllByRole('cell').map((c) => c.textContent?.replace(/\s+/g, ' '))).toEqual([
+      'KPR',
+      idr(250_000_000),
+      '100%',
+    ])
+    await user.click(screen.getByRole('button', { name: '1 loan row not held' }))
+    expect(within(screen.getByRole('table', { name: 'Loan rows not held' })).getByText('Unnamed product')).toBeInTheDocument()
+    expect(screen.getByText('Facility type, collectibility, days past due, and maturity are not in the data.')).toBeInTheDocument()
   })
 
   it('shows the activity titles and the earlier line', () => {
@@ -156,17 +184,19 @@ describe('CustomerDetail: empty and odd cases', () => {
     renderDetail(2, 'holdings')
     const holdings = panel('Holdings')
     expect(within(holdings).getByText('No portfolio rows.')).toBeInTheDocument()
+    expect(within(holdings).queryByRole('button')).toBeNull()
     expect(within(holdings).queryByRole('table')).not.toBeInTheDocument()
     expect(within(screen.getByRole('region', { name: 'Key figures' })).getAllByText(idr(0))).toHaveLength(4) // AUM and loan: short form and full form each
     expect(screen.getByText('Gender not recorded')).toBeInTheDocument()
     expect(screen.queryByText(/earlier transaction/)).not.toBeInTheDocument()
   })
 
-  it('replaces the AUM chart for AUM 0 and keeps the product table', () => {
+  it('shows the AUM 0 line and no Holdings table when no AUM row is held', () => {
     renderDetail(3, 'holdings')
     const holdings = panel('Holdings')
     expect(within(holdings).getByText('No AUM. 1 product row, none held in AUM categories.')).toBeInTheDocument()
-    expect(within(holdings).getByRole('table', { name: 'Products' })).toBeInTheDocument()
+    expect(within(holdings).queryByRole('table', { name: 'Holdings' })).toBeNull()
+    expect(within(holdings).getByText('Loans are on the Loans tab, outside AUM.')).toBeInTheDocument()
   })
 
   it('says "No bank entries." on the Activity tab', () => {
@@ -299,6 +329,63 @@ describe('Customer 360 on the real data', () => {
     expect(screen.queryByRole('link', { name: 'Next customer' })).toBeNull()
     const crumbs = screen.getByRole('navigation', { name: 'Breadcrumb' })
     expect(within(crumbs).getByRole('link', { name: 'Customers' })).toHaveAttribute('href', '/customers?rule=investment-gap-ori')
+  })
+
+  it('lists the held AUM rows of 8797 in order with their share; no LOAN row', async () => {
+    const user = userEvent.setup()
+    renderAt('/customers/8797?tab=holdings')
+    const vm = getCustomer360(8797)!
+    const rows = within(screen.getByRole('table', { name: 'Holdings' })).getAllByRole('row').slice(1)
+    expect(rows.map((row) => within(row).getAllByRole('cell')[0]?.textContent)).toEqual(vm.holdings.held.map((h) => h.product))
+    expect(rows.map((row) => within(row).getAllByRole('cell')[3]?.textContent)).toEqual(
+      vm.holdings.held.map((h) => formatPercent(h.share)),
+    )
+    expect(rows.some((row) => within(row).queryByText('LOAN'))).toBe(false)
+    if (vm.holdings.notHeldText) {
+      expect(screen.queryByRole('table', { name: 'Products not held' })).toBeNull()
+      await user.click(screen.getByRole('button', { name: vm.holdings.notHeldText }))
+      expect(within(screen.getByRole('table', { name: 'Products not held' })).getAllByRole('row')).toHaveLength(
+        vm.holdings.notHeld.length + 1,
+      )
+    }
+    expect(screen.getByText('Loans are on the Loans tab, outside AUM.')).toBeInTheDocument()
+  })
+
+  it('lists 10 loans, high to low, for the customer with the most', () => {
+    const vms = getCustomerOptions().map((o) => getCustomer360(o.id)!)
+    const most = vms.reduce((best, vm) => (vm.loans.held.length > best.loans.held.length ? vm : best))
+    renderAt(`/customers/${most.id}?tab=loans`)
+    const rows = within(screen.getByRole('table', { name: 'Loan facilities' })).getAllByRole('row').slice(1)
+    expect(rows).toHaveLength(10)
+    expect(most.loans.held[0]!.amount).toBeGreaterThanOrEqual(most.loans.held[1]!.amount)
+    expect(within(rows[0]!).getByText(most.loans.held[0]!.product)).toBeInTheDocument()
+    expect(screen.getByText(most.loans.title.replace(/\s+/g, ' '))).toBeInTheDocument()
+    expect(screen.getByText('Facility type, collectibility, days past due, and maturity are not in the data.')).toBeInTheDocument()
+    expect(screen.queryByText(/mortgage|credit card loan|KPR is|type: /i)).toBeNull()
+  })
+
+  it('says "No loan facility held." for a customer with no held loan', () => {
+    const none = getCustomerOptions().find((o) => getCustomer360(o.id)!.loans.held.length === 0)!
+    renderAt(`/customers/${none.id}?tab=loans`)
+    expect(screen.getByText('No loan facility held.')).toBeInTheDocument()
+    expect(screen.queryByRole('table', { name: 'Loan facilities' })).toBeNull()
+    expect(screen.getByText('Facility type, collectibility, days past due, and maturity are not in the data.')).toBeInTheDocument()
+  })
+
+  it('shows the three activity charts and the bank entries line', () => {
+    renderAt('/customers/8797?tab=activity')
+    expect(screen.getByRole('img', { name: /^Customer-initiated transactions per week/ })).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: /^Channel mix/ })).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: /^Type mix/ })).toBeInTheDocument()
+    expect(screen.getByText(/Posted by the bank \(BUNGA, BIAYA, PAJAK, DENDA\), not by the customer\./)).toBeInTheDocument()
+  })
+
+  it('shows the transactions table with its filter', () => {
+    renderAt('/customers/8797?tab=transactions')
+    expect(screen.getByRole('table', { name: 'Transactions' })).toBeInTheDocument()
+    for (const name of ['All', 'Customer-initiated', 'Bank entries']) {
+      expect(screen.getByRole('radio', { name })).toBeInTheDocument()
+    }
   })
 
   it('keeps the filters when switching tabs', async () => {
