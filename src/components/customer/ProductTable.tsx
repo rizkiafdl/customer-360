@@ -1,23 +1,46 @@
 import { createColumnHelper } from '@tanstack/react-table'
-import type { ProductRow } from '@/lib/selectors/customer360'
-import { formatIDR } from '@/lib/format'
+import type { Customer360, NotHeldRow } from '@/lib/selectors/customer360'
+import { formatIDR, formatPercent } from '@/lib/format'
 import { DataTable } from './DataTable'
 import type { Features } from './table-features'
 
-const helper = createColumnHelper<Features, ProductRow>()
+type HeldRow = Customer360['holdings']['held'][number]
 
-const columns = helper.columns([
-  helper.accessor('product', { header: 'Product' }),
-  helper.accessor('category', {
+function CategoryCell({ category, color }: { category: string; color: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <span aria-hidden="true" className="size-2 rounded-full" style={{ background: color }} />
+      {category}
+    </span>
+  )
+}
+
+const held = createColumnHelper<Features, HeldRow>()
+
+const heldColumns = held.columns([
+  held.accessor('product', { header: 'Product' }),
+  held.accessor('category', {
     header: 'Category',
-    cell: (info) => (
-      <span className="inline-flex items-center gap-1.5">
-        <span aria-hidden="true" className="size-2 rounded-full" style={{ background: info.row.original.color }} />
-        {info.getValue()}
-      </span>
-    ),
+    cell: (info) => <CategoryCell category={info.getValue()} color={info.row.original.color} />,
   }),
-  helper.accessor((row) => row.amount ?? undefined, {
+  held.accessor('amount', { header: 'Amount', cell: (info) => formatIDR(info.getValue()) }),
+  held.accessor('share', { header: 'Share of AUM', cell: (info) => formatPercent(info.getValue()) }),
+])
+
+/** Held AUM rows, amount high to low, each with its share of AUM. Never LOAN. */
+export function ProductTable({ rows }: { rows: HeldRow[] }) {
+  return <DataTable label="Holdings" columns={heldColumns} data={rows} rightAligned={['amount', 'share']} />
+}
+
+const notHeld = createColumnHelper<Features, NotHeldRow>()
+
+const notHeldColumns = notHeld.columns([
+  notHeld.accessor('product', { header: 'Product' }),
+  notHeld.accessor('category', {
+    header: 'Category',
+    cell: (info) => <CategoryCell category={info.getValue()} color={info.row.original.color} />,
+  }),
+  notHeld.accessor((row) => row.amount ?? undefined, {
     id: 'amount',
     header: 'Amount',
     sortUndefined: 'last',
@@ -26,18 +49,17 @@ const columns = helper.columns([
       return amount === undefined ? <span aria-label="No amount">—</span> : formatIDR(amount)
     },
   }),
-  helper.accessor('held', { header: 'Held', cell: (info) => (info.getValue() ? 'Yes' : 'No') }),
 ])
 
-/** Every portfolio row, LOAN included. Rows that are not held (0 or no amount) are muted. */
-export function ProductTable({ rows }: { rows: ProductRow[] }) {
+/** AUM rows with amount 0 or no amount, shown muted. */
+export function NotHeldTable({ rows }: { rows: NotHeldRow[] }) {
   return (
     <DataTable
-      label="Products"
-      columns={columns}
+      label="Products not held"
+      columns={notHeldColumns}
       data={rows}
       rightAligned={['amount']}
-      rowClassName={(row) => (row.muted ? 'text-muted-foreground' : '')}
+      rowClassName={() => 'text-muted-foreground'}
     />
   )
 }

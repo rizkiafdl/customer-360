@@ -51,15 +51,13 @@ import { groupByCustomer, type CustomerRows } from './grouping'
 /** How many channels the channel mix shows before it folds the rest into "Other" (F1 spec 5.2). */
 const CHANNEL_MIX_TOP = 5
 
-export interface ProductRow {
+/** An AUM or LOAN row with amount 0 or `null`. */
+export interface NotHeldRow {
   key: string
   product: string
   category: ProductCategory
   color: string
   amount: number | null
-  held: boolean
-  /** Not held (0 or `null` amount): shown muted. */
-  muted: boolean
 }
 
 export interface TransactionRow {
@@ -108,11 +106,12 @@ export interface Customer360 {
     emptyText: string | null
     title: string | null
     aumBars: { category: ProductCategory; amount: number; color: string }[]
-    products: ProductRow[]
     /** Held AUM rows, amount high to low, each with its share of AUM. Never LOAN. */
     held: { product: string; category: ProductCategory; color: string; amount: number; share: number }[]
-    /** AUM rows with amount 0 or `null`. Never LOAN. */
-    notHeld: ProductRow[]
+    /** AUM rows with amount 0 or `null`, in category order. Never LOAN. */
+    notHeld: NotHeldRow[]
+    /** The toggle text, `1 product not held`; `null` when every AUM row is held. */
+    notHeldText: string | null
   }
   activity: {
     weeklyTitle: string
@@ -132,7 +131,16 @@ export interface Customer360 {
   /** `Top channel: …` over customer-initiated rows; `null` with none. */
   channelText: string | null
   /** LOAN rows: code, amount, share of loan exposure. Never part of AUM. */
-  loans: { title: string; held: LoanFacility[]; notHeld: PortfolioItem[]; exposure: number; missingText: string }
+  loans: {
+    title: string
+    held: LoanFacility[]
+    /** LOAN rows with amount 0 or `null`, in data order. */
+    notHeld: { key: string; product: string; amount: number | null }[]
+    /** The toggle text, `2 loan rows not held`; `null` when there are none. */
+    notHeldText: string | null
+    exposure: number
+    missingText: string
+  }
   /** The first 5 rows of `transactions` (latest first). */
   recent: TransactionRow[]
   bankEntries: { title: string; rows: BankEntryTotal[] }
@@ -156,25 +164,6 @@ function holdingsOf(portfolio: PortfolioItem[]): Customer360['holdings'] {
     amount: byCategory[category],
     color: CATEGORY_COLORS[category],
   }))
-  const order: ProductCategory[] = [...AUM_CATEGORIES, 'LOAN']
-  const products = portfolio
-    .map((item, index) => ({ item, index }))
-    .sort(
-      (a, b) =>
-        order.indexOf(a.item.product_category) - order.indexOf(b.item.product_category) ||
-        (b.item.amount ?? -Infinity) - (a.item.amount ?? -Infinity) ||
-        a.index - b.index,
-    )
-    .map(({ item, index }) => ({
-      key: `${index}`,
-      product: item.product ?? UNNAMED_PRODUCT,
-      category: item.product_category,
-      color: CATEGORY_COLORS[item.product_category],
-      amount: item.amount,
-      held: isHeld(item),
-      muted: !isHeld(item),
-    }))
-
   const held = portfolio
     .filter((item) => item.product_category !== 'LOAN' && isHeld(item))
     .map((item) => ({
@@ -185,15 +174,33 @@ function holdingsOf(portfolio: PortfolioItem[]): Customer360['holdings'] {
       share: shareOfAum(item, aum)!,
     }))
     .sort((a, b) => b.amount - a.amount)
-  const notHeld = products.filter((row) => row.category !== 'LOAN' && !row.held)
-  const split = { held, notHeld }
+  const notHeld = portfolio
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => item.product_category !== 'LOAN' && !isHeld(item))
+    .sort(
+      (a, b) =>
+        AUM_CATEGORIES.indexOf(a.item.product_category) - AUM_CATEGORIES.indexOf(b.item.product_category) ||
+        a.index - b.index,
+    )
+    .map(({ item, index }) => ({
+      key: `${index}`,
+      product: item.product ?? UNNAMED_PRODUCT,
+      category: item.product_category,
+      color: CATEGORY_COLORS[item.product_category],
+      amount: item.amount,
+    }))
+  const split = {
+    held,
+    notHeld,
+    notHeldText: notHeld.length ? `${plural(notHeld.length, 'product', 'products')} not held` : null,
+  }
 
   if (portfolio.length === 0) {
-    return { state: 'none', emptyText: 'No portfolio rows.', title: null, aumBars, products, ...split }
+    return { state: 'none', emptyText: 'No portfolio rows.', title: null, aumBars, ...split }
   }
   if (aum === 0) {
     const rows = plural(portfolio.length, 'product row', 'product rows')
-    return { state: 'no-aum', emptyText: `No AUM. ${rows}, none held in AUM categories.`, title: null, aumBars, products, ...split }
+    return { state: 'no-aum', emptyText: `No AUM. ${rows}, none held in AUM categories.`, title: null, aumBars, ...split }
   }
   // Largest category; a tie goes to the first in AUM_CATEGORIES order.
   const top = aumBars.reduce((best, bar) => (bar.amount > best.amount ? bar : best))
@@ -202,7 +209,6 @@ function holdingsOf(portfolio: PortfolioItem[]): Customer360['holdings'] {
     emptyText: null,
     title: `${formatPercent(top.amount / aum)} of AUM in ${top.category}`,
     aumBars,
-    products,
     ...split,
   }
 }
@@ -240,7 +246,14 @@ function loansOf(portfolio: readonly PortfolioItem[]): Customer360['loans'] {
     held.length === 0
       ? 'No loan facility held.'
       : `${plural(held.length, 'loan facility', 'loan facilities')}, ${formatIDR(exposure)} in total`
-  return { title, held, notHeld, exposure, missingText: LOANS_MISSING_TEXT }
+  return {
+    title,
+    held,
+    notHeld: notHeld.map((item, index) => ({ key: `${index}`, product: item.product ?? UNNAMED_PRODUCT, amount: item.amount })),
+    notHeldText: notHeld.length ? `${plural(notHeld.length, 'loan row', 'loan rows')} not held` : null,
+    exposure,
+    missingText: LOANS_MISSING_TEXT,
+  }
 }
 
 function productsKpi(portfolio: readonly PortfolioItem[]): Customer360['kpis']['products'] {
