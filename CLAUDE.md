@@ -72,11 +72,13 @@ src/
   lib/                       Business logic: pure, tested functions. `utils.ts` is shadcn's `cn`.
     format.ts                `formatIDR()` and `formatIDRShort()` — the only money formatters. Date and percent labels.
     theme.ts                 Light/dark switch, light by default (`readStoredTheme`, `applyTheme`). ADR 0009.
+    keyboard.ts              Spotlight shortcut label (⌘K / Ctrl K), shortcut test, list index wrap.
+    recent-customers.ts      Recently viewed customer IDs in `localStorage` (last 5).
     domain/                  Business definitions (AUM, holds, bank entries, income rank, days since). ADR 0006.
-    selectors/               The only importers of `src/data`. Pure `fn(dataset)` + bound exports (`asOfDate`). One per page: `portfolio.ts`, `customers.ts`, `customer360.ts`.
+    selectors/               The only importers of `src/data`. Pure `fn(dataset)` + bound exports (`asOfDate`). One per page: `portfolio.ts`, `customers.ts`, `customer360.ts`; `spotlight.ts` for the search.
     insights/                Insight rules, KYC note, offers by product, and the ranking. Every cut-off lives in `thresholds.ts`. ADR 0008.
   components/ui/             shadcn/ui generated components (add with `npx shadcn@latest add <name>`).
-  components/                App components (render only): top bar (app shell), search, theme toggle.
+  components/                App components (render only): top bar (app shell), Spotlight search (`SpotlightSearch`, `Spotlight`), theme toggle.
   components/portfolio/      Portfolio (`/`): band chips, opportunity tiles, penetration list, income-vs-AUM scatter.
   components/customers/      Customers (`/customers`): filters, the paged table, the preview panel.
   components/customer/       Customer 360 (`/customers/:id`): header, nav, KPI tiles, tab content (offers, charts, tables).
