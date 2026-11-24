@@ -1,6 +1,6 @@
 # 0007. Visual system: dark default, tokens only, red is not risk
 
-- **Status:** Accepted
+- **Status:** Superseded by [0009](0009-visual-system-v2.md)
 - **Date:** 2026-11-23
 
 ## Context
