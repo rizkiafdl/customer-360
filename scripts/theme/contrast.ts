@@ -44,18 +44,61 @@ export function inGamut(value: string): boolean {
   return oklchToLinearSrgb(value).every((ch) => ch >= -0.001 && ch <= 1.001)
 }
 
+/** The alpha channel of an `oklch()` value, 1 when none is given. */
+export function parseAlpha(value: string): number {
+  const match = /\/\s*([\d.]+)\s*(%?)\s*\)\s*$/.exec(value.trim())
+  if (!match) return 1
+  const [, amount, percent] = match as unknown as [string, string, string]
+  return percent ? Number(amount) / 100 : Number(amount)
+}
+
+function clip(channels: [number, number, number]): [number, number, number] {
+  return channels.map((ch) => Math.min(1, Math.max(0, ch))) as [number, number, number]
+}
+
+/** Gamma-encodes a clipped linear sRGB channel (the sRGB EOTF⁻¹). */
+function encodeGamma(c: number): number {
+  return c <= 0.0031308 ? 12.92 * c : 1.055 * c ** (1 / 2.4) - 0.055
+}
+
+/** Decodes a gamma-encoded sRGB channel back to linear (the sRGB EOTF). */
+function decodeGamma(c: number): number {
+  return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4
+}
+
 function luminance(value: string): number {
-  const [r, g, b] = oklchToLinearSrgb(value).map((ch) => Math.min(1, Math.max(0, ch))) as [
-    number,
-    number,
-    number,
-  ]
+  const [r, g, b] = clip(oklchToLinearSrgb(value))
   return 0.2126 * r + 0.7152 * g + 0.0722 * b
 }
 
 /** WCAG 2 contrast ratio, 1 to 21. */
 export function contrastRatio(a: string, b: string): number {
   const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x) as [number, number]
+  return (hi + 0.05) / (lo + 0.05)
+}
+
+/**
+ * WCAG contrast of `fg` against a stack of layers blended from the bottom up,
+ * for translucent theme tokens (hover/selected washes) painted over an
+ * opaque surface. The bottom layer must be opaque: there is nothing under it
+ * to blend with.
+ */
+export function contrastOver(fg: string, layers: readonly string[]): number {
+  const [base, ...rest] = layers
+  if (base === undefined) throw new Error('contrastOver: layers must not be empty')
+  if (parseAlpha(base) !== 1) throw new Error('contrastOver: the first layer must be opaque')
+
+  let acc = clip(oklchToLinearSrgb(base)).map(encodeGamma) as [number, number, number]
+  for (const layer of rest) {
+    const a = parseAlpha(layer)
+    const channels = clip(oklchToLinearSrgb(layer)).map(encodeGamma) as [number, number, number]
+    acc = acc.map((c, i) => c * (1 - a) + channels[i]! * a) as [number, number, number]
+  }
+
+  const [r, g, b] = acc.map(decodeGamma) as [number, number, number]
+  const bgLuminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
+  const fgLuminance = luminance(fg)
+  const [hi, lo] = [fgLuminance, bgLuminance].sort((x, y) => y - x) as [number, number]
   return (hi + 0.05) / (lo + 0.05)
 }
 
