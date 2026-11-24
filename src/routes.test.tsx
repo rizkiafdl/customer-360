@@ -53,19 +53,20 @@ describe('routes', () => {
     expect(link.className).not.toMatch(/brand/)
   })
 
-  it('gives the search input its own accessible name', async () => {
+  it('opens the search from the top bar', async () => {
     const user = userEvent.setup()
     renderAt('/')
-    await user.click(screen.getByRole('combobox', { name: 'Search customer' }))
-    expect(screen.getByRole('combobox', { name: 'Search customers' })).toHaveAttribute('placeholder', 'Customer ID')
+    await user.click(screen.getByRole('button', { name: 'Search customer, filter or page' }))
+    expect(screen.getByRole('dialog', { name: 'Search' })).toBeInTheDocument()
+    expect(screen.getByRole('combobox')).toHaveAttribute('placeholder', 'Customer ID, opportunity or page')
   })
 
   it('opens a customer from the search', async () => {
     const user = userEvent.setup()
     const router = renderAt('/')
-    await user.click(screen.getByRole('combobox', { name: 'Search customer' }))
-    await user.type(screen.getByPlaceholderText('Customer ID'), '4857')
-    await user.click(screen.getByRole('option', { name: /Customer 4857/ }))
+    await user.click(screen.getByRole('button', { name: 'Search customer, filter or page' }))
+    await user.type(screen.getByRole('combobox'), '4857')
+    await user.click(screen.getByRole('option', { name: /^Customer 4857/ }))
     expect(router.state.location.pathname).toBe('/customers/4857')
     expect(screen.getByRole('heading', { level: 1, name: 'Customer 4857' })).toBeInTheDocument()
   })

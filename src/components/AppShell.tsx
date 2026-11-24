@@ -3,7 +3,7 @@ import { Link, Outlet, useLocation } from 'react-router'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { snapshotLabel } from '@/lib/selectors/customer360'
 import { cn } from '@/lib/utils'
-import { CustomerSearch } from './CustomerSearch'
+import { SpotlightSearch } from './SpotlightSearch'
 import { ThemeToggle } from './ThemeToggle'
 
 const NAV: { to: string; label: string; icon: LucideIcon; isActive: (pathname: string) => boolean }[] = [
@@ -49,7 +49,7 @@ export function AppShell() {
             })}
           </nav>
           <div className="ml-auto flex items-center gap-3">
-            <CustomerSearch />
+            <SpotlightSearch />
             <span className="text-sm text-muted-foreground tabular-nums">{snapshotLabel}</span>
             <ThemeToggle />
           </div>

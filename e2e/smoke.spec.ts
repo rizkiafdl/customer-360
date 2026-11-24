@@ -112,13 +112,38 @@ test('the search opens a customer', async ({ page }) => {
   const errors = collectErrors(page)
   await page.goto('./')
 
-  await page.getByRole('combobox', { name: 'Search customer' }).click()
-  await page.getByPlaceholder('Customer ID').fill('4857')
-  await page.getByRole('option', { name: /Customer 4857/ }).click()
+  await page.getByRole('button', { name: 'Search customer, filter or page' }).click()
+  await page.getByPlaceholder('Customer ID, opportunity or page').fill('4857')
+  await page.getByRole('option', { name: /^Customer 4857/ }).click()
 
   await expect(page).toHaveURL(/\/customers\/4857$/)
   await expect(page.getByRole('heading', { level: 1, name: 'Customer 4857' })).toBeVisible()
   await expect(page.getByText('Gender not recorded').first()).toBeVisible()
+  expect(errors).toEqual([])
+})
+
+test('Control+K opens the search and Escape closes it', async ({ page }) => {
+  const errors = collectErrors(page)
+  await page.goto('./')
+  const trigger = page.getByRole('button', { name: 'Search customer, filter or page' })
+
+  await page.keyboard.press('Control+K')
+  await expect(page.getByRole('dialog', { name: 'Search' })).toBeVisible()
+
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('dialog', { name: 'Search' })).toBeHidden()
+  await expect(trigger).toBeFocused()
+  expect(errors).toEqual([])
+})
+
+test('a visited customer is listed under Recently viewed', async ({ page }) => {
+  const errors = collectErrors(page)
+  await page.goto('./customers/4857')
+  await expect(page.getByRole('heading', { level: 1, name: 'Customer 4857' })).toBeVisible()
+
+  await page.keyboard.press('Control+K')
+  await expect(page.getByText('Recently viewed')).toBeVisible()
+  await expect(page.getByRole('option').first()).toHaveAccessibleName(/^Customer 4857/)
   expect(errors).toEqual([])
 })
 

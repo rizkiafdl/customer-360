@@ -29,6 +29,7 @@ describe('top bar', () => {
     const header = screen.getByRole('banner')
     expect(within(header).getByText('Customer 360')).toBeInTheDocument()
     expect(within(header).getByText('Snapshot as of 26 Apr 2024')).toBeInTheDocument()
+    expect(within(header).getByRole('button', { name: 'Search customer, filter or page' })).toBeInTheDocument()
     expect(within(header).getByRole('button', { name: 'Switch to dark theme' })).toBeInTheDocument()
     expect(document.querySelector('[data-slot="sidebar"]')).toBeNull()
   })
